@@ -1,5 +1,2 @@
 name = "represent-commercial"
-compatibility_date = "2026-05-25"
-
-[assets]
-directory = "./dist"
+pages_build_output_dir = "dist"
