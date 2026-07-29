@@ -185,6 +185,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 700; text-transform: up
 
 /* ─── Headshot card (about hero) ─── */
 .headshot { position: relative; width: 300px; flex-shrink: 0; }
+.headshot picture { display: block; }
 .headshot__back { position: absolute; inset: 0; border-radius: 12px; background: rgba(201,168,76,0.12); transform: translate(10px, 10px); }
 .headshot__img { position: relative; width: 300px; height: 380px; object-fit: cover; object-position: center top; border-radius: 12px; filter: grayscale(15%) contrast(1.05); }
 .headshot__caption { position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0 0 12px 12px; background: linear-gradient(to top, rgba(0,45,24,0.92) 30%, transparent 100%); padding: 36px 20px 18px; }

@@ -69,6 +69,7 @@
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.css" />
+<link rel="preload" as="image" href="south-brisbane.webp" type="image/webp" fetchpriority="high" />
 </head>
 <body>
 
@@ -92,8 +93,11 @@
   <!-- ─── HERO ─── -->
   <section class="section section--deep" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0;">
     <div style="position: absolute; inset: 0; z-index: 0;">
-      <img src="south-brisbane.jpeg" alt="Brisbane skyline at dusk — backdrop for Represent Commercial, a South East Queensland commercial property management firm"
-        style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.78) contrast(1.05) saturate(0.88);" />
+      <picture>
+        <source srcset="south-brisbane.webp" type="image/webp" />
+        <img src="south-brisbane-1600.jpg" alt="Brisbane skyline at dusk — backdrop for Represent Commercial, a South East Queensland commercial property management firm" width="1600" height="871" fetchpriority="high" decoding="async"
+          style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.78) contrast(1.05) saturate(0.88);" />
+      </picture>
       <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,61,32,0.5), rgba(0,40,20,0.35) 50%, rgba(0,25,12,0.4)); mix-blend-mode: multiply;"></div>
       <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,20,10,0.1) 0%, rgba(0,20,10,0.18) 35%, rgba(0,20,10,0.7) 68%, rgba(0,15,8,0.97) 100%);"></div>
       <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,15,8,0.5) 0%, rgba(0,15,8,0.15) 35%, transparent 65%);"></div>
@@ -422,6 +426,10 @@
       <div class="footer-col footer-col--hidden">
         <h4>Coverage</h4>
         <ul>
+          <li><a href="Acacia Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
           <li>South East Queensland · $2M–$30M</li>
         </ul>
       </div>
