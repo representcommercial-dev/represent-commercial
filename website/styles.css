@@ -8,6 +8,7 @@
   --green-deep: #002D18;
   --green-bright: #00A35E;
   --gold: #C9A84C;
+  --gold-ink: #8C6E1A;
   --sand: #D4C5A9;
   --bg-light: #F8F9F8;
   --border-light: #E1E4E1;
@@ -108,7 +109,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 700; text-transform: up
 .footer-brand .gold-rule { margin-bottom: 20px; }
 .footer-brand .tagline { font-size: 18px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.7; max-width: 280px; }
-.footer-col h4 { font-family: var(--f-body); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 20px; }
+.footer-col h3, .footer-col h4 { font-family: var(--f-body); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 20px; }
 .footer-col ul { list-style: none; }
 .footer-col li, .footer-col a, .footer-col p { font-family: var(--f-body); font-size: 14px; color: rgba(255,255,255,0.45); line-height: 2; text-decoration: none; transition: color 0.2s; display: block; }
 .footer-col a:hover { color: #fff; }
@@ -352,3 +353,6 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 700; text-transform: up
   /* Italic 'managed with intent' accent line */
   .italic { letter-spacing: 0 !important; }
 }
+
+/* a11y: gold text on light */
+.section--light .eyebrow--gold,.section--light .pillar__n,.section--light .step__eyebrow,.section--light .proj-card__loc,.tier:not(.tier--featured) .tier__num,.tier:not(.tier--featured) .tier__plus,.tier:not(.tier--featured) .tier__fee{color:var(--gold-ink)}
