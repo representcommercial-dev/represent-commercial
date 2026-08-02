@@ -105,7 +105,7 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 700; text-transform: up
 .site-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 64px; margin-bottom: 64px; }
 .footer-col--hidden { display: none; }
 .footer-brand .logo__primary { font-size: 32px; }
-.footer-brand .logo__sub { font-size: 8px; margin: 3px 0 20px; color: rgba(255,255,255,0.3); }
+.footer-brand .logo__sub { font-size: 9px; margin: 3.4px 0 20px; color: rgba(255,255,255,0.3); }
 .footer-brand .gold-rule { margin-bottom: 20px; }
 .footer-brand .tagline { font-size: 18px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
 .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.7; max-width: 280px; }
