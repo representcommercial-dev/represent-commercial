@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rent Offset Saving Calculator — Represent Commercial</title>
+<meta name="description" content="See what parking commercial rent in your offset account saves in loan interest. An investor tool from Represent Commercial, South East Queensland." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/calculator.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ─── Calculator (brand palette per brief) ─── */
+  :root {
+    --calc-green: #004225;
+    --calc-gold: #B8935A;
+    --calc-gold-cta: #D4AF37;
+    --calc-bg: #F7F5F0;
+    --calc-ink: #0E1A14;
+    --f-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --f-serif: 'Cormorant Garamond', Georgia, serif;
+    --f-sans: 'DM Sans', system-ui, sans-serif;
+  }
+  .calc-page { background: var(--calc-bg); color: var(--calc-ink); }
+  .calc-wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header band */
+  .calc-hero { background: var(--calc-green); color: #fff; padding: 132px 0 72px; }
+  .calc-hero .calc-wrap { max-width: 820px; }
+  .calc-eyebrow { font-family: var(--f-cond); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.22em; color: var(--calc-gold); margin: 0 0 20px; }
+  .calc-hero h1 { font-family: var(--f-cond); font-weight: 700; text-transform: uppercase; font-size: clamp(38px, 6vw, 68px); line-height: 0.98; letter-spacing: 0.02em; margin: 0 0 22px; }
+  .calc-hero p { font-family: var(--f-sans); font-size: clamp(15px, 1.7vw, 18px); line-height: 1.65; color: rgba(255,255,255,0.72); max-width: 620px; margin: 0; }
+
+  /* Body */
+  .calc-body { padding: 64px 0 80px; }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+
+  .card { background: #fff; border: 1px solid #E6E1D6; border-radius: 14px; padding: 36px 34px; }
+
+  .card-label { font-family: var(--f-cond); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--calc-green); margin: 0 0 26px; }
+
+  .field { margin-bottom: 24px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: block; font-family: var(--f-cond); font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.11em; color: var(--calc-ink); margin-bottom: 9px; }
+  .input-shell { display: flex; align-items: center; background: var(--calc-bg); border: 1px solid #DED8CB; border-radius: 9px; transition: border-color 0.18s, box-shadow 0.18s; overflow: hidden; }
+  .input-shell:focus-within { border-color: var(--calc-gold); box-shadow: 0 0 0 3px rgba(184,147,90,0.15); }
+  .input-shell .affix { font-family: var(--f-sans); font-size: 16px; font-weight: 500; color: #8A857A; padding: 0 4px; user-select: none; }
+  .input-shell .affix--pre { padding-left: 15px; }
+  .input-shell .affix--suf { padding-right: 15px; white-space: nowrap; }
+  .input-shell input { flex: 1 1 auto; width: 100%; min-width: 0; border: 0; background: transparent; outline: none; font-family: var(--f-sans); font-size: 17px; font-weight: 500; color: var(--calc-ink); padding: 14px 8px; }
+  .input-shell input::placeholder { color: #B8B2A5; font-weight: 400; }
+  .hint { font-family: var(--f-sans); font-size: 12.5px; line-height: 1.5; color: #7C776C; margin: 8px 0 0; }
+
+  /* Result card */
+  .result-card { border-top: 4px solid var(--calc-gold); }
+  .result-label { font-family: var(--f-cond); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--calc-green); margin: 0 0 6px; }
+  .result-number { font-family: var(--f-cond); font-weight: 700; font-size: clamp(64px, 10vw, 100px); line-height: 0.95; color: var(--calc-gold); letter-spacing: -0.01em; margin: 4px 0 18px; }
+  .result-explain { font-family: var(--f-sans); font-size: 14.5px; line-height: 1.65; color: #4A5850; margin: 0 0 30px; max-width: 42ch; }
+  .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #E6E1D6; }
+  .stat { padding: 20px 16px 4px 0; }
+  .stat:not(:first-child) { padding-left: 20px; border-left: 1px solid #E6E1D6; }
+  .stat__v { font-family: var(--f-cond); font-weight: 700; font-size: 32px; line-height: 1; color: var(--calc-green); margin-bottom: 6px; }
+  .stat__k { font-family: var(--f-cond); font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #7C776C; line-height: 1.3; }
+
+  /* CTA band */
+  .calc-cta { background: var(--calc-green); color: #fff; padding: 72px 0; }
+  .calc-cta .calc-wrap { max-width: 760px; }
+
+  /* Disclaimer */
+  .calc-disclaimer { background: var(--calc-bg); padding: 40px 0 72px; }
+  .calc-disclaimer .calc-wrap { max-width: 820px; }
+  .calc-disclaimer p { font-family: var(--f-sans); font-size: 12px; line-height: 1.7; color: #9A958A; margin: 0; }
+
+  /* Lead form in CTA band */
+  .lead-card { background: #fff; border: 1px solid #E6E1D6; border-radius: 14px; padding: 42px 42px 44px; text-align: left; }
+  .lead-h { font-family: var(--f-cond); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.0; color: var(--calc-green); margin: 0 0 12px; }
+  .lead-p { font-family: var(--f-sans); font-size: 15px; line-height: 1.6; color: #5A6660; margin: 0 0 24px; max-width: 560px; }
+  .lead-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .lead-grid input { width: 100%; box-sizing: border-box; border: 1px solid #DED8CB; border-radius: 9px; background: var(--calc-bg); font-family: var(--f-sans); font-size: 15px; color: var(--calc-ink); padding: 13px 14px; outline: none; transition: border-color 0.18s, box-shadow 0.18s; }
+  .lead-grid input:focus { border-color: var(--calc-gold); box-shadow: 0 0 0 3px rgba(184,147,90,0.15); }
+  .lead-btn { display: inline-block; background: var(--calc-gold-cta); color: var(--calc-green); font-family: var(--f-cond); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; border: 0; padding: 14px 32px; border-radius: 8px; cursor: pointer; transition: opacity 0.2s; }
+  .lead-btn:hover { opacity: 0.9; }
+  .lead-btn:disabled { background: #C9B98A; cursor: default; }
+  .lead-msg { font-family: var(--f-sans); font-size: 13px; margin-top: 12px; }
+  .lead-msg.err { color: #A0341F; }
+  @media (max-width: 600px) { .lead-grid { grid-template-columns: 1fr; } .lead-card { padding: 30px 24px; } }
+
+  @media (max-width: 760px) {
+    .calc-hero { padding: 108px 0 52px; }
+    .calc-body { padding: 40px 0 56px; }
+    .calc-grid { grid-template-columns: 1fr; gap: 22px; }
+    .card { padding: 30px 24px; }
+    .result-stats { grid-template-columns: 1fr; }
+    .stat { padding: 18px 0; }
+    .stat:not(:first-child) { padding-left: 0; border-left: 0; border-top: 1px solid #E6E1D6; }
+    .stat__v { font-size: 24px; }
+  }
+</style>
+</head>
+<body class="calc-page">
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="about.html" class="site-nav__link">About</a>
+      <a href="services.html" class="site-nav__link">Services</a>
+      <a href="tools.html" class="site-nav__link is-active">Tools</a>
+      <a href="referrals.html" class="site-nav__link">Referrals</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Chat with Nick</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      WHAT DOES PARKING RENT IN YOUR OFFSET <span class="italic" style="color: var(--gold);">save?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 640px;">
+      When rent lands in an offset account against your own loan, it cuts interest for every day it sits before you spend it. See the saving.
+    </p>
+  </div>
+</section>
+
+<!-- ─── CALCULATOR ─── -->
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <!-- Inputs -->
+      <div class="card">
+        <p class="card-label">Your numbers</p>
+
+        <div class="field">
+          <label for="rent">Monthly rent received</label>
+          <div class="input-shell">
+            <span class="affix affix--pre">$</span>
+            <input id="rent" type="text" inputmode="numeric" autocomplete="off" value="21,667" aria-describedby="rent-hint" />
+          </div>
+          <p class="hint" id="rent-hint">Rent that flows through the offset each month.</p>
+        </div>
+
+        <div class="field">
+          <label for="rate">Loan interest rate</label>
+          <div class="input-shell">
+            <input id="rate" type="text" inputmode="decimal" autocomplete="off" value="6.5" />
+            <span class="affix affix--suf">% p.a.</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="days">Average days rent sits in offset</label>
+          <div class="input-shell">
+            <input id="days" type="text" inputmode="numeric" autocomplete="off" value="15" aria-describedby="days-hint" />
+            <span class="affix affix--suf">days</span>
+          </div>
+          <p class="hint" id="days-hint">Time from rent arriving to being spent or distributed. ~15 if drawn mid-month.</p>
+        </div>
+
+        <div class="field">
+          <label for="years">Holding period</label>
+          <div class="input-shell">
+            <input id="years" type="text" inputmode="numeric" autocomplete="off" value="10" />
+            <span class="affix affix--suf">yrs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="card result-card">
+        <p class="result-label">Interest saved per year</p>
+        <div class="result-number" id="r-annual">$0</div>
+        <p class="result-explain">Modest by design — the saving is real but bounded by how long rent actually sits idle. The longer it stays offset before you spend it, the more it earns.</p>
+        <div class="result-stats">
+          <div class="stat">
+            <div class="stat__v" id="r-offset">$0</div>
+            <div class="stat__k">Average offset balance</div>
+          </div>
+          <div class="stat">
+            <div class="stat__v" id="r-rent">$0</div>
+            <div class="stat__k">Annual rent</div>
+          </div>
+          <div class="stat">
+            <div class="stat__v" id="r-total">$0</div>
+            <div class="stat__k" id="r-total-k">Saved over 10 years</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA / LEAD ─── -->
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">Small levers, run properly</div>
+        <p class="lead-p">This is one small lever. Arrears, rent reviews, outgoings recovery — the levers that move real money are the ones we run every day. Send your details and Nick will show you what that looks like on your asset.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <input name="name" placeholder="Name" autocomplete="name" />
+            <input name="email" type="email" placeholder="Email" autocomplete="email" required />
+            <input name="phone" placeholder="Phone" autocomplete="tel" />
+          </div>
+          <button type="submit" class="lead-btn" id="lead-btn">Talk to us</button>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks — we'll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DISCLAIMER ─── -->
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>Indicative only and not personal financial, investment, or taxation advice. Assumes the rent is your own funds offsetting your own loan; it does not apply to rent held on behalf of a lessor, which must be held in a statutory trust account. Saving assumes a constant interest rate and excludes account fees and tax. Represent Commercial — REIQ Corporate Licence 4949809. Obtain independent advice before acting.</p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Managed with intent.</div>
+        <p>Specialist commercial asset and property management for South East Queensland owners — office, retail and industrial in the $2M–$30M range. Principal-led by design.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col--hidden">
+        <h3>Coverage</h3>
+        <ul>
+          <li>South East Queensland · $2M–$30M</li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">South East Queensland</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>REIQ Licence</span>494809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var DPM = 30.4; // days per month
+  var rentEl = document.getElementById('rent');
+  var rateEl = document.getElementById('rate');
+  var daysEl = document.getElementById('days');
+  var yearsEl = document.getElementById('years');
+
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+
+  function num(el) {
+    var v = parseFloat(String(el.value).replace(/[^0-9.]/g, ''));
+    return isFinite(v) ? v : 0;
+  }
+  function money(n) { return '$' + fmt0.format(Math.round(n)); }
+
+  function calc() {
+    var rent = num(rentEl);
+    var rate = num(rateEl);
+    var days = num(daysEl);
+    var years = num(yearsEl);
+
+    var avgOffset = Math.min(rent * (days / DPM), rent);
+    var annual = avgOffset * (rate / 100);
+    var total = annual * years;
+    var annualRent = rent * 12;
+
+    document.getElementById('r-annual').textContent = money(annual);
+    document.getElementById('r-offset').textContent = money(avgOffset);
+    document.getElementById('r-rent').textContent = money(annualRent);
+    document.getElementById('r-total').textContent = money(total);
+    document.getElementById('r-total-k').textContent = 'Saved over ' + fmt0.format(Math.round(years)) + (Math.round(years) === 1 ? ' year' : ' years');
+    calc._annual = Math.round(annual); calc._total = Math.round(total); calc._rent = rent; calc._rate = rate; calc._days = days; calc._years = years;
+  }
+
+  // Comma formatting for the rent field, preserving caret at end (fires on plain digit entry).
+  function formatRent() {
+    var digits = rentEl.value.replace(/[^0-9]/g, '');
+    rentEl.value = digits === '' ? '' : fmt0.format(parseInt(digits, 10));
+  }
+
+  rentEl.addEventListener('input', function () {
+    var atEnd = rentEl.selectionStart === rentEl.value.length;
+    formatRent();
+    if (atEnd) { rentEl.setSelectionRange(rentEl.value.length, rentEl.value.length); }
+    calc();
+  });
+
+  [rateEl, daysEl, yearsEl].forEach(function (el) {
+    el.addEventListener('input', calc);
+  });
+
+  calc();
+
+  // Lead form → Web3Forms
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      subject: 'Enquiry — Rent Offset Saving Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      tool: 'Rent Offset Saving Calculator',
+      monthly_rent: money(calc._rent),
+      interest_rate: calc._rate + '% p.a.',
+      days_in_offset: fmt0.format(Math.round(calc._days)) + ' days',
+      holding_period: fmt0.format(Math.round(calc._years)) + ' yrs',
+      estimated_annual_saving: money(calc._annual),
+      estimated_total_saving: money(calc._total)
+    };
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (res.success) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { throw new Error('failed'); }
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = 'Talk to us';
+      errEl.textContent = 'Something went wrong — please try again or call us.';
+      errEl.style.display = 'block';
+    });
+  });
+})();
+</script>
+
+  <script src="nav.js" defer></script>
+</body>
+</html>
