@@ -124,11 +124,18 @@
 </header>
 
 <!-- ─── HERO BAND ─── -->
-<section class="ref-hero">
-  <div class="ref-wrap">
-    <p class="ref-eyebrow">Represent Commercial · For Referring Agents</p>
-    <h1>You transact. We manage. It comes back to you.</h1>
-    <p>Refer a management instruction and we commit — in writing — to sending any future sale or new leasing of that property straight back to you. Enter the details and the agreement lands in your inbox.</p>
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      YOU TRANSACT. WE MANAGE. <span class="italic" style="color: var(--gold);">it comes back to you.</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 700px;">
+      Refer a management instruction and we commit — in writing — to sending any future sale or new leasing of that property straight back to you. Enter the details and the agreement lands in your inbox.
+    </p>
   </div>
 </section>
 
@@ -168,7 +175,7 @@
             </div>
             <div class="field">
               <label for="f-phone">Your phone</label>
-              <input id="f-phone" type="tel" autocomplete="tel" />
+              <input id="f-phone" type="tel" autocomplete="tel" placeholder="0400 000 000" />
             </div>
           </div>
         </div>
@@ -206,7 +213,7 @@
           <div class="frow">
             <div class="field">
               <label for="f-owner-mobile">Owner mobile</label>
-              <input id="f-owner-mobile" type="tel" />
+              <input id="f-owner-mobile" type="tel" placeholder="0400 000 000" />
             </div>
             <div class="field">
               <label for="f-owner-email">Owner email</label>
@@ -311,6 +318,26 @@
   var btn = document.getElementById('submit-btn');
   var errEl = document.getElementById('form-error');
   var acceptBox = document.getElementById('accept-box');
+
+  // Live input formatting: thousands separators on rent, spaced AU mobiles.
+  (function () {
+    var rent = document.getElementById('f-rent');
+    if (rent) rent.addEventListener('input', function () {
+      var d = rent.value.replace(/[^\d]/g, '');
+      rent.value = d ? Number(d).toLocaleString('en-AU') : '';
+    });
+    function fmtPhone(el) {
+      if (!el) return;
+      el.addEventListener('input', function () {
+        var d = el.value.replace(/\D/g, '').slice(0, 10);
+        if (d.length > 7) el.value = d.slice(0, 4) + ' ' + d.slice(4, 7) + ' ' + d.slice(7);
+        else if (d.length > 4) el.value = d.slice(0, 4) + ' ' + d.slice(4);
+        else el.value = d;
+      });
+    }
+    fmtPhone(document.getElementById('f-phone'));
+    fmtPhone(document.getElementById('f-owner-mobile'));
+  })();
 
   function val(id) { return (document.getElementById(id).value || '').trim(); }
   function isEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s); }
