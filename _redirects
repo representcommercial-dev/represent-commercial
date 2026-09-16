@@ -1,0 +1,10 @@
+# Retired routes
+/listings        /buyers-agency.html   301
+/listings.html   /buyers-agency.html   301
+
+# Clean URLs (rewrite — .html remains canonical)
+/privacy                 /privacy.html                 200
+/advisory                /tenant-representation.html   301
+/advisory.html           /tenant-representation.html   301
+/leasing                 /leasing.html                 200
+/tenant-representation   /tenant-representation.html   200

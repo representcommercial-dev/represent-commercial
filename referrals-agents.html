@@ -21,7 +21,7 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.v2.css" />
 <style>
   :root {
     --ref-green: #004225;
@@ -105,6 +105,7 @@
 </style>
 </head>
 <body class="ref-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ─── HEADER ─── -->
 <header class="site-header">
@@ -114,14 +115,17 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="about.html" class="site-nav__link">About</a>
-      <a href="services.html" class="site-nav__link">Services</a>
-      <a href="tools.html" class="site-nav__link">Tools</a>
-      <a href="referrals.html" class="site-nav__link is-active">Referrals</a>
-      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Chat with Nick</a>
+      <a href="services.html" class="site-nav__link">Property Owners</a>
+      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
+      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
+      <a href="insights.html" class="site-nav__link">Market Intelligence</a>
+      <a href="about.html" class="site-nav__link is-active">About</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
   </div>
 </header>
+<main id="main-content" tabindex="-1">
+
 
 <!-- ─── HERO BAND ─── -->
 <section class="section section--green section--hero">
@@ -130,12 +134,15 @@
   <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
   <div class="container" style="position: relative; z-index: 1;">
     <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
-      YOU TRANSACT. WE MANAGE. <span class="italic" style="color: var(--gold);">it comes back to you.</span>
+      YOU TRANSACT. WE MANAGE. IT COMES BACK TO <span class="italic" style="color: var(--gold);">you.</span>
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 700px;">
       Refer a management instruction and we commit — in writing — to sending any future sale or new leasing of that property straight back to you. Enter the details and the agreement lands in your inbox.
     </p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px;">
+      <a href="#referral-live" class="btn btn--lg btn--gold">Refer a Client</a>
+    </div>
   </div>
 </section>
 
@@ -257,13 +264,15 @@
     </div>
 
     <div class="ref-disclaimer">
-      <p>The referral agreement is a mutual commitment to refer business and does not create an agency, partnership, or fee obligation between the parties. It does not oblige any property owner to appoint either party. Represent Commercial — REIQ Corporate Licence 4949809.</p>
+      <p>The referral agreement is a mutual commitment to refer business and does not create an agency, partnership, or fee obligation between the parties. It does not oblige any property owner to appoint either party. Represent Commercial — Real Estate Agent Licence 4949809.</p>
     </div>
 
   </div>
 </section>
 
 <!-- ─── FOOTER ─── -->
+</main>
+
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__grid">
@@ -271,27 +280,38 @@
         <div class="logo__primary">REPRESENT</div>
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
-        <div class="tagline">Managed with intent.</div>
-        <p>Specialist commercial asset and property management for South East Queensland owners — office, retail and industrial in the $2M–$30M range. Principal-led by design.</p>
+        <div class="tagline">Exclusively on your side of the table</div>
+        <p>Commercial property advice and representation for property owners, investors, owner-occupiers and tenants.</p>
       </div>
       <div class="footer-col">
-        <h3>Navigate</h3>
+        <h3>Services</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Commercial Property Management</a></li>
+          <li><a href="leasing.html">Commercial Property Leasing</a></li>
+          <li><a href="buyers-agency.html">Buyer’s Agency</a></li>
+          <li><a href="tenant-representation.html">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="tools.html">Tools</a></li>
-          <li><a href="referrals.html">Referrals</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Referrals</h3>
+        <h3>Intelligence</h3>
         <ul>
-          <li><a href="referrals-agents.html">For sales &amp; leasing agents</a></li>
-          <li>For accountants &amp; advisers</li>
-          <li>For financiers &amp; brokers</li>
-          <li>For buyers agents &amp; advocates</li>
+          <li><a href="insights.html">Market Intelligence</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tools.html">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="locations.html">All Locations</a></li>
+          <li><a href="Acacia Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
         </ul>
       </div>
       <div class="footer-col footer-contact">
@@ -300,14 +320,15 @@
         <div>Principal &amp; Licensee</div>
         <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
         <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
-        <div class="stack">South East Queensland</div>
+        <div class="stack">Brisbane, Queensland</div>
       </div>
     </div>
     <div class="footer-meta">
       <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
       <div class="footer-meta__legals">
-        <div><span>REIQ Licence</span>494809</div>
+        <div><span>Real Estate Agent Licence</span>4949809</div>
         <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
       </div>
     </div>
   </div>
@@ -341,6 +362,14 @@
 
   function val(id) { return (document.getElementById(id).value || '').trim(); }
   function isEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s); }
+
+  // Holds the id/timestamp of the last attempted referral so retries of an
+  // unchanged submission send an identical payload (see the retry safeguard below).
+  var lastSubmission = null;
+  function newSubmissionId() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return 'ref-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+  }
 
   function clearInvalid() {
     document.querySelectorAll('.field.is-invalid').forEach(function (f) { f.classList.remove('is-invalid'); });
@@ -383,22 +412,55 @@
       owner_mobile: val('f-owner-mobile'),
       owner_email: val('f-owner-email'),
       notes: val('f-notes'),
-      accepted: true,
-      accepted_at: new Date().toISOString()
+      accepted: true
     };
+
+    // Retry safeguard: an unchanged referral keeps its submission id, acceptance
+    // timestamp and payload across retries, so the endpoint can pass one stable
+    // idempotency key to Resend. Editing any field produces a new submission.
+    // Limits: this is per-browser-session and only covers retries of an identical
+    // payload. It is not permanent duplicate prevention and does not survive a
+    // page reload or a submission from another device.
+    var fingerprint = JSON.stringify(payload);
+    if (lastSubmission && lastSubmission.fingerprint === fingerprint) {
+      payload.submission_id = lastSubmission.id;
+      payload.accepted_at = lastSubmission.acceptedAt;
+    } else {
+      lastSubmission = {
+        fingerprint: fingerprint,
+        id: newSubmissionId(),
+        acceptedAt: new Date().toISOString()
+      };
+      payload.submission_id = lastSubmission.id;
+      payload.accepted_at = lastSubmission.acceptedAt;
+    }
 
     var original = btn.innerHTML;
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+
     fetch('/api/referral', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
     }).then(function (res) {
-      if (res.ok) return null;
-      return res.text().then(function (t) { throw new Error('HTTP ' + res.status + ' — ' + t); });
+      // A 2xx alone is not success: a misrouted HTML 200 must not look like a sent referral.
+      var type = res.headers.get('content-type') || '';
+      if (type.indexOf('application/json') === -1) {
+        throw new Error('Unexpected response type: ' + (type || 'none'));
+      }
+      return res.json().then(function (body) {
+        if (!res.ok || !body || body.ok !== true) {
+          throw new Error('HTTP ' + res.status + ' — ' + JSON.stringify(body));
+        }
+        return body;
+      });
     }).then(function () {
+      if (timer) clearTimeout(timer);
       document.getElementById('success-text').textContent =
         'A copy of the reciprocal referral agreement for ' + property +
         ' is being emailed to you at ' + email +
@@ -407,9 +469,13 @@
       document.getElementById('referral-success').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(function (err) {
+      if (timer) clearTimeout(timer);
       btn.disabled = false;
       btn.innerHTML = original;
-      errEl.textContent = 'Something went wrong sending your referral. Please try again, or call Nick on 0401 825 999.' + (err && err.message ? '  [debug: ' + err.message + ']' : '');
+      var aborted = err && (err.name === 'AbortError');
+      errEl.textContent = aborted
+        ? 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on 0401 825 999 if you need confirmation.'
+        : 'Something went wrong sending your referral. Your details are still here — please try again, or call Nick on 0401 825 999.';
       errEl.classList.add('is-shown');
       console.error('Referral submit failed:', err && err.message);
     });
@@ -417,6 +483,6 @@
 })();
 </script>
 
-  <script src="nav.js" defer></script>
+  <script src="nav.v12.js" defer></script>
 </body>
 </html>

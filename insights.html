@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Insights — Represent Commercial | Commercial Property Knowledge Centre, SEQ</title>
+<meta name="description" content="The Represent Commercial knowledge centre — market evidence, guides, calculators and case studies for South East Queensland commercial property owners, buyers and tenants. The thinking behind how we run an asset." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="canonical" href="https://represent.au/insights.html" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/insights.html" />
+<meta property="og:title" content="Insights — Represent Commercial" />
+<meta property="og:description" content="Market evidence, guides, calculators and case studies for commercial property owners, buyers and tenants in South East Queensland." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v2.css" />
+<style>
+  a { color: var(--gold-ink); } a:hover { color: var(--green); }
+  .kc-body { background: #F7F5F0; padding: 88px 0 40px; }
+  .kc-wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+
+  .kc-sec { margin-bottom: 64px; }
+  .kc-sec:last-child { margin-bottom: 0; }
+  .kc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 26px; border-bottom: 1px solid #E6E1D6; padding-bottom: 16px; flex-wrap: wrap; }
+  .kc-head h2 { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 3vw, 34px); line-height: 1; color: var(--green); letter-spacing: 0.02em; margin: 0; }
+  .kc-head p { font-family: var(--f-body); font-size: 14px; line-height: 1.55; color: #6A756E; margin: 0; max-width: 460px; }
+  .kc-head a { font-family: var(--f-body); font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--gold-ink); text-decoration: none; white-space: nowrap; }
+  .kc-head a:hover { color: var(--green); }
+
+  .kc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .kc-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .kc-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+  .kc-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #E6E1D6; border-radius: 14px; padding: 30px 28px 32px; text-decoration: none; color: inherit; position: relative; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  a.kc-card:hover { border-color: var(--gold); box-shadow: 0 12px 32px rgba(0,66,37,0.09); transform: translateY(-3px); }
+  .kc-card--soon { opacity: 0.62; cursor: default; }
+
+  .kc-kicker { font-family: var(--f-body); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold-ink); margin: 0 0 12px; }
+  .kc-card--soon .kc-kicker { padding-right: 92px; }
+  .kc-card h3 { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 22px; line-height: 1.08; color: var(--green); margin: 0 0 11px; }
+  .kc-card p { font-family: var(--f-body); font-size: 14px; line-height: 1.62; color: #4A5850; margin: 0; }
+  .kc-tag { position: absolute; top: 26px; right: 26px; font-family: var(--f-body); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-ink); }
+  .kc-open { margin-top: 18px; font-family: var(--f-body); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--gold-ink); display: inline-flex; align-items: center; gap: 8px; }
+  .kc-open svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+  a.kc-card:hover .kc-open svg { transform: translateX(4px); }
+
+  /* Case study feature cards — green */
+  .kc-cs { grid-template-columns: repeat(2, 1fr); }
+  .kc-csc { background: var(--green); color: #fff; border: 0; }
+  a.kc-csc:hover { box-shadow: 0 16px 40px rgba(0,66,37,0.18); }
+  .kc-csc .kc-kicker { color: var(--gold); }
+  .kc-csc h3 { color: #fff; }
+  .kc-csc p { color: rgba(255,255,255,0.72); }
+  .kc-csc .kc-open { color: var(--gold); }
+  .kc-metric { font-family: var(--f-display); font-weight: 700; font-size: 40px; line-height: 1; color: var(--gold); margin: 0 0 14px; letter-spacing: 0.01em; }
+
+  .kc-note { max-width: 1180px; margin: 44px auto 0; padding: 0 48px; }
+  .kc-note p { font-family: var(--f-body); font-size: 12.5px; line-height: 1.7; color: #9A958A; margin: 0; }
+
+  @media (min-width: 1120px) { .kc-grid--4 { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 900px) { .kc-grid, .kc-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) {
+    .kc-wrap, .kc-note { padding: 0 24px; }
+    .kc-body { padding: 56px 0 32px; }
+    .kc-grid, .kc-grid--2, .kc-grid--4, .kc-cs { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="services.html" class="site-nav__link">Property Owners</a>
+      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
+      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
+      <a href="insights.html" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="about.html" class="site-nav__link">About</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" tabindex="-1">
+
+  <!-- ─── HERO ─── -->
+  <section class="section section--green section--hero">
+    <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+    <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+    <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 1000px;">
+        THE KNOWLEDGE <span class="italic" style="color: var(--gold);">centre.</span>
+      </h1>
+      <hr class="gold-rule" style="margin-bottom: 28px;" />
+      <p class="lede" style="max-width: 680px;">
+        Commercial property intelligence for owners, buyers and tenants. Market evidence, precinct intelligence and practical analysis for owners managing assets, buyers assessing acquisitions and tenants making occupancy decisions.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── INDEX ─── -->
+  <section class="kc-body">
+    <div class="kc-wrap">
+
+      <!-- Case studies -->
+      <div class="kc-sec">
+        <div class="kc-head">
+          <div>
+            <h2>Case studies</h2>
+            <p>Four assets, four different plays — planning uplift, value-add, a short-lease acquisition and a refurbishment reversion.</p>
+          </div>
+          <a href="case-studies.html">All case studies →</a>
+        </div>
+        <div class="kc-grid kc-cs">
+          <a class="kc-card kc-csc" href="case-studies.html#spring-hill">
+            <div class="kc-kicker">Spring Hill · Planning uplift &amp; reposition</div>
+            <div class="kc-metric">$15M+</div>
+            <h3>Planning uplift &amp; full occupancy on a future development site</h3>
+            <p>A vacant, incorrectly zoned former government building taken to a 15-storey envelope, refurbished and re-leased to full occupancy at a 6% yield on total cost.</p>
+            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card kc-csc" href="case-studies.html#west-end">
+            <div class="kc-kicker">West End · Value-add</div>
+            <div class="kc-metric">$7M</div>
+            <h3>A mixed-use value-add, end to end</h3>
+            <p>An asset trading below its potential, taken through acquisition, refurbishment and leasing owner-side — lifting value from $5M to $12M.</p>
+            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card kc-csc" href="case-studies.html#stafford">
+            <div class="kc-kicker">Stafford · Strata industrial</div>
+            <div class="kc-metric">$1M</div>
+            <h3>Under-rented strata, bought for the expiry</h3>
+            <p>Acquired at $1.12M in 2022 with under two years of lease left and rent below market; sold in 2024 for $2.15M into owner-occupier demand.</p>
+            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card kc-csc" href="case-studies.html#berserker">
+            <div class="kc-kicker">Berserker · Refurbishment &amp; reversion</div>
+            <div class="kc-metric">Under way</div>
+            <h3>Refurbishment &amp; rental reversion beside a regional centre</h3>
+            <p>A retail and office building next to Stockland Rockhampton, fully refurbished, with rents reset to market as tenancies come up for renewal.</p>
+            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Guides -->
+      <div class="kc-sec">
+        <div class="kc-head">
+          <div>
+            <h2>Guides &amp; explainers</h2>
+            <p>Plain-language notes on the mechanics that move commercial returns.</p>
+          </div>
+        </div>
+        <div class="kc-grid">
+          <a class="kc-card" href="guide-lease-vs-buy.html">
+            <div class="kc-kicker">Strategy</div>
+            <h3>Lease vs buy for the owner-occupier</h3>
+            <p>The real cost comparison beyond the mortgage — equity, outgoings, capital works and freed capital.</p>
+            <span class="kc-open">Read guide <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <div class="kc-card kc-card--soon">
+            <span class="kc-tag">Coming soon</span>
+            <div class="kc-kicker">Outgoings</div>
+            <h3>Recovering outgoings the right way</h3>
+            <p>What's recoverable under a net lease, where owners leave money on the table, and how to audit a schedule.</p>
+          </div>
+          <div class="kc-card kc-card--soon">
+            <span class="kc-tag">Coming soon</span>
+            <div class="kc-kicker">Rent reviews</div>
+            <h3>Rent review mechanisms explained</h3>
+            <p>Fixed, CPI, market and ratchet reviews — how each behaves over a term, and which to push for.</p>
+          </div>
+          <div class="kc-card kc-card--soon">
+            <span class="kc-tag">Coming soon</span>
+            <div class="kc-kicker">Lease metrics</div>
+            <h3>Reading a WALE</h3>
+            <p>Weighted average lease expiry, why buyers price it, and how to manage expiry risk before it bites.</p>
+          </div>
+          <div class="kc-card kc-card--soon">
+            <span class="kc-tag">Coming soon</span>
+            <div class="kc-kicker">Valuation</div>
+            <h3>How commercial property is valued</h3>
+            <p>Capitalising net income at a market yield — what actually drives the number on a valuation.</p>
+          </div>
+          <div class="kc-card kc-card--soon">
+            <span class="kc-tag">Coming soon</span>
+            <div class="kc-kicker">Management</div>
+            <h3>Agent vs principal-led management</h3>
+            <p>Where the incentives diverge, and what owner-side management changes about how an asset is run.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="kc-sec">
+        <div class="kc-head">
+          <div>
+            <h2>Tools &amp; calculators</h2>
+            <p>Free calculators for commercial property, leasing and acquisition decisions.</p>
+          </div>
+          <a href="tools.html">All tools →</a>
+        </div>
+        <div class="kc-grid">
+          <a class="kc-card" href="management-estimator.html">
+            <div class="kc-kicker">Calculator</div>
+            <h3>Management Value Estimator</h3>
+            <p>What active management could recover on your portfolio, against the fee to do it.</p>
+            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card" href="calculator.html">
+            <div class="kc-kicker">Calculator</div>
+            <h3>Rent Offset Saving Calculator</h3>
+            <p>What parking rent in your offset account saves in loan interest before it's spent.</p>
+            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card" href="lease-vs-buy.html">
+            <div class="kc-kicker">Calculator</div>
+            <h3>Lease vs Buy Calculator</h3>
+            <p>Weigh the cost of leasing premises against owning them over your holding period.</p>
+            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card" href="cgt-calculator.html">
+            <div class="kc-kicker">Calculator</div>
+            <h3>CGT Treatment Calculator</h3>
+            <p>The former 50% discount against the announced CPI-indexation regime, over your hold period.</p>
+            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Precinct data -->
+      <div class="kc-sec">
+        <div class="kc-head">
+          <div>
+            <h2>Precinct market data</h2>
+            <p>Median lease and sale rates tracked on the ground across four SEQ precincts.</p>
+          </div>
+          <a href="locations.html">All locations →</a>
+        </div>
+        <div class="kc-grid kc-grid--4">
+          <a class="kc-card" href="Acacia%20Ridge.html">
+            <div class="kc-kicker">QLD 4110</div>
+            <h3>Acacia Ridge</h3>
+            <p>South Brisbane's logistics corridor — the precinct we track most closely.</p>
+            <span class="kc-open">View data <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card" href="Brendale.html">
+            <div class="kc-kicker">QLD 4500</div>
+            <h3>Brendale</h3>
+            <p>North Brisbane's tight-vacancy trade and light-industrial base.</p>
+            <span class="kc-open">View data <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card" href="Hemmant.html">
+            <div class="kc-kicker">QLD 4174</div>
+            <h3>Hemmant</h3>
+            <p>East Brisbane's trade and port-services industrial corridor.</p>
+            <span class="kc-open">View data <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="kc-card" href="Yatala.html">
+            <div class="kc-kicker">QLD 4207</div>
+            <h3>Yatala</h3>
+            <p>Large-format industrial on the Gold Coast–Brisbane corridor.</p>
+            <span class="kc-open">View data <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="kc-note">
+      <p>Guides marked "coming soon" are in development. Figures referenced reflect Represent Commercial's own tracking and Nick O'Toole's direct experience — indicative of the projects described, not a forecast of future results. Real Estate Agent Licence 4949809.</p>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section section--deep section--narrow">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
+      <div>
+        <h2 class="h-3" style="font-size: 48px; color: #fff;">A QUESTION NOT ANSWERED HERE?</h2>
+        <div class="italic" style="font-family: var(--f-editorial); font-size: 18px; color: rgba(255,255,255,0.4); margin-top: 8px; letter-spacing: normal;">Ask Nick directly. No account managers in between.</div>
+      </div>
+      <a href="contact.html" class="btn btn--lg btn--gold" style="flex-shrink: 0;">Discuss a Property</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <p>Commercial property advice and representation for property owners, investors, owner-occupiers and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html">Commercial Property Management</a></li>
+          <li><a href="leasing.html">Commercial Property Leasing</a></li>
+          <li><a href="buyers-agency.html">Buyer’s Agency</a></li>
+          <li><a href="tenant-representation.html">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="insights.html">Market Intelligence</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tools.html">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="locations.html">All Locations</a></li>
+          <li><a href="Acacia%20Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Brisbane, Queensland</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="nav.v12.js" defer></script>
+</body>
+</html>

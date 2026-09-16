@@ -21,6 +21,41 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://represent.au/case-studies.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/locations.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/buyers-agency.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/leasing.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/tenant-representation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/insights.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/cgt-calculator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://represent.au/management-estimator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -31,9 +66,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://represent.au/lease-vs-buy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/guide-lease-vs-buy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://represent.au/referrals.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/refer-a-client.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://represent.au/referrals-agents.html</loc>
@@ -51,7 +101,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://represent.au/Yatala.html</loc>
+    <loc>https://represent.au/Brendale.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -61,8 +111,13 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://represent.au/Brendale.html</loc>
+    <loc>https://represent.au/Yatala.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
 </urlset>

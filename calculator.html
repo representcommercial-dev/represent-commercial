@@ -14,7 +14,7 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.v2.css" />
 <style>
   /* ─── Calculator (brand palette per brief) ─── */
   :root {
@@ -104,6 +104,7 @@
 </style>
 </head>
 <body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ─── HEADER ─── -->
 <header class="site-header">
@@ -113,14 +114,17 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
+      <a href="services.html" class="site-nav__link">Property Owners</a>
+      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
+      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
+      <a href="insights.html" class="site-nav__link is-active">Market Intelligence</a>
       <a href="about.html" class="site-nav__link">About</a>
-      <a href="services.html" class="site-nav__link">Services</a>
-      <a href="tools.html" class="site-nav__link is-active">Tools</a>
-      <a href="referrals.html" class="site-nav__link">Referrals</a>
-      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Chat with Nick</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
   </div>
 </header>
+<main id="main-content" tabindex="-1">
+
 
 <!-- ─── HERO ─── -->
 <section class="section section--green section--hero">
@@ -235,11 +239,13 @@
 <!-- ─── DISCLAIMER ─── -->
 <section class="calc-disclaimer">
   <div class="calc-wrap">
-    <p>Indicative only and not personal financial, investment, or taxation advice. Assumes the rent is your own funds offsetting your own loan; it does not apply to rent held on behalf of a lessor, which must be held in a statutory trust account. Saving assumes a constant interest rate and excludes account fees and tax. Represent Commercial — REIQ Corporate Licence 4949809. Obtain independent advice before acting.</p>
+    <p>Indicative only and not personal financial, investment, or taxation advice. Assumes the rent is your own funds offsetting your own loan; it does not apply to rent held on behalf of a lessor, which must be held in a statutory trust account. Saving assumes a constant interest rate and excludes account fees and tax. Represent Commercial — Real Estate Agent Licence 4949809. Obtain independent advice before acting.</p>
   </div>
 </section>
 
 <!-- ─── FOOTER ─── -->
+</main>
+
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__grid">
@@ -247,24 +253,38 @@
         <div class="logo__primary">REPRESENT</div>
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
-        <div class="tagline">Managed with intent.</div>
-        <p>Specialist commercial asset and property management for South East Queensland owners — office, retail and industrial in the $2M–$30M range. Principal-led by design.</p>
+        <div class="tagline">Exclusively on your side of the table</div>
+        <p>Commercial property advice and representation for property owners, investors, owner-occupiers and tenants.</p>
       </div>
       <div class="footer-col">
-        <h3>Navigate</h3>
+        <h3>Services</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Commercial Property Management</a></li>
+          <li><a href="leasing.html">Commercial Property Leasing</a></li>
+          <li><a href="buyers-agency.html">Buyer’s Agency</a></li>
+          <li><a href="tenant-representation.html">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="tools.html">Tools</a></li>
-          <li><a href="referrals.html">Referrals</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
         </ul>
       </div>
-      <div class="footer-col footer-col--hidden">
-        <h3>Coverage</h3>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
         <ul>
-          <li>South East Queensland · $2M–$30M</li>
+          <li><a href="insights.html">Market Intelligence</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tools.html">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="locations.html">All Locations</a></li>
+          <li><a href="Acacia Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
         </ul>
       </div>
       <div class="footer-col footer-contact">
@@ -273,14 +293,15 @@
         <div>Principal &amp; Licensee</div>
         <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
         <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
-        <div class="stack">South East Queensland</div>
+        <div class="stack">Brisbane, Queensland</div>
       </div>
     </div>
     <div class="footer-meta">
       <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
       <div class="footer-meta__legals">
-        <div><span>REIQ Licence</span>494809</div>
+        <div><span>Real Estate Agent Licence</span>4949809</div>
         <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
       </div>
     </div>
   </div>
@@ -340,7 +361,7 @@
 
   calc();
 
-  // Lead form → Web3Forms
+  // Lead form → Web3Forms (Contact Enquiries configuration)
   var form = document.getElementById('lead-form');
   var btn = document.getElementById('lead-btn');
   var errEl = document.getElementById('lead-err');
@@ -351,10 +372,12 @@
     btn.disabled = true; btn.textContent = 'Sending…';
     var payload = {
       access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
       subject: 'Enquiry — Rent Offset Saving Calculator',
       from_name: 'Represent Commercial Website',
       name: form.name.value,
       email: form.email.value,
+      replyto: form.email.value,
       phone: form.phone.value,
       tool: 'Rent Offset Saving Calculator',
       monthly_rent: money(calc._rent),
@@ -364,23 +387,39 @@
       estimated_annual_saving: money(calc._annual),
       estimated_total_saving: money(calc._total)
     };
+    // Success requires ok + JSON content-type + success === true (Web3Forms contract).
+    // Entered details are preserved on every failure path; no automatic retry.
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Talk to us';
+      errEl.textContent = message;
+      errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
     fetch('https://api.web3forms.com/submit', {
       method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function (r) { return r.json(); }).then(function (res) {
-      if (res.success) {
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
-      } else { throw new Error('failed'); }
-    }).catch(function () {
-      btn.disabled = false; btn.textContent = 'Talk to us';
-      errEl.textContent = 'Something went wrong — please try again or call us.';
-      errEl.style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
     });
   });
 })();
 </script>
 
-  <script src="nav.js" defer></script>
+  <script src="nav.v12.js" defer></script>
 </body>
 </html>

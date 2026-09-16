@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Locations — Brisbane Commercial Precinct Data | Represent Commercial</title>
+<meta name="description" content="The South East Queensland precincts Represent Commercial tracks on the ground — Acacia Ridge, Yatala, Brendale and Hemmant. Principal-led commercial property management and leasing, precinct by precinct." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<link rel="canonical" href="https://represent.au/locations.html" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/locations.html" />
+<meta property="og:title" content="Locations — Represent Commercial" />
+<meta property="og:description" content="The South East Queensland precincts we track on the ground — Acacia Ridge, Yatala, Brendale and Hemmant." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v2.css" />
+<style>
+  a { color: var(--gold-ink); } a:hover { color: var(--green); }
+  .loc-body { background: #F7F5F0; padding: 96px 0 40px; }
+  .loc-wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+  .loc-lead { max-width: 720px; margin: 0 0 44px; }
+  .loc-lead .eyebrow { color: var(--gold-ink); }
+  .loc-lead h2 { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.02; color: var(--green); letter-spacing: 0.01em; margin: 0 0 16px; }
+  .loc-lead p { font-family: var(--f-body); font-size: 16px; line-height: 1.7; color: #3E4A44; margin: 0; }
+
+  .loc-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 1fr; gap: 26px; }
+  .loc-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #E6E1D6; border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  a.loc-card:hover { border-color: var(--gold); box-shadow: 0 14px 36px rgba(0,66,37,0.10); transform: translateY(-3px); }
+  .loc-card__head { background: var(--green); color: #fff; padding: 30px 32px 26px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .loc-card__name { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 34px; line-height: 0.98; letter-spacing: 0.01em; }
+  .loc-card__code { font-family: var(--f-body); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--gold); text-transform: uppercase; white-space: nowrap; }
+  .loc-card__corridor { font-family: var(--f-editorial); font-style: italic; font-size: 18px; line-height: 1.35; color: #3E4A44; padding: 24px 32px 4px; }
+  .loc-card__desc { font-family: var(--f-body); font-size: 14.5px; line-height: 1.65; color: #5A655E; padding: 10px 32px 0; flex: 1 0 auto; }
+  .loc-stats { display: flex; gap: 0; margin: 24px 32px 0; border-top: 1px solid #ECE7DC; }
+  .loc-stat { flex: 1; padding: 18px 0 4px; }
+  .loc-stat + .loc-stat { border-left: 1px solid #ECE7DC; padding-left: 20px; }
+  .loc-stat__v { font-family: var(--f-display); font-size: 27px; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 6px; white-space: nowrap; }
+  .loc-stat__v small { font-family: var(--f-body); font-size: 11px; font-weight: 600; color: #9A958A; letter-spacing: 0.01em; }
+  .loc-stat__k { font-family: var(--f-body); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.11em; color: #9A958A; }
+  .loc-card__foot { margin: 22px 32px 30px 32px; font-family: var(--f-body); font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-ink); display: inline-flex; align-items: center; gap: 8px; }
+  .loc-card__foot svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+  a.loc-card:hover .loc-card__foot svg { transform: translateX(4px); }
+
+  .loc-note { max-width: 1180px; margin: 40px auto 0; padding: 0 48px; }
+  .loc-note p { font-family: var(--f-body); font-size: 12.5px; line-height: 1.7; color: #9A958A; margin: 0; }
+
+  @media (max-width: 860px) {
+    .loc-wrap, .loc-note { padding: 0 24px; }
+    .loc-body { padding: 60px 0 32px; }
+    .loc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="services.html" class="site-nav__link is-active">Property Owners</a>
+      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
+      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
+      <a href="insights.html" class="site-nav__link">Market Intelligence</a>
+      <a href="about.html" class="site-nav__link">About</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" tabindex="-1">
+
+  <!-- ─── HERO ─── -->
+  <section class="section section--green section--hero">
+    <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+    <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+    <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 1000px;">
+        COMMERCIAL PROPERTY, PRECINCT BY <span class="italic" style="color: var(--gold);">precinct.</span>
+      </h1>
+      <hr class="gold-rule" style="margin-bottom: 28px;" />
+      <p class="lede" style="max-width: 660px;">
+        Local commercial property intelligence for owners, buyers and tenants. Explore precinct evidence and discuss management, leasing, acquisition or occupancy decisions with Nick. Four South East Queensland industrial and commercial precincts, each tracked hands-on — lease rates, sale rates, tenant demand and the assets that move.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── PRECINCTS ─── -->
+  <section class="loc-body">
+    <div class="loc-wrap">
+      <div class="loc-lead">
+        <div class="eyebrow">Precinct coverage</div>
+        <h2>Local knowledge, kept current</h2>
+        <p>Each precinct page carries the transaction figures we track on the ground — lease rates, lease terms and sale rates — alongside the context we use when advising owners, buyers and tenants there. Figures below are medians from transactions recorded in the 12 months to August 2026.</p>
+      </div>
+
+      <div class="loc-grid">
+
+        <a class="loc-card" href="Acacia%20Ridge.html">
+          <div class="loc-card__head">
+            <div class="loc-card__name">Acacia Ridge</div>
+            <div class="loc-card__code">QLD 4110</div>
+          </div>
+          <div class="loc-card__corridor">Brisbane's south-west industrial corridor</div>
+          <p class="loc-card__desc">An established industrial precinct approximately 12km from the CBD, supporting warehousing, logistics, manufacturing, transport and trade services. Road freight connections are complemented by the Acacia Ridge Intermodal Terminal.</p>
+          <div class="loc-stats">
+            <div class="loc-stat"><div class="loc-stat__v">$161<small>/m² p.a.</small></div><div class="loc-stat__k">Median lease rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">$4,731<small>/m²</small></div><div class="loc-stat__k">Median sale rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">3<small>yrs</small></div><div class="loc-stat__k">Median lease term</div></div>
+          </div>
+          <span class="loc-card__foot">View precinct <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="loc-card" href="Brendale.html">
+          <div class="loc-card__head">
+            <div class="loc-card__name">Brendale</div>
+            <div class="loc-card__code">QLD 4500</div>
+          </div>
+          <div class="loc-card__corridor">North Brisbane's light-industrial base</div>
+          <p class="loc-card__desc">Brendale sits at the intersection of the Bruce Highway corridor and Strathpine Road, approximately 20–25 km north of Brisbane CBD — arterial access that draws trade services, precision manufacturing and distribution operators who need proximity to both the CBD and the Sunshine Coast.</p>
+          <div class="loc-stats">
+            <div class="loc-stat"><div class="loc-stat__v">$179<small>/m² p.a.</small></div><div class="loc-stat__k">Median lease rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">$3,973<small>/m²</small></div><div class="loc-stat__k">Median sale rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">3<small>yrs</small></div><div class="loc-stat__k">Median lease term</div></div>
+          </div>
+          <span class="loc-card__foot">View precinct <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="loc-card" href="Hemmant.html">
+          <div class="loc-card__head">
+            <div class="loc-card__name">Hemmant</div>
+            <div class="loc-card__code">QLD 4174</div>
+          </div>
+          <div class="loc-card__corridor">East Brisbane's trade &amp; port-services corridor</div>
+          <p class="loc-card__desc">Hemmant sits on the eastern arc of Brisbane, flanking the Gateway Motorway and the port corridor. The precinct draws heavy trade operators, fuel storage, transport logistics and bulk materials businesses that require port-adjacent access and large hardstand areas.</p>
+          <div class="loc-stats">
+            <div class="loc-stat"><div class="loc-stat__v">$225<small>/m² p.a.</small></div><div class="loc-stat__k">Median lease rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">$5,107<small>/m²</small></div><div class="loc-stat__k">Median sale rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">3<small>yrs</small></div><div class="loc-stat__k">Median lease term</div></div>
+          </div>
+          <span class="loc-card__foot">View precinct <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="loc-card" href="Yatala.html">
+          <div class="loc-card__head">
+            <div class="loc-card__name">Yatala</div>
+            <div class="loc-card__code">QLD 4207</div>
+          </div>
+          <div class="loc-card__corridor">The Gold Coast–Brisbane corridor</div>
+          <p class="loc-card__desc">Yatala occupies the midpoint of the highway between Brisbane and the Gold Coast — the spine of South East Queensland&apos;s freight and manufacturing network. Large land parcels, access to key heavy-vehicle freight routes, and a tenant profile built for the long term.</p>
+          <div class="loc-stats">
+            <div class="loc-stat"><div class="loc-stat__v">$220<small>/m² p.a.</small></div><div class="loc-stat__k">Median lease rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">$4,253<small>/m²</small></div><div class="loc-stat__k">Median sale rate</div></div>
+            <div class="loc-stat"><div class="loc-stat__v">3<small>yrs</small></div><div class="loc-stat__k">Median lease term</div></div>
+          </div>
+          <span class="loc-card__foot">View precinct <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+      </div>
+    </div>
+    <div class="loc-note">
+      <p>Coverage extends across South East Queensland for owners, buyers and tenants; the precincts above are those we track most closely. Median lease rate, median sale rate and median lease term are drawn from transactions recorded in the 12 months to August 2026 and are market indicators only — not a forecast of future results or a valuation of any individual property. Real Estate Agent Licence 4949809.</p>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section section--deep section--narrow">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
+      <div>
+        <h2 class="h-3" style="font-size: 48px; color: #fff;">LOOKING AT COMMERCIAL PROPERTY ELSEWHERE IN SEQ?</h2>
+        <div class="italic" style="font-family: var(--f-editorial); font-size: 18px; color: rgba(255,255,255,0.4); margin-top: 8px; letter-spacing: normal;">Whether you own, are looking to buy or need premises, tell Nick where you’re looking.</div>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0;">
+        <a href="contact.html?service=management#form-card" class="btn btn--lg btn--gold">Own a Property →</a>
+        <a href="contact.html?service=acquisition#form-card" class="btn btn--lg btn--outline">Buy a Property →</a>
+        <a href="contact.html?service=tenant#form-card" class="btn btn--lg btn--outline">Find Premises →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table</div>
+        <p>Commercial property advice and representation for property owners, investors, owner-occupiers and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html">Commercial Property Management</a></li>
+          <li><a href="leasing.html">Commercial Property Leasing</a></li>
+          <li><a href="buyers-agency.html">Buyer’s Agency</a></li>
+          <li><a href="tenant-representation.html">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="insights.html">Market Intelligence</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tools.html">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="locations.html">All Locations</a></li>
+          <li><a href="Acacia%20Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Brisbane, Queensland</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="nav.v12.js" defer></script>
+</body>
+</html>
