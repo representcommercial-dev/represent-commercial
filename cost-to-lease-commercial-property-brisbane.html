@@ -97,7 +97,7 @@
 .lc-rev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:64px;align-items:start}
 .lc-scope{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
 .lc-scope li{font-family:var(--f-body);font-size:15px;color:var(--text-dark);padding:12px 0;border-bottom:1px solid rgba(0,66,37,0.14)}
-.lc-form{position:sticky;top:96px;box-shadow:none}
+.lc-form{position:sticky;top:96px;box-shadow:none;scroll-margin-top:84px}
 .lc-form .form-card__eyebrow{color:#8a6d1f}
 .lc-form h3{font-size:28px;line-height:1;color:var(--green);margin:0 0 22px}
 .lc-opt{text-transform:none;letter-spacing:0;font-weight:400;opacity:.6}
@@ -162,7 +162,7 @@
       <p class="lede" style="max-width: 640px; margin: 0 0 16px;">But those costs shouldn't be considered in isolation. The more important question is:</p>
       <p class="tagline" style="color: #fff; font-size: clamp(22px, 2.4vw, 28px); max-width: 640px; margin: 0;">“What is the total cost of getting the property leased well?”</p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px;">
-        <a href="#review" class="btn btn--lg btn--gold">Request My Property Performance Review</a>
+        <a href="#form-card" class="btn btn--lg btn--gold">Request My Property Performance Review</a>
         <a href="#costs" class="btn btn--lg btn--outline">See What Leasing Can Cost</a>
       </div>
       <p class="lede" style="font-size: 14px; margin: 36px 0 0;">Commercial property leasing and management across Brisbane and South East Queensland.</p>
@@ -359,7 +359,7 @@
         <h2>Before spending more, diagnose what may actually be holding the property back.</h2>
         <p class="body" style="margin: 0 0 16px;">If a commercial property is sitting vacant, generating weak enquiry or costing more to lease than expected, the answer is not automatically to reduce the rent, increase the advertising budget or change agents.</p>
         <p class="body" style="margin: 0 0 16px;">The first step is to understand the current position.</p>
-        <p class="body" style="margin: 0;">The Commercial Property Performance Review looks at the property, leasing campaign and market context to identify where the property or campaign may be underperforming, where information is missing and what deserves further investigation.</p>
+        <p class="body" style="margin: 0;">The <a href="/commercial-property-performance-review" style="color: var(--green);">Commercial Property Performance Review</a> looks at the property, leasing campaign and market context to identify where the property or campaign may be underperforming, where information is missing and what deserves further investigation.</p>
       </div>
       <p class="lc-rv-h reveal">What the review looks at</p>
       <div class="prob-grid reveal">
@@ -391,11 +391,11 @@
         <div class="form-card lc-form" id="form-card">
           <form id="review-form" method="POST" action="https://api.web3forms.com/submit">
             <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
-            <input type="hidden" name="form_stream" value="performance-review" />
+            <input type="hidden" name="form_stream" value="cost-to-lease-commercial-property-brisbane" />
             <input type="hidden" name="subject" value="Property Performance Review request, Represent Commercial" />
             <input type="hidden" name="from_name" value="Represent Commercial Website" />
             <input type="hidden" name="enquiry_service" value="Commercial Property Performance Review" />
-            <input type="hidden" name="service_line" value="Commercial Property Leasing / Property Management" />
+            <input type="hidden" name="service_line" value="Property Management &amp; Leasing" />
             <input type="hidden" name="landing_page" value="cost-to-lease-commercial-property-brisbane" />
             <input type="hidden" name="currently_marketed" value="" />
             <input type="hidden" name="pain_point_category" value="" />
@@ -484,7 +484,7 @@
       <div class="reveal">
         <p class="lede" style="font-size: 15px; margin: 0 0 16px;">Before reducing the rent, spending more on marketing or changing agents, understand what may actually be holding the leasing outcome back.</p>
         <p class="lede" style="font-size: 15px; margin: 0 0 32px;">A Commercial Property Performance Review can help identify where the property or campaign may be underperforming, what information is missing and what deserves further investigation.</p>
-        <a href="#review" class="btn btn--lg btn--gold">Request My Property Performance Review</a>
+        <a href="#form-card" class="btn btn--lg btn--gold">Request My Property Performance Review</a>
         <p class="lede" style="font-size: 14px; margin: 20px 0 0;">Principal-led review by Nick O'Toole, Represent Commercial.</p>
         <div class="lc-sign">
           <h3 style="font-size: 22px; color: #fff; letter-spacing: 0.04em; margin: 0 0 4px;">Represent Commercial</h3>
@@ -607,7 +607,7 @@
   try { sessionStorage.setItem(KEY, JSON.stringify(attr)); } catch (e) {}
   Object.keys(attr).forEach(function (k) { var f = form.querySelector('[name="' + k + '"]'); if (f) f.value = attr[k]; });
   var cta = form.querySelector('[name="cta_clicked"]');
-  Array.prototype.forEach.call(document.querySelectorAll('a[href="#review"]'), function (a) {
+  Array.prototype.forEach.call(document.querySelectorAll('a[href="#form-card"]'), function (a) {
     a.addEventListener('click', function () { cta.value = a.textContent.trim(); });
   });
 
