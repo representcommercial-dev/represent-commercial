@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -30,17 +29,17 @@ body.is-failed .ack-fail{display:block}
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
       <div class="logo__primary">REPRESENT</div>
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
-      <a href="services.html" class="site-nav__link">Property Owners</a>
-      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
-      <a href="insights.html" class="site-nav__link">Market Intelligence</a>
-      <a href="about.html" class="site-nav__link">About</a>
-      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
   </div>
 </header>
@@ -56,8 +55,8 @@ body.is-failed .ack-fail{display:block}
           <p>Thank you. Your enquiry has been sent and Nick will be in touch directly.</p>
           <p>If it is time-sensitive, call <a href="tel:+61401825999">+61 401 825 999</a> or email <a href="mailto:nick@represent.au">nick@represent.au</a>.</p>
           <div class="ack-actions">
-            <a href="index.html" class="btn btn--sm btn--green">Back to home</a>
-            <a href="insights.html" class="btn btn--sm btn--outline-dark">Market intelligence</a>
+            <a href="/" class="btn btn--sm btn--green">Back to home</a>
+            <a href="/insights" class="btn btn--sm btn--outline-dark">Market intelligence</a>
           </div>
         </div>
       </div>
@@ -66,8 +65,8 @@ body.is-failed .ack-fail{display:block}
           <p>We could not send your enquiry. Nothing has reached us, so please try again or contact Nick directly.</p>
           <p>Call <a href="tel:+61401825999">+61 401 825 999</a> or email <a href="mailto:nick@represent.au">nick@represent.au</a>.</p>
           <div class="ack-actions">
-            <a href="contact.html#form-card" class="btn btn--sm btn--green">Try again</a>
-            <a href="index.html" class="btn btn--sm btn--outline-dark">Back to home</a>
+            <a href="/contact#form-card" class="btn btn--sm btn--green">Try again</a>
+            <a href="/" class="btn btn--sm btn--outline-dark">Back to home</a>
           </div>
         </div>
       </div>
@@ -81,6 +80,6 @@ if (location.search.indexOf('status=failed') !== -1) {
   document.getElementById('ack-title').textContent = 'NOT SENT.';
 }
 </script>
-<script src="nav.v13.js" defer></script>
+<script src="nav.v14.js" defer></script>
 </body>
 </html>
