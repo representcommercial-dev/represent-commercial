@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="14" fill="#002D18"></rect>
-  <rect x="3.5" y="3.5" width="57" height="57" rx="11" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-opacity="0.55"></rect>
-  <text x="32" y="44.5" font-family="&#39;Barlow Condensed&#39;, &#39;Arial Narrow&#39;, sans-serif" font-size="38" font-weight="700" fill="#C9A84C" text-anchor="middle" letter-spacing="-0.5" transform="scale(0.92,1)" transform-origin="32 32">RC</text>
-</svg>
