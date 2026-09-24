@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WALE Calculator — Represent Commercial</title>
+<meta name="description" content="Calculate weighted average lease expiry by income from your tenancy schedule, with an income expiry profile. Represent Commercial, Brisbane and Queensland." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/wale-calculator.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
+      <a href="services.html" class="site-nav__link">Property Owners</a>
+      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
+      <a href="insights.html" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="about.html" class="site-nav__link">About</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      HOW LONG IS THE INCOME <span class="italic" style="color: var(--gold);">secured?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      Weighted average lease expiry weights each tenancy by the income it pays, so the tenant carrying the rent carries the number. Enter the schedule to see the WALE and where the income expires.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <div class="calc-col">
+        <div class="card">
+          <div class="card-head">
+            <p class="card-label">Tenancy schedule</p>
+            <button type="button" class="reset-btn" id="reset-btn">Reset schedule</button>
+          </div>
+          <div class="field" style="margin-bottom: 26px;">
+            <label for="asat">Calculated as at</label>
+            <div class="input-shell">
+              <input id="asat" type="date" />
+            </div>
+            <p class="hint">Years remaining are measured from this date. Defaults to today.</p>
+          </div>
+          <div class="sched-head" aria-hidden="true">
+            <span>Tenant</span>
+            <span>Annual net rent</span>
+            <span>Lease expiry</span>
+            <span></span>
+          </div>
+          <div class="sched" id="sched"></div>
+          <button type="button" class="add-row" id="add-row">+ Add a tenancy</button>
+          <p class="hint" id="sched-note">Leave the rent or expiry blank on a row and it is excluded from the calculation.</p>
+        </div>
+
+        <div class="card">
+          <p class="card-label">Income expiry profile</p>
+          <div class="prof" id="prof"></div>
+          <p class="hint" style="margin-top:20px;">Bands measure time remaining from the calculation date. A holding-over tenancy is shown as expired.</p>
+        </div>
+
+      </div>
+
+      <div class="calc-col">
+        <div class="card result-card">
+          <p class="result-label" id="r-head">Weighted average lease expiry</p>
+          <div class="adv-block" style="border-top:0;margin-top:0;padding-top:0;">
+            <p class="adv-label">WALE by income</p>
+            <p class="adv-value"><em id="r-wale">0.00</em><span style="font-size:0.28em;color:#7C776C;letter-spacing:0.12em;margin-top:6px;">YEARS</span></p>
+            <p class="adv-note" id="r-interp"></p>
+            <p class="adv-cross" id="r-next"></p>
+          </div>
+          <div class="pos-row" style="border-top:1px solid #E6E1D6;margin-top:26px;padding-top:20px;">
+            <div class="pos-k">Total passing income<small>Sum of the annual net rents entered</small></div>
+            <div class="pos-v" id="r-income">$0</div>
+          </div>
+          <div class="pos-row">
+            <div class="pos-k">Tenancies included<small id="r-excl">All rows counted</small></div>
+            <div class="pos-v" id="r-count">0</div>
+          </div>
+          <div class="result-stats result-stats--3">
+            <div class="stat">
+              <div class="stat__h">Next 12 mths</div>
+              <div class="stat__v" id="s-12">0%</div>
+              <div class="stat__k">Of income expiring</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">Next 3 yrs</div>
+              <div class="stat__v" id="s-36">0%</div>
+              <div class="stat__k">Of income expiring</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">Largest tenancy</div>
+              <div class="stat__v" id="s-top">0%</div>
+              <div class="stat__k">Of total income</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="card-label">Property summary</p>
+          <div class="kv-row"><span>Tenancies</span><b id="p-count">0</b></div>
+          <div class="kv-row"><span>Average rent per tenancy</span><b id="p-avg">$0</b></div>
+          <div class="kv-row"><span>Earliest expiry</span><b id="p-first">&mdash;</b></div>
+          <div class="kv-row"><span>Latest expiry</span><b id="p-last">&mdash;</b></div>
+          <div class="kv-row kv-row--total"><span>Total passing income</span><b id="p-income">$0</b></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">Tenancy detail</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead>
+            <tr>
+              <th>Tenant</th>
+              <th>Annual net rent</th>
+              <th>Share of income</th>
+              <th>Lease expiry</th>
+              <th>Years remaining</th>
+              <th>Weighted contribution</th>
+            </tr>
+          </thead>
+          <tbody id="detail-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <details class="fold fold--method">
+      <summary>
+        <span>How this is calculated</span>
+        <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="method-body">
+        <h4>WALE by income</h4>
+        <p>Each tenancy&rsquo;s years remaining to expiry is multiplied by its annual net rent. Those weighted terms are added together and divided by the total annual net rent. A tenancy paying half the income therefore carries half the weight, which is why one major tenant can set the number almost on its own.</p>
+        <h4>Years remaining</h4>
+        <p>The number of days from the calculation date to the lease expiry date, divided by 365.25. A lease that has already expired is treated as zero rather than a negative, so a holding-over tenancy does not flatter the result by reducing it below what the remaining leases support.</p>
+        <h4>Expiry profile</h4>
+        <p>Income is allocated to a band by the time remaining on its lease and expressed as a share of total passing income. The profile is what reveals concentration &mdash; a respectable WALE can still sit on a single expiry date.</p>
+        <h4>Options to renew</h4>
+        <p>Enter the expiry of the current term. Market practice is to calculate WALE to the earliest expiry and treat further options as upside, because an option sits with the tenant, not the owner. Where an option has been exercised and documented, use the extended expiry.</p>
+        <h4>What is excluded</h4>
+        <p>Area-weighted WALE, vacancy, incentives, rent reviews, early termination and make-good are not modelled, and no assessment of tenant covenant is made. A long WALE to a weak covenant is not a long WALE.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">A WALE is built, not measured.</div>
+        <p class="lead-p">Expiry dates get staggered, terms get lengthened and covenants get tested through active leasing decisions made years before the numbers matter. Represent manages and leases commercial property with the expiry profile in view.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="wale-calculator-name">Name</label><input id="wale-calculator-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="wale-calculator-email">Email</label><input id="wale-calculator-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="wale-calculator-phone">Phone</label><input id="wale-calculator-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Portfolio</button>
+            <a class="lead-link" href="services.html">Explore Property Management &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about your portfolio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal or valuation advice. Results depend entirely on the tenancy details entered and should be reconciled against executed lease documentation. Options to renew, incentives, rent reviews, tenant covenant, early termination rights and make-good obligations are not modelled. Tenancy schedules should be independently verified before relying on any figure. Details entered here are not sent anywhere unless you complete the enquiry form. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="buyers-agency.html">Buyer’s Agency</a></li>
+          <li><a href="services.html">Commercial Property Management</a></li>
+          <li><a href="leasing.html">Commercial Property Leasing</a></li>
+          <li><a href="tenant-representation.html">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="insights.html">Market Intelligence</a></li>
+          <li><a href="insights.html#guides">Guides &amp; Explainers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tools.html">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="locations.html">All Locations</a></li>
+          <li><a href="Acacia Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt1 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function money(n) { return '$' + fmt0.format(Math.round(n)); }
+  function moneyShort(n) {
+    var a = Math.abs(n);
+    if (a >= 1e6) return '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return '$' + Math.round(a / 1e3) + 'k';
+    return '$' + fmt0.format(Math.round(a));
+  }
+  function pc1(n) { return fmt1.format(n) + '%'; }
+
+  var sched = document.getElementById('sched');
+  var asat = document.getElementById('asat');
+  var store = {};
+
+  function iso(d) { return d.toISOString().slice(0, 10); }
+  function addYears(d, y, m) { var n = new Date(d.getTime()); n.setFullYear(n.getFullYear() + y); if (m) n.setMonth(n.getMonth() + m); return n; }
+  function fmtDate(s) {
+    var d = new Date(s + 'T00:00:00');
+    if (isNaN(d)) return '—';
+    return d.toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  var today = new Date();
+  var DEFAULT_ROWS = [
+    { name: 'Tenancy 1', rent: '148,000', exp: iso(addYears(today, 4, 2)) },
+    { name: 'Tenancy 2', rent: '62,000', exp: iso(addYears(today, 1, 8)) },
+    { name: 'Tenancy 3', rent: '35,000', exp: iso(addYears(today, 2, 5)) }
+  ];
+
+  function rowHtml(r, i) {
+    return '<div class="sched-row" data-i="' + i + '">' +
+      '<div class="input-shell s-name"><input class="r-name" type="text" autocomplete="off" placeholder="Tenant or tenancy" value="' + (r.name || '').replace(/"/g, '&quot;') + '" aria-label="Tenant name" /></div>' +
+      '<div class="input-shell"><span class="affix affix--pre">$</span><input class="r-rent" type="text" inputmode="numeric" autocomplete="off" placeholder="0" value="' + (r.rent || '') + '" aria-label="Annual net rent" /></div>' +
+      '<div class="input-shell"><input class="r-exp" type="date" value="' + (r.exp || '') + '" aria-label="Lease expiry date" /></div>' +
+      '<button type="button" class="row-del" aria-label="Remove this tenancy"><svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></svg></button>' +
+      '</div>';
+  }
+
+  function render(rows) {
+    sched.innerHTML = rows.map(rowHtml).join('');
+  }
+
+  function readRows() {
+    return Array.prototype.map.call(sched.querySelectorAll('.sched-row'), function (row) {
+      var rentStr = row.querySelector('.r-rent').value;
+      var rent = parseFloat(rentStr.replace(/[^0-9.]/g, ''));
+      return {
+        name: row.querySelector('.r-name').value.trim(),
+        rent: isFinite(rent) ? rent : 0,
+        exp: row.querySelector('.r-exp').value
+      };
+    });
+  }
+
+  var BANDS = [
+    { k: 'Expired / holding over', lo: -Infinity, hi: 0 },
+    { k: '0 – 1 yr', lo: 0, hi: 1 },
+    { k: '1 – 2 yrs', lo: 1, hi: 2 },
+    { k: '2 – 3 yrs', lo: 2, hi: 3 },
+    { k: '3 – 5 yrs', lo: 3, hi: 5 },
+    { k: '5 yrs +', lo: 5, hi: Infinity }
+  ];
+
+  function calc() {
+    var base = new Date((asat.value || iso(today)) + 'T00:00:00');
+    if (isNaN(base)) base = today;
+    var raw = readRows();
+    var rows = [], excluded = 0;
+    raw.forEach(function (r, i) {
+      if (!r.rent || !r.exp) { if (r.rent || r.exp || r.name) excluded++; return; }
+      var d = new Date(r.exp + 'T00:00:00');
+      if (isNaN(d)) { excluded++; return; }
+      var yrsRaw = (d - base) / (1000 * 60 * 60 * 24 * 365.25);
+      rows.push({ name: r.name || 'Tenancy ' + (i + 1), rent: r.rent, exp: r.exp, date: d,
+                  yrsRaw: yrsRaw, yrs: Math.max(0, yrsRaw) });
+    });
+
+    var income = rows.reduce(function (a, r) { return a + r.rent; }, 0);
+    var weighted = rows.reduce(function (a, r) { return a + r.rent * r.yrs; }, 0);
+    var wale = income > 0 ? weighted / income : 0;
+
+    document.getElementById('r-income').textContent = moneyShort(income);
+    document.getElementById('r-count').textContent = rows.length;
+    document.getElementById('r-excl').textContent = excluded > 0
+      ? excluded + (excluded === 1 ? ' incomplete row excluded' : ' incomplete rows excluded')
+      : 'All rows counted';
+    document.getElementById('r-wale').textContent = fmt2.format(wale);
+
+    var expiring12 = rows.filter(function (r) { return r.yrs <= 1; }).reduce(function (a, r) { return a + r.rent; }, 0);
+    var expiring36 = rows.filter(function (r) { return r.yrs <= 3; }).reduce(function (a, r) { return a + r.rent; }, 0);
+    var top = rows.reduce(function (a, r) { return Math.max(a, r.rent); }, 0);
+
+    document.getElementById('s-12').textContent = income > 0 ? pc1(expiring12 / income * 100) : '—';
+    document.getElementById('s-36').textContent = income > 0 ? pc1(expiring36 / income * 100) : '—';
+    document.getElementById('s-top').textContent = income > 0 ? pc1(top / income * 100) : '—';
+
+    document.getElementById('r-interp').textContent = rows.length === 0
+      ? 'Add a tenancy with an annual net rent and an expiry date to calculate a WALE.'
+      : 'Across ' + rows.length + (rows.length === 1 ? ' tenancy' : ' tenancies') + ' paying ' + money(income) +
+        ' per annum, the income is secured for an average of ' + fmt2.format(wale) + ' years, with ' +
+        pc1(income > 0 ? expiring12 / income * 100 : 0) + ' of it expiring within twelve months.';
+
+    var sorted = rows.slice().sort(function (a, b) { return a.date - b.date; });
+    document.getElementById('p-count').textContent = rows.length;
+    document.getElementById('p-avg').textContent = rows.length ? money(income / rows.length) : '—';
+    document.getElementById('p-first').textContent = sorted.length ? fmtDate(sorted[0].exp) : '—';
+    document.getElementById('p-last').textContent = sorted.length ? fmtDate(sorted[sorted.length - 1].exp) : '—';
+    document.getElementById('p-income').textContent = money(income);
+    document.getElementById('r-next').textContent = sorted.length
+      ? 'Next expiry ' + fmtDate(sorted[0].exp) + ' · ' + sorted[0].name
+      : '';
+
+    var maxBand = 0;
+    var bands = BANDS.map(function (b) {
+      var amt = rows.filter(function (r) {
+        var v = b.lo === -Infinity ? r.yrsRaw : r.yrs;
+        return v >= b.lo && (b.hi === Infinity ? true : v < b.hi);
+      }).reduce(function (a, r) { return a + r.rent; }, 0);
+      maxBand = Math.max(maxBand, amt);
+      return { k: b.k, amt: amt };
+    }).filter(function (b, i) { return i > 0 || b.amt > 0; });
+
+    document.getElementById('prof').innerHTML = bands.map(function (b) {
+      var share = income > 0 ? b.amt / income * 100 : 0;
+      var w = maxBand > 0 ? b.amt / maxBand * 100 : 0;
+      return '<div class="prof-row">' +
+        '<div class="prof-k">' + b.k + '</div>' +
+        '<div class="prof-bar"><i style="width:' + w.toFixed(1) + '%"></i></div>' +
+        '<div class="prof-v">' + pc1(share) + '<small>' + moneyShort(b.amt) + '</small></div></div>';
+    }).join('');
+
+    document.getElementById('detail-rows').innerHTML = rows.length ? rows.map(function (r) {
+      var share = income > 0 ? r.rent / income * 100 : 0;
+      return '<tr' + (r.yrsRaw <= 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + escapeHtml(r.name) + '</td>' +
+        '<td>' + money(r.rent) + '</td>' +
+        '<td>' + pc1(share) + '</td>' +
+        '<td>' + fmtDate(r.exp) + '</td>' +
+        '<td>' + (r.yrsRaw <= 0 ? '<span class="adv adv--off">Expired</span>' : fmt2.format(r.yrs)) + '</td>' +
+        '<td>' + fmt2.format(income > 0 ? r.rent / income * r.yrs : 0) + ' yrs</td></tr>';
+    }).join('') : '<tr><td colspan="6" style="color:#8A857A;">No complete tenancies entered.</td></tr>';
+
+    store = { rows: rows, income: income, wale: wale, expiring12: expiring12, expiring36: expiring36, top: top };
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  sched.addEventListener('input', function (e) {
+    var t = e.target;
+    if (t.classList.contains('r-rent')) {
+      var atEnd = t.selectionStart === t.value.length;
+      var digits = t.value.replace(/[^0-9]/g, '');
+      t.value = digits === '' ? '' : fmt0.format(parseInt(digits, 10));
+      if (atEnd) { try { t.setSelectionRange(t.value.length, t.value.length); } catch (err) {} }
+    }
+    calc();
+  });
+  sched.addEventListener('change', calc);
+  sched.addEventListener('click', function (e) {
+    var b = e.target.closest('.row-del'); if (!b) return;
+    var rowEls = sched.querySelectorAll('.sched-row');
+    if (rowEls.length <= 1) {
+      var only = rowEls[0];
+      only.querySelector('.r-name').value = '';
+      only.querySelector('.r-rent').value = '';
+      only.querySelector('.r-exp').value = '';
+    } else {
+      b.closest('.sched-row').remove();
+    }
+    calc();
+  });
+  asat.addEventListener('change', calc);
+
+  document.getElementById('add-row').addEventListener('click', function () {
+    var n = sched.querySelectorAll('.sched-row').length;
+    sched.insertAdjacentHTML('beforeend', rowHtml({ name: '', rent: '', exp: '' }, n));
+    var rows = sched.querySelectorAll('.sched-row');
+    rows[rows.length - 1].querySelector('.r-name').focus();
+    calc();
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    asat.value = iso(today);
+    render(DEFAULT_ROWS);
+    calc();
+  });
+
+  asat.value = iso(today);
+  render(DEFAULT_ROWS);
+  calc();
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var s = store;
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — WALE Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'WALE Calculator',
+      calculated_as_at: asat.value || '—',
+      tenancies: String(s.rows ? s.rows.length : 0),
+      total_passing_income: money(s.income || 0),
+      wale_by_income: fmt2.format(s.wale || 0) + ' yrs',
+      income_expiring_12_mths: s.income > 0 ? pc1(s.expiring12 / s.income * 100) : '—',
+      income_expiring_3_yrs: s.income > 0 ? pc1(s.expiring36 / s.income * 100) : '—',
+      largest_tenancy_share: s.income > 0 ? pc1(s.top / s.income * 100) : '—',
+      tenancy_schedule: (s.rows || []).map(function (r) {
+        return r.name + ' — ' + money(r.rent) + ' p.a. — expires ' + fmtDate(r.exp) + ' (' + fmt2.format(r.yrs) + ' yrs)';
+      }).join('\n')
+    };
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss Your Portfolio';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v13.js" defer></script>
+</body>
+</html>

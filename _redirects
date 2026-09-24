@@ -1,0 +1,16 @@
+# Retired routes
+/listings        /buyers-agency.html   301
+/listings.html   /buyers-agency.html   301
+
+# Clean URLs (rewrite — .html remains canonical)
+/privacy                 /privacy.html                 200
+/advisory                /tenant-representation.html   301
+/advisory.html           /tenant-representation.html   301
+/leasing                 /leasing.html                 200
+/tenant-representation   /tenant-representation.html   200
+
+# Insights
+/insights/cost-to-lease-commercial-property-brisbane   /cost-to-lease-commercial-property-brisbane.html   301
+/insights/cost-to-lease-commercial-property-brisbane/  /cost-to-lease-commercial-property-brisbane.html   301
+/buyers/how-to-avoid-buying-the-wrong-commercial-property   /how-to-avoid-buying-the-wrong-commercial-property.html   301
+/buyers/how-to-avoid-buying-the-wrong-commercial-property/  /how-to-avoid-buying-the-wrong-commercial-property.html   301

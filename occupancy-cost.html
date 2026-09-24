@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Occupancy Cost Comparison Calculator — Represent Commercial</title>
+<meta name="description" content="Compare up to three commercial premises on effective annual occupancy cost, cost per m² and cost per person, net of incentives and fitout. Represent Commercial." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/occupancy-cost.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
+      <a href="services.html" class="site-nav__link">Property Owners</a>
+      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
+      <a href="insights.html" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="about.html" class="site-nav__link">About</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      WHICH PREMISES ACTUALLY COSTS <span class="italic" style="color: var(--gold);">less?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      Headline rent is the least useful number in a premises decision. Outgoings, incentives, fitout and area all move the real cost. Compare up to three options on the same basis.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="card">
+      <div class="card-head">
+        <p class="card-label">Shared assumptions</p>
+        <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="term">Lease term</label><div class="input-shell"><input id="term" type="text" inputmode="numeric" autocomplete="off" value="5" /><span class="affix affix--suf">yrs</span></div><p class="hint">The comparison period. Each option is costed over the same term.</p></div>
+        <div class="field"><label for="rev">Annual review</label><div class="input-shell"><input id="rev" type="text" inputmode="decimal" autocomplete="off" value="3.5" /><span class="affix affix--suf">% p.a.</span></div><p class="hint">Applied to rent and outgoings in every option.</p></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="staff">Headcount</label><div class="input-shell"><input id="staff" type="text" inputmode="numeric" autocomplete="off" value="42" /><span class="affix affix--suf">people</span></div><p class="hint">Drives the cost per person. Leave blank to ignore.</p></div>
+        <div class="field"><label for="amort">Fitout treated as</label><div class="seg seg--full" id="amort-seg"><button type="button" data-amort="spread" class="is-on">Spread over term</button><button type="button" data-amort="upfront">Upfront cost</button></div><p class="hint">Both are included in the total either way; this changes how the annual figure reads.</p></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:28px;">
+      <p class="card-label">The premises</p>
+      <div class="opt-grid">
+        <div class="opt-col">
+          <div class="field"><label for="a-name">Option A</label><div class="input-shell"><input id="a-name" type="text" autocomplete="off" value="Premises A" /></div></div>
+          <div class="field"><label for="a-area">Area</label><div class="input-shell"><input id="a-area" type="text" inputmode="numeric" autocomplete="off" value="1,200" /><span class="affix affix--suf">m&sup2;</span></div></div>
+          <div class="field"><label for="a-rent">Net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="a-rent" type="text" inputmode="decimal" autocomplete="off" value="185" /><span class="affix affix--suf">/m&sup2;</span></div></div>
+          <div class="field"><label for="a-og">Outgoings</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="a-og" type="text" inputmode="decimal" autocomplete="off" value="48" /><span class="affix affix--suf">/m&sup2;</span></div></div>
+          <div class="field"><label for="a-inc">Rent free</label><div class="input-shell"><input id="a-inc" type="text" inputmode="decimal" autocomplete="off" value="3" /><span class="affix affix--suf">mths</span></div></div>
+          <div class="field"><label for="a-fit">Fitout cost to you</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="a-fit" type="text" inputmode="numeric" autocomplete="off" value="120,000" /></div></div>
+          <div class="field"><label for="a-bays">Car bays</label><div class="input-shell"><input id="a-bays" type="text" inputmode="numeric" autocomplete="off" value="12" /><span class="affix affix--suf">bays</span></div></div>
+          <div class="field"><label for="a-bayrate">Per bay</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="a-bayrate" type="text" inputmode="numeric" autocomplete="off" value="0" /><span class="affix affix--suf">/mth</span></div></div>
+        </div>
+        <div class="opt-col">
+          <div class="field"><label for="b-name">Option B</label><div class="input-shell"><input id="b-name" type="text" autocomplete="off" value="Premises B" /></div></div>
+          <div class="field"><label for="b-area">Area</label><div class="input-shell"><input id="b-area" type="text" inputmode="numeric" autocomplete="off" value="1,450" /><span class="affix affix--suf">m&sup2;</span></div></div>
+          <div class="field"><label for="b-rent">Net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="b-rent" type="text" inputmode="decimal" autocomplete="off" value="165" /><span class="affix affix--suf">/m&sup2;</span></div></div>
+          <div class="field"><label for="b-og">Outgoings</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="b-og" type="text" inputmode="decimal" autocomplete="off" value="42" /><span class="affix affix--suf">/m&sup2;</span></div></div>
+          <div class="field"><label for="b-inc">Rent free</label><div class="input-shell"><input id="b-inc" type="text" inputmode="decimal" autocomplete="off" value="6" /><span class="affix affix--suf">mths</span></div></div>
+          <div class="field"><label for="b-fit">Fitout cost to you</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="b-fit" type="text" inputmode="numeric" autocomplete="off" value="220,000" /></div></div>
+          <div class="field"><label for="b-bays">Car bays</label><div class="input-shell"><input id="b-bays" type="text" inputmode="numeric" autocomplete="off" value="18" /><span class="affix affix--suf">bays</span></div></div>
+          <div class="field"><label for="b-bayrate">Per bay</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="b-bayrate" type="text" inputmode="numeric" autocomplete="off" value="0" /><span class="affix affix--suf">/mth</span></div></div>
+        </div>
+        <div class="opt-col">
+          <div class="field"><label for="c-name">Option C</label><div class="input-shell"><input id="c-name" type="text" autocomplete="off" value="Premises C" /></div></div>
+          <div class="field"><label for="c-area">Area</label><div class="input-shell"><input id="c-area" type="text" inputmode="numeric" autocomplete="off" value="980" /><span class="affix affix--suf">m&sup2;</span></div></div>
+          <div class="field"><label for="c-rent">Net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="c-rent" type="text" inputmode="decimal" autocomplete="off" value="210" /><span class="affix affix--suf">/m&sup2;</span></div></div>
+          <div class="field"><label for="c-og">Outgoings</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="c-og" type="text" inputmode="decimal" autocomplete="off" value="55" /><span class="affix affix--suf">/m&sup2;</span></div></div>
+          <div class="field"><label for="c-inc">Rent free</label><div class="input-shell"><input id="c-inc" type="text" inputmode="decimal" autocomplete="off" value="2" /><span class="affix affix--suf">mths</span></div></div>
+          <div class="field"><label for="c-fit">Fitout cost to you</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="c-fit" type="text" inputmode="numeric" autocomplete="off" value="60,000" /></div></div>
+          <div class="field"><label for="c-bays">Car bays</label><div class="input-shell"><input id="c-bays" type="text" inputmode="numeric" autocomplete="off" value="8" /><span class="affix affix--suf">bays</span></div></div>
+          <div class="field"><label for="c-bayrate">Per bay</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="c-bayrate" type="text" inputmode="numeric" autocomplete="off" value="0" /><span class="affix affix--suf">/mth</span></div></div>
+        </div>
+      </div>
+      <p class="hint" style="margin-top:4px;">Rent and outgoings are entered per square metre per annum. Set an area to zero to leave an option out of the comparison.</p>
+    </div>
+
+    <div class="card result-card" style="margin-top:28px;">
+      <p class="result-label" id="r-head">Lowest occupancy cost</p>
+      <div class="adv-block" style="border-top:0;margin-top:0;padding-top:0;">
+        <p class="adv-label" id="r-label">Effective annual cost</p>
+        <p class="adv-value"><em id="r-main">$0</em></p>
+        <p class="adv-note" id="r-interp"></p>
+        <p class="adv-cross" id="r-cross"></p>
+      </div>
+      <div class="result-stats">
+        <div class="stat"><div class="stat__h">Best option</div><div class="stat__v" id="s-best">&mdash;</div><div class="stat__k">On effective cost</div></div>
+        <div class="stat"><div class="stat__h">Saving</div><div class="stat__v" id="s-save">$0</div><div class="stat__k">Over the term vs dearest</div></div>
+        <div class="stat"><div class="stat__h">Effective rate</div><div class="stat__v" id="s-rate">$0</div><div class="stat__k">Per m&sup2; p.a.</div></div>
+        <div class="stat"><div class="stat__h">Per person</div><div class="stat__v" id="s-person">$0</div><div class="stat__k">Per annum</div></div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">Option by option</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead>
+            <tr>
+              <th>Option</th><th>Area</th><th>Year 1 gross</th><th>Incentive</th><th>Fitout</th><th>Total over term</th><th>Effective p.a.</th><th>Per m&sup2; p.a.</th><th>Per person p.a.</th><th>Ranking</th>
+            </tr>
+          </thead>
+          <tbody id="opt-rows"></tbody>
+        </table>
+      </div>
+      <details class="fold">
+        <summary><span>Year by year, all options</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="table-scroll"><table class="yr"><thead><tr id="yr-head"></tr></thead><tbody id="yr-rows"></tbody></table></div>
+      </details>
+    </div>
+
+    <details class="fold fold--method">
+      <summary><span>How this is calculated</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="method-body">
+        <h4>Gross occupancy cost</h4>
+        <p>Area multiplied by net rent plus outgoings, both entered per square metre per annum, plus car parking at the monthly rate you set. Rent and outgoings escalate at the annual review in every year after the first.</p>
+        <h4>Incentive</h4>
+        <p>Months of rent free are valued on the year one net rent and deducted once, in the first year. Incentives structured as a fitout contribution should instead be netted off the fitout cost you enter.</p>
+        <h4>Fitout</h4>
+        <p>The cost you bear, after any landlord contribution. It is included in the total over the term in full. The display toggle only changes whether it is shown as an upfront cost or spread evenly across the term.</p>
+        <h4>Effective annual cost</h4>
+        <p>The total cost over the term divided by the number of years. It is the figure that makes premises of different sizes, rents and incentive structures comparable, and it is the number a tenant should be negotiating on.</p>
+        <h4>What is excluded</h4>
+        <p>Relocation, make-good, business disruption, GST, outgoings reconciliations, fitout depreciation and the time value of money are not modelled. Cash totals are undiscounted. Where two options differ materially in fitout timing, a discounted comparison should be run.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">Tenants rarely compare like with like.</div>
+        <p class="lead-p">A lower rent on more floor area with a shorter incentive is not a saving. Represent acts for occupiers in premises searches and lease negotiations, on the tenant&rsquo;s side of the table only.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="occupancy-cost-name">Name</label><input id="occupancy-cost-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="occupancy-cost-email">Email</label><input id="occupancy-cost-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="occupancy-cost-phone">Phone</label><input id="occupancy-cost-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Premises</button>
+            <a class="lead-link" href="tenant-representation.html">Explore Tenant Representation &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about your premises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal or property advice. Results depend entirely on the figures entered. Relocation, make-good, business disruption, GST, outgoings reconciliations and the time value of money are excluded, and cash totals are undiscounted. Lease documentation and outgoings estimates should be independently verified before committing to premises. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="buyers-agency.html">Buyer’s Agency</a></li>
+          <li><a href="services.html">Commercial Property Management</a></li>
+          <li><a href="leasing.html">Commercial Property Leasing</a></li>
+          <li><a href="tenant-representation.html">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="insights.html">Market Intelligence</a></li>
+          <li><a href="insights.html#guides">Guides &amp; Explainers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tools.html">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="locations.html">All Locations</a></li>
+          <li><a href="Acacia Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt1 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(x) { var v = parseFloat(String(x.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function nid(id) { return num(document.getElementById(id)); }
+  function money(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function money2(n) { return (n < 0 ? '−' : '') + '$' + fmt2.format(Math.abs(n)); }
+  function paren(n) { return '($' + fmt0.format(Math.abs(Math.round(n))) + ')'; }
+  function pc1(n) { return fmt1.format(n) + '%'; }
+  function moneyShort(n) {
+    var a = Math.abs(n), s = n < 0 ? '−' : '';
+    if (a >= 1e6) return s + '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return s + '$' + Math.round(a / 1e3) + 'k';
+    return s + '$' + fmt0.format(Math.round(a));
+  }
+  function txt(id, v) { document.getElementById(id).textContent = v; }
+  function bindMoney(ids, cb) {
+    ids.forEach(function (id) {
+      var input = document.getElementById(id);
+      input.addEventListener('input', function () {
+        var atEnd = input.selectionStart === input.value.length;
+        var d = input.value.replace(/[^0-9]/g, '');
+        input.value = d === '' ? '' : fmt0.format(parseInt(d, 10));
+        if (atEnd) { try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {} }
+        cb();
+      });
+    });
+  }
+  function bindPlain(ids, cb) { ids.forEach(function (id) { document.getElementById(id).addEventListener('input', cb); }); }
+  function resetAll(defaults, cb) {
+    document.getElementById('reset-btn').addEventListener('click', function () {
+      Object.keys(defaults).forEach(function (id) { document.getElementById(id).value = defaults[id]; });
+      cb();
+    });
+  }
+
+  var DEFAULTS = { term: '5', rev: '3.5', staff: '42',
+    'a-name': 'Premises A', 'a-area': '1,200', 'a-rent': '185', 'a-og': '48', 'a-inc': '3', 'a-fit': '120,000', 'a-bays': '12', 'a-bayrate': '0',
+    'b-name': 'Premises B', 'b-area': '1,450', 'b-rent': '165', 'b-og': '42', 'b-inc': '6', 'b-fit': '220,000', 'b-bays': '18', 'b-bayrate': '0',
+    'c-name': 'Premises C', 'c-area': '980', 'c-rent': '210', 'c-og': '55', 'c-inc': '2', 'c-fit': '60,000', 'c-bays': '8', 'c-bayrate': '0' };
+  var KEYS = ['a', 'b', 'c'];
+  var amort = 'spread', store = {};
+
+  function model() {
+    var N = Math.max(1, Math.min(25, Math.round(nid('term'))));
+    var g = nid('rev') / 100;
+    var staff = nid('staff');
+    var opts = [];
+    KEYS.forEach(function (k) {
+      var area = nid(k + '-area');
+      if (area <= 0) return;
+      var rent = nid(k + '-rent'), og = nid(k + '-og');
+      var incM = nid(k + '-inc'), fit = nid(k + '-fit');
+      var bays = nid(k + '-bays'), bayRate = nid(k + '-bayrate');
+      var parking = bays * bayRate * 12;
+      var years = [], total = 0;
+      for (var y = 1; y <= N; y++) {
+        var f = Math.pow(1 + g, y - 1);
+        var gross = area * (rent + og) * f + parking * f;
+        var inc = y === 1 ? incM / 12 * area * rent : 0;
+        var fitY = amort === 'spread' ? fit / N : (y === 1 ? fit : 0);
+        var net = gross - inc + fitY;
+        years.push({ y: y, gross: gross, inc: inc, fit: fitY, net: net });
+        total += net;
+      }
+      opts.push({ k: k, name: document.getElementById(k + '-name').value || 'Option ' + k.toUpperCase(),
+        area: area, rent: rent, og: og, incM: incM, fit: fit, parking: parking,
+        gross1: area * (rent + og) + parking, incVal: incM / 12 * area * rent,
+        years: years, total: total, eff: total / N,
+        perM2: total / N / area, perPerson: staff > 0 ? total / N / staff : 0 });
+    });
+    return { N: N, g: g, staff: staff, opts: opts };
+  }
+
+  function calc() {
+    var m = model(), opts = m.opts;
+    var ranked = opts.slice().sort(function (x, y) { return x.eff - y.eff; });
+    var best = ranked[0], worst = ranked[ranked.length - 1];
+
+    if (!best) {
+      txt('r-head', 'Lowest occupancy cost');
+      txt('r-main', '\u2014');
+      txt('r-interp', 'Enter an area for at least one option to compare.');
+      txt('r-cross', '');
+      ['s-best', 's-save', 's-rate', 's-person'].forEach(function (id) { txt(id, '\u2014'); });
+      document.getElementById('opt-rows').innerHTML = '<tr><td colspan="10" style="color:#8A857A;">No options entered.</td></tr>';
+      document.getElementById('yr-head').innerHTML = '';
+      document.getElementById('yr-rows').innerHTML = '';
+      store = { m: m, best: null };
+      return;
+    }
+
+    txt('r-head', best.name + ' is the lowest cost over ' + m.N + ' years');
+    txt('r-main', moneyShort(best.eff));
+    var saving = worst.eff - best.eff;
+    txt('r-interp', best.name + ' costs ' + money(best.eff) + ' a year on an effective basis, or ' + money2(best.perM2) +
+      ' per square metre' + (m.staff > 0 ? ' and ' + money(best.perPerson) + ' per person' : '') + '.' +
+      (opts.length > 1 && saving > 0 ? ' That is ' + money(saving * m.N) + ' less than ' + worst.name + ' across the term.' : ''));
+    txt('r-cross', 'Year one gross ' + money(best.gross1) + ' \u00b7 Incentive ' + money(best.incVal) + ' \u00b7 Fitout ' + money(best.fit));
+    txt('s-best', best.name);
+    txt('s-save', opts.length > 1 ? moneyShort(saving * m.N) : '\u2014');
+    txt('s-rate', money2(best.perM2));
+    txt('s-person', m.staff > 0 ? money(best.perPerson) : '\u2014');
+
+    document.getElementById('opt-rows').innerHTML = opts.map(function (o) {
+      var rank = ranked.indexOf(o) + 1;
+      return '<tr' + (o === best ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + esc(o.name) + '</td>' +
+        '<td>' + fmt0.format(o.area) + ' m\u00b2</td>' +
+        '<td>' + money(o.gross1) + '</td>' +
+        '<td>' + (o.incVal > 0 ? paren(o.incVal) : '\u2014') + '</td>' +
+        '<td>' + (o.fit > 0 ? money(o.fit) : '\u2014') + '</td>' +
+        '<td>' + money(o.total) + '</td>' +
+        '<td>' + money(o.eff) + '</td>' +
+        '<td>' + money2(o.perM2) + '</td>' +
+        '<td>' + (m.staff > 0 ? money(o.perPerson) : '\u2014') + '</td>' +
+        '<td>' + (rank === 1 ? '<span class="adv adv--on">Lowest</span>' : '<span class="adv adv--off">+' + money(o.eff - best.eff) + ' p.a.</span>') + '</td></tr>';
+    }).join('');
+
+    document.getElementById('yr-head').innerHTML = '<th>Year</th>' + opts.map(function (o) { return '<th>' + esc(o.name) + '</th>'; }).join('');
+    var rows = '';
+    for (var y = 0; y < m.N; y++) {
+      rows += '<tr><td class="yr-c">' + (y + 1) + '</td>' + opts.map(function (o) { return '<td>' + money(o.years[y].net) + '</td>'; }).join('') + '</tr>';
+    }
+    rows += '<tr><td class="yr-c">Total</td>' + opts.map(function (o) { return '<td>' + money(o.total) + '</td>'; }).join('') + '</tr>';
+    document.getElementById('yr-rows').innerHTML = rows;
+    store = { m: m, best: best, worst: worst, saving: saving };
+  }
+
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  var moneyIds = ['staff'], plainIds = ['term', 'rev'];
+  KEYS.forEach(function (k) {
+    moneyIds.push(k + '-area'); moneyIds.push(k + '-fit');
+    plainIds.push(k + '-rent'); plainIds.push(k + '-og'); plainIds.push(k + '-inc'); plainIds.push(k + '-bays'); plainIds.push(k + '-bayrate');
+    document.getElementById(k + '-name').addEventListener('input', calc);
+  });
+  bindMoney(moneyIds, calc);
+  bindPlain(plainIds, calc);
+
+  var amortSeg = document.getElementById('amort-seg');
+  amortSeg.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-amort]'); if (!b) return;
+    amort = b.getAttribute('data-amort');
+    amortSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+    calc();
+  });
+
+  resetAll(DEFAULTS, function () {
+    amort = 'spread';
+    amortSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x.getAttribute('data-amort') === 'spread'); });
+    calc();
+  });
+
+  calc();
+
+  function summaryFields() {
+    var m = store.m, out = { lease_term: m.N + ' yrs', annual_review: nid('rev') + '% p.a.', headcount: m.staff > 0 ? fmt0.format(m.staff) : 'Not provided',
+      fitout_treatment: amort === 'spread' ? 'Spread over term' : 'Upfront' };
+    m.opts.forEach(function (o, i) {
+      out['option_' + (i + 1)] = o.name + ' \u2014 ' + fmt0.format(o.area) + ' m2 at ' + money2(o.rent) + '/m2 net + ' + money2(o.og) +
+        '/m2 outgoings, ' + o.incM + ' mths rent free, fitout ' + money(o.fit) + ' \u2014 effective ' + money(o.eff) + ' p.a. (' + money2(o.perM2) + '/m2)';
+    });
+    if (store.best) {
+      out.lowest_cost_option = store.best.name + ' at ' + money(store.best.eff) + ' p.a.';
+      out.saving_over_term = money(store.saving * m.N);
+    }
+    return out;
+  }
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — Occupancy Cost Comparison Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'Occupancy Cost Comparison Calculator'
+    };
+    var extra = summaryFields();
+    for (var k in extra) payload[k] = extra[k];
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss Your Premises';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v13.js" defer></script>
+</body>
+</html>

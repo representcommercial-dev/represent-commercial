@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CGT Treatment Calculator — Represent Commercial</title>
+<meta name="description" content="Compare the former CGT treatment (50% discount) against the legislated rules (CPI cost-base indexation with a 30% minimum floor) for a commercial property acquired 1 July 2027." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/cgt-calculator.html" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/cgt-calculator.html" />
+<meta property="og:title" content="CGT Treatment Calculator — Represent Commercial" />
+<meta property="og:description" content="Former 50% discount vs the legislated CPI-indexation rules, modelled over your hold period." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  a { color: var(--gold-ink); } a:hover { color: var(--green); }
+  .cgt-body { background: #F7F5F0; padding: 72px 0 88px; }
+  .cgt { max-width: 1000px; margin: 0 auto; padding: 0 48px; color: #1c2620; --cgt-muted: #5c6660; --cgt-line: #e2ddd2; --cgt-warn: #a8532a; }
+  .cgt *, .cgt *::before, .cgt *::after { box-sizing: border-box; }
+
+  .cgt .assume { background: rgba(168,83,42,.07); border: 1px solid var(--cgt-warn); border-radius: 4px; padding: 20px 24px; margin: 0 0 34px; font-family: var(--f-body); font-size: 13.5px; line-height: 1.65; }
+  .cgt .assume b { color: var(--cgt-warn); text-transform: uppercase; letter-spacing: .09em; font-size: 11px; font-weight: 700; display: block; margin-bottom: 8px; }
+
+  .cgt .panel { background: #fff; border: 1px solid #E6E1D6; border-radius: 16px; padding: 38px 40px 30px; }
+  .cgt .panel__title { font-family: var(--f-body); font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); margin: 0 0 26px; }
+  .cgt .inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 44px; }
+  .cgt .ctrl { margin-bottom: 22px; }
+  .cgt .ctrl .lab { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .cgt .ctrl label { font-family: var(--f-body); font-size: 13.5px; font-weight: 600; }
+  .cgt .ctrl .val { font-family: var(--f-display); font-weight: 700; font-size: 24px; line-height: 1; color: var(--green); letter-spacing: .01em; }
+  .cgt .ctrl .hint { font-family: var(--f-body); font-size: 11.5px; color: var(--cgt-muted); line-height: 1.5; margin-top: 7px; }
+  .cgt input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 3px; background: var(--cgt-line); border-radius: 2px; outline: none; margin: 8px 0 2px; }
+  .cgt input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--green); cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--green); }
+  .cgt input[type=range]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--green); cursor: pointer; border: none; }
+  .cgt .num-in { display: flex; align-items: center; gap: 6px; }
+  .cgt .num-in .pre { font-family: var(--f-display); font-weight: 700; font-size: 22px; color: var(--cgt-muted); }
+  .cgt .num-in input[type=text] { font-family: var(--f-display); font-weight: 700; font-size: 22px; color: var(--green); border: none; border-bottom: 1px solid var(--cgt-line); background: transparent; width: 170px; padding: 4px 0; letter-spacing: .01em; }
+  .cgt .num-in input:focus { outline: none; border-color: var(--gold); }
+
+  .cgt .results { background: var(--green); border-radius: 16px; padding: 38px 40px; margin: 26px 0; color: #eef0ec; }
+  .cgt .r-head { font-family: var(--f-body); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 26px; font-weight: 700; }
+  .cgt .r-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 22px; }
+  .cgt .r-item .rk { font-family: var(--f-body); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 9px; line-height: 1.45; }
+  .cgt .r-item .rv { font-family: var(--f-display); font-weight: 700; font-size: 28px; color: #fff; line-height: 1; letter-spacing: .01em; font-variant-numeric: tabular-nums; }
+
+  /* Side-by-side comparison */
+  .cgt .cmp { margin-top: 30px; border-top: 1px solid rgba(255,255,255,.16); }
+  .cgt .cmp-row { display: grid; grid-template-columns: 1.15fr 1fr 1fr; align-items: baseline; gap: 20px; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,.09); }
+  .cgt .cmp-row--head { padding: 18px 0 12px; border-bottom: 1px solid rgba(255,255,255,.22); }
+  .cgt .cmp-row--head span { font-family: var(--f-body); font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); line-height: 1.4; }
+  .cgt .cmp-row--head span:first-child { color: rgba(255,255,255,.4); }
+  .cgt .cmp-k { font-family: var(--f-body); font-size: 13px; color: rgba(255,255,255,.62); line-height: 1.4; }
+  .cgt .cmp-v { font-family: var(--f-display); font-weight: 700; font-size: 26px; color: #fff; line-height: 1; letter-spacing: .01em; font-variant-numeric: tabular-nums; }
+  .cgt .cmp-v em { display: block; font-family: var(--f-body); font-style: normal; font-weight: 500; font-size: 11px; letter-spacing: .05em; color: var(--gold); margin-top: 7px; }
+  .cgt .cmp-row--total { border-bottom: 0; padding-top: 22px; }
+  .cgt .cmp-row--total .cmp-k { color: #fff; font-weight: 700; }
+  .cgt .cmp-row--total .cmp-v { font-size: 34px; }
+  .cgt .cmp-diff { display: grid; grid-template-columns: 1.15fr 2fr; gap: 20px; align-items: baseline; margin-top: 6px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.16); }
+  .cgt .cmp-diff .cmp-k { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: 10.5px; }
+  .cgt .cmp-diff .cmp-v { font-size: 42px; color: var(--gold); }
+  .cgt .cmp-diff .cmp-v em { color: rgba(255,255,255,.55); }
+
+  .cgt .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .cgt .chart-card { background: #fff; border: 1px solid #E6E1D6; border-radius: 16px; padding: 24px 26px 20px; }
+  .cgt .chart-card h3 { font-family: var(--f-body); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--gold-ink); margin: 0 0 18px; font-weight: 700; }
+
+  .cgt .foot { border-top: 1px solid var(--cgt-line); padding-top: 24px; margin-top: 34px; font-family: var(--f-body); font-size: 12.5px; color: #9A958A; line-height: 1.7; }
+  .cgt .foot b { color: var(--green); }
+
+  @media (max-width: 900px) { .cgt .r-grid { grid-template-columns: repeat(3, 1fr); gap: 20px 14px; } .cgt .r-item .rv { font-size: 22px; } .cgt .cmp-v { font-size: 21px; } .cgt .cmp-row, .cgt .cmp-row--head { grid-template-columns: 1fr 1fr 1fr; gap: 12px; } }
+  @media (max-width: 620px) {
+    .cgt { padding: 0 24px; }
+    .cgt-body { padding: 48px 0 60px; }
+    .cgt .panel, .cgt .results { padding: 28px 24px; }
+    .cgt .inputs, .cgt .charts { grid-template-columns: 1fr; }
+    .cgt .r-grid { grid-template-columns: 1fr; }
+    .cgt .cmp-row, .cgt .cmp-row--head, .cgt .cmp-diff { grid-template-columns: 1fr; gap: 6px; }
+    .cgt .cmp-row--head span:first-child { display: none; }
+    .cgt .cmp-k { font-size: 12px; }
+    .cgt .cmp-v { font-size: 24px; }
+    .cgt .cmp-diff .cmp-v { font-size: 32px; }
+  }
+
+  /* QA fix: charts must shrink inside the grid */
+  .cgt .charts { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .cgt .chart-card { min-width: 0; }
+  .cgt .chart-card canvas { max-width: 100%; }
+  @media (max-width: 900px) { .cgt .charts { grid-template-columns: minmax(0,1fr); } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="buyers-agency.html" class="site-nav__link">Buyers</a>
+      <a href="services.html" class="site-nav__link">Property Owners</a>
+      <a href="tenant-representation.html" class="site-nav__link">Tenants</a>
+      <a href="insights.html" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="about.html" class="site-nav__link">About</a>
+      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" tabindex="-1">
+
+  <!-- ─── HERO ─── -->
+  <section class="section section--green section--hero">
+    <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+    <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+    <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 1000px;">
+        CGT TREATMENT <span class="italic" style="color: var(--gold);">calculator.</span>
+      </h1>
+      <hr class="gold-rule" style="margin-bottom: 28px;" />
+      <p class="lede" style="max-width: 720px;">
+        For a commercial property acquired on 1 July 2027, this illustrates the difference between the former CGT treatment (50% discount) and the legislated rules (CPI cost-base indexation, taxed at marginal rate with a 30% minimum floor).
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── CALCULATOR ─── -->
+  <section class="cgt-body">
+    <div class="cgt">
+
+      <div class="assume">
+        <b>⚠ Illustration only — confirm the application to your circumstances with your accountant</b>
+        Based on the legislated rules applying to relevant gains accruing from 1 July 2027. An asset purchased <strong>on 1 July 2027</strong> falls entirely under the new regime (the pre/post split-valuation transitional rules apply only to assets bought <em>before</em> that date). <strong>New regime:</strong> the cost base is indexed by CPI over the hold period, and only the real gain above inflation is taxed — at the 47% marginal rate, subject to a 30% minimum floor on the real gain. <strong>Former treatment (shown for comparison):</strong> 50% discount on the nominal gain, taxed at 47%. This is an illustration, not tax advice. The relevant rules have been legislated and apply to relevant gains accruing from 1 July 2027. Tax treatment depends on individual circumstances and should be confirmed with an appropriately qualified adviser. For simplicity, this calculation does not include any rent, income, or holding expenses — it models the capital gain and CGT on sale only. It also does not include purchase costs or any other factor that impacts cost base (e.g. capex, depreciation etc).
+      </div>
+
+      <div class="panel">
+        <div class="panel__title">Your assumptions</div>
+        <div class="inputs">
+          <div class="ctrl">
+            <div class="lab"><label for="purchase">Purchase price</label></div>
+            <div class="num-in"><span class="pre">$</span><input type="text" id="purchase" inputmode="numeric" autocomplete="off" value="2,000,000" /></div>
+            <div class="hint">Acquisition cost on 1 July 2027.</div>
+          </div>
+          <div class="ctrl">
+            <div class="lab"><label for="cpi">Average CPI (inflation)</label><span class="val" id="cpiVal">3.0%</span></div>
+            <input type="range" id="cpi" min="0" max="8" step="0.1" value="3" />
+            <div class="hint">Average annual CPI — indexes the cost base under the new regime.</div>
+          </div>
+          <div class="ctrl">
+            <div class="lab"><label for="growth">Average capital growth</label><span class="val" id="growthVal">5.0%</span></div>
+            <input type="range" id="growth" min="0" max="12" step="0.1" value="5" />
+            <div class="hint">Average annual growth in the asset's value. Real gain = growth above CPI.</div>
+          </div>
+          <div class="ctrl">
+            <div class="lab"><label for="hold">Hold period</label><span class="val" id="holdVal">10 years</span></div>
+            <input type="range" id="hold" min="1" max="20" step="1" value="10" />
+            <div class="hint">Years held before sale.</div>
+          </div>
+          <div class="ctrl">
+            <div class="lab"><label for="mtr">Marginal tax rate</label><span class="val" id="mtrVal">47%</span></div>
+            <input type="range" id="mtr" min="0" max="47" step="1" value="47" />
+            <div class="hint">Your marginal rate on the gain. The new regime applies a 30% minimum floor — if this falls below 30%, the floor applies instead.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results">
+        <div class="r-head">Estimated outcome at sale</div>
+        <div class="r-grid">
+          <div class="r-item"><div class="rk">Sale value</div><div class="rv" id="oSale">—</div></div>
+          <div class="r-item"><div class="rk">Nominal gain</div><div class="rv" id="oNominal">—</div></div>
+          <div class="r-item"><div class="rk">Indexed cost base</div><div class="rv" id="oIndexed">—</div></div>
+        </div>
+        <div class="cmp">
+          <div class="cmp-row cmp-row--head">
+            <span>Compared side by side</span>
+            <span>Former<br />50% discount</span>
+            <span>New regime<br />CPI indexed</span>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-k">Taxable gain</div>
+            <div class="cmp-v" id="cTaxPre">—</div>
+            <div class="cmp-v" id="cTaxNew">—</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-k">Effective rate on the gain</div>
+            <div class="cmp-v" id="cRatePre">—</div>
+            <div class="cmp-v" id="cRateNew">—</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-k">After-tax position</div>
+            <div class="cmp-v" id="oNetPre">—</div>
+            <div class="cmp-v" id="oNetPost">—</div>
+          </div>
+          <div class="cmp-row cmp-row--total">
+            <div class="cmp-k">CGT payable</div>
+            <div class="cmp-v" id="oPre">—</div>
+            <div class="cmp-v" id="oPost">—</div>
+          </div>
+          <div class="cmp-diff">
+            <div class="cmp-k">Difference in CGT payable</div>
+            <div class="cmp-v" id="oDiff">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-card"><h3>CGT payable — former vs new</h3><canvas id="barChart" height="220"></canvas></div>
+        <div class="chart-card"><h3>Difference by hold period</h3><canvas id="lineChart" height="220"></canvas></div>
+      </div>
+
+      <div class="foot">
+        <b>Illustration only — not tax advice.</b> Based on the legislated rules applying to relevant gains accruing from 1 July 2027. Their application to a particular gain depends on the taxpayer, the asset and the transitional provisions. The model applies a simplified calculation: sale value compounds purchase price at the growth rate; the new-regime cost base is indexed at CPI; tax is the real gain × 47% (the 30% floor does not bind at a 47% marginal rate). It ignores capital works deductions, other cost-base adjustments, carried losses, entity structure, super-fund or company treatment, small-business concessions, and every other factor affecting a real liability. Note that super funds and companies are treated differently under the reform. CGT is a matter for a qualified accountant or tax adviser. Represent Commercial provides property services, not taxation advice.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="section section--deep section--narrow">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
+      <div>
+        <h2 class="h-3" style="font-size: 48px; color: #fff;">THINKING ABOUT A SALE?</h2>
+        <div class="italic" style="font-family: var(--f-editorial); font-size: 18px; color: rgba(255,255,255,0.4); margin-top: 8px; letter-spacing: normal;">Talk timing and strategy with Nick before you decide.</div>
+      </div>
+      <a href="contact.html" class="btn btn--lg btn--gold" style="flex-shrink: 0;">Discuss a Property</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="buyers-agency.html">Buyer’s Agency</a></li>
+          <li><a href="services.html">Commercial Property Management</a></li>
+          <li><a href="leasing.html">Commercial Property Leasing</a></li>
+          <li><a href="tenant-representation.html">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="referrals.html">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="insights.html">Market Intelligence</a></li>
+          <li><a href="insights.html#guides">Guides &amp; Explainers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="tools.html">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="locations.html">All Locations</a></li>
+          <li><a href="Acacia Ridge.html">Acacia Ridge</a></li>
+          <li><a href="Brendale.html">Brendale</a></li>
+          <li><a href="Hemmant.html">Hemmant</a></li>
+          <li><a href="Yatala.html">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="privacy.html">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const FLOOR = 0.30;
+  const money = n => '$' + Math.round(n).toLocaleString('en-AU');
+  const compact = n => (n<0?'−':'') + '$' + Math.round(Math.abs(n)).toLocaleString('en-AU');
+  const C_GREEN='#004225', C_GOLD='#B8935A', C_WARN='#a8532a', C_MUTED='#9aa39c';
+  const HAS_CHART = typeof Chart !== 'undefined';
+  let barChart=null, lineChart=null;
+
+  const groupNum = s => s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const purchaseEl = $('purchase');
+  purchaseEl.addEventListener('input', function(){
+    const caretFromEnd = this.value.length - (this.selectionStart || 0);
+    const digits = this.value.replace(/[^0-9]/g,'').slice(0,12);
+    this.value = digits ? groupNum(digits) : '';
+    const pos = Math.max(0, this.value.length - caretFromEnd);
+    try { this.setSelectionRange(pos, pos); } catch(e){}
+    calc();
+  });
+  ['cpi','growth','hold','mtr'].forEach(id=>$(id).addEventListener('input',calc));
+
+  function outcome(purchase, cpi, growth, years, mtr){
+    const sale = purchase * Math.pow(1+growth, years);
+    const nominalGain = Math.max(0, sale - purchase);
+    const indexedBase = purchase * Math.pow(1+cpi, years);
+    const realGain = Math.max(0, sale - indexedBase);
+    const newRate = Math.max(mtr, FLOOR);
+    const cgtNew = realGain * newRate;
+    const floorBinds = mtr < FLOOR;
+    const cgtPre = nominalGain * 0.5 * mtr;
+    return {sale, nominalGain, indexedBase, realGain, cgtPre, cgtNew, newRate, floorBinds, diff: cgtNew - cgtPre};
+  }
+
+  function calc(){
+    const purchase = +purchaseEl.value.replace(/[^0-9.]/g,'') || 0;
+    const cpi = +$('cpi').value/100;
+    const growth = +$('growth').value/100;
+    const years = +$('hold').value;
+    const mtr = +$('mtr').value/100;
+    $('cpiVal').textContent = (cpi*100).toFixed(1)+'%';
+    $('growthVal').textContent = (growth*100).toFixed(1)+'%';
+    $('holdVal').textContent = years + (years===1?' year':' years');
+    $('mtrVal').textContent = (mtr*100).toFixed(0)+'%';
+
+    const o = outcome(purchase, cpi, growth, years, mtr);
+    $('oSale').textContent = compact(o.sale);
+    $('oNominal').textContent = compact(o.nominalGain);
+    $('oIndexed').textContent = compact(o.indexedBase);
+    const taxPre = o.nominalGain * 0.5;
+    $('cTaxPre').innerHTML = compact(taxPre) + '<em>50% of nominal gain</em>';
+    $('cTaxNew').innerHTML = compact(o.realGain) + '<em>real gain above CPI</em>';
+    $('cRatePre').innerHTML = (o.nominalGain>0 ? (o.cgtPre/o.nominalGain*100).toFixed(1) : '0.0') + '%<em>of the nominal gain</em>';
+    $('cRateNew').innerHTML = (o.nominalGain>0 ? (o.cgtNew/o.nominalGain*100).toFixed(1) : '0.0') + '%<em>of the nominal gain</em>';
+    $('oPre').textContent = compact(o.cgtPre);
+    $('oPost').innerHTML = compact(o.cgtNew) + (o.floorBinds ? '<em>30% floor applied</em>' : '');
+    $('oNetPre').textContent = compact(o.sale - o.cgtPre);
+    $('oNetPost').textContent = compact(o.sale - o.cgtNew);
+    const sign = o.diff>=0 ? '+' : '−';
+    $('oDiff').innerHTML = sign + compact(Math.abs(o.diff)).replace('−','') + '<em>' + (o.diff>=0?'more under new regime':'less under new regime') + '</em>';
+
+    drawCharts(purchase, cpi, growth, years, mtr, o);
+  }
+
+  function drawCharts(purchase, cpi, growth, years, mtr, o){
+    if(!HAS_CHART) return;
+    if(barChart) barChart.destroy();
+    barChart = new Chart($('barChart'), {
+      type:'bar',
+      data:{labels:['Former (50% discount)','New (indexed)'],datasets:[{
+        data:[Math.round(o.cgtPre),Math.round(o.cgtNew)],
+        backgroundColor:[C_GREEN,C_WARN], borderWidth:0 }]},
+      options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>money(c.parsed.y)}}},
+        scales:{y:{ticks:{color:C_MUTED,callback:v=>compact(v)},grid:{color:'#eee'}},x:{ticks:{color:C_GREEN,font:{weight:'600'}},grid:{display:false}}}}
+    });
+    const labels=[], diffs=[];
+    for(let y=1;y<=20;y++){ labels.push(y); diffs.push(Math.round(outcome(purchase,cpi,growth,y,mtr).diff)); }
+    if(lineChart) lineChart.destroy();
+    lineChart = new Chart($('lineChart'), {
+      type:'line',
+      data:{labels,datasets:[
+        {label:'Difference',data:diffs,borderColor:C_WARN,backgroundColor:'rgba(168,83,42,.12)',borderWidth:2.5,fill:true,tension:.25,pointRadius:0,pointHoverRadius:5},
+        {label:'Your hold',data:labels.map(y=>y===years?outcome(purchase,cpi,growth,y,mtr).diff:null),borderColor:C_GOLD,backgroundColor:C_GOLD,pointRadius:labels.map(y=>y===years?6:0),showLine:false}
+      ]},
+      options:{plugins:{legend:{display:false},tooltip:{callbacks:{title:c=>'Year '+c[0].label,label:c=>money(c.parsed.y)}}},
+        scales:{y:{ticks:{color:C_MUTED,callback:v=>compact(v)},grid:{color:'#eee'}},x:{title:{display:true,text:'Hold period (years)',color:C_MUTED,font:{size:10}},ticks:{color:C_MUTED,maxTicksLimit:8},grid:{display:false}}}}
+    });
+  }
+  calc();
+</script>
+<script src="nav.v13.js" defer></script>
+</body>
+</html>
