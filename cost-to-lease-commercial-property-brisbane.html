@@ -408,6 +408,7 @@
             <input type="hidden" name="utm_adgroup" value="" />
             <input type="hidden" name="utm_term" value="" />
             <input type="hidden" name="utm_content" value="" />
+            <input type="hidden" name="website_submission_id" value="" />
             <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
             <div class="form-card__eyebrow">Property Performance Review</div>
             <h3>Request Your Property Performance Review</h3>
@@ -627,14 +628,36 @@
     if (!form.reportValidity()) return;
     status.textContent = '';
     btn.disabled = true; btn.textContent = 'Sending…';
+    var submission = form.querySelector('[name="website_submission_id"]');
+    if (submission && !submission.value) {
+      submission.value = (window.crypto && typeof window.crypto.randomUUID === 'function')
+        ? window.crypto.randomUUID()
+        : 'web-' + Date.now() + '-' + Math.random().toString(36).slice(2, 12);
+    }
     var payload = new FormData(form);
     payload.set('replyto', String(payload.get('email') || ''));
     payload.set('name', (String(payload.get('first_name') || '') + ' ' + String(payload.get('last_name') || '')).trim());
     fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: payload })
       .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
       .then(function (d) {
-        if (d && d.success === true) { document.getElementById('done-listing').hidden = !document.getElementById('r-listing').value; form.style.display = 'none'; success.style.display = 'block'; success.setAttribute('role', 'status'); success.focus(); }
-        else reset(FAIL);
+        if (d && d.success === true) {
+          document.getElementById('done-listing').hidden = !document.getElementById('r-listing').value;
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.setAttribute('role', 'status');
+          success.focus();
+
+          var crmPayload = {};
+          payload.forEach(function (v, k) {
+            if (['access_key', 'subject', 'from_name', 'replyto', 'botcheck'].indexOf(k) === -1) crmPayload[k] = v;
+          });
+          fetch('/api/website-lead', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify(crmPayload),
+            keepalive: true
+          }).catch(function (crmErr) { console.error('Represent CRM handoff:', crmErr); });
+        } else reset(FAIL);
       })
       .catch(function () { reset(FAIL); });
   });
