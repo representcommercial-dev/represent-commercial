@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rent Review Calculator — Represent Commercial</title>
+<meta name="description" content="Project commercial rent year by year across a lease term under fixed percentage, CPI or greater-of-CPI-or-fixed reviews. Represent Commercial, Brisbane and Queensland." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/rent-review" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      WHAT WILL THE RENT BE AT <span class="italic" style="color: var(--gold);">expiry?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      A review clause compounds quietly across a term. Enter the passing rent and the review structure to see the rent year by year, the total collected over the term, and what the clause is worth against the alternatives.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Your numbers</p>
+          <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+        </div>
+
+        <details class="grp" open>
+          <summary><span>Passing rent</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field">
+              <label for="rent">Current annual net rent</label>
+              <div class="input-shell">
+                <span class="affix affix--pre">$</span>
+                <input id="rent" type="text" inputmode="numeric" autocomplete="off" value="245,000" />
+                <span class="affix affix--suf">p.a.</span>
+              </div>
+              <p class="hint">Rent payable at commencement, excluding outgoings and GST.</p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="area">Lettable area</label>
+                <div class="input-shell">
+                  <input id="area" type="text" inputmode="numeric" autocomplete="off" value="1,850" />
+                  <span class="affix affix--suf">m&sup2;</span>
+                </div>
+                <p class="hint">Optional — drives the rate per m&sup2;.</p>
+              </div>
+              <div class="field">
+                <label for="term">Lease term</label>
+                <div class="input-shell">
+                  <input id="term" type="text" inputmode="numeric" autocomplete="off" value="5" />
+                  <span class="affix affix--suf">yrs</span>
+                </div>
+                <p class="hint">Years modelled, to a maximum of 25.</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="rate-now">Rate per m&sup2; at commencement</label>
+              <div class="input-shell input-shell--calc">
+                <span class="affix affix--pre">$</span>
+                <input id="rate-now" type="text" readonly tabindex="-1" value="" />
+                <span class="affix affix--suf">/m&sup2; p.a.</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Review structure</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field">
+              <label>Review basis</label>
+              <div class="seg seg--full" id="basis-seg">
+                <button type="button" data-basis="fixed" class="is-on">Fixed %</button>
+                <button type="button" data-basis="cpi">CPI</button>
+                <button type="button" data-basis="greater">Greater of</button>
+              </div>
+              <p class="hint" id="basis-hint">A fixed percentage increase applied at each review, regardless of inflation.</p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="fixedpc">Fixed review</label>
+                <div class="input-shell">
+                  <input id="fixedpc" type="text" inputmode="decimal" autocomplete="off" value="3.5" />
+                  <span class="affix affix--suf">% p.a.</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="cpipc">Assumed CPI</label>
+                <div class="input-shell">
+                  <input id="cpipc" type="text" inputmode="decimal" autocomplete="off" value="3" />
+                  <span class="affix affix--suf">% p.a.</span>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Review frequency</label>
+              <div class="seg seg--full" id="freq-seg">
+                <button type="button" data-freq="1" class="is-on">Annual</button>
+                <button type="button" data-freq="2">Every 2 yrs</button>
+                <button type="button" data-freq="3">Every 3 yrs</button>
+              </div>
+              <p class="hint" id="freq-hint">A review is applied on each anniversary. Year one is the rent as entered.</p>
+            </div>
+            <div class="grp-total"><span>Increase at each review</span><b id="g-step">0%</b></div>
+          </div>
+        </details>
+      </div>
+
+      <div class="calc-col">
+        <div class="card result-card">
+          <p class="result-label" id="r-head">Over a 5-year term</p>
+
+          <div class="pos-row">
+            <div class="pos-k">Rent at commencement<small>Year one, as entered</small></div>
+            <div class="pos-v" id="r-rent0">$0</div>
+          </div>
+          <div class="pos-row">
+            <div class="pos-k">Rent in the final year<small id="r-finalsub">Rate per m&sup2; shown in the breakdown below</small></div>
+            <div class="pos-v" id="r-final">$0</div>
+          </div>
+
+          <div class="adv-block">
+            <p class="adv-label">Total rent over the term</p>
+            <p class="adv-value"><em id="r-total">$0</em></p>
+            <p class="adv-note" id="r-interp"></p>
+            <p class="adv-cross" id="r-eff"></p>
+          </div>
+
+          <div class="result-stats">
+            <div class="stat">
+              <div class="stat__h">Final year</div>
+              <div class="stat__v" id="s-final">$0</div>
+              <div class="stat__k">Annual rent</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">Final year</div>
+              <div class="stat__v" id="s-rate">$0</div>
+              <div class="stat__k">Per m&sup2; p.a.</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">Uplift</div>
+              <div class="stat__v" id="s-uplift">0%</div>
+              <div class="stat__k">On today&rsquo;s rent</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">Reviews</div>
+              <div class="stat__v" id="s-reviews">0</div>
+              <div class="stat__k">Applied in term</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="card">
+            <p class="card-label">Rent today</p>
+            <div class="kv-row"><span>Annual net rent</span><b id="t-ann">$0</b></div>
+            <div class="kv-row"><span>Monthly</span><b id="t-mth">$0</b></div>
+            <div class="kv-row"><span>Weekly</span><b id="t-wk">$0</b></div>
+            <div class="kv-row kv-row--total"><span>Per m&sup2; p.a.</span><b id="t-rate">$0</b></div>
+          </div>
+          <div class="card">
+            <p class="card-label">Structure comparison</p>
+            <div class="kv-row"><span>Fixed % only &mdash; total rent</span><b id="x-fixed">$0</b></div>
+            <div class="kv-row"><span>CPI only &mdash; total rent</span><b id="x-cpi">$0</b></div>
+            <div class="kv-row"><span>Greater of &mdash; total rent</span><b id="x-greater">$0</b></div>
+            <div class="kv-row kv-row--foot"><span id="x-note">Difference across the term</span><b id="x-diff">$0</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <div class="chart-head">
+        <p class="card-label" style="margin:0;">Rent across the term</p>
+        <div class="chart-legend">
+          <span class="leg"><i class="i-a"></i>Reviewed rent</span>
+          <span class="leg"><i class="i-b"></i>Rent held flat</span>
+        </div>
+      </div>
+      <svg class="chart-svg" id="chart" viewBox="0 0 1040 340" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Modelled annual rent across the lease term against the rent held at its commencing level"></svg>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">Year by year</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Review applied</th>
+              <th>Annual rent</th>
+              <th>Per m&sup2; p.a.</th>
+              <th>Monthly</th>
+              <th>Cumulative rent</th>
+            </tr>
+          </thead>
+          <tbody id="year-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <details class="fold fold--method">
+      <summary>
+        <span>How this is calculated</span>
+        <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="method-body">
+        <h4>Review basis</h4>
+        <p>A fixed review applies the percentage you enter. A CPI review applies your assumed inflation rate. A greater-of review applies whichever of the two is higher, which is the figure used for every review in the model &mdash; the clause is not assessed separately at each review against a varying inflation series.</p>
+        <h4>Timing and frequency</h4>
+        <p>Year one is the rent as entered. A review is applied on each anniversary at the frequency you select, so a rent reviewed every three years holds for three years and then steps. Rates are entered per annum and compounded across the review interval, which is how a multi-year fixed review is ordinarily expressed.</p>
+        <h4>Total rent over the term</h4>
+        <p>The sum of each year&rsquo;s rent across the modelled term, undiscounted. It is a cash total, not a present value.</p>
+        <h4>Effective growth</h4>
+        <p>The compound annual rate that takes the commencing rent to the final-year rent over the term.</p>
+        <h4>What is excluded</h4>
+        <p>Outgoings, GST, incentives, rent-free periods, market reviews, ratchet provisions, vacancy and make-good are not modelled. A market review can move rent in either direction and cannot be projected from a rate assumption. Where a lease contains a market review, treat these figures as the fixed and indexed path only.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">A review clause is negotiable.</div>
+        <p class="lead-p">The basis, the frequency and the ratchet are all decided before the lease is signed, and they compound for the whole term. Represent negotiates review structures on behalf of owners and tenants with the market evidence to support the position.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="rent-review-name">Name</label><input id="rent-review-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="rent-review-email">Email</label><input id="rent-review-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="rent-review-phone">Phone</label><input id="rent-review-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Lease</button>
+            <a class="lead-link" href="/leasing">Explore Commercial Leasing &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about your lease.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal or valuation advice. Results are based entirely on the assumptions entered, and actual CPI outcomes, market reviews and lease terms will differ. The operation of a review clause depends on its drafting. Outgoings, GST and incentives are excluded. Lease documentation should be independently reviewed before relying on any projection. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var DEFAULTS = { rent: '245,000', area: '1,850', term: '5', fixedpc: '3.5', cpipc: '3' };
+  var moneyFields = ['rent', 'area'];
+  var rateFields = ['term', 'fixedpc', 'cpipc'];
+  var el = {};
+  Object.keys(DEFAULTS).forEach(function (id) { el[id] = document.getElementById(id); });
+
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(x) { var v = parseFloat(String(x.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function money(n) { return '$' + fmt0.format(Math.round(n)); }
+  function money2(n) { return '$' + fmt2.format(n); }
+  function pc(n) { return fmt2.format(n).replace(/\.00$/, '') + '%'; }
+  function moneyShort(n) {
+    var a = Math.abs(n), s = n < 0 ? '−' : '';
+    if (a >= 1e6) return s + '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return s + '$' + Math.round(a / 1e3) + 'k';
+    return s + '$' + fmt0.format(Math.round(a));
+  }
+
+  var basis = 'fixed', freq = 1, store = {};
+
+  var BASIS_HINT = {
+    fixed: 'A fixed percentage increase applied at each review, regardless of inflation.',
+    cpi: 'The rent is indexed to your assumed inflation rate at each review.',
+    greater: 'Whichever is higher of the fixed percentage and assumed CPI is applied at every review.'
+  };
+
+  function stepRate() {
+    var f = num(el.fixedpc) / 100, c = num(el.cpipc) / 100;
+    if (basis === 'fixed') return f;
+    if (basis === 'cpi') return c;
+    return Math.max(f, c);
+  }
+
+  // Annual rent series. Year 1 is the rent as entered; a review is applied on each
+  // anniversary at the selected frequency, with per-annum rates compounded across the interval.
+  function series(rent0, r, N) {
+    var out = [], reviews = 0;
+    for (var y = 1; y <= N; y++) {
+      var applied = Math.floor((y - 1) / freq);
+      out.push({ y: y, rent: rent0 * Math.pow(1 + r, applied * freq), isReview: y > 1 && (y - 1) % freq === 0 });
+    }
+    return out;
+  }
+  function total(rows) { return rows.reduce(function (a, r) { return a + r.rent; }, 0); }
+
+  function calc() {
+    var rent0 = num(el.rent);
+    var area = num(el.area);
+    var N = Math.max(1, Math.min(25, Math.round(num(el.term))));
+    var r = stepRate();
+    var rows = series(rent0, r, N);
+    var final = rows[N - 1].rent;
+    var tot = total(rows);
+    var reviews = rows.filter(function (x) { return x.isReview; }).length;
+    var uplift = rent0 > 0 ? final / rent0 - 1 : 0;
+    var eff = (rent0 > 0 && N > 1) ? Math.pow(final / rent0, 1 / (N - 1)) - 1 : 0;
+
+    document.getElementById('rate-now').value = area > 0 ? fmt2.format(rent0 / area) : '—';
+    document.getElementById('g-step').textContent = pc(((Math.pow(1 + r, freq) - 1) * 100)) + (freq > 1 ? ' over ' + freq + ' yrs' : '');
+
+    document.getElementById('r-head').textContent = 'Over a ' + N + '-year term';
+    document.getElementById('r-rent0').textContent = money(rent0);
+    document.getElementById('r-final').textContent = money(final);
+    document.getElementById('r-total').textContent = money(tot);
+    document.getElementById('r-interp').textContent = 'At ' + pc(r * 100) + ' per annum reviewed ' +
+      (freq === 1 ? 'annually' : 'every ' + freq + ' years') + ', the rent rises from ' + money(rent0) +
+      ' to ' + money(final) + ' by year ' + N + ' — ' + money(tot - rent0 * N) + ' more than holding the commencing rent for the term.';
+    document.getElementById('r-eff').textContent = 'Effective growth ' + pc(eff * 100) + ' p.a.';
+
+    document.getElementById('s-final').textContent = moneyShort(final);
+    document.getElementById('s-rate').textContent = area > 0 ? money2(final / area) : '—';
+    document.getElementById('s-uplift').textContent = pc(uplift * 100);
+    document.getElementById('s-reviews').textContent = reviews;
+
+    document.getElementById('t-ann').textContent = money(rent0);
+    document.getElementById('t-mth').textContent = money(rent0 / 12);
+    document.getElementById('t-wk').textContent = money(rent0 / 52);
+    document.getElementById('t-rate').textContent = area > 0 ? money2(rent0 / area) : '—';
+
+    var f = num(el.fixedpc) / 100, c = num(el.cpipc) / 100, g = Math.max(f, c);
+    var tF = total(series(rent0, f, N)), tC = total(series(rent0, c, N)), tG = total(series(rent0, g, N));
+    document.getElementById('x-fixed').textContent = money(tF);
+    document.getElementById('x-cpi').textContent = money(tC);
+    document.getElementById('x-greater').textContent = money(tG);
+    var spread = Math.max(tF, tC, tG) - Math.min(tF, tC, tG);
+    document.getElementById('x-note').textContent = spread > 0 ? 'Spread between structures' : 'All structures identical';
+    document.getElementById('x-diff').textContent = money(spread);
+
+    buildTable(rows, area, r);
+    drawChart(rows, rent0, N);
+    store = { rent0: rent0, area: area, N: N, r: r, final: final, tot: tot, eff: eff, uplift: uplift };
+  }
+
+  function buildTable(rows, area, r) {
+    var stepPc = pc((Math.pow(1 + r, freq) - 1) * 100);
+    document.getElementById('year-rows').innerHTML = rows.map(function (row, i) {
+      var cum = rows.slice(0, i + 1).reduce(function (a, x) { return a + x.rent; }, 0);
+      return '<tr' + (row.isReview ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + row.y + '</td>' +
+        '<td>' + (row.isReview ? '<span class="adv adv--on">+' + stepPc + '</span>' : '<span class="adv adv--off">Held</span>') + '</td>' +
+        '<td>' + money(row.rent) + '</td>' +
+        '<td>' + (area > 0 ? money2(row.rent / area) : '—') + '</td>' +
+        '<td>' + money(row.rent / 12) + '</td>' +
+        '<td>' + money(cum) + '</td></tr>';
+    }).join('');
+  }
+
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var svg = document.getElementById('chart');
+  var cs = null;
+  function mk(tag, attrs) { var e = document.createElementNS(SVGNS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+
+  function drawChart(rows, rent0, N) {
+    var W = 1040, H = 340, padL = 92, padR = 20, padT = 18, padB = 36;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var vals = rows.map(function (r) { return r.rent; });
+    var hi = Math.max.apply(null, vals.concat([rent0])), lo = Math.min.apply(null, vals.concat([rent0]));
+    lo = Math.min(lo, hi * 0.85);
+    if (hi === lo) hi = lo + 1;
+    var pad = (hi - lo) * 0.12; lo -= pad; hi += pad;
+    var n = Math.max(1, N - 1);
+    function px(i) { return padL + (n === 0 ? 0.5 : i / n) * plotW; }
+    function py(v) { return padT + (1 - (v - lo) / (hi - lo)) * plotH; }
+    function path(arr) { return arr.map(function (v, i) { return (i ? 'L' : 'M') + px(i).toFixed(1) + ' ' + py(v).toFixed(1); }).join(' '); }
+
+    var parts = [];
+    for (var t = 0; t <= 4; t++) {
+      var val = lo + (hi - lo) * (t / 4), yy = py(val).toFixed(1);
+      parts.push('<line class="axis" x1="' + padL + '" y1="' + yy + '" x2="' + (W - padR) + '" y2="' + yy + '"/>');
+      parts.push('<text class="lbl" x="' + (padL - 10) + '" y="' + (parseFloat(yy) + 4) + '" text-anchor="end">' + moneyShort(val) + '</text>');
+    }
+    var marks = N <= 6 ? rows.map(function (r, i) { return i; }) : [0, Math.round(n / 2), n];
+    marks.forEach(function (i) {
+      parts.push('<text class="lbl" x="' + px(i).toFixed(1) + '" y="' + (H - 12) + '" text-anchor="middle">Yr ' + (i + 1) + '</text>');
+    });
+    parts.push('<path class="line line-b" d="' + path(vals.map(function () { return rent0; })) + '"/>');
+    parts.push('<path class="line line-a" d="' + path(vals) + '"/>');
+    svg.innerHTML = parts.join('');
+
+    var hv = mk('g', { class: 'hv', style: 'visibility:hidden;pointer-events:none' });
+    var guide = mk('line', { class: 'hv-guide', y1: padT, y2: padT + plotH });
+    var dot = mk('circle', { class: 'hv-dot', r: 4.5 });
+    var tip = mk('g', {});
+    var tipBg = mk('rect', { class: 'tip-bg', rx: 8, width: 150, height: 54 });
+    var tYr = mk('text', { class: 'tip-yr', x: 12, y: 21 });
+    var tk = mk('text', { class: 'tip-k', x: 12, y: 42 }); tk.textContent = 'Rent';
+    var tv = mk('text', { class: 'tip-v', x: 138, y: 42, 'text-anchor': 'end' });
+    tip.appendChild(tipBg); tip.appendChild(tYr); tip.appendChild(tk); tip.appendChild(tv);
+    hv.appendChild(guide); hv.appendChild(dot); hv.appendChild(tip);
+    svg.appendChild(hv);
+    cs = { n: n, vals: vals, padL: padL, padT: padT, plotW: plotW, plotH: plotH, W: W, padR: padR, px: px, py: py,
+           els: { hv: hv, guide: guide, dot: dot, tip: tip, tYr: tYr, tv: tv } };
+  }
+
+  function updateHover(e) {
+    if (!cs) return;
+    var ctm = svg.getScreenCTM(); if (!ctm) return;
+    var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    var loc = pt.matrixTransform(ctm.inverse());
+    var idx = cs.n === 0 ? 0 : Math.round((loc.x - cs.padL) / cs.plotW * cs.n);
+    idx = Math.max(0, Math.min(cs.vals.length - 1, idx));
+    var x = cs.px(idx), y = cs.py(cs.vals[idx]), E = cs.els;
+    E.guide.setAttribute('x1', x); E.guide.setAttribute('x2', x);
+    E.dot.setAttribute('cx', x); E.dot.setAttribute('cy', y);
+    E.tYr.textContent = 'YEAR ' + (idx + 1);
+    E.tv.textContent = money(cs.vals[idx]);
+    var tw = 150, th = 54, tx = x + 14, ty = Math.min(Math.max(cs.padT, y - th / 2), cs.padT + cs.plotH - th);
+    if (tx + tw > cs.W - cs.padR) tx = x - 14 - tw;
+    E.tip.setAttribute('transform', 'translate(' + tx.toFixed(1) + ',' + ty.toFixed(1) + ')');
+    E.hv.style.visibility = 'visible';
+  }
+  svg.addEventListener('mousemove', updateHover);
+  svg.addEventListener('mouseleave', function () { if (cs) cs.els.hv.style.visibility = 'hidden'; });
+
+  moneyFields.forEach(function (id) {
+    var input = el[id];
+    input.addEventListener('input', function () {
+      var atEnd = input.selectionStart === input.value.length;
+      var digits = input.value.replace(/[^0-9]/g, '');
+      input.value = digits === '' ? '' : fmt0.format(parseInt(digits, 10));
+      if (atEnd) input.setSelectionRange(input.value.length, input.value.length);
+      calc();
+    });
+  });
+  rateFields.forEach(function (id) { el[id].addEventListener('input', calc); });
+
+  var basisSeg = document.getElementById('basis-seg');
+  basisSeg.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-basis]'); if (!b) return;
+    basis = b.getAttribute('data-basis');
+    basisSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+    document.getElementById('basis-hint').textContent = BASIS_HINT[basis];
+    calc();
+  });
+
+  var freqSeg = document.getElementById('freq-seg');
+  freqSeg.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-freq]'); if (!b) return;
+    freq = parseInt(b.getAttribute('data-freq'), 10);
+    freqSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+    document.getElementById('freq-hint').textContent = freq === 1
+      ? 'A review is applied on each anniversary. Year one is the rent as entered.'
+      : 'The rent holds for ' + freq + ' years and then steps, compounding the per annum rate across the interval.';
+    calc();
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    Object.keys(DEFAULTS).forEach(function (id) { el[id].value = DEFAULTS[id]; });
+    basis = 'fixed'; freq = 1;
+    basisSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x.getAttribute('data-basis') === 'fixed'); });
+    freqSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x.getAttribute('data-freq') === '1'); });
+    document.getElementById('basis-hint').textContent = BASIS_HINT.fixed;
+    document.getElementById('freq-hint').textContent = 'A review is applied on each anniversary. Year one is the rent as entered.';
+    calc();
+  });
+
+  calc();
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  var BASIS_LABEL = { fixed: 'Fixed %', cpi: 'CPI', greater: 'Greater of CPI or fixed' };
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — Rent Review Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'Rent Review Calculator',
+      current_rent: money(store.rent0) + ' p.a.',
+      lettable_area: store.area > 0 ? fmt0.format(store.area) + ' m2' : 'Not provided',
+      review_basis: BASIS_LABEL[basis],
+      fixed_review: num(el.fixedpc) + '% p.a.',
+      assumed_cpi: num(el.cpipc) + '% p.a.',
+      review_frequency: freq === 1 ? 'Annual' : 'Every ' + freq + ' years',
+      lease_term: store.N + ' yrs',
+      final_year_rent: money(store.final) + ' p.a.',
+      total_rent_over_term: money(store.tot),
+      uplift_on_today: pc(store.uplift * 100),
+      effective_growth: pc(store.eff * 100) + ' p.a.'
+    };
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss Your Lease';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for decimal inputs (integer part only; decimals kept) */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){var c=s.replace(/[^0-9.]/g,''),k=c.indexOf('.');if(k>=0)c=c.slice(0,k+1)+c.slice(k+1).replace(/\./g,'');var parts=c.split('.'),n=parts[0].replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return parts.length>1?n+'.'+parts[1]:n}
+document.querySelectorAll('input[inputmode="decimal"]:not([readonly])').forEach(function(el){el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
+</body>
+</html>

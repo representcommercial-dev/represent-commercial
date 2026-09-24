@@ -6,15 +6,14 @@
 <title>Management Value Estimator — Represent Commercial</title>
 <meta name="description" content="See what active commercial management could recover on your portfolio — against the fee to do it. An owner tool from Represent Commercial." />
 <meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://represent.au/management-estimator.html" />
+<link rel="canonical" href="https://represent.au/management-estimator" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.v3.css" />
 <style>
   :root {
     --calc-green: #004225;
@@ -78,6 +77,8 @@
   .lead-h { font-family: var(--f-cond); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; font-size: 26px; line-height: 1.05; color: var(--calc-green); margin: 0 0 8px; }
   .lead-p { font-family: var(--f-sans); font-size: 14px; line-height: 1.6; color: #5A6660; margin: 0 0 20px; max-width: 560px; }
   .lead-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .lead-field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .lead-field label { font-family: var(--f-cond); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: #5A6660; }
   .lead-grid input { width: 100%; box-sizing: border-box; border: 1px solid #DED8CB; border-radius: 9px; background: var(--calc-bg); font-family: var(--f-sans); font-size: 15px; color: var(--calc-ink); padding: 13px 14px; outline: none; transition: border-color 0.18s, box-shadow 0.18s; }
   .lead-grid input:focus { border-color: var(--calc-gold); box-shadow: 0 0 0 3px rgba(184,147,90,0.15); }
   .lead-btn { display: inline-block; background: var(--calc-gold-cta); color: var(--calc-green); font-family: var(--f-cond); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; border: 0; padding: 14px 32px; border-radius: 8px; cursor: pointer; transition: opacity 0.2s; }
@@ -101,23 +102,27 @@
 </style>
 </head>
 <body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ─── HEADER ─── -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
       <div class="logo__primary">REPRESENT</div>
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="about.html" class="site-nav__link">About</a>
-      <a href="services.html" class="site-nav__link">Services</a>
-      <a href="tools.html" class="site-nav__link is-active">Tools</a>
-      <a href="referrals.html" class="site-nav__link">Referrals</a>
-      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Chat with Nick</a>
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
   </div>
 </header>
+<main id="main-content" tabindex="-1">
+
 
 <!-- ─── HERO ─── -->
 <section class="section section--green section--hero">
@@ -212,9 +217,9 @@
       <p class="lead-p">Send your details and we'll review your portfolio properly — no obligation, and we'll tell you honestly if there's nothing to fix.</p>
       <form id="lead-form">
         <div class="lead-grid">
-          <input name="name" placeholder="Name" autocomplete="name" />
-          <input name="email" type="email" placeholder="Email" autocomplete="email" required />
-          <input name="phone" placeholder="Phone" autocomplete="tel" />
+          <div class="lead-field"><label for="me-name">Name</label><input id="me-name" name="name" autocomplete="name" /></div>
+          <div class="lead-field"><label for="me-email">Email</label><input id="me-email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="lead-field"><label for="me-phone">Phone</label><input id="me-phone" name="phone" autocomplete="tel" /></div>
         </div>
         <button type="submit" class="lead-btn" id="lead-btn">Request a portfolio review</button>
         <div class="lead-msg err" id="lead-err" style="display:none;"></div>
@@ -225,12 +230,14 @@
       </div>
     </div>
 
-    <p class="calc-disclaimer">Indicative only and not personal financial, investment, or taxation advice. Recovery estimates are conservative illustrations based on the inputs you select and will not match any specific portfolio — actual recoverable value depends entirely on your leases, outgoings structure, and current management. Represent Commercial — REIQ Corporate Licence 4949809.</p>
+    <p class="calc-disclaimer">Indicative only and not personal financial, investment, or taxation advice. Recovery estimates are conservative illustrations based on the inputs you select and will not match any specific portfolio — actual recoverable value depends entirely on your leases, outgoings structure, and current management. Represent Commercial — Real Estate Agent Licence 4949809.</p>
 
   </div>
 </section>
 
 <!-- ─── FOOTER ─── -->
+</main>
+
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__grid">
@@ -238,25 +245,39 @@
         <div class="logo__primary">REPRESENT</div>
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
-        <div class="tagline">Managed with intent.</div>
-        <p>Specialist commercial asset and property management for South East Queensland owners — office, retail and industrial in the $2M–$30M range. Principal-led by design.</p>
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
       </div>
       <div class="footer-col">
-        <h3>Navigate</h3>
+        <h3>Services</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="tools.html">Tools</a></li>
-          <li><a href="referrals.html">Referrals</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Tools</h3>
+        <h3>Intelligence</h3>
         <ul>
-          <li><a href="management-estimator.html">Management Value Estimator</a></li>
-          <li><a href="calculator.html">Rent Offset Saving Calculator</a></li>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
         </ul>
       </div>
       <div class="footer-col footer-contact">
@@ -265,14 +286,15 @@
         <div>Principal &amp; Licensee</div>
         <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
         <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
-        <div class="stack">South East Queensland</div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
       </div>
     </div>
     <div class="footer-meta">
       <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
       <div class="footer-meta__legals">
-        <div><span>REIQ Licence</span>494809</div>
+        <div><span>Real Estate Agent Licence</span>4949809</div>
         <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
       </div>
     </div>
   </div>
@@ -336,7 +358,7 @@
     });
   });
 
-  // Lead form → Web3Forms
+  // Lead form → Web3Forms (Contact Enquiries configuration)
   var form = document.getElementById('lead-form');
   var btn = document.getElementById('lead-btn');
   var errEl = document.getElementById('lead-err');
@@ -347,10 +369,12 @@
     btn.disabled = true; btn.textContent = 'Sending…';
     var data = {
       access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
       subject: 'Portfolio review request — Management Value Estimator',
       from_name: 'Represent Commercial Website',
       name: form.name.value,
       email: form.email.value,
+      replyto: form.email.value,
       phone: form.phone.value,
       tool: 'Management Value Estimator',
       annual_gross_rent: money(calc._gross),
@@ -359,18 +383,34 @@
       estimated_recoverable: money(calc._recoverable),
       estimated_net_benefit: money(calc._net)
     };
+    // Success requires ok + JSON content-type + success === true (Web3Forms contract).
+    // Entered details are preserved on every failure path; no automatic retry.
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Request a portfolio review';
+      errEl.textContent = message;
+      errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
     fetch('https://api.web3forms.com/submit', {
       method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }).then(function (r) { return r.json(); }).then(function (res) {
-      if (res.success) {
+      body: JSON.stringify(data),
+      signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
         form.style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
-      } else { throw new Error('failed'); }
-    }).catch(function () {
-      btn.disabled = false; btn.textContent = 'Request a portfolio review';
-      errEl.textContent = 'Something went wrong — please try again or call us.';
-      errEl.style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
     });
   });
 
@@ -378,6 +418,12 @@
 })();
 </script>
 
-  <script src="nav.js" defer></script>
+  <script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for decimal inputs (integer part only; decimals kept) */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){var c=s.replace(/[^0-9.]/g,''),k=c.indexOf('.');if(k>=0)c=c.slice(0,k+1)+c.slice(k+1).replace(/\./g,'');var parts=c.split('.'),n=parts[0].replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return parts.length>1?n+'.'+parts[1]:n}
+document.querySelectorAll('input[inputmode="decimal"]:not([readonly])').forEach(function(el){el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
 </body>
 </html>

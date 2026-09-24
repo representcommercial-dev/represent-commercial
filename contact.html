@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact Nick O'Toole — Represent Commercial | South East Queensland Commercial Property Management</title>
-<meta name="description" content="Request a no-obligation appraisal from Nick O'Toole, Principal of Represent Commercial. Direct line for South East Queensland commercial property owners — office, retail and industrial in the $2M–$30M range." />
-<meta name="keywords" content="South East Queensland commercial property appraisal, commercial property manager contact, Nick O'Toole contact, Represent Commercial South East Queensland, commercial asset management quote" />
-<link rel="canonical" href="https://represent.au/contact.html" />
+<title>Contact Nick O’Toole | Commercial Property Brisbane | Represent Commercial</title>
+<meta name="description" content="Talk directly to Nick O’Toole about managing, leasing, buying or occupying commercial property in Brisbane. Principal-led, no account managers, no obligation." />
+<meta name="keywords" content="Brisbane commercial property appraisal, Queensland commercial buyers agent contact, commercial property manager contact, Nick O'Toole contact, Represent Commercial" />
+<link rel="canonical" href="https://represent.au/contact" />
 <meta name="author" content="Nick O'Toole, Represent Commercial" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://represent.au/contact.html" />
-<meta property="og:title" content="Contact — Represent Commercial South East Queensland" />
-<meta property="og:description" content="No obligation. No account managers. Nick responds personally. +61 401 825 999 · nick@represent.au" />
+<meta property="og:url" content="https://represent.au/contact" />
+<meta property="og:title" content="Contact — Represent Commercial Queensland" />
+<meta property="og:description" content="Buyer’s agency for investors and owner-occupiers. Property management and leasing for owners. Tenant representation for occupiers. Nick responds personally. +61 401 825 999 · nick@represent.au" />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
@@ -22,13 +22,14 @@
 {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "url": "https://represent.au/contact.html",
+  "url": "https://represent.au/contact",
   "mainEntity": {
     "@type": "RealEstateAgent",
     "name": "Represent Commercial",
     "telephone": "+61 401 825 999",
     "email": "nick@represent.au",
-    "address": { "@type": "PostalAddress", "addressLocality": "South East Queensland", "addressRegion": "QLD", "addressCountry": "AU" },
+    "address": { "@type": "PostalAddress", "streetAddress": "Suite 36, Level 3, 240 Queen St", "addressLocality": "Brisbane", "addressRegion": "QLD", "postalCode": "4000", "addressCountry": "AU" },
+    "areaServed": [{ "@type": "Place", "name": "Brisbane, QLD" }, { "@type": "Place", "name": "South East Queensland" }, { "@type": "Place", "name": "Queensland" }],
     "contactPoint": [{
       "@type": "ContactPoint",
       "telephone": "+61 401 825 999",
@@ -44,41 +45,64 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.v3.css" />
+<style>
+.enq-toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media (max-width:420px){.enq-toggle{grid-template-columns:1fr}}
+.enq-opt{position:relative;display:flex;align-items:center;justify-content:center;padding:13px 16px;border:1px solid #DCD8CC;border-radius:10px;background:#fff;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:600;color:#5A655E;transition:border-color .2s,color .2s,background .2s}
+.enq-opt input{position:absolute;opacity:0;pointer-events:none}
+.enq-opt:hover{border-color:var(--gold)}
+.enq-opt:has(input:checked){border-color:var(--green);background:var(--green);color:#fff}
+.enq-opt:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:2px}
+[data-enq]{display:block}
+#appraisal-form [data-enq][hidden]{display:none!important}
+.enq-fieldset{border:0;padding:0;margin:0}
+.enq-fieldset legend{font-family:var(--f-body);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:10px;padding:0}
+.form-status{margin-top:12px;font-family:var(--f-body);font-size:13px;line-height:1.6;color:#B3261E}
+.form-status:empty{display:none}
+
+/* QA fix: two-column contact grid must shrink at 320px */
+#main-content .container[style*="grid-template-columns: 1fr 1fr"] > * { min-width: 0; }
+.contact-row a, .contact-row__value { overflow-wrap: anywhere; }
+@media (max-width: 480px) { #main-content > section.section--light { padding-left: 20px !important; padding-right: 20px !important; } }
+</style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="index.html" class="logo" aria-label="Represent Commercial — Home">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
       <div class="logo__primary">REPRESENT</div>
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="about.html" class="site-nav__link">About</a>
-      <a href="services.html" class="site-nav__link">Services</a>
-      <a href="tools.html" class="site-nav__link">Tools</a>
-      <a href="referrals.html" class="site-nav__link">Referrals</a>
-      <a href="contact.html" class="btn btn--sm btn--gold site-nav__cta">Chat with Nick</a>
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link">Market Intelligence</a>
+      <a href="/about" class="site-nav__link is-active">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main-content" tabindex="-1">
 
   <section class="section section--light" style="padding: 140px 48px 96px; min-height: 85vh;">
     <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start;">
 
       <div class="reveal">
-        <div class="eyebrow eyebrow--dim-light">04 · Contact</div>
-        <h1 class="h-2" style="font-size: clamp(40px,5vw,72px); color: var(--green); margin-bottom: 28px;">LET'S TALK<br />ABOUT YOUR<br />ASSET.</h1>
+        <div class="eyebrow eyebrow--dim-light">Contact</div>
+        <h1 class="h-2" style="font-size: clamp(40px,5vw,72px); color: var(--green); margin-bottom: 28px;">DISCUSS<br />A PROPERTY.</h1>
         <hr class="gold-rule" style="margin-bottom: 28px;" />
+        <p class="body" style="margin-bottom: 24px; max-width: 440px;">
+          Represent Commercial acts for buyers, owners and tenants.<br /><br />If you're buying, we act for you alone through mandate, sourcing, assessment and negotiation.<br /><br />If you own commercial property, we manage it and lease it - income, tenants, lease events and long-term performance.<br /><br />If you're an occupier, we represent you on new premises, relocations and renewals.
+        </p>
         <p class="body" style="margin-bottom: 40px; max-width: 440px;">
-          If you own commercial property in South East Queensland in the $2M–$30M range — office, retail or industrial — and you're a private investor, syndicate or SMSF landlord who wants it managed with intent, a conversation costs nothing.
+          Either way the conversation is with the principal, and it costs nothing.
         </p>
 
         <div class="contact-list">
@@ -86,8 +110,9 @@
           <div class="contact-row"><div class="contact-row__label">Email</div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
           <div class="contact-row"><div class="contact-row__label">LinkedIn</div><a href="https://www.linkedin.com/in/nickotoole/" target="_blank" rel="noopener">linkedin.com/in/nickotoole</a></div>
           <div class="contact-row"><div class="contact-row__label">Web</div><div class="contact-row__value">represent.au</div></div>
-          <div class="contact-row"><div class="contact-row__label">Location</div><div class="contact-row__value">South East Queensland</div></div>
-          <div class="contact-row"><div class="contact-row__label">Licence</div><div class="contact-row__value">REIQ 494809</div></div>
+          <div class="contact-row"><div class="contact-row__label">Office</div><div class="contact-row__value">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div></div>
+          <div class="contact-row"><div class="contact-row__label">Location</div><div class="contact-row__value">Brisbane, South East Queensland and regional Queensland</div></div>
+          <div class="contact-row"><div class="contact-row__label">Licence</div><div class="contact-row__value">Real Estate Agent Licence 4949809</div></div>
           <div class="contact-row"><div class="contact-row__label">ABN</div><div class="contact-row__value">59 696 915 170</div></div>
         </div>
       </div>
@@ -96,38 +121,104 @@
         <div class="form-card" id="form-card">
           <form id="appraisal-form" method="POST" action="https://api.web3forms.com/submit">
             <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
-            <input type="hidden" name="subject" value="New appraisal request — Represent Commercial" />
+            <input type="hidden" name="redirect" value="https://represent.au/enquiry-received" />
+            <input type="hidden" name="form_stream" value="enquiries" />
+            <input type="hidden" name="subject" value="New website enquiry — Represent Commercial" />
             <input type="hidden" name="from_name" value="Represent Commercial Website" />
             <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
-            <div class="form-card__eyebrow">Appraisal Request</div>
+            <div class="form-card__eyebrow">Enquiry</div>
+            <div class="field">
+              <fieldset class="enq-fieldset">
+                <legend>What can we help with?</legend>
+                <div class="enq-toggle">
+                  <label class="enq-opt"><input type="radio" name="enquiry_type" value="acquisition" checked /><span>I'm buying</span></label>
+                  <label class="enq-opt"><input type="radio" name="enquiry_type" value="management" /><span>I own a property</span></label>
+                  <label class="enq-opt"><input type="radio" name="enquiry_type" value="leasing" /><span>I have vacant space</span></label>
+                  <label class="enq-opt"><input type="radio" name="enquiry_type" value="tenant" /><span>I'm leasing premises</span></label>
+                </div>
+              </fieldset>
+            </div>
             <div class="form-grid">
               <div class="field">
                 <label for="name">Full Name</label>
-                <input id="name" name="name" type="text" placeholder="Nick Smith" required />
+                <input id="name" name="name" type="text" placeholder="Nick Smith" autocomplete="name" required />
               </div>
               <div class="field">
-                <label for="phone">Mobile</label>
-                <input id="phone" name="phone" type="tel" placeholder="+61 4XX XXX XXX" />
+                <label for="phone">Mobile <span style="text-transform:none;letter-spacing:0;font-weight:400;opacity:.6">(optional)</span></label>
+                <input id="phone" name="phone" type="tel" placeholder="+61 4XX XXX XXX" autocomplete="tel" />
               </div>
             </div>
             <div class="field">
               <label for="email">Email Address</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
             </div>
-            <div class="field">
-              <label for="address">Property Address</label>
-              <input id="address" name="address" type="text" placeholder="100 Queen St, Brendale" />
+            <div data-enq="management">
+              <div class="field">
+                <label for="address">Property Address</label>
+                <input id="address" name="address" type="text" placeholder="100 Queen St, Brendale" autocomplete="off" />
+              </div>
+              <div class="field">
+                <label for="value">Approx. Asset Value</label>
+                <input id="value" name="value" type="text" inputmode="numeric" autocomplete="off" placeholder="$4,200,000" />
+              </div>
+              <div class="field">
+                <label for="management">Current Management</label>
+                <input id="management" name="management" type="text" placeholder="Self-managed, or agency name" />
+              </div>
             </div>
-            <div class="field">
-              <label for="value">Approx. Asset Value</label>
-              <input id="value" name="value" type="text" placeholder="$4,200,000" />
+            <div data-enq="leasing">
+              <div class="field">
+                <label for="lease_address">Property Address</label>
+                <input id="lease_address" name="lease_address" type="text" placeholder="100 Queen St, Brendale" autocomplete="off" />
+              </div>
+              <div class="field">
+                <label for="lease_space">Vacant Space</label>
+                <input id="lease_space" name="lease_space" type="text" placeholder="Warehouse, approx. 1,200m² plus office" />
+              </div>
+              <div class="field">
+                <label for="lease_available">Available From</label>
+                <input id="lease_available" name="lease_available" type="text" placeholder="Vacant now, or lease expires March 2027" />
+              </div>
+            </div>
+            <div data-enq="acquisition">
+              <div class="field">
+                <label for="brief">What You're Looking For</label>
+                <input id="brief" name="brief" type="text" placeholder="Industrial, 800–1,500m², leased investment" />
+              </div>
+              <div class="field">
+                <label for="budget">Budget</label>
+                <input id="budget" name="budget" type="text" placeholder="$2,000,000 — $4,000,000" />
+              </div>
+              <div class="field">
+                <label for="precincts">Target Precincts</label>
+                <input id="precincts" name="precincts" type="text" placeholder="Acacia Ridge, Brendale — or open" />
+              </div>
+              <div class="field">
+                <label for="timing">Timing</label>
+                <input id="timing" name="timing" type="text" placeholder="Ready now, or next 6 months" />
+              </div>
+            </div>
+            <div data-enq="tenant">
+              <div class="field">
+                <label for="tenant_requirement">Space You Need</label>
+                <input id="tenant_requirement" name="tenant_requirement" type="text" placeholder="Office, approx. 300m², 8–10 staff" />
+              </div>
+              <div class="field">
+                <label for="tenant_location">Preferred Location</label>
+                <input id="tenant_location" name="tenant_location" type="text" placeholder="Brisbane CBD, Fortitude Valley — or open" />
+              </div>
+              <div class="field">
+                <label for="tenant_expiry">Current Lease Expiry</label>
+                <input id="tenant_expiry" name="tenant_expiry" type="text" placeholder="June 2027, or not currently leasing" />
+              </div>
             </div>
             <div class="field">
               <label for="notes">Additional Context</label>
-              <textarea id="notes" name="notes" rows="3" placeholder="Current management arrangement, specific concerns, timeline..."></textarea>
+              <textarea id="notes" name="notes" rows="3" placeholder="Anything else that helps — structure, finance position, specific concerns, timeline..."></textarea>
             </div>
             <button type="submit" class="form-submit">Submit request</button>
-            <div class="form-note">Nick responds personally within one business day.</div>
+            <div class="form-status" id="form-status" role="alert"></div>
+            <div class="form-note">No obligation. Nick responds personally within one business day.</div>
           </form>
           <div class="form-success" id="form-success" style="display:none;">
             <div class="form-success__icon">
@@ -151,28 +242,39 @@
         <div class="logo__primary">REPRESENT</div>
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
-        <div class="tagline">Managed with intent.</div>
-        <p>Specialist commercial asset and property management for South East Queensland owners — office, retail and industrial in the $2M–$30M range. Principal-led by design.</p>
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
       </div>
       <div class="footer-col">
-        <h3>Navigate</h3>
+        <h3>Services</h3>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="tools.html">Tools</a></li>
-          <li><a href="referrals.html">Referrals</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
-      <div class="footer-col footer-col--hidden">
-        <h3>Coverage</h3>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
         <ul>
-          <li><a href="Acacia Ridge.html">Acacia Ridge</a></li>
-          <li><a href="Yatala.html">Yatala</a></li>
-          <li><a href="Hemmant.html">Hemmant</a></li>
-          <li><a href="Brendale.html">Brendale</a></li>
-          <li>South East Queensland · $2M–$30M</li>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
         </ul>
       </div>
       <div class="footer-col footer-contact">
@@ -181,7 +283,7 @@
         <div>Principal &amp; Licensee</div>
         <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
         <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
-        <div class="stack">South East Queensland</div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
         <div class="stack">
           <a href="https://www.linkedin.com/company/representcommercial/" target="_blank" rel="noopener" class="footer-linkedin"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
         </div>
@@ -190,8 +292,9 @@
     <div class="footer-meta">
       <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
       <div class="footer-meta__legals">
-        <div><span>REIQ Licence</span>494809</div>
+        <div><span>Real Estate Agent Licence</span>4949809</div>
         <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
       </div>
     </div>
   </div>
@@ -200,46 +303,123 @@
 <script>
   // Reveal-on-scroll
   (function () {
-    var els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('is-visible'); }); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    els.forEach(function (el) { io.observe(el); });
+    var root = document.documentElement;
+    function showAll(els) {
+      root.classList.remove('js-reveal');
+      Array.prototype.forEach.call(els || document.querySelectorAll('.reveal'), function (el) { el.classList.add('is-visible'); });
+    }
+    try {
+      var els = document.querySelectorAll('.reveal');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!els.length || reduce || !('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.15 });
+      var registered = 0;
+      Array.prototype.forEach.call(els, function (el) { io.observe(el); registered++; });
+      if (registered !== els.length) { showAll(els); return; }
+      root.classList.add('js-reveal');
+      setTimeout(function () {
+        var stuck = document.querySelectorAll('.reveal:not(.is-visible)');
+        if (stuck.length === els.length) showAll(els);
+      }, 4000);
+    } catch (err) {
+      showAll();
+      if (window.console) console.error('Reveal init failed; content shown unanimated.', err);
+    }
+  })();
+
+  // Enquiry-type routing: four service codes, each with its own field group.
+  // Without JS every group stays visible and readable.
+  (function () {
+    var form = document.getElementById('appraisal-form');
+    if (!form) return;
+    var allowed = ['management', 'leasing', 'acquisition', 'tenant'];
+    var radios = Array.prototype.slice.call(form.querySelectorAll('input[name="enquiry_type"]'));
+    var groups = Array.prototype.slice.call(form.querySelectorAll('[data-enq]'));
+    if (!radios.length || !groups.length) return;
+    var requested = new URLSearchParams(window.location.search).get('service');
+
+    function sync() {
+      var selected = radios.filter(function (r) { return r.checked; })[0];
+      if (!selected || allowed.indexOf(selected.value) === -1) return;
+      groups.forEach(function (group) {
+        var active = group.getAttribute('data-enq') === selected.value;
+        group.hidden = !active;
+        group.querySelectorAll('input, select, textarea').forEach(function (field) { field.disabled = !active; });
+      });
+    }
+
+    if (allowed.indexOf(requested) !== -1) {
+      radios.forEach(function (r) { if (r.value === requested) r.checked = true; });
+    }
+    radios.forEach(function (r) { r.addEventListener('change', sync); });
+    sync();
   })();
 
   // Form: progressive enhancement. If JS is on, intercept submit and show inline success.
-  // Without JS, the mailto: fallback in the form action still works.
+  // A response counts as success only when Web3Forms returns success === true.
   (function () {
     var form = document.getElementById('appraisal-form');
     var success = document.getElementById('form-success');
+    var status = document.getElementById('form-status');
     if (!form || !success) return;
     var submitBtn = form.querySelector('.form-submit');
+    var LABELS = { management: 'Property management (I own a property)', leasing: 'Leasing (I have vacant space)', acquisition: "Buyer's agency (I'm buying)", tenant: "Tenant representation (I'm leasing premises)" };
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+
+    function reset(message) {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit request'; }
+      if (status) status.textContent = message;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
+      if (status) status.textContent = '';
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+      var payload = new FormData(form);
+      var code = payload.get('enquiry_type');
+      if (LABELS[code]) payload.set('enquiry_service', LABELS[code]);
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+      // Reply-To: the submitter. Web3Forms defaults to the `email` field; set it
+      // explicitly so a future field rename cannot silently break replies.
+      payload.set('replyto', String(payload.get('email') || ''));
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      }).then(function (r) { return r.json(); }).then(function (data) {
-        if (data.success) {
+        body: payload,
+        signal: controller ? controller.signal : undefined
+      }).then(function (r) {
+        var type = r.headers.get('content-type') || '';
+        if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+        return r.json();
+      }).then(function (data) {
+        if (timer) clearTimeout(timer);
+        if (data && data.success === true) {
           form.style.display = 'none';
           success.style.display = 'block';
+          success.setAttribute('role', 'status');
         } else {
-          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit request'; }
-          alert('Something went wrong sending your request. Please call Nick on +61 401 825 999 or email nick@represent.au.');
+          reset(FAIL);
         }
-      }).catch(function () {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit request'; }
-        alert('Something went wrong sending your request. Please call Nick on +61 401 825 999 or email nick@represent.au.');
+      }).catch(function (err) {
+        if (timer) clearTimeout(timer);
+        reset(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
       });
     });
   })();
 </script>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
-  <script src="nav.js" defer></script>
+  <script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for amounts typed into free-text fields */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){return s.replace(/\d[\d,]*/g,function(m){var d=m.replace(/,/g,'');return d.length>3?d.replace(/\B(?=(\d{3})+(?!\d))/g,','):m})}
+["value","budget"].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
 </body>
 </html>

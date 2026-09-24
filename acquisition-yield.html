@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acquisition Cost & Yield Sensitivity Calculator — Represent Commercial</title>
+<meta name="description" content="Build the true cost of a commercial acquisition, including duty, due diligence and finance, and test yield on total cost, cash on cash return and price sensitivity." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/acquisition-yield" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      WHAT DOES THE DEAL COST BEFORE IT EARNS <span class="italic" style="color: var(--gold);">anything?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      Duty, due diligence and finance costs sit between the headline yield and the return on the money committed. Build the real cost, then test the price against the yield you need.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Your numbers</p>
+          <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+        </div>
+
+        <details class="grp" open>
+          <summary><span>The acquisition</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="price">Purchase price</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="price" type="text" inputmode="numeric" autocomplete="off" value="3,500,000" /></div></div>
+            <div class="field"><label for="net">Net income</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="net" type="text" inputmode="numeric" autocomplete="off" value="218,750" /><span class="affix affix--suf">p.a.</span></div><p class="hint">Passing net income after all outgoings.</p></div>
+            </div>
+            <div class="field-row"><div class="field"><label for="area">Lettable area</label><div class="input-shell"><input id="area" type="text" inputmode="numeric" autocomplete="off" value="1,850" /><span class="affix affix--suf">m&sup2;</span></div><p class="hint">Optional — drives the capital rate.</p></div><div></div></div>
+            <div class="grp-total"><span>Net yield on price</span><b id="g-yield">0%</b></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Transaction costs</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="duty">Transfer duty</label><div class="input-shell" id="duty-shell"><span class="affix affix--pre">$</span><input id="duty" type="text" inputmode="numeric" autocomplete="off" value="160,975" /></div><p class="hint" id="duty-hint">Calculated at the standard Queensland transfer duty rates. <a href="#" id="duty-override">Enter a different figure</a></p></div>
+            <div class="field"><label for="legal">Legal and conveyancing</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="legal" type="text" inputmode="numeric" autocomplete="off" value="8,500" /></div></div>
+            </div>
+            <div class="field-row">
+            <div class="field"><label for="dd">Due diligence</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="dd" type="text" inputmode="numeric" autocomplete="off" value="12,000" /></div><p class="hint">Building, pest, environmental, survey and searches.</p></div>
+            <div class="field"><label for="adv">Advisory fees</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="adv" type="text" inputmode="numeric" autocomplete="off" value="0" /></div><p class="hint">Buyer&rsquo;s agent, valuation and other professional fees.</p></div>
+            </div>
+            <div class="field-row">
+            <div class="field"><label for="finfee">Finance establishment</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="finfee" type="text" inputmode="numeric" autocomplete="off" value="7,000" /></div><p class="hint">Application, valuation and lender fees.</p></div>
+            <div class="field"><label for="capex">Immediate capital works</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="capex" type="text" inputmode="numeric" autocomplete="off" value="0" /></div><p class="hint">Works required in year one to hold the asset.</p></div>
+            </div>
+            <div class="grp-total"><span>Total acquisition costs</span><b id="g-costs">$0</b></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Debt</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="lvr">Loan to value</label><div class="input-shell"><input id="lvr" type="text" inputmode="decimal" autocomplete="off" value="60" /><span class="affix affix--suf">% of price</span></div></div>
+            <div class="field"><label for="rate">Interest rate</label><div class="input-shell"><input id="rate" type="text" inputmode="decimal" autocomplete="off" value="6.4" /><span class="affix affix--suf">% p.a.</span></div><p class="hint">Interest only. Principal repayments are not modelled.</p></div>
+            </div>
+            <div class="grp-total"><span>Interest cost</span><b id="g-int">$0</b></div>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="calc-col">
+        <div class="card result-card">
+          <p class="result-label" id="r-head">Yield on total cost</p>
+          <div class="adv-block" style="border-top:0;margin-top:0;padding-top:0;">
+            <p class="adv-label">Net yield on total cost</p>
+            <p class="adv-value"><em id="r-main">0%</em></p>
+            <p class="adv-note" id="r-interp"></p>
+            <p class="adv-cross" id="r-cross"></p>
+          </div>
+          <div class="pos-row" style="border-top:1px solid #E6E1D6;margin-top:26px;padding-top:20px;">
+            <div class="pos-k">Total cost to acquire<small>Price plus duty, professional costs and immediate works</small></div>
+            <div class="pos-v" id="r-total">$0</div>
+          </div>
+          <div class="pos-row">
+            <div class="pos-k">Equity required<small>Total cost less the loan drawn</small></div>
+            <div class="pos-v" id="r-equity">$0</div>
+          </div>
+          <div class="result-stats">
+            <div class="stat"><div class="stat__h">On price</div><div class="stat__v" id="s-ypr">0%</div><div class="stat__k">Net yield</div></div>
+            <div class="stat"><div class="stat__h">On total cost</div><div class="stat__v" id="s-ytc">0%</div><div class="stat__k">Net yield</div></div>
+            <div class="stat"><div class="stat__h">Cash on cash</div><div class="stat__v" id="s-coc">0%</div><div class="stat__k">Return on equity</div></div>
+            <div class="stat"><div class="stat__h">Capital rate</div><div class="stat__v" id="s-rate">$0</div><div class="stat__k">Per m&sup2; on total cost</div></div>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="card">
+            <p class="card-label">Cost to acquire</p>
+            <div class="kv-row"><span>Purchase price</span><b id="k-price">$0</b></div>
+            <div class="kv-row"><span>Transfer duty</span><b id="k-duty">$0</b></div>
+            <div class="kv-row"><span>Legal and conveyancing</span><b id="k-legal">$0</b></div>
+            <div class="kv-row"><span>Due diligence</span><b id="k-dd">$0</b></div>
+            <div class="kv-row"><span>Advisory fees</span><b id="k-adv">$0</b></div>
+            <div class="kv-row"><span>Finance establishment</span><b id="k-finfee">$0</b></div>
+            <div class="kv-row"><span>Capital works</span><b id="k-capex">$0</b></div>
+            <div class="kv-row kv-row--total"><span>Total cost</span><b id="k-total">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Costs as % of price</span><b id="k-costpc">0%</b></div>
+          </div>
+          <div class="card">
+            <p class="card-label">Cash position, year one</p>
+            <div class="kv-row"><span>Net income</span><b id="k-net">$0</b></div>
+            <div class="kv-row kv-neg"><span>Interest</span><b id="k-int">($0)</b></div>
+            <div class="kv-row kv-row--total"><span>Cash flow after interest</span><b id="k-cash">$0</b></div>
+            <div class="kv-row"><span>Loan drawn</span><b id="k-loan">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Interest cover</span><b id="k-icr">0.0x</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">Yield sensitivity on price</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead><tr><th>Purchase price</th><th>Change</th><th>Total cost</th><th>Yield on price</th><th>Yield on total cost</th><th>Cash on cash</th></tr></thead>
+          <tbody id="p-rows"></tbody>
+        </table>
+      </div>
+      <details class="fold">
+        <summary><span>Price needed to hit a target yield</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="table-scroll"><table class="yr">
+          <thead><tr><th>Target yield on total cost</th><th>Price payable</th><th>Against your price</th><th>Total cost</th><th>Per m&sup2;</th></tr></thead>
+          <tbody id="t-rows"></tbody></table></div>
+      </details>
+    </div>
+
+    <details class="fold fold--method">
+      <summary><span>How this is calculated</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="method-body">
+        <h4>Total cost to acquire</h4>
+        <p>The purchase price plus transfer duty, legal and conveyancing, due diligence, advisory fees, finance establishment costs and any capital works required immediately. It is the money committed to own the asset, which is the only sensible denominator for a return.</p>
+        <h4>Yield on price and yield on total cost</h4>
+        <p>Net income divided by the price, and net income divided by the total cost. The gap between the two is the acquisition costs, and on a Queensland commercial purchase it routinely removes 30 to 40 basis points from the headline yield.</p>
+        <h4>Cash on cash</h4>
+        <p>Net income less interest, divided by the equity committed. Interest is charged on an interest-only basis at the rate entered; principal repayments, loan amortisation and any interest capitalised during works are not modelled.</p>
+        <h4>Interest cover</h4>
+        <p>Net income divided by the annual interest cost. Lenders test this covenant alongside loan to value, and a thin cover ratio constrains gearing well before the loan to value limit binds.</p>
+        <h4>Transfer duty</h4>
+        <p>Calculated on the purchase price at the standard Queensland transfer duty rates: nil to $5,000; $1.50 per $100 above $5,000 to $75,000; $1,050 plus $3.50 per $100 above $75,000 to $540,000; $17,325 plus $4.50 per $100 above $540,000 to $1,000,000; and $38,025 plus $5.75 per $100 above $1,000,000. The calculation assumes the purchase price is the dutiable value and that no concession, exemption or surcharge applies. Additional foreign acquirer duty, landholder duty and any concession change the result, so duty must be confirmed with your solicitor. You can override the figure and enter an assessed amount instead.</p>
+        <h4>What is excluded</h4>
+        <p>GST and the margin scheme, land tax on an aggregated holding, income tax, depreciation, rental growth, incentive amortisation, vacancy allowances and disposal costs are not modelled.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">The quoted yield is never the yield you get.</div>
+        <p class="lead-p">Acquisition costs, income quality and what the lease will actually deliver are what separate a good buy from an expensive one. Represent acts for buyers only, never for the vendor.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="acquisition-yield-name">Name</label><input id="acquisition-yield-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="acquisition-yield-email">Email</label><input id="acquisition-yield-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="acquisition-yield-phone">Phone</label><input id="acquisition-yield-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss an Acquisition</button>
+            <a class="lead-link" href="/buyers-agency">Explore Buyer&rsquo;s Agency &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about the acquisition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal or investment advice. Transfer duty is calculated using standard Queensland transfer duty rates by default and may be manually overridden. Actual duty can depend on the transaction, dutiable value, acquiring entity, aggregation, concessions and other circumstances, and should be confirmed with your solicitor or the Queensland Revenue Office. GST and the margin scheme, land tax on an aggregated holding, income tax, depreciation, rental growth, vacancy allowances, principal repayments and disposal costs are excluded. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt1 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(x) { var v = parseFloat(String(x.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function nid(id) { return num(document.getElementById(id)); }
+  function money(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function money2(n) { return (n < 0 ? '−' : '') + '$' + fmt2.format(Math.abs(n)); }
+  function paren(n) { return '($' + fmt0.format(Math.abs(Math.round(n))) + ')'; }
+  function pc1(n) { return fmt1.format(n) + '%'; }
+  function moneyShort(n) {
+    var a = Math.abs(n), s = n < 0 ? '−' : '';
+    if (a >= 1e6) return s + '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return s + '$' + Math.round(a / 1e3) + 'k';
+    return s + '$' + fmt0.format(Math.round(a));
+  }
+  function txt(id, v) { document.getElementById(id).textContent = v; }
+  function bindMoney(ids, cb) {
+    ids.forEach(function (id) {
+      var input = document.getElementById(id);
+      input.addEventListener('input', function () {
+        var atEnd = input.selectionStart === input.value.length;
+        var d = input.value.replace(/[^0-9]/g, '');
+        input.value = d === '' ? '' : fmt0.format(parseInt(d, 10));
+        if (atEnd) { try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {} }
+        cb();
+      });
+    });
+  }
+  function bindPlain(ids, cb) { ids.forEach(function (id) { document.getElementById(id).addEventListener('input', cb); }); }
+  function resetAll(defaults, cb) {
+    document.getElementById('reset-btn').addEventListener('click', function () {
+      Object.keys(defaults).forEach(function (id) { document.getElementById(id).value = defaults[id]; });
+      cb();
+    });
+  }
+
+  var DEFAULTS = { price: '3,500,000', net: '218,750', area: '1,850', duty: '160,975', legal: '8,500', dd: '12,000', adv: '0', finfee: '7,000', capex: '0', lvr: '60', rate: '6.4' };
+  var store = {}, dutyAuto = true;
+
+  // Standard Queensland transfer duty on the dutiable value.
+  function qldDuty(v) {
+    if (v <= 5000) return 0;
+    if (v <= 75000) return Math.ceil((v - 5000) / 100) * 1.5;
+    if (v <= 540000) return 1050 + Math.ceil((v - 75000) / 100) * 3.5;
+    if (v <= 1000000) return 17325 + Math.ceil((v - 540000) / 100) * 4.5;
+    return 38025 + Math.ceil((v - 1000000) / 100) * 5.75;
+  }
+
+  function model(priceOverride) {
+    var price = priceOverride !== undefined ? priceOverride : nid('price');
+    var net = nid('net'), area = nid('area');
+    var basePrice = nid('price');
+    var duty;
+    if (dutyAuto) {
+      duty = qldDuty(price);
+    } else {
+      var dutyEntered = nid('duty');
+      duty = basePrice > 0 ? dutyEntered * (price / basePrice) : dutyEntered;
+    }
+    var prof = nid('legal') + nid('dd') + nid('adv');
+    var fin = nid('finfee') + nid('capex');
+    var total = price + duty + prof + fin;
+    var lvr = nid('lvr') / 100, rate = nid('rate') / 100;
+    var loan = price * lvr;
+    var equity = total - loan;
+    var interest = loan * rate;
+    var cash = net - interest;
+    return { price: price, net: net, area: area, duty: duty, prof: prof, fin: fin, total: total,
+      lvr: lvr, rate: rate, loan: loan, equity: equity, interest: interest, cash: cash,
+      yPrice: price > 0 ? net / price : 0, yTotal: total > 0 ? net / total : 0,
+      coc: equity > 0 ? cash / equity : 0, icr: interest > 0 ? net / interest : 0,
+      costPc: price > 0 ? (total - price) / price : 0 };
+  }
+
+  function calc() {
+    var m = model();
+    if (dutyAuto) document.getElementById('duty').value = fmt0.format(Math.round(m.duty));
+    txt('g-yield', pc1(m.yPrice * 100));
+    txt('g-costs', money(m.total - m.price));
+    txt('g-int', money(m.interest));
+    txt('r-main', fmt2.format(m.yTotal * 100) + '%');
+    txt('r-interp', 'A headline net yield of ' + fmt2.format(m.yPrice * 100) + '% on ' + money(m.price) + ' becomes ' +
+      fmt2.format(m.yTotal * 100) + '% once ' + money(m.total - m.price) + ' of acquisition costs are included, a difference of ' +
+      Math.round((m.yPrice - m.yTotal) * 10000) + ' basis points. Equity of ' + money(m.equity) + ' returns ' +
+      fmt2.format(m.coc * 100) + '% after interest.');
+    txt('r-cross', 'Interest cover ' + fmt1.format(m.icr) + 'x \u00b7 Acquisition costs ' + pc1(m.costPc * 100) + ' of price');
+    txt('r-total', moneyShort(m.total));
+    txt('r-equity', moneyShort(m.equity));
+    txt('s-ypr', fmt2.format(m.yPrice * 100) + '%');
+    txt('s-ytc', fmt2.format(m.yTotal * 100) + '%');
+    txt('s-coc', fmt2.format(m.coc * 100) + '%');
+    txt('s-rate', m.area > 0 ? money(m.total / m.area) : '\u2014');
+    txt('k-price', money(m.price));
+    txt('k-duty', money(m.duty));
+    txt('k-legal', money(nid('legal')));
+    txt('k-dd', money(nid('dd')));
+    txt('k-adv', money(nid('adv')));
+    txt('k-finfee', money(nid('finfee')));
+    txt('k-capex', money(nid('capex')));
+    txt('k-total', money(m.total));
+    txt('k-costpc', pc1(m.costPc * 100));
+    txt('k-net', money(m.net));
+    txt('k-int', paren(m.interest));
+    txt('k-cash', money(m.cash));
+    txt('k-loan', money(m.loan));
+    txt('k-icr', fmt1.format(m.icr) + 'x');
+
+    document.getElementById('p-rows').innerHTML = [-10, -5, -2.5, 0, 2.5, 5, 10].map(function (s) {
+      var mm = model(m.price * (1 + s / 100));
+      return '<tr' + (s === 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + money(mm.price) + '</td>' +
+        '<td>' + (s === 0 ? '\u2014' : (s > 0 ? '+' : '\u2212') + fmt1.format(Math.abs(s)) + '%') + '</td>' +
+        '<td>' + money(mm.total) + '</td>' +
+        '<td>' + fmt2.format(mm.yPrice * 100) + '%</td>' +
+        '<td>' + fmt2.format(mm.yTotal * 100) + '%</td>' +
+        '<td>' + fmt2.format(mm.coc * 100) + '%</td></tr>';
+    }).join('');
+
+    var targets = [5.5, 6, 6.5, 7, 7.5];
+    document.getElementById('t-rows').innerHTML = targets.map(function (t) {
+      var lo = 0, hi = Math.max(m.price * 3, 1e6);
+      for (var i = 0; i < 60; i++) {
+        var mid = (lo + hi) / 2;
+        if (model(mid).yTotal > t / 100) lo = mid; else hi = mid;
+      }
+      var pr = (lo + hi) / 2, mm = model(pr), d = pr - m.price;
+      return '<tr' + (Math.abs(t - m.yTotal * 100) < 0.26 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + fmt1.format(t) + '%</td>' +
+        '<td>' + money(pr) + '</td>' +
+        '<td>' + (d >= 0 ? '+' : '\u2212') + '$' + fmt0.format(Math.abs(Math.round(d))) + '</td>' +
+        '<td>' + money(mm.total) + '</td>' +
+        '<td>' + (m.area > 0 ? money(mm.total / m.area) : '\u2014') + '</td></tr>';
+    }).join('');
+    store = m;
+  }
+
+  var dutyInput = document.getElementById('duty');
+  function applyDutyMode() {
+    dutyInput.readOnly = dutyAuto;
+    document.getElementById('duty-shell').classList.toggle('input-shell--calc', dutyAuto);
+    document.getElementById('duty-hint').innerHTML = dutyAuto
+      ? 'Calculated at the standard Queensland transfer duty rates. <a href="#" id="duty-override">Enter a different figure</a>'
+      : 'Entered manually. <a href="#" id="duty-override">Use the standard Queensland rates</a>';
+    document.getElementById('duty-override').addEventListener('click', function (e) {
+      e.preventDefault();
+      dutyAuto = !dutyAuto;
+      applyDutyMode();
+      if (!dutyAuto) { dutyInput.focus(); dutyInput.select(); }
+      calc();
+    });
+  }
+
+  bindMoney(['price', 'net', 'area', 'duty', 'legal', 'dd', 'adv', 'finfee', 'capex'], calc);
+  bindPlain(['lvr', 'rate'], calc);
+  resetAll(DEFAULTS, function () { dutyAuto = true; applyDutyMode(); calc(); });
+  applyDutyMode();
+  calc();
+
+  function summaryFields() {
+    var m = store;
+    return {
+      purchase_price: money(m.price),
+      net_income: money(m.net) + ' p.a.',
+      lettable_area: m.area > 0 ? fmt0.format(m.area) + ' m2' : 'Not provided',
+      transfer_duty: money(m.duty) + (dutyAuto ? ' (standard QLD rates)' : ' (entered manually)'),
+      professional_costs: money(m.prof),
+      finance_and_works: money(m.fin),
+      total_acquisition_cost: money(m.total) + ' (' + pc1(m.costPc * 100) + ' of price in costs)',
+      loan_to_value: nid('lvr') + '% (' + money(m.loan) + ')',
+      interest_rate: nid('rate') + '% p.a. interest only',
+      equity_required: money(m.equity),
+      yield_on_price: fmt2.format(m.yPrice * 100) + '%',
+      yield_on_total_cost: fmt2.format(m.yTotal * 100) + '%',
+      cash_on_cash: fmt2.format(m.coc * 100) + '%',
+      interest_cover: fmt1.format(m.icr) + 'x'
+    };
+  }
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — Acquisition Cost & Yield Sensitivity Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'Acquisition Cost & Yield Sensitivity Calculator'
+    };
+    var extra = summaryFields();
+    for (var k in extra) payload[k] = extra[k];
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss an Acquisition';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for decimal inputs (integer part only; decimals kept) */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){var c=s.replace(/[^0-9.]/g,''),k=c.indexOf('.');if(k>=0)c=c.slice(0,k+1)+c.slice(k+1).replace(/\./g,'');var parts=c.split('.'),n=parts[0].replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return parts.length>1?n+'.'+parts[1]:n}
+document.querySelectorAll('input[inputmode="decimal"]:not([readonly])').forEach(function(el){el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
+</body>
+</html>

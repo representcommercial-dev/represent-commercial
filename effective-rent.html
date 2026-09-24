@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lease Incentive & Effective Rent Calculator — Represent Commercial</title>
+<meta name="description" content="Convert a face rent and incentive package into net or gross effective rent, with year-by-year cash flow and a discounted view. Represent Commercial, Brisbane." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/effective-rent" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      WHAT IS THE RENT AFTER THE <span class="italic" style="color: var(--gold);">incentive?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      Face rents move less than incentives do. Rent free, abatements and fitout contributions all reprice a deal without touching the headline. This converts the package into one comparable number.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Your numbers</p>
+          <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+        </div>
+
+        <details class="grp" open>
+          <summary><span>The deal</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="area">Lettable area</label><div class="input-shell"><input id="area" type="text" inputmode="numeric" autocomplete="off" value="1,200" /><span class="affix affix--suf">m&sup2;</span></div></div>
+            <div class="field"><label for="term">Lease term</label><div class="input-shell"><input id="term" type="text" inputmode="decimal" autocomplete="off" value="5" /><span class="affix affix--suf">yrs</span></div></div>
+            </div>
+            <div class="field"><label>Rent quoted as</label><div class="seg seg--full" id="rent-seg"><button type="button" data-rent="net" class="is-on">Net + outgoings</button><button type="button" data-rent="gross">Gross rent</button></div><p class="hint" id="rent-hint">Enter the net rent and outgoings separately. The gross rent is the sum of the two.</p></div>
+            <div class="field-row">
+            <div class="field"><label for="face" id="lab-face">Face net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="face" type="text" inputmode="decimal" autocomplete="off" value="185" /><span class="affix affix--suf">/m&sup2; p.a.</span></div><p class="hint">The rent stated in the lease.</p></div>
+            <div class="field"><label for="rev">Annual review</label><div class="input-shell"><input id="rev" type="text" inputmode="decimal" autocomplete="off" value="3.5" /><span class="affix affix--suf">% p.a.</span></div></div>
+            </div>
+            <div id="f-og" class="field-row"><div class="field"><label for="og">Outgoings</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="og" type="text" inputmode="decimal" autocomplete="off" value="48" /><span class="affix affix--suf">/m&sup2; p.a.</span></div><p class="hint">Recoverable outgoings, for the gross comparison only.</p></div><div></div></div>
+            <div class="grp-total"><span>Face rent, year one</span><b id="g-face">$0</b></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Incentives offered</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="free">Rent free</label><div class="input-shell"><input id="free" type="text" inputmode="decimal" autocomplete="off" value="8" /><span class="affix affix--suf">mths</span></div><p class="hint">Months at the start of the term with no net rent payable.</p></div>
+            <div class="field"><label for="abate">Fixed annual abatement</label><div class="input-shell"><input id="abate" type="text" inputmode="decimal" autocomplete="off" value="0" /><span class="affix affix--suf">% of yr 1 rent</span></div><p class="hint">A fixed reduction set on the year one rent and repeated each year. It does not grow with the reviews.</p></div>
+            </div>
+            <div class="field-row">
+            <div class="field"><label for="contrib">Fitout contribution</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="contrib" type="text" inputmode="numeric" autocomplete="off" value="180,000" /></div><p class="hint">A capital contribution paid to the tenant.</p></div>
+            <div class="field"><label for="other">Other incentive</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="other" type="text" inputmode="numeric" autocomplete="off" value="0" /></div><p class="hint">Cash, plant, relocation assistance or similar.</p></div>
+            </div>
+            <div class="field-row"><div class="field"><label for="disc">Discount rate</label><div class="input-shell"><input id="disc" type="text" inputmode="decimal" autocomplete="off" value="7" /><span class="affix affix--suf">% p.a.</span></div><p class="hint">Used for the present-value view of the incentive and the rents. Set to zero for a cash comparison.</p></div><div></div></div>
+            <p class="hint" style="margin-top:2px;">Rent free, abatement, a fitout contribution and any other incentive are treated as separate, cumulative incentives. Only enter more than one where they genuinely apply together.</p>
+            <div class="grp-total"><span>Total incentive value</span><b id="g-inc">$0</b></div>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="calc-col">
+        <div class="card result-card">
+          <p class="result-label" id="r-head">Effective net rent</p>
+          <div class="adv-block" style="border-top:0;margin-top:0;padding-top:0;">
+            <p class="adv-label" id="lab-main">Effective net rent</p>
+            <p class="adv-value"><em id="r-main">$0</em><span style="font-size:0.24em;color:#7C776C;letter-spacing:0.12em;margin-top:6px;">PER M&sup2; PER ANNUM</span></p>
+            <p class="adv-note" id="r-interp"></p>
+            <p class="adv-cross" id="r-cross"></p>
+          </div>
+          <div class="pos-row" style="border-top:1px solid #E6E1D6;margin-top:26px;padding-top:20px;">
+            <div class="pos-k">Face rent over the term<small>Before any incentive</small></div>
+            <div class="pos-v" id="r-face">$0</div>
+          </div>
+          <div class="pos-row">
+            <div class="pos-k"><span id="lab-term">Net effective rent over the term</span><small>After the incentive is applied</small></div>
+            <div class="pos-v" id="r-eff">$0</div>
+          </div>
+          <div class="result-stats">
+            <div class="stat"><div class="stat__h">Incentive</div><div class="stat__v" id="s-incpc">0%</div><div class="stat__k">Of face rent over term</div></div>
+            <div class="stat"><div class="stat__h">Incentive</div><div class="stat__v" id="s-incval">$0</div><div class="stat__k">Total value</div></div>
+            <div class="stat"><div class="stat__h">Effective</div><div class="stat__v" id="s-effpa">$0</div><div class="stat__k" id="lab-effpa">Net rent p.a.</div></div>
+            <div class="stat"><div class="stat__h">Discounted</div><div class="stat__v" id="s-pv">$0</div><div class="stat__k">Effective per m&sup2; p.a.</div></div>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="card">
+            <p class="card-label">Incentive build-up</p>
+            <div class="kv-row"><span>Rent free</span><b id="k-free">$0</b></div>
+            <div class="kv-row"><span id="lab-abate">Abatement</span><b id="k-abate">$0</b></div>
+            <div class="kv-row"><span>Fitout contribution</span><b id="k-contrib">$0</b></div>
+            <div class="kv-row"><span>Other</span><b id="k-other">$0</b></div>
+            <div class="kv-row kv-row--total"><span>Total incentive</span><b id="k-inc">$0</b></div>
+          </div>
+          <div class="card">
+            <p class="card-label" id="lab-ways">Rent expressed four ways</p>
+            <div class="kv-row"><span id="lab-x-face">Face net</span><b id="k-x-face">$0</b></div>
+            <div class="kv-row"><span id="lab-x-gross">Face gross</span><b id="k-x-gross">$0</b></div>
+            <div class="kv-row"><span id="lab-x-eff">Effective net</span><b id="k-x-eff">$0</b></div>
+            <div class="kv-row kv-row--total"><span id="lab-x-effgross">Effective gross</span><b id="k-x-effgross">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Discount to face</span><b id="k-x-gap">0%</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">Rent payable year by year</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead><tr><th>Year</th><th>Face rent</th><th>Rent free &amp; abatement</th><th>Rent payable</th><th>Per m&sup2; p.a.</th><th>Cumulative</th><th>Status</th></tr></thead>
+          <tbody id="yr-rows"></tbody>
+        </table>
+      </div>
+      <details class="fold">
+        <summary><span>What the same incentive looks like at other terms</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="table-scroll"><table class="yr">
+          <thead><tr><th>Term</th><th>Face rent over term</th><th>Incentive as % of face</th><th>Effective rent</th><th>Effective rent over term</th></tr></thead>
+          <tbody id="term-rows"></tbody></table></div>
+      </details>
+    </div>
+
+    <details class="fold fold--method">
+      <summary><span>How this is calculated</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="method-body">
+        <h4>Face rent over the term</h4>
+        <p>Area multiplied by the face net rent, escalating at the annual review in every year after the first, summed across the term.</p>
+        <h4>Incentive value</h4>
+        <p>Only rent free and abatement reduce the rent payable. A fitout contribution or other cash incentive is a payment to the tenant, not a rent offset, so it lowers the effective rent and the total over the term without changing what is invoiced in any year. Rent free is valued at the year one net rent for the months granted. Abatement is entered as a percentage of the year one rent. The resulting dollar amount is applied unchanged in every year of the term and is not recalculated against the reviewed rent, so it does not grow as the face rent escalates. A 30 per cent abatement on a $200,000 year one rent is $60,000 a year for the whole term. Fitout contributions and other incentives are taken at the cash amount you enter. The total is deducted from the face rent over the term.</p>
+        <h4>Gross or net</h4>
+        <p>Where a rent is quoted gross, one figure covers rent and outgoings together and no separate outgoings entry applies. Where it is quoted net, the outgoings are entered separately and the gross rent is the sum of the two.</p>
+        <h4>Effective rent</h4>
+        <p>The face rent over the term less the total incentive, divided by the term and the area. On a net basis it is reported as a net effective rent, and on a gross basis as a gross effective rent. It is the rent the deal actually produces, and the figure that belongs in a comparable-evidence file &mdash; face rents with undisclosed incentives are the most common source of mispriced leasing evidence.</p>
+        <h4>Discounted effective rent</h4>
+        <p>The same calculation with each year&rsquo;s cash flow discounted at the rate you enter, then annualised. Annual rents are discounted at the mid-point of each year, and a fitout contribution or other cash incentive is treated as paid at the mid-point of year one. That is the only timing assumption in the calculation; a contribution paid later in the term is worth less than shown. Because incentives are concentrated at the start of a term, the discounted figure is usually lower than the undiscounted one, which matters when comparing a large upfront contribution against rent free spread over years.</p>
+        <h4>What is excluded</h4>
+        <p>Outgoings appear only in the gross comparison and are assumed fully recoverable. Leasing fees, incentive amortisation for accounting purposes, GST, make-good, tenant covenant and any clawback on early termination are not modelled. Incentive treatment for tax and accounting should be confirmed with your adviser.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">Face rent is the number in the lease. Effective rent is the deal.</div>
+        <p class="lead-p">Comparable evidence quoted on face rents without the incentive behind it will mislead an owner and a tenant equally. Represent negotiates and records both sides of that number.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="effective-rent-name">Name</label><input id="effective-rent-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="effective-rent-email">Email</label><input id="effective-rent-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="effective-rent-phone">Phone</label><input id="effective-rent-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss the Deal</button>
+            <a class="lead-link" href="/leasing">Explore Commercial Leasing &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about the deal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal or valuation advice. Results depend entirely on the figures entered. Outgoings are assumed fully recoverable, and leasing fees, incentive amortisation for accounting purposes, GST, make-good, tenant covenant and clawback on early termination are excluded. The tax and accounting treatment of incentives should be confirmed with your adviser. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt1 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(x) { var v = parseFloat(String(x.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function nid(id) { return num(document.getElementById(id)); }
+  function money(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function money2(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function paren(n) { return '($' + fmt0.format(Math.abs(Math.round(n))) + ')'; }
+  function pc1(n) { return fmt1.format(n) + '%'; }
+  function moneyShort(n) {
+    var a = Math.abs(n), s = n < 0 ? '−' : '';
+    if (a >= 1e6) return s + '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return s + '$' + Math.round(a / 1e3) + 'k';
+    return s + '$' + fmt0.format(Math.round(a));
+  }
+  function txt(id, v) { document.getElementById(id).textContent = v; }
+  function bindMoney(ids, cb) {
+    ids.forEach(function (id) {
+      var input = document.getElementById(id);
+      input.addEventListener('input', function () {
+        var atEnd = input.selectionStart === input.value.length;
+        var d = input.value.replace(/[^0-9]/g, '');
+        input.value = d === '' ? '' : fmt0.format(parseInt(d, 10));
+        if (atEnd) { try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {} }
+        cb();
+      });
+    });
+  }
+  function bindPlain(ids, cb) { ids.forEach(function (id) { document.getElementById(id).addEventListener('input', cb); }); }
+  function resetAll(defaults, cb) {
+    document.getElementById('reset-btn').addEventListener('click', function () {
+      Object.keys(defaults).forEach(function (id) { document.getElementById(id).value = defaults[id]; });
+      cb();
+    });
+  }
+
+  var DEFAULTS = { area: '1,200', term: '5', face: '185', rev: '3.5', og: '48', free: '8', abate: '0', contrib: '180,000', other: '0', disc: '7' };
+  var store = {}, rentBasis = 'net';
+
+  function model(termYears) {
+    var area = nid('area');
+    var N = Math.max(1, Math.min(25, Math.round(termYears === undefined ? nid('term') : termYears)));
+    var face = nid('face'), g = nid('rev') / 100;
+    var og = rentBasis === 'gross' ? 0 : nid('og');
+    var freeM = nid('free'), abatePc = nid('abate') / 100;
+    var contrib = nid('contrib'), other = nid('other');
+    var d = nid('disc') / 100;
+    var annual1 = area * face;
+    var years = [], faceTotal = 0, pvFace = 0, pvPayable = 0, cum = 0;
+    var freeVal = freeM / 12 * annual1;
+    var abateAnnual = annual1 * abatePc;
+    var abateVal = abateAnnual * N;
+    for (var y = 1; y <= N; y++) {
+      faceTotal += annual1 * Math.pow(1 + g, y - 1);
+    }
+    var incTotal = freeVal + abateVal + contrib + other;
+    var incLeft = freeVal;
+    for (var y2 = 1; y2 <= N; y2++) {
+      var f2 = Math.pow(1 + g, y2 - 1);
+      var faceY2 = annual1 * f2;
+      var abateY = Math.min(abateAnnual, faceY2);
+      var room = Math.max(0, faceY2 - abateY);
+      var take = Math.min(incLeft, room); incLeft -= take;
+      var applied = abateY + take;
+      var payable = faceY2 - applied;
+      cum += payable;
+      var dfac = Math.pow(1 + d, y2 - 0.5);
+      pvFace += faceY2 / dfac;
+      pvPayable += payable / dfac;
+      years.push({ y: y2, face: faceY2, applied: applied, payable: payable, cum: cum });
+    }
+    pvPayable -= (contrib + other) / Math.pow(1 + d, 0.5);
+    var effTotal = faceTotal - incTotal;
+    var unapplied = incLeft;
+    var annuity = 0; for (var i = 0; i < N; i++) annuity += 1 / Math.pow(1 + d, i + 0.5);
+    return { area: area, N: N, face: face, og: og, g: g, d: d, annual1: annual1,
+      freeM: freeM, freeVal: freeVal, abatePc: abatePc, abateAnnual: abateAnnual, abateVal: abateVal, contrib: contrib, other: other,
+      incTotal: incTotal, faceTotal: faceTotal, effTotal: effTotal, years: years, unapplied: unapplied,
+      effPa: effTotal / N, effM2: area > 0 ? effTotal / N / area : 0,
+      pvEffM2: (area > 0 && annuity > 0) ? pvPayable / annuity / area : 0,
+      incPc: faceTotal > 0 ? incTotal / faceTotal : 0 };
+  }
+
+  function calc() {
+    var m = model();
+    txt('g-face', money(m.annual1));
+    txt('g-inc', money(m.incTotal));
+    txt('r-head', 'Over a ' + m.N + '-year term');
+    var bLabel = rentBasis === 'gross' ? 'gross' : 'net';
+    txt('lab-main', rentBasis === 'gross' ? 'Effective gross rent' : 'Effective net rent');
+    txt('lab-term', rentBasis === 'gross' ? 'Gross effective rent over the term' : 'Net effective rent over the term');
+    txt('r-main', money2(m.effM2));
+    txt('r-interp', 'A face rent of ' + money2(m.face) + '/m\u00b2 with ' + money(m.incTotal) + ' of incentives over ' + m.N +
+      ' years is an effective ' + bLabel + ' rent of ' + money2(m.effM2) + '/m\u00b2, a discount of ' + pc1(m.incPc * 100) +
+      ' to face. The incentive equates to ' + fmt1.format(m.annual1 > 0 ? m.incTotal / (m.annual1 / 12) : 0) + ' months of year one rent.');
+    txt('r-cross', 'Discounted at ' + fmt1.format(m.d * 100) + '% the effective rent is ' + money2(m.pvEffM2) + '/m\u00b2 p.a.' +
+      (m.unapplied > 1 ? ' \u00b7 ' + money(m.unapplied) + ' of rent free exceeds the rent payable over the term' : ''));
+    txt('r-face', moneyShort(m.faceTotal));
+    txt('r-eff', moneyShort(m.effTotal));
+    txt('s-incpc', pc1(m.incPc * 100));
+    txt('s-incval', moneyShort(m.incTotal));
+    txt('s-effpa', moneyShort(m.effPa));
+    txt('lab-effpa', rentBasis === 'gross' ? 'Gross rent p.a.' : 'Net rent p.a.');
+    txt('s-pv', money2(m.pvEffM2));
+    txt('k-free', money(m.freeVal));
+    txt('k-abate', money(m.abateVal));
+    txt('lab-abate', m.abateAnnual > 0 ? 'Abatement (' + money(m.abateAnnual) + ' p.a.)' : 'Abatement');
+    txt('k-contrib', money(m.contrib));
+    txt('k-other', money(m.other));
+    txt('k-inc', money(m.incTotal));
+    var isGross = rentBasis === 'gross';
+    txt('lab-ways', isGross ? 'Rent expressed two ways' : 'Rent expressed four ways');
+    txt('lab-x-face', isGross ? 'Face gross' : 'Face net');
+    txt('lab-x-gross', isGross ? 'Outgoings' : 'Face gross');
+    txt('lab-x-eff', isGross ? 'Effective gross' : 'Effective net');
+    txt('lab-x-effgross', isGross ? 'Effective rent p.a.' : 'Effective gross');
+    document.getElementById('lab-x-gross').parentNode.style.display = isGross ? 'none' : '';
+    txt('lab-ways', isGross ? 'Rent expressed three ways' : 'Rent expressed four ways');
+    txt('k-x-face', money2(m.face) + '/m\u00b2');
+    txt('k-x-gross', isGross ? 'Included in rent' : money2(m.face + m.og) + '/m\u00b2');
+    txt('k-x-eff', money2(m.effM2) + '/m\u00b2');
+    txt('k-x-effgross', isGross ? money(m.effPa) : money2(m.effM2 + m.og) + '/m\u00b2');
+    txt('k-x-gap', pc1(m.incPc * 100));
+    document.getElementById('yr-rows').innerHTML = m.years.map(function (r) {
+      return '<tr' + (r.applied > 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + r.y + '</td>' +
+        '<td>' + money(r.face) + '</td>' +
+        '<td>' + (r.applied > 0 ? paren(r.applied) : '\u2014') + '</td>' +
+        '<td>' + money(r.payable) + '</td>' +
+        '<td>' + (m.area > 0 ? money2(r.payable / m.area) : '\u2014') + '</td>' +
+        '<td>' + money(r.cum) + '</td>' +
+        '<td>' + (r.payable <= 0 ? '<span class="adv adv--on">Rent free</span>' : (r.applied > 0 ? '<span class="adv adv--on">Incentive applied</span>' : '<span class="adv adv--off">Full rent</span>')) + '</td></tr>';
+    }).join('');
+    document.getElementById('term-rows').innerHTML = [3, 5, 7, 10].map(function (t) {
+      var mm = model(t);
+      return '<tr' + (t === m.N ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + t + ' yrs</td>' +
+        '<td>' + money(mm.faceTotal) + '</td>' +
+        '<td>' + pc1(mm.incPc * 100) + '</td>' +
+        '<td>' + money2(mm.effM2) + '/m\u00b2</td>' +
+        '<td>' + money(mm.effTotal) + '</td></tr>';
+    }).join('');
+    store = m;
+  }
+
+  bindMoney(['area', 'contrib', 'other'], calc);
+  bindPlain(['term', 'face', 'rev', 'og', 'free', 'abate', 'disc'], calc);
+
+  var rentSegEl = document.getElementById('rent-seg');
+  function applyRentBasis() {
+    var isGross = rentBasis === 'gross';
+    document.getElementById('lab-face').textContent = isGross ? 'Face gross rent' : 'Face net rent';
+    document.getElementById('f-og').style.display = isGross ? 'none' : '';
+    txt('rent-hint', isGross
+      ? 'Enter one gross rent inclusive of outgoings, with no separate outgoings entry.'
+      : 'Enter the net rent and outgoings separately. The gross rent is the sum of the two.');
+  }
+  rentSegEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-rent]'); if (!b) return;
+    rentBasis = b.getAttribute('data-rent');
+    rentSegEl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+    applyRentBasis();
+    calc();
+  });
+
+  resetAll(DEFAULTS, function () {
+    rentBasis = 'net';
+    rentSegEl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x.getAttribute('data-rent') === 'net'); });
+    applyRentBasis();
+    calc();
+  });
+  applyRentBasis();
+  calc();
+
+  function summaryFields() {
+    var m = store;
+    return {
+      lettable_area: fmt0.format(m.area) + ' m2',
+      lease_term: m.N + ' yrs',
+      rent_quoted_as: rentBasis === 'gross' ? 'Gross rent' : 'Net rent plus outgoings',
+      face_rent: money2(m.face) + '/m2 p.a. ' + (rentBasis === 'gross' ? 'gross' : 'net') + ' (' + money(m.annual1) + ' p.a.)',
+      annual_review: nid('rev') + '% p.a.',
+      rent_free: m.freeM + ' mths (' + money(m.freeVal) + ')',
+      abatement: nid('abate') + '% of year one rent \u2014 ' + money(m.abateAnnual) + ' p.a., ' + money(m.abateVal) + ' over the term',
+      fitout_contribution: money(m.contrib),
+      other_incentive: money(m.other),
+      total_incentive: money(m.incTotal) + ' \u2014 ' + pc1(m.incPc * 100) + ' of face rent over term',
+      face_rent_over_term: money(m.faceTotal),
+      effective_rent_over_term: money(m.effTotal),
+      rent_basis: rentBasis === 'gross' ? 'Gross' : 'Net',
+      effective_rent: money2(m.effM2) + '/m2 p.a. ' + (rentBasis === 'gross' ? 'gross' : 'net'),
+      discounted_effective_rent: money2(m.pvEffM2) + '/m2 p.a. at ' + nid('disc') + '%'
+    };
+  }
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — Lease Incentive & Effective Rent Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'Lease Incentive & Effective Rent Calculator'
+    };
+    var extra = summaryFields();
+    for (var k in extra) payload[k] = extra[k];
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss the Deal';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for decimal inputs (integer part only; decimals kept) */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){var c=s.replace(/[^0-9.]/g,''),k=c.indexOf('.');if(k>=0)c=c.slice(0,k+1)+c.slice(k+1).replace(/\./g,'');var parts=c.split('.'),n=parts[0].replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return parts.length>1?n+'.'+parts[1]:n}
+document.querySelectorAll('input[inputmode="decimal"]:not([readonly])').forEach(function(el){el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
+</body>
+</html>

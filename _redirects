@@ -1,0 +1,14 @@
+# Retired routes
+/listings        /buyers-agency   301
+/listings.html   /buyers-agency   301
+/advisory        /tenant-representation   301
+/advisory.html   /tenant-representation   301
+
+# Insights
+/insights/cost-to-lease-commercial-property-brisbane   /cost-to-lease-commercial-property-brisbane   301
+/insights/cost-to-lease-commercial-property-brisbane/  /cost-to-lease-commercial-property-brisbane   301
+/buyers/how-to-avoid-buying-the-wrong-commercial-property   /how-to-avoid-buying-the-wrong-commercial-property   301
+/buyers/how-to-avoid-buying-the-wrong-commercial-property/  /how-to-avoid-buying-the-wrong-commercial-property   301
+
+# Clean URLs are served natively by Cloudflare Pages (/page.html redirects to /page).
+# Do not add /page -> /page.html 200 rewrites: they conflict with that behaviour.

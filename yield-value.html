@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Net Yield &amp; Property Value Calculator — Represent Commercial</title>
+<meta name="description" content="Work out the net yield a commercial property earns at a given price, or capitalise net income at a market yield to estimate value, with a sensitivity table." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/yield-value" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      WHAT DOES THE INCOME MAKE IT <span class="italic" style="color: var(--gold);">worth?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      Yield and value are the same calculation read from either end. Enter the income and a price to see the yield it returns, or enter a market yield to see the value that income supports.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Your numbers</p>
+          <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+        </div>
+
+        <div class="field" style="margin-bottom: 26px;">
+          <label>What are you solving for?</label>
+          <div class="seg seg--full" id="mode-seg">
+            <button type="button" data-mode="yield" class="is-on">Net yield</button>
+            <button type="button" data-mode="value">Property value</button>
+          </div>
+          <p class="hint" id="mode-hint">Enter a price or purchase price and the calculator returns the yield the income produces.</p>
+        </div>
+
+        <details class="grp" open>
+          <summary><span>Income</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field">
+              <label for="rent">Annual gross rent</label>
+              <div class="input-shell">
+                <span class="affix affix--pre">$</span>
+                <input id="rent" type="text" inputmode="numeric" autocomplete="off" value="245,000" />
+                <span class="affix affix--suf">p.a.</span>
+              </div>
+              <p class="hint">Passing rent across all tenancies, excluding GST and outgoings recoveries.</p>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="recov">Outgoings recovered</label>
+                <div class="input-shell">
+                  <span class="affix affix--pre">$</span>
+                  <input id="recov" type="text" inputmode="numeric" autocomplete="off" value="34,000" />
+                </div>
+                <p class="hint">Recoveries payable by tenants under their leases.</p>
+              </div>
+              <div class="field">
+                <label for="outg">Total outgoings</label>
+                <div class="input-shell">
+                  <span class="affix affix--pre">$</span>
+                  <input id="outg" type="text" inputmode="numeric" autocomplete="off" value="46,000" />
+                </div>
+                <p class="hint">Rates, land tax, insurance, management and upkeep.</p>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="vac">Vacancy &amp; non-recovery allowance</label>
+                <div class="input-shell">
+                  <input id="vac" type="text" inputmode="decimal" autocomplete="off" value="3" />
+                  <span class="affix affix--suf">% of rent</span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="area">Lettable area</label>
+                <div class="input-shell">
+                  <input id="area" type="text" inputmode="numeric" autocomplete="off" value="1,850" />
+                  <span class="affix affix--suf">m&sup2;</span>
+                </div>
+              </div>
+            </div>
+            <div class="grp-total"><span>Net income</span><b id="g-net">$0</b></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Asset</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field" id="f-price">
+              <label for="price">Price or purchase price</label>
+              <div class="input-shell">
+                <span class="affix affix--pre">$</span>
+                <input id="price" type="text" inputmode="numeric" autocomplete="off" value="3,500,000" />
+              </div>
+              <p class="hint">The price being paid, asked or assessed.</p>
+            </div>
+            <div class="field" id="f-target" style="display:none;">
+              <label for="target">Market net yield</label>
+              <div class="input-shell">
+                <input id="target" type="text" inputmode="decimal" autocomplete="off" value="6.25" />
+                <span class="affix affix--suf">% net</span>
+              </div>
+              <p class="hint">The yield comparable sales evidence supports for an asset of this quality, location and lease profile.</p>
+            </div>
+            <div class="field">
+              <label for="acq">Acquisition costs</label>
+              <div class="input-shell">
+                <input id="acq" type="text" inputmode="decimal" autocomplete="off" value="5.5" />
+                <span class="affix affix--suf">% of price</span>
+              </div>
+              <p class="hint">Transfer duty, legal, due diligence and finance costs, used for the yield on total cost. Set to zero to ignore.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="calc-col">
+        <div class="card result-card">
+          <p class="result-label" id="r-head">Net yield on price</p>
+
+          <div class="pos-row">
+            <div class="pos-k">Gross income<small>Rent plus outgoings recoveries</small></div>
+            <div class="pos-v" id="r-gross">$0</div>
+          </div>
+          <div class="pos-row">
+            <div class="pos-k">Net income<small>Gross income less total outgoings and the vacancy allowance</small></div>
+            <div class="pos-v" id="r-net">$0</div>
+          </div>
+
+          <div class="adv-block">
+            <p class="adv-label" id="r-label">Net yield</p>
+            <p class="adv-value"><em id="r-main">0%</em></p>
+            <p class="adv-note" id="r-interp"></p>
+            <p class="adv-cross" id="r-cross"></p>
+          </div>
+
+          <div class="result-stats">
+            <div class="stat">
+              <div class="stat__h">Gross yield</div>
+              <div class="stat__v" id="s-gross">0%</div>
+              <div class="stat__k">Rent on price</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">Net yield</div>
+              <div class="stat__v" id="s-net">0%</div>
+              <div class="stat__k">Net income on price</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">On total cost</div>
+              <div class="stat__v" id="s-cost">0%</div>
+              <div class="stat__k">Incl. acquisition costs</div>
+            </div>
+            <div class="stat">
+              <div class="stat__h">Capital rate</div>
+              <div class="stat__v" id="s-rate">$0</div>
+              <div class="stat__k">Per m&sup2;</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="card">
+            <p class="card-label">Income build-up</p>
+            <div class="kv-row"><span>Annual gross rent</span><b id="i-rent">$0</b></div>
+            <div class="kv-row"><span>Outgoings recovered</span><b id="i-recov">$0</b></div>
+            <div class="kv-row kv-neg"><span>Total outgoings</span><b id="i-outg">($0)</b></div>
+            <div class="kv-row kv-neg"><span>Vacancy &amp; non-recovery</span><b id="i-vac">($0)</b></div>
+            <div class="kv-row kv-row--total"><span>Net income</span><b id="i-net">$0</b></div>
+          </div>
+          <div class="card">
+            <p class="card-label">Per square metre</p>
+            <div class="kv-row"><span>Gross rent</span><b id="m-rent">$0</b></div>
+            <div class="kv-row"><span>Net income</span><b id="m-net">$0</b></div>
+            <div class="kv-row"><span>Outgoings</span><b id="m-outg">$0</b></div>
+            <div class="kv-row kv-row--total"><span id="m-cap-label">Capital rate</span><b id="m-cap">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Outgoings recovery rate</span><b id="m-recovpc">0%</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">Yield sensitivity</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead>
+            <tr>
+              <th>Net yield</th>
+              <th>Indicative value</th>
+              <th>Per m&sup2;</th>
+              <th id="th-diff">Against your price</th>
+              <th>Variance</th>
+            </tr>
+          </thead>
+          <tbody id="sens-rows"></tbody>
+        </table>
+      </div>
+      <details class="fold">
+        <summary>
+          <span>Value across a range of net incomes</span>
+          <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="table-scroll">
+          <table class="yr">
+            <thead>
+              <tr>
+                <th>Net income</th>
+                <th>Change</th>
+                <th>Value at operative yield</th>
+                <th>Per m&sup2;</th>
+              </tr>
+            </thead>
+            <tbody id="inc-rows"></tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <details class="fold fold--method">
+      <summary>
+        <span>How this is calculated</span>
+        <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="method-body">
+        <h4>Net income</h4>
+        <p>Gross rent plus outgoings recovered from tenants, less the property&rsquo;s total outgoings, less an allowance for vacancy and non-recovery applied to the gross rent. Where recoveries fall short of outgoings, the shortfall reduces net income &mdash; which is how a gross lease, a vacancy or a non-recoverable land tax assessment shows up in value.</p>
+        <h4>Net yield</h4>
+        <p>Net income divided by the price. The gross yield shown alongside it is gross rent divided by the price, which is why the two diverge as outgoings rise.</p>
+        <h4>Yield on total cost</h4>
+        <p>Net income divided by the price plus acquisition costs. It is the yield actually earned on the money committed, rather than on the contract price.</p>
+        <h4>Property value</h4>
+        <p>In value mode the net income is capitalised at the market yield you enter: value equals net income divided by the yield. The result is an indicative capitalised figure, not a valuation.</p>
+        <h4>Sensitivity</h4>
+        <p>The tables hold income constant and move the yield, then hold the yield constant and move income, in even steps either side of your figures. A quarter of a percent on the yield moves value more than most buyers expect, which is why yield evidence carries so much weight in a negotiation.</p>
+        <h4>What is excluded</h4>
+        <p>Capital expenditure, incentives, letting-up allowances, over-rented or under-rented positions, lease expiry risk, depreciation, GST and taxation are not modelled. Two assets on the same net income can justify materially different yields.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">The yield is an argument, not a fact.</div>
+        <p class="lead-p">What a property is worth turns on the lease profile, the tenant covenant, the building and the evidence available on the day. Represent assembles that evidence and represents one side of the table with it.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="yield-value-name">Name</label><input id="yield-value-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="yield-value-email">Email</label><input id="yield-value-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="yield-value-phone">Phone</label><input id="yield-value-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Property</button>
+            <a class="lead-link" href="/buyers-agency">Explore Buyer&rsquo;s Agency &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about the property.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute a valuation or financial, taxation, legal or investment advice. It is not a valuation for mortgage, accounting, taxation or litigation purposes. Results depend entirely on the figures entered. Capital expenditure, incentives, lease expiry risk, depreciation, GST and taxation are excluded. Income, outgoings, lease terms and market evidence should be independently verified before any acquisition or disposal decision. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var DEFAULTS = { rent: '245,000', recov: '34,000', outg: '46,000', vac: '3', area: '1,850', price: '3,500,000', target: '6.25', acq: '5.5' };
+  var moneyFields = ['rent', 'recov', 'outg', 'area', 'price'];
+  var rateFields = ['vac', 'target', 'acq'];
+  var el = {};
+  Object.keys(DEFAULTS).forEach(function (id) { el[id] = document.getElementById(id); });
+
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(x) { var v = parseFloat(String(x.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function money(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function money2(n) { return (n < 0 ? '−' : '') + '$' + fmt2.format(Math.abs(n)); }
+  function paren(n) { return '($' + fmt0.format(Math.abs(Math.round(n))) + ')'; }
+  function pc(n) { return fmt2.format(n) + '%'; }
+  function pc1(n) { return (Math.round(n * 10) / 10).toFixed(1) + '%'; }
+  function moneyShort(n) {
+    var a = Math.abs(n), s = n < 0 ? '−' : '';
+    if (a >= 1e6) return s + '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return s + '$' + Math.round(a / 1e3) + 'k';
+    return s + '$' + fmt0.format(Math.round(a));
+  }
+
+  var mode = 'yield', store = {};
+
+  function read() {
+    var rent = num(el.rent), recov = num(el.recov), outg = num(el.outg);
+    var vacAmt = rent * num(el.vac) / 100;
+    var gross = rent + recov;
+    var net = gross - outg - vacAmt;
+    var area = num(el.area);
+    var acqPc = num(el.acq) / 100;
+    var price, netYield, targetYield;
+    if (mode === 'yield') {
+      price = num(el.price);
+      netYield = price > 0 ? net / price : 0;
+    } else {
+      targetYield = num(el.target) / 100;
+      price = targetYield > 0 ? net / targetYield : 0;
+      netYield = targetYield;
+    }
+    return { rent: rent, recov: recov, outg: outg, vacAmt: vacAmt, gross: gross, net: net,
+             area: area, acqPc: acqPc, price: price, netYield: netYield };
+  }
+
+  function calc() {
+    var p = read();
+    document.getElementById('g-net').textContent = money(p.net);
+
+    document.getElementById('r-gross').textContent = money(p.gross);
+    document.getElementById('r-net').textContent = money(p.net);
+
+    var grossYield = p.price > 0 ? p.rent / p.price : 0;
+    var totalCost = p.price * (1 + p.acqPc);
+    var costYield = totalCost > 0 ? p.net / totalCost : 0;
+
+    if (mode === 'yield') {
+      document.getElementById('r-head').textContent = 'Net yield on price';
+      document.getElementById('r-label').textContent = 'Net yield';
+      document.getElementById('r-main').textContent = pc(p.netYield * 100);
+      document.getElementById('r-interp').textContent = 'At ' + money(p.price) + ', net income of ' + money(p.net) +
+        ' returns a net yield of ' + pc(p.netYield * 100) + ', or ' + pc(costYield * 100) + ' on total cost once acquisition costs are added.';
+      document.getElementById('r-cross').textContent = 'Gross yield ' + pc(grossYield * 100) +
+        (p.area > 0 ? ' · ' + money(p.price / p.area) + '/m²' : '');
+    } else {
+      document.getElementById('r-head').textContent = 'Value capitalised at ' + pc(p.netYield * 100);
+      document.getElementById('r-label').textContent = 'Indicative value';
+      document.getElementById('r-main').textContent = moneyShort(p.price);
+      document.getElementById('r-interp').textContent = 'Net income of ' + money(p.net) + ' capitalised at ' +
+        pc(p.netYield * 100) + ' supports an indicative value of ' + money(p.price) +
+        (p.area > 0 ? ', or ' + money(p.price / p.area) + ' per square metre' : '') + '.';
+      document.getElementById('r-cross').textContent = 'Implied gross yield ' + pc(grossYield * 100) +
+        ' · Total cost ' + money(totalCost);
+    }
+
+    document.getElementById('s-gross').textContent = pc(grossYield * 100);
+    document.getElementById('s-net').textContent = pc(p.netYield * 100);
+    document.getElementById('s-cost').textContent = pc(costYield * 100);
+    document.getElementById('s-rate').textContent = p.area > 0 ? money(p.price / p.area) : '—';
+
+    document.getElementById('i-rent').textContent = money(p.rent);
+    document.getElementById('i-recov').textContent = money(p.recov);
+    document.getElementById('i-outg').textContent = paren(p.outg);
+    document.getElementById('i-vac').textContent = paren(p.vacAmt);
+    document.getElementById('i-net').textContent = money(p.net);
+
+    var hasArea = p.area > 0;
+    document.getElementById('m-rent').textContent = hasArea ? money2(p.rent / p.area) : '—';
+    document.getElementById('m-net').textContent = hasArea ? money2(p.net / p.area) : '—';
+    document.getElementById('m-outg').textContent = hasArea ? money2(p.outg / p.area) : '—';
+    document.getElementById('m-cap-label').textContent = mode === 'yield' ? 'Capital rate' : 'Indicative rate';
+    document.getElementById('m-cap').textContent = hasArea ? money(p.price / p.area) : '—';
+    document.getElementById('m-recovpc').textContent = p.outg > 0 ? pc1(p.recov / p.outg * 100) : '—';
+
+    buildSensitivity(p);
+    store = p;
+  }
+
+  function buildSensitivity(p) {
+    var base = p.netYield * 100;
+    var steps = [-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1];
+    document.getElementById('th-diff').textContent = mode === 'yield' ? 'Against your price' : 'Against the base value';
+    var ref = p.price;
+    document.getElementById('sens-rows').innerHTML = steps.map(function (s) {
+      var y = base + s, val = y > 0 ? p.net / (y / 100) : 0, diff = val - ref;
+      return '<tr' + (s === 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + pc(y) + '</td>' +
+        '<td>' + money(val) + '</td>' +
+        '<td>' + (p.area > 0 ? money(val / p.area) : '—') + '</td>' +
+        '<td>' + (s === 0 ? '—' : (diff >= 0 ? '+' : '−') + '$' + fmt0.format(Math.abs(Math.round(diff)))) + '</td>' +
+        '<td>' + (s === 0 ? '<span class="adv adv--on">Base</span>' : (ref > 0 ? (diff >= 0 ? '+' : '−') + pc1(Math.abs(diff / ref * 100)) : '—')) + '</td></tr>';
+    }).join('');
+
+    var incSteps = [-10, -5, 0, 5, 10];
+    document.getElementById('inc-rows').innerHTML = incSteps.map(function (s) {
+      var netI = p.net * (1 + s / 100);
+      var val = p.netYield > 0 ? netI / p.netYield : 0;
+      return '<tr' + (s === 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + money(netI) + '</td>' +
+        '<td>' + (s === 0 ? '—' : (s > 0 ? '+' : '−') + Math.abs(s) + '%') + '</td>' +
+        '<td>' + money(val) + '</td>' +
+        '<td>' + (p.area > 0 ? money(val / p.area) : '—') + '</td></tr>';
+    }).join('');
+  }
+
+  moneyFields.forEach(function (id) {
+    var input = el[id];
+    input.addEventListener('input', function () {
+      var atEnd = input.selectionStart === input.value.length;
+      var digits = input.value.replace(/[^0-9]/g, '');
+      input.value = digits === '' ? '' : fmt0.format(parseInt(digits, 10));
+      if (atEnd) input.setSelectionRange(input.value.length, input.value.length);
+      calc();
+    });
+  });
+  rateFields.forEach(function (id) { el[id].addEventListener('input', calc); });
+
+  var modeSeg = document.getElementById('mode-seg');
+  function applyMode() {
+    document.getElementById('f-price').style.display = mode === 'yield' ? '' : 'none';
+    document.getElementById('f-target').style.display = mode === 'yield' ? 'none' : '';
+    document.getElementById('mode-hint').textContent = mode === 'yield'
+      ? 'Enter a price or purchase price and the calculator returns the yield the income produces.'
+      : 'Enter the market net yield and the calculator capitalises the net income to an indicative value.';
+  }
+  modeSeg.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-mode]'); if (!b) return;
+    mode = b.getAttribute('data-mode');
+    modeSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x === b); });
+    applyMode();
+    calc();
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    Object.keys(DEFAULTS).forEach(function (id) { el[id].value = DEFAULTS[id]; });
+    mode = 'yield';
+    modeSeg.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-on', x.getAttribute('data-mode') === 'yield'); });
+    applyMode();
+    calc();
+  });
+
+  applyMode();
+  calc();
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var p = store.net === undefined ? read() : store;
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — Net Yield & Property Value Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'Net Yield & Property Value Calculator',
+      solving_for: mode === 'yield' ? 'Net yield' : 'Property value',
+      annual_gross_rent: money(p.rent),
+      outgoings_recovered: money(p.recov),
+      total_outgoings: money(p.outg),
+      vacancy_allowance: num(el.vac) + '% (' + money(p.vacAmt) + ')',
+      net_income: money(p.net),
+      lettable_area: p.area > 0 ? fmt0.format(p.area) + ' m2' : 'Not provided',
+      price_or_value: money(p.price) + (mode === 'yield' ? ' (entered)' : ' (capitalised)'),
+      net_yield: pc(p.netYield * 100),
+      gross_yield: p.price > 0 ? pc(p.rent / p.price * 100) : '—',
+      acquisition_costs: num(el.acq) + '% of price',
+      yield_on_total_cost: p.price > 0 ? pc(p.net / (p.price * (1 + p.acqPc)) * 100) : '—',
+      capital_rate: p.area > 0 ? money(p.price / p.area) + '/m2' : '—'
+    };
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss Your Property';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for decimal inputs (integer part only; decimals kept) */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){var c=s.replace(/[^0-9.]/g,''),k=c.indexOf('.');if(k>=0)c=c.slice(0,k+1)+c.slice(k+1).replace(/\./g,'');var parts=c.split('.'),n=parts[0].replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return parts.length>1?n+'.'+parts[1]:n}
+document.querySelectorAll('input[inputmode="decimal"]:not([readonly])').forEach(function(el){el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
+</body>
+</html>

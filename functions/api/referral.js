@@ -17,12 +17,23 @@ const ACCEPTANCE_TEXT =
 const DISCLAIMER =
   'The referral agreement is a mutual commitment to refer business and does not create an agency, ' +
   'partnership, or fee obligation between the parties. It does not oblige any property owner to appoint ' +
-  'either party. Represent Commercial \u2014 REIQ Corporate Licence 4949809.';
+  'either party. Represent Commercial \u2014 Real Estate Agent Licence 4949809.';
 
-export async function onRequestGet() {
-  // Health check: if you see this JSON in a browser, the Function is deployed.
+export async function onRequestGet({ env }) {
+  // Deployment check: if you see this JSON in a browser, the Function is deployed.
   // If you see a 405 instead, functions/ is NOT at the served root (fix the deploy layout).
-  return json({ ok: true, endpoint: 'referral', ready: true }, 200);
+  // `deployed` and `delivery_configured` are separate facts: the Function can be live
+  // while the Resend secret is missing, in which case submissions will fail at send time.
+  const deliveryConfigured = Boolean(env && env.RESEND_API_KEY);
+  return json({
+    ok: true,
+    endpoint: 'referral',
+    deployed: true,
+    delivery_configured: deliveryConfigured,
+    note: deliveryConfigured
+      ? 'Function deployed and RESEND_API_KEY present. This does not prove Resend accepts the send; test a real submission.'
+      : 'Function deployed but RESEND_API_KEY is missing. Submissions will return 502.'
+  }, 200);
 }
 
 export async function onRequestPost({ request, env }) {
@@ -35,16 +46,35 @@ export async function onRequestPost({ request, env }) {
     if (!name || !email || !property || data.accepted !== true) {
       return json({ error: 'Missing required fields.' }, 422);
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return json({ error: 'Invalid email address.' }, 422);
+    }
+    if (name.length > 200 || email.length > 320 || property.length > 500) {
+      return json({ error: 'Field too long.' }, 422);
+    }
+    if (!env || !env.RESEND_API_KEY) {
+      return json({ error: 'Email delivery is not configured.' }, 503);
+    }
 
     const acceptedAt = data.accepted_at || new Date().toISOString();
+    // Stable per-submission key so a retry of an unchanged referral does not send a
+    // second copy of the agreement. Resend honours Idempotency-Key for a limited
+    // window (see Resend's documentation); this is retry protection, not permanent
+    // duplicate prevention, and an edited submission intentionally gets a new key.
+    const submissionId = typeof data.submission_id === 'string' && data.submission_id.length <= 128
+      ? data.submission_id
+      : null;
     const html = buildAgreementHtml({ ...data, name, email, property, acceptedAt });
+
+    const resendHeaders = {
+      'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    };
+    if (submissionId) resendHeaders['Idempotency-Key'] = `referral-${submissionId}`;
 
     const resendRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
+      headers: resendHeaders,
       body: JSON.stringify({
         from: 'Represent Commercial <referrals@represent.au>',
         to: ['referrals@represent.au', email],
@@ -144,7 +174,7 @@ function buildAgreementHtml(d) {
   <tr><td style="height:2px;background:#C9A84C;margin-top:20px;"></td></tr>
   <tr><td style="background:#002D18;padding:18px 40px;">
     <div style="font:700 12px/1.4 Arial,sans-serif;color:#fff;">Represent Commercial Pty Ltd</div>
-    <div style="font:400 11px/1.5 Arial,sans-serif;color:#b8c4be;">referrals@represent.au &nbsp;·&nbsp; represent.au &nbsp;·&nbsp; REIQ Corporate Licence 4949809</div>
+    <div style="font:400 11px/1.5 Arial,sans-serif;color:#b8c4be;">referrals@represent.au &nbsp;·&nbsp; represent.au &nbsp;·&nbsp; Real Estate Agent Licence 4949809</div>
   </td></tr>
 </table>
 </body></html>`;

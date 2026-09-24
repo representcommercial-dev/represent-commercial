@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rental Reversion & Value Uplift Calculator — Represent Commercial</title>
+<meta name="description" content="Measure how far a passing rent sits below market and what capturing the reversion is worth in value at a given yield. Represent Commercial, Brisbane and Queensland." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/rental-reversion" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      WHAT IS THE UNDER-RENT ACTUALLY <span class="italic" style="color: var(--gold);">worth?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      An under-rented asset is only a bargain if the market rent is real and the reversion is reachable. Enter the passing rent, the market rent and the yield to see the income and value at stake.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Your numbers</p>
+          <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+        </div>
+
+        <details class="grp" open>
+          <summary><span>The asset as it stands</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="area">Lettable area</label><div class="input-shell"><input id="area" type="text" inputmode="numeric" autocomplete="off" value="1,850" /><span class="affix affix--suf">m&sup2;</span></div></div>
+            <div class="field"><label for="passing">Passing net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="passing" type="text" inputmode="decimal" autocomplete="off" value="132" /><span class="affix affix--suf">/m&sup2;</span></div><p class="hint">The rent the tenant pays today.</p></div>
+            </div>
+            <div class="field-row">
+            <div class="field"><label for="price">Price or current value</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="price" type="text" inputmode="numeric" autocomplete="off" value="3,500,000" /></div></div>
+            <div class="field"><label for="og">Non-recoverable outgoings</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="og" type="text" inputmode="numeric" autocomplete="off" value="12,000" /><span class="affix affix--suf">p.a.</span></div><p class="hint">Deducted from income in both positions.</p></div>
+            </div>
+            <div class="grp-total"><span>Passing net income</span><b id="g-pass">$0</b></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Market position</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="market">Market net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="market" type="text" inputmode="decimal" autocomplete="off" value="165" /><span class="affix affix--suf">/m&sup2;</span></div><p class="hint">What comparable space is leasing for today.</p></div>
+            <div class="field"><label for="yrs">Years to reversion</label><div class="input-shell"><input id="yrs" type="text" inputmode="decimal" autocomplete="off" value="2" /><span class="affix affix--suf">yrs</span></div><p class="hint">Time until the rent can be reset, by review or expiry.</p></div>
+            </div>
+            <div class="field-row">
+            <div class="field"><label for="yield">Market net yield</label><div class="input-shell"><input id="yield" type="text" inputmode="decimal" autocomplete="off" value="6.25" /><span class="affix affix--suf">%</span></div><p class="hint">The yield the asset is valued on.</p></div>
+            <div class="field"><label for="growth">Market rent growth</label><div class="input-shell"><input id="growth" type="text" inputmode="decimal" autocomplete="off" value="3" /><span class="affix affix--suf">% p.a.</span></div><p class="hint">Applied to the market rent until reversion.</p></div>
+            </div>
+            <div class="field"><label for="cost">Cost to capture</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="cost" type="text" inputmode="numeric" autocomplete="off" value="0" /></div><p class="hint">Incentive, fitout or capital works required to achieve the market rent.</p></div>
+            <div class="grp-total"><span>Reversion at capture</span><b id="g-rev">$0</b></div>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="calc-col">
+        <div class="card result-card">
+          <p class="result-label" id="r-head">Value uplift on reversion</p>
+          <div class="adv-block" style="border-top:0;margin-top:0;padding-top:0;">
+            <p class="adv-label">Value uplift</p>
+            <p class="adv-value"><em id="r-main">$0</em></p>
+            <p class="adv-note" id="r-interp"></p>
+            <p class="adv-cross" id="r-cross"></p>
+          </div>
+          <div class="pos-row" style="border-top:1px solid #E6E1D6;margin-top:26px;padding-top:20px;">
+            <div class="pos-k">Value on passing income<small>Capitalised at the market yield</small></div>
+            <div class="pos-v" id="r-now">$0</div>
+          </div>
+          <div class="pos-row">
+            <div class="pos-k">Value on reversionary income<small>Market rent at reversion, less the cost to capture</small></div>
+            <div class="pos-v" id="r-then">$0</div>
+          </div>
+          <div class="result-stats">
+            <div class="stat"><div class="stat__h">Reversion</div><div class="stat__v" id="s-revpc">0%</div><div class="stat__k">Under-rented by</div></div>
+            <div class="stat"><div class="stat__h">Income uplift</div><div class="stat__v" id="s-incup">$0</div><div class="stat__k">Per annum at capture</div></div>
+            <div class="stat"><div class="stat__h">Yield on price</div><div class="stat__v" id="s-ypass">0%</div><div class="stat__k">On passing income</div></div>
+            <div class="stat"><div class="stat__h">Yield on price</div><div class="stat__v" id="s-yrev">0%</div><div class="stat__k">On reversionary income</div></div>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="card">
+            <p class="card-label">Income positions</p>
+            <div class="kv-row"><span>Passing net income</span><b id="k-pass">$0</b></div>
+            <div class="kv-row"><span>Market net income today</span><b id="k-mkt">$0</b></div>
+            <div class="kv-row"><span>Market net income at reversion</span><b id="k-rev">$0</b></div>
+            <div class="kv-row kv-row--total"><span>Income uplift</span><b id="k-up">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Per m&sup2; gap today</span><b id="k-gap">$0</b></div>
+          </div>
+          <div class="card">
+            <p class="card-label">Value positions</p>
+            <div class="kv-row"><span>Value on passing</span><b id="k-vnow">$0</b></div>
+            <div class="kv-row"><span>Value on reversion</span><b id="k-vthen">$0</b></div>
+            <div class="kv-row kv-neg"><span>Cost to capture</span><b id="k-vcost">($0)</b></div>
+            <div class="kv-row kv-row--total"><span>Net uplift</span><b id="k-vup">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Capital rate on reversion</span><b id="k-vrate">$0</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">Uplift across yield and rent</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead><tr><th>Net yield</th><th>Value on passing</th><th>Value on reversion</th><th>Uplift</th><th>Uplift on price</th></tr></thead>
+          <tbody id="y-rows"></tbody>
+        </table>
+      </div>
+      <details class="fold">
+        <summary><span>If the market rent lands differently</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="table-scroll"><table class="yr">
+          <thead><tr><th>Market rent</th><th>Reversion</th><th>Net income</th><th>Value on reversion</th><th>Uplift</th></tr></thead>
+          <tbody id="r-rows"></tbody></table></div>
+      </details>
+    </div>
+
+    <details class="fold fold--method">
+      <summary><span>How this is calculated</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="method-body">
+        <h4>Passing and market income</h4>
+        <p>Both are area multiplied by the relevant net rent, less the non-recoverable outgoings you enter. The market rent is grown at the rate you set until the reversion date, so a reversion two years out is assessed on the market rent expected then, not on today&rsquo;s.</p>
+        <h4>Value</h4>
+        <p>Each income position is capitalised at the market net yield: value equals net income divided by the yield. The uplift is the difference between the two, less the cost to capture the market rent.</p>
+        <h4>Cost to capture</h4>
+        <p>Incentive, fitout contribution or capital works needed to let at the market rent. It is deducted from the reversionary value in full rather than amortised, which is the conservative treatment.</p>
+        <h4>Reversion percentage</h4>
+        <p>How far the passing rent sits below the market rent today, as a percentage of market. It is the figure that determines whether an asset is genuinely under-rented or merely priced on optimistic evidence.</p>
+        <h4>What is excluded</h4>
+        <p>The time value of money, vacancy risk between expiry and reletting, letting fees, transaction costs, tax, capital expenditure beyond the cost to capture, and any yield shift between now and reversion are not modelled. A reversion is only realisable if the market rent is real and the tenant or a replacement will pay it.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">A reversion is a thesis, not a number.</div>
+        <p class="lead-p">Whether it is capturable depends on the lease, the tenant, the building and the depth of leasing demand at the rent being assumed. Represent tests that before a buyer pays for it.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="rental-reversion-name">Name</label><input id="rental-reversion-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="rental-reversion-email">Email</label><input id="rental-reversion-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="rental-reversion-phone">Phone</label><input id="rental-reversion-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss the Asset</button>
+            <a class="lead-link" href="/buyers-agency">Explore Buyer&rsquo;s Agency &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about the asset.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute a valuation or financial, taxation, legal or investment advice. Results depend entirely on the figures entered. The time value of money, vacancy risk between expiry and reletting, letting fees, transaction costs, tax, capital expenditure beyond the cost to capture, and any yield shift before reversion are excluded. Market rent assumptions should be supported by leasing evidence and lease documentation independently reviewed. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt1 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(x) { var v = parseFloat(String(x.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function nid(id) { return num(document.getElementById(id)); }
+  function money(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function money2(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function paren(n) { return '($' + fmt0.format(Math.abs(Math.round(n))) + ')'; }
+  function pc1(n) { return fmt1.format(n) + '%'; }
+  function moneyShort(n) {
+    var a = Math.abs(n), s = n < 0 ? '−' : '';
+    if (a >= 1e6) return s + '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return s + '$' + Math.round(a / 1e3) + 'k';
+    return s + '$' + fmt0.format(Math.round(a));
+  }
+  function txt(id, v) { document.getElementById(id).textContent = v; }
+  function bindMoney(ids, cb) {
+    ids.forEach(function (id) {
+      var input = document.getElementById(id);
+      input.addEventListener('input', function () {
+        var atEnd = input.selectionStart === input.value.length;
+        var d = input.value.replace(/[^0-9]/g, '');
+        input.value = d === '' ? '' : fmt0.format(parseInt(d, 10));
+        if (atEnd) { try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {} }
+        cb();
+      });
+    });
+  }
+  function bindPlain(ids, cb) { ids.forEach(function (id) { document.getElementById(id).addEventListener('input', cb); }); }
+  function resetAll(defaults, cb) {
+    document.getElementById('reset-btn').addEventListener('click', function () {
+      Object.keys(defaults).forEach(function (id) { document.getElementById(id).value = defaults[id]; });
+      cb();
+    });
+  }
+
+  var DEFAULTS = { area: '1,850', passing: '132', price: '3,500,000', og: '12,000', market: '165', yrs: '2', yield: '6.25', growth: '3', cost: '0' };
+  var store = {};
+
+  function model(overrides) {
+    var o = overrides || {};
+    var area = nid('area');
+    var passing = nid('passing');
+    var market = o.market !== undefined ? o.market : nid('market');
+    var price = nid('price'), og = nid('og');
+    var yrs = Math.max(0, nid('yrs'));
+    var y = (o.yield !== undefined ? o.yield : nid('yield')) / 100;
+    var growth = nid('growth') / 100, cost = nid('cost');
+    var marketAt = market * Math.pow(1 + growth, yrs);
+    var passIncome = area * passing - og;
+    var mktIncomeNow = area * market - og;
+    var revIncome = area * marketAt - og;
+    var vNow = y > 0 ? passIncome / y : 0;
+    var vThenGross = y > 0 ? revIncome / y : 0;
+    var vThen = vThenGross - cost;
+    return { area: area, passing: passing, market: market, marketAt: marketAt, price: price, og: og,
+      yrs: yrs, y: y, growth: growth, cost: cost,
+      passIncome: passIncome, mktIncomeNow: mktIncomeNow, revIncome: revIncome,
+      vNow: vNow, vThenGross: vThenGross, vThen: vThen, uplift: vThen - vNow,
+      revPc: market > 0 ? 1 - passing / market : 0 };
+  }
+
+  function calc() {
+    var m = model();
+    txt('g-pass', money(m.passIncome));
+    txt('g-rev', money(m.revIncome));
+    txt('r-head', m.yrs > 0 ? 'Reversion in ' + fmt1.format(m.yrs).replace(/\.0$/, '') + ' years' : 'Reversion available now');
+    txt('r-main', moneyShort(m.uplift));
+    txt('r-interp', 'A passing rent of ' + money2(m.passing) + '/m\u00b2 against a market rent of ' + money2(m.market) +
+      '/m\u00b2 leaves the asset ' + pc1(m.revPc * 100) + ' under-rented. Capturing ' + money2(m.marketAt) +
+      '/m\u00b2 at reversion lifts net income by ' + money(m.revIncome - m.passIncome) + ' a year and value by ' +
+      money(m.uplift) + ' at a ' + fmt2.format(m.y * 100) + '% yield.');
+    txt('r-cross', 'Yield on price rises from ' + (m.price > 0 ? pc1(m.passIncome / m.price * 100) : '\u2014') +
+      ' to ' + (m.price > 0 ? pc1(m.revIncome / m.price * 100) : '\u2014'));
+    txt('r-now', moneyShort(m.vNow));
+    txt('r-then', moneyShort(m.vThen));
+    txt('s-revpc', pc1(m.revPc * 100));
+    txt('s-incup', moneyShort(m.revIncome - m.passIncome));
+    txt('s-ypass', m.price > 0 ? pc1(m.passIncome / m.price * 100) : '\u2014');
+    txt('s-yrev', m.price > 0 ? pc1(m.revIncome / m.price * 100) : '\u2014');
+    txt('k-pass', money(m.passIncome));
+    txt('k-mkt', money(m.mktIncomeNow));
+    txt('k-rev', money(m.revIncome));
+    txt('k-up', money(m.revIncome - m.passIncome));
+    txt('k-gap', money2(m.market - m.passing) + '/m\u00b2');
+    txt('k-vnow', money(m.vNow));
+    txt('k-vthen', money(m.vThenGross));
+    txt('k-vcost', paren(m.cost));
+    txt('k-vup', money(m.uplift));
+    txt('k-vrate', m.area > 0 ? money(m.vThen / m.area) + '/m\u00b2' : '\u2014');
+
+    var base = m.y * 100;
+    document.getElementById('y-rows').innerHTML = [-1, -0.5, -0.25, 0, 0.25, 0.5, 1].map(function (s) {
+      var mm = model({ yield: base + s });
+      return '<tr' + (s === 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + fmt2.format(base + s) + '%</td>' +
+        '<td>' + money(mm.vNow) + '</td>' +
+        '<td>' + money(mm.vThen) + '</td>' +
+        '<td>' + money(mm.uplift) + '</td>' +
+        '<td>' + (mm.price > 0 ? pc1(mm.uplift / mm.price * 100) : '\u2014') + '</td></tr>';
+    }).join('');
+
+    document.getElementById('r-rows').innerHTML = [-10, -5, 0, 5, 10].map(function (s) {
+      var mkt = m.market * (1 + s / 100);
+      var mm = model({ market: mkt });
+      return '<tr' + (s === 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + money2(mkt) + '/m\u00b2</td>' +
+        '<td>' + pc1(mm.revPc * 100) + '</td>' +
+        '<td>' + money(mm.revIncome) + '</td>' +
+        '<td>' + money(mm.vThen) + '</td>' +
+        '<td>' + money(mm.uplift) + '</td></tr>';
+    }).join('');
+    store = m;
+  }
+
+  bindMoney(['area', 'price', 'og', 'cost'], calc);
+  bindPlain(['passing', 'market', 'yrs', 'yield', 'growth'], calc);
+  resetAll(DEFAULTS, calc);
+  calc();
+
+  function summaryFields() {
+    var m = store;
+    return {
+      lettable_area: fmt0.format(m.area) + ' m2',
+      passing_net_rent: money2(m.passing) + '/m2 p.a. (' + money(m.passIncome) + ' net)',
+      market_net_rent: money2(m.market) + '/m2 p.a.',
+      years_to_reversion: fmt1.format(m.yrs).replace(/\.0$/, '') + ' yrs',
+      market_rent_growth: nid('growth') + '% p.a.',
+      market_rent_at_reversion: money2(m.marketAt) + '/m2 p.a.',
+      reversion: pc1(m.revPc * 100) + ' under-rented',
+      market_net_yield: fmt2.format(m.y * 100) + '%',
+      price_or_value: money(m.price),
+      cost_to_capture: money(m.cost),
+      value_on_passing: money(m.vNow),
+      value_on_reversion: money(m.vThen),
+      value_uplift: money(m.uplift),
+      income_uplift: money(m.revIncome - m.passIncome) + ' p.a.'
+    };
+  }
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — Rental Reversion & Value Uplift Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'Rental Reversion & Value Uplift Calculator'
+    };
+    var extra = summaryFields();
+    for (var k in extra) payload[k] = extra[k];
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss the Asset';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for decimal inputs (integer part only; decimals kept) */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){var c=s.replace(/[^0-9.]/g,''),k=c.indexOf('.');if(k>=0)c=c.slice(0,k+1)+c.slice(k+1).replace(/\./g,'');var parts=c.split('.'),n=parts[0].replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return parts.length>1?n+'.'+parts[1]:n}
+document.querySelectorAll('input[inputmode="decimal"]:not([readonly])').forEach(function(el){el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
+</body>
+</html>

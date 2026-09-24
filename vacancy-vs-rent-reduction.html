@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vacancy vs Rent Reduction Calculator — Represent Commercial</title>
+<meta name="description" content="Test whether holding out for a target rent through vacancy beats accepting a lower rent now, with break-even vacancy and break-even rent. Represent Commercial." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://represent.au/vacancy-vs-rent-reduction" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
+      IS HOLDING OUT COSTING MORE THAN THE <span class="italic" style="color: var(--gold);">discount?</span>
+    </h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 660px;">
+      An empty tenancy earns nothing and still pays rates, land tax and insurance. Enter the target rent, the expected downtime and the rent on the table today to see which course leaves you ahead.
+    </p>
+  </div>
+</section>
+
+<section class="calc-body">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Your numbers</p>
+          <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+        </div>
+
+        <details class="grp" open>
+          <summary><span>The tenancy</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="area">Lettable area</label><div class="input-shell"><input id="area" type="text" inputmode="numeric" autocomplete="off" value="1,200" /><span class="affix affix--suf">m&sup2;</span></div></div>
+            <div class="field"><label for="horizon">Period assessed</label><div class="input-shell"><input id="horizon" type="text" inputmode="decimal" autocomplete="off" value="5" /><span class="affix affix--suf">yrs</span></div><p class="hint">Both scenarios are measured over the same period from today.</p></div>
+            </div>
+            <div class="field"><label for="og">Outgoings payable while vacant</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="og" type="text" inputmode="decimal" autocomplete="off" value="48" /><span class="affix affix--suf">/m&sup2; p.a.</span></div><p class="hint">Rates, land tax, insurance and upkeep you carry with no tenant in place.</p></div>
+            <div class="field"><label for="rev">Annual review</label><div class="input-shell"><input id="rev" type="text" inputmode="decimal" autocomplete="off" value="3.5" /><span class="affix affix--suf">% p.a.</span></div><p class="hint">Applied to rent in both scenarios once the lease commences.</p></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Hold for the target rent</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+            <div class="field"><label for="hold-rent">Target net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="hold-rent" type="text" inputmode="decimal" autocomplete="off" value="185" /><span class="affix affix--suf">/m&sup2; p.a.</span></div></div>
+            <div class="field"><label for="vac">Expected vacancy</label><div class="input-shell"><span class="affix affix--pre">mths</span><input id="vac" type="text" inputmode="decimal" autocomplete="off" value="6" /></div><p class="hint">Months of marketing and downtime before the target rent is achieved.</p></div>
+            </div>
+            <div class="field"><label for="fee">Letting fee</label><div class="input-shell"><input id="fee" type="text" inputmode="decimal" autocomplete="off" value="15" /><span class="affix affix--suf">% of yr 1 rent</span></div><p class="hint">Applied in both scenarios on the annual net rent achieved.</p></div>
+            <div class="grp-total"><span>Rent forgone while vacant</span><b id="g-forgone">$0</b></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Accept a lower rent now</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field"><label for="acc-rent">Achievable net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="acc-rent" type="text" inputmode="decimal" autocomplete="off" value="168" /><span class="affix affix--suf">/m&sup2; p.a.</span></div><p class="hint">The rent a tenant will sign at today, with no further downtime.</p></div>
+            <div class="field"><label for="acc-vac">Downtime to lease now</label><div class="input-shell"><span class="affix affix--pre">mths</span><input id="acc-vac" type="text" inputmode="decimal" autocomplete="off" value="1" /></div><p class="hint">Months before the lower-rent lease commences. Usually short.</p></div>
+            <div class="grp-total"><span>Discount to target</span><b id="g-disc">0%</b></div>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="calc-col">
+        <div class="card result-card">
+          <p class="result-label" id="r-head">Over a 5-year period</p>
+          <div class="adv-block" style="border-top:0;margin-top:0;padding-top:0;">
+            <p class="adv-label" id="r-label">Accepting the lower rent is ahead</p>
+            <p class="adv-value"><em id="r-main">$0</em></p>
+            <p class="adv-note" id="r-interp"></p>
+            <p class="adv-cross" id="r-cross"></p>
+          </div>
+          <div class="pos-row" style="border-top:1px solid #E6E1D6;margin-top:26px;padding-top:20px;">
+            <div class="pos-k">Hold for the target rent<small>Net income after vacancy outgoings and letting fee</small></div>
+            <div class="pos-v" id="r-hold">$0</div>
+          </div>
+          <div class="pos-row">
+            <div class="pos-k">Accept the lower rent now<small>Net income on the same basis</small></div>
+            <div class="pos-v" id="r-acc">$0</div>
+          </div>
+          <div class="result-stats">
+            <div class="stat"><div class="stat__h">Break-even</div><div class="stat__v" id="s-bevac">0</div><div class="stat__k">Months of vacancy</div></div>
+            <div class="stat"><div class="stat__h">Break-even</div><div class="stat__v" id="s-berent">$0</div><div class="stat__k">Rent to accept now</div></div>
+            <div class="stat"><div class="stat__h">Cost of vacancy</div><div class="stat__v" id="s-vaccost">$0</div><div class="stat__k">Rent plus outgoings</div></div>
+            <div class="stat"><div class="stat__h">Rent gap</div><div class="stat__v" id="s-gap">$0</div><div class="stat__k">Per m&sup2; p.a.</div></div>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="card">
+            <p class="card-label">Hold for target</p>
+            <div class="kv-row"><span>Rent collected</span><b id="k-h-rent">$0</b></div>
+            <div class="kv-row kv-neg"><span>Outgoings while vacant</span><b id="k-h-og">($0)</b></div>
+            <div class="kv-row kv-neg"><span>Letting fee</span><b id="k-h-fee">($0)</b></div>
+            <div class="kv-row kv-row--total"><span>Net income</span><b id="k-h-net">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Months let of period</span><b id="k-h-mths">0</b></div>
+          </div>
+          <div class="card">
+            <p class="card-label">Accept lower rent</p>
+            <div class="kv-row"><span>Rent collected</span><b id="k-a-rent">$0</b></div>
+            <div class="kv-row kv-neg"><span>Outgoings while vacant</span><b id="k-a-og">($0)</b></div>
+            <div class="kv-row kv-neg"><span>Letting fee</span><b id="k-a-fee">($0)</b></div>
+            <div class="kv-row kv-row--total"><span>Net income</span><b id="k-a-net">$0</b></div>
+            <div class="kv-row kv-row--foot"><span>Months let of period</span><b id="k-a-mths">0</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card">
+      <p class="card-label">How long can you afford to wait?</p>
+      <div class="table-scroll">
+        <table class="yr">
+          <thead><tr><th>Vacancy</th><th>Net income holding out</th><th>Against accepting now</th><th>Variance</th><th>Better course</th></tr></thead>
+          <tbody id="vac-rows"></tbody>
+        </table>
+      </div>
+      <details class="fold">
+        <summary><span>What each rent level is worth now</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="table-scroll"><table class="yr">
+          <thead><tr><th>Rent accepted now</th><th>Discount to target</th><th>Net income</th><th>Against holding out</th></tr></thead>
+          <tbody id="rent-rows"></tbody></table></div>
+      </details>
+    </div>
+
+    <details class="fold fold--method">
+      <summary><span>How this is calculated</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="method-body">
+        <h4>Net income</h4>
+        <p>Rent is accrued month by month from the date the lease commences to the end of the period assessed, escalating at the annual review on each anniversary of commencement. Outgoings are charged for every month the tenancy sits empty, and the letting fee is charged once on the first year&rsquo;s net rent.</p>
+        <h4>Why vacancy costs more than the rent</h4>
+        <p>An empty tenancy earns nothing and still incurs rates, land tax, insurance and upkeep. The months lost also shorten the income period, so the higher rent is collected for fewer months than the lower one.</p>
+        <h4>Break-even vacancy</h4>
+        <p>The number of months of vacancy at which holding out for the target rent produces the same net income as accepting the lower rent now. Beyond that point the discount is the better commercial outcome.</p>
+        <h4>Break-even rent</h4>
+        <p>The rent that, signed today, produces the same net income as holding out for the target. Any offer above it beats waiting.</p>
+        <h4>What is excluded</h4>
+        <p>Incentives, rent-free periods, fitout contributions, marketing costs, the time value of money, tenant covenant and the effect of a lower passing rent on the asset&rsquo;s capital value are not modelled. A lower rent locked in for a long term carries a valuation consequence beyond the income comparison.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap">
+    <div class="lead-card">
+      <div id="lead-intro">
+        <div class="lead-h">Every month vacant is a month you cannot get back.</div>
+        <p class="lead-p">The right answer depends on the depth of enquiry, the covenant on offer and what the lower rent does to the asset&rsquo;s value. Represent leases and manages commercial property with that whole picture in view.</p>
+        <form id="lead-form">
+          <div class="lead-grid">
+            <div class="lead-field"><label for="vacancy-vs-rent-reduction-name">Name</label><input id="vacancy-vs-rent-reduction-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="vacancy-vs-rent-reduction-email">Email</label><input id="vacancy-vs-rent-reduction-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="lead-field"><label for="vacancy-vs-rent-reduction-phone">Phone</label><input id="vacancy-vs-rent-reduction-phone" name="phone" autocomplete="tel" /></div>
+          </div>
+          <div class="lead-actions">
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Vacancy</button>
+            <a class="lead-link" href="/leasing">Explore Commercial Leasing &rarr;</a>
+          </div>
+          <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+        </form>
+      </div>
+      <div id="lead-done" style="display:none;">
+        <div class="lead-h" style="margin-bottom:6px;">Thanks &mdash; we&rsquo;ll be in touch.</div>
+        <p class="lead-p" style="margin:0;">Nick will come back to you personally about the tenancy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal or valuation advice. Results depend entirely on the figures entered. Incentives, rent-free periods, fitout contributions, marketing costs, tenant covenant, the time value of money and the effect of a lower passing rent on capital value are excluded. A leasing strategy should be set on market evidence and enquiry levels, not on a projection alone. Represent Commercial &mdash; Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/referrals">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Intelligence</h3>
+        <ul>
+          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Principal &amp; Licensee</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals">
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var fmt0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var fmt1 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var fmt2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function num(x) { var v = parseFloat(String(x.value).replace(/[^0-9.]/g, '')); return isFinite(v) ? v : 0; }
+  function nid(id) { return num(document.getElementById(id)); }
+  function money(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function money2(n) { return (n < 0 ? '−' : '') + '$' + fmt0.format(Math.abs(Math.round(n))); }
+  function paren(n) { return '($' + fmt0.format(Math.abs(Math.round(n))) + ')'; }
+  function pc1(n) { return fmt1.format(n) + '%'; }
+  function moneyShort(n) {
+    var a = Math.abs(n), s = n < 0 ? '−' : '';
+    if (a >= 1e6) return s + '$' + (a / 1e6).toFixed(a >= 1e7 ? 1 : 2).replace(/\.0+$/, '') + 'M';
+    if (a >= 1e3) return s + '$' + Math.round(a / 1e3) + 'k';
+    return s + '$' + fmt0.format(Math.round(a));
+  }
+  function txt(id, v) { document.getElementById(id).textContent = v; }
+  function bindMoney(ids, cb) {
+    ids.forEach(function (id) {
+      var input = document.getElementById(id);
+      input.addEventListener('input', function () {
+        var atEnd = input.selectionStart === input.value.length;
+        var d = input.value.replace(/[^0-9]/g, '');
+        input.value = d === '' ? '' : fmt0.format(parseInt(d, 10));
+        if (atEnd) { try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {} }
+        cb();
+      });
+    });
+  }
+  function bindPlain(ids, cb) { ids.forEach(function (id) { document.getElementById(id).addEventListener('input', cb); }); }
+  function resetAll(defaults, cb) {
+    document.getElementById('reset-btn').addEventListener('click', function () {
+      Object.keys(defaults).forEach(function (id) { document.getElementById(id).value = defaults[id]; });
+      cb();
+    });
+  }
+
+  var DEFAULTS = { area: '1,200', horizon: '5', og: '48', rev: '3.5', 'hold-rent': '185', vac: '6', fee: '15', 'acc-rent': '168', 'acc-vac': '1' };
+  var store = {};
+
+  function netIncome(rentPerM2, vacMonths, p) {
+    var months = p.H * 12;
+    var start = Math.min(Math.max(0, Math.round(vacMonths)), months);
+    var annual = p.area * rentPerM2;
+    var rent = 0;
+    for (var m = start; m < months; m++) {
+      rent += annual / 12 * Math.pow(1 + p.g, Math.floor((m - start) / 12));
+    }
+    var ogCost = p.area * p.og / 12 * start;
+    var fee = annual * p.feePc;
+    return { rent: rent, og: ogCost, fee: fee, net: rent - ogCost - fee, letMonths: months - start };
+  }
+
+  function params() {
+    return { area: nid('area'), H: Math.max(1, Math.min(25, Math.round(nid('horizon')))),
+      og: nid('og'), g: nid('rev') / 100, feePc: nid('fee') / 100 };
+  }
+
+  function calc() {
+    var p = params();
+    var holdRent = nid('hold-rent'), vac = nid('vac'), accRent = nid('acc-rent'), accVac = nid('acc-vac');
+    var hold = netIncome(holdRent, vac, p);
+    var acc = netIncome(accRent, accVac, p);
+    var diff = hold.net - acc.net;
+    var holdWins = diff > 0;
+
+    txt('g-forgone', money(p.area * holdRent / 12 * Math.round(vac)));
+    txt('g-disc', holdRent > 0 ? pc1((1 - accRent / holdRent) * 100) : '\u2014');
+    txt('r-head', 'Over a ' + p.H + '-year period');
+    txt('r-label', Math.abs(diff) < 1 ? 'The two courses are level' : (holdWins ? 'Holding for the target rent is ahead' : 'Accepting the lower rent is ahead'));
+    txt('r-main', moneyShort(Math.abs(diff)));
+    txt('r-interp', 'Holding out for ' + money2(holdRent) + '/m\u00b2 through ' + Math.round(vac) + ' months of vacancy returns ' +
+      money(hold.net) + ' over ' + p.H + ' years, against ' + money(acc.net) + ' by letting now at ' + money2(accRent) + '/m\u00b2. ' +
+      (holdWins ? 'Waiting is worth ' : 'The discount is worth ') + money(Math.abs(diff)) + '.');
+
+    var be = null;
+    for (var mm = 0; mm <= p.H * 12; mm++) {
+      if (netIncome(holdRent, mm, p).net < acc.net) { be = mm; break; }
+    }
+    txt('r-cross', be === null
+      ? 'The target rent stays ahead across the whole period'
+      : 'Break-even at ' + be + ' months of vacancy \u00b7 ' + money2(beRent(hold.net, accVac, p)) + '/m\u00b2 accepted now');
+
+    txt('r-hold', moneyShort(hold.net));
+    txt('r-acc', moneyShort(acc.net));
+    txt('s-bevac', be === null ? '\u2014' : be + ' mths');
+    txt('s-berent', money2(beRent(hold.net, accVac, p)));
+    txt('s-vaccost', moneyShort(p.area * holdRent / 12 * Math.round(vac) + p.area * p.og / 12 * Math.round(vac)));
+    txt('s-gap', money2(holdRent - accRent));
+
+    txt('k-h-rent', money(hold.rent)); txt('k-h-og', paren(hold.og)); txt('k-h-fee', paren(hold.fee));
+    txt('k-h-net', money(hold.net)); txt('k-h-mths', hold.letMonths + ' of ' + p.H * 12);
+    txt('k-a-rent', money(acc.rent)); txt('k-a-og', paren(acc.og)); txt('k-a-fee', paren(acc.fee));
+    txt('k-a-net', money(acc.net)); txt('k-a-mths', acc.letMonths + ' of ' + p.H * 12);
+
+    var rows = '';
+    for (var v = 0; v <= 12; v++) {
+      var h = netIncome(holdRent, v, p);
+      var d = h.net - acc.net;
+      rows += '<tr' + (v === Math.round(vac) ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + v + (v === 1 ? ' mth' : ' mths') + '</td>' +
+        '<td>' + money(h.net) + '</td>' +
+        '<td>' + (d >= 0 ? '+' : '\u2212') + '$' + fmt0.format(Math.abs(Math.round(d))) + '</td>' +
+        '<td>' + (acc.net > 0 ? (d >= 0 ? '+' : '\u2212') + pc1(Math.abs(d / acc.net * 100)) : '\u2014') + '</td>' +
+        '<td>' + (d >= 0 ? '<span class="adv adv--on">Hold</span>' : '<span class="adv adv--off">Accept now</span>') + '</td></tr>';
+    }
+    document.getElementById('vac-rows').innerHTML = rows;
+
+    var steps = [0, -2.5, -5, -7.5, -10, -12.5, -15];
+    document.getElementById('rent-rows').innerHTML = steps.map(function (s) {
+      var r = holdRent * (1 + s / 100);
+      var a = netIncome(r, accVac, p);
+      var d = a.net - hold.net;
+      return '<tr' + (s === 0 ? ' class="is-be"' : '') + '>' +
+        '<td class="yr-c">' + money2(r) + '/m\u00b2</td>' +
+        '<td>' + (s === 0 ? '\u2014' : pc1(Math.abs(s))) + '</td>' +
+        '<td>' + money(a.net) + '</td>' +
+        '<td>' + (d >= 0 ? '+' : '\u2212') + '$' + fmt0.format(Math.abs(Math.round(d))) + '</td></tr>';
+    }).join('');
+
+    store = { p: p, holdRent: holdRent, vac: vac, accRent: accRent, accVac: accVac, hold: hold, acc: acc, diff: diff, holdWins: holdWins, be: be };
+  }
+
+  function beRent(targetNet, accVac, p) {
+    var lo = 0, hi = 1000;
+    for (var i = 0; i < 60; i++) {
+      var mid = (lo + hi) / 2;
+      if (netIncome(mid, accVac, p).net < targetNet) lo = mid; else hi = mid;
+    }
+    return (lo + hi) / 2;
+  }
+
+  bindMoney(['area'], calc);
+  bindPlain(['horizon', 'og', 'rev', 'hold-rent', 'vac', 'fee', 'acc-rent', 'acc-vac'], calc);
+  resetAll(DEFAULTS, calc);
+  calc();
+
+  function summaryFields() {
+    var s = store;
+    return {
+      lettable_area: fmt0.format(s.p.area) + ' m2',
+      period_assessed: s.p.H + ' yrs',
+      outgoings_while_vacant: money2(nid('og')) + '/m2 p.a.',
+      annual_review: nid('rev') + '% p.a.',
+      letting_fee: nid('fee') + '% of year one rent',
+      target_rent: money2(s.holdRent) + '/m2 p.a. after ' + Math.round(s.vac) + ' mths vacancy',
+      rent_achievable_now: money2(s.accRent) + '/m2 p.a. after ' + Math.round(s.accVac) + ' mths',
+      net_income_holding: money(s.hold.net),
+      net_income_accepting: money(s.acc.net),
+      outcome: (s.holdWins ? 'Holding ahead by ' : 'Accepting ahead by ') + money(Math.abs(s.diff)),
+      break_even_vacancy: s.be === null ? 'Target stays ahead all period' : s.be + ' mths',
+      break_even_rent_now: money2(beRent(s.hold.net, s.accVac, s.p)) + '/m2 p.a.'
+    };
+  }
+
+  var form = document.getElementById('lead-form');
+  var btn = document.getElementById('lead-btn');
+  var errEl = document.getElementById('lead-err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = {
+      access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
+      form_stream: 'enquiries',
+      subject: 'Enquiry — Vacancy vs Rent Reduction Calculator',
+      from_name: 'Represent Commercial Website',
+      name: form.name.value,
+      email: form.email.value,
+      replyto: form.email.value,
+      phone: form.phone.value,
+      tool: 'Vacancy vs Rent Reduction Calculator'
+    };
+    var extra = summaryFields();
+    for (var k in extra) payload[k] = extra[k];
+    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
+    function fail(message) {
+      btn.disabled = false; btn.textContent = 'Discuss Your Vacancy';
+      errEl.textContent = message; errEl.style.display = 'block';
+    }
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload), signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (res && res.success === true) {
+        document.getElementById('lead-intro').style.display = 'none';
+        document.getElementById('lead-done').style.display = 'block';
+      } else { fail(FAIL); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v14.js" defer></script>
+<script>
+/* Live thousand separators for decimal inputs (integer part only; decimals kept) */
+(function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
+function g(s){var c=s.replace(/[^0-9.]/g,''),k=c.indexOf('.');if(k>=0)c=c.slice(0,k+1)+c.slice(k+1).replace(/\./g,'');var parts=c.split('.'),n=parts[0].replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');return parts.length>1?n+'.'+parts[1]:n}
+document.querySelectorAll('input[inputmode="decimal"]:not([readonly])').forEach(function(el){el.addEventListener('input',function(){rcCaret(el,g,/,/g)})});})();
+</script>
+</body>
+</html>
