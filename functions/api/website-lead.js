@@ -56,7 +56,13 @@ const CF = {
   websitePropertyAddress: 'aWcZGSnaUeHcieurAxSP',
   propertyStatus: 'yYlNpGzcjjADqaHcg1ww',
   websiteEnquiryDetail: 'v5a3MDmy65a6YetZPOW4',
-  currentAgent: 'GgatUG6PjGGGQQHhGviX'
+  currentAgent: 'GgatUG6PjGGGQQHhGviX',
+
+  // Buyer qualification (Opportunity-level TEXT fields)
+  acquisitionBudgetBand: 'vhG5ctIOildZP0ApkB0B',      // opportunity.acquisition_budget_band
+  acquisitionTiming: 'jYi6lbL8NIU6nIXNtqdO',          // opportunity.acquisition_timing
+  preferredAcquisitionArea: 'YMZqyBx7BvZtRCOx81r8',   // opportunity.preferred_acquisition_area
+  propertyIdentified: 'rUbRxCVCrp4Y9AjrM53q'          // opportunity.property_identified
 };
 
 export async function onRequestGet({ env }) {
@@ -162,6 +168,14 @@ export async function onRequestPost({ request, env }) {
     addField(fields, CF.propertyStatus, propertyStatus);
     addField(fields, CF.websiteEnquiryDetail, enquiryDetail);
     addField(fields, CF.currentAgent, currentAgent);
+
+    // Buyer-side only: Preliminary Acquisition Brief payload names
+    if (route === ROUTES.buyer) {
+      addField(fields, CF.acquisitionBudgetBand, clean(data.budget, 200));
+      addField(fields, CF.acquisitionTiming, clean(data.timing, 200));
+      addField(fields, CF.preferredAcquisitionArea, clean(data.preferred_location, 500));
+      addField(fields, CF.propertyIdentified, clean(data.property_identified, 50));
+    }
 
     const oppName = buildOpportunityName(enquiryService, propertyAddress, name);
     const oppRes = await ghl('/opportunities/', env, {
