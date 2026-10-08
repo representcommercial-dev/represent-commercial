@@ -289,7 +289,7 @@
         <p class="pr-not" style="margin-top: 10px;">The brief is not a valuation, due diligence, a building inspection, or legal, tax or financial advice. Unless separately agreed, it is not a formal written report. It does not guarantee access to off-market opportunities or a successful acquisition.</p>
 
         <div class="pr-nick">
-          <picture><source srcset="nick-otoole.webp" type="image/webp" /><img src="nick-otoole.jpg" alt="Nick O'Toole" width="96" height="120" loading="lazy" /></picture>
+          <picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="Nick O'Toole" width="96" height="120" loading="lazy" /></picture>
           <div>
             <p class="pr-h" style="margin-bottom: 10px;">Why Nick</p>
             <h3>Nick O'Toole</h3>
@@ -465,6 +465,7 @@
   </div>
 </footer>
 
+<script src="rc-attribution.v1.js"></script>
 <script>
 window.rcTrack = function (name, params) {
   params = params || {};
@@ -488,7 +489,9 @@ window.rcTrack = function (name, params) {
   Object.keys(map).forEach(function (k) { var v = q.get(k); if (v && !(k !== map[k] && q.get(map[k]))) attr[map[k]] = v; });
   if (!attr.referrer && document.referrer && document.referrer.indexOf(location.host) === -1) attr.referrer = document.referrer;
   try { sessionStorage.setItem(KEY, JSON.stringify(attr)); } catch (e) {}
-  Object.keys(attr).forEach(function (k) { var f = form.querySelector('[name="' + k + '"]'); if (f) f.value = attr[k]; });
+  // 90-day first touch (rc-attribution.v1.js) is canonical when available; session values are the fallback.
+  if (window.rcAttribution) attr = window.rcAttribution.fields();
+  Object.keys(attr).forEach(function (k) { var f = form.querySelector('[name="' + k + '"]'); if (f && attr[k]) f.value = attr[k]; });
 
   // CTA: in-page click wins; otherwise the article CTA that brought the visitor here
   var cta = form.querySelector('[name="cta_clicked"]');

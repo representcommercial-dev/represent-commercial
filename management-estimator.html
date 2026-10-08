@@ -364,6 +364,7 @@
   var errEl = document.getElementById('lead-err');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (btn && btn.disabled) return; // in-flight guard: one request at a time
     if (!form.reportValidity()) return;
     errEl.style.display = 'none';
     btn.disabled = true; btn.textContent = 'Sending…';
@@ -418,7 +419,8 @@
 })();
 </script>
 
-  <script src="nav.v14.js" defer></script>
+  <script src="rc-attribution.v1.js"></script>
+<script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

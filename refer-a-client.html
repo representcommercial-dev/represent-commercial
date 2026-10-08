@@ -309,6 +309,7 @@
     }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (submitBtn && submitBtn.disabled) return; // in-flight guard: one request at a time
       if (!form.reportValidity()) return;
       if (status) status.textContent = '';
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026'; }
@@ -345,6 +346,7 @@
 </script>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
-  <script src="nav.v14.js" defer></script>
+  <script src="rc-attribution.v1.js"></script>
+<script src="nav.v14.js" defer></script>
 </body>
 </html>

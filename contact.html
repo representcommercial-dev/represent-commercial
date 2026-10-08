@@ -376,6 +376,7 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (submitBtn && submitBtn.disabled) return; // in-flight guard: one request at a time
       if (!form.reportValidity()) return;
       if (status) status.textContent = '';
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
@@ -414,7 +415,8 @@
 </script>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
-  <script src="nav.v14.js" defer></script>
+  <script src="rc-attribution.v1.js"></script>
+<script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for amounts typed into free-text fields */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

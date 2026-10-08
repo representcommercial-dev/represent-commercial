@@ -65,6 +65,48 @@ const CF = {
   propertyIdentified: 'rUbRxCVCrp4Y9AjrM53q'          // opportunity.property_identified
 };
 
+// Contact-only streams: create/update the HighLevel Contact, never an Opportunity.
+// Opportunities for these leads are created manually after Nick qualifies them.
+// Every other stream (e.g. preliminary-acquisition-brief) keeps the opportunity flow below.
+const CONTACT_ONLY_STREAMS = {
+  'commercial-property-performance-review': {
+    leadOffer: 'Property Performance Review',
+    intentFamily: 'Owner Performance',
+    noteTitle: 'Commercial Property Performance Review: website submission'
+  }
+};
+
+// Contact-level fields (confirmed in HighLevel, 6 October 2026). Resolved to IDs at runtime
+// from GET /locations/{id}/customFields?model=contact by fieldKey, then by exact name.
+// GCLID is the standard contact.gclid field; no custom GCLID field exists or is created.
+const CONTACT_FIELDS = {
+  leadOffer:              { key: 'contact.lead_offer',               name: 'Lead Offer' },
+  intentFamily:           { key: 'contact.intent_family',            name: 'Intent Family' },
+  originalEnquiry:        { key: 'contact.original_enquiry',         name: 'Original Enquiry' },
+  websitePropertyAddress: { key: 'contact.website_property_address', name: 'Website Property Address' },
+  propertyStatus:         { key: 'contact.property_status',          name: 'Property Status' },
+  gclid:                  { key: 'contact.gclid',                    name: 'GCLID' },
+  utmSource:              { key: 'contact.utm_source',               name: 'UTM Source' },
+  utmMedium:              { key: 'contact.utm_medium',               name: 'UTM Medium' },
+  utmCampaign:            { key: 'contact.utm_campaign',             name: 'UTM Campaign' },
+  utmAdGroup:             { key: 'contact.utm_ad_group',             name: 'UTM Ad Group' },
+  utmTerm:                { key: 'contact.utm_term',                 name: 'UTM Term' },
+  utmContent:             { key: 'contact.utm_content',              name: 'UTM Content' },
+  landingPage:            { key: 'contact.landing_page',             name: 'Landing Page' },
+  ctaClicked:             { key: 'contact.cta_clicked',              name: 'CTA Clicked' },
+  originalReferrer:       { key: 'contact.original_referrer',        name: 'Original Referrer' },
+  formStream:             { key: 'contact.form_stream',              name: 'Form Stream' },
+  enquiryService:         { key: 'contact.enquiry_service',          name: 'Enquiry Service' },
+  websiteSubmissionId:    { key: 'contact.website_submission_id',    name: 'Website Submission ID' }
+};
+
+// First-touch fields: written only while empty on the contact, so a repeat
+// submission never overwrites the original concern or the original source.
+const FILL_IF_EMPTY = ['originalEnquiry', 'gclid', 'utmSource', 'utmMedium', 'utmCampaign',
+  'utmAdGroup', 'utmTerm', 'utmContent', 'landingPage', 'originalReferrer'];
+
+let contactFieldCache = null;
+
 export async function onRequestGet({ env }) {
   return json({
     ok: true,
@@ -84,7 +126,9 @@ export async function onRequestPost({ request, env }) {
     const data = await request.json();
     if (clean(data.botcheck, 200)) return json({ ok: true, ignored: true }, 200);
 
-    const name = clean(data.name || [data.first_name, data.last_name].filter(Boolean).join(' '), 200);
+    const firstName = clean(data.first_name, 100);
+    const lastName = clean(data.last_name, 100);
+    const name = clean(data.name || [firstName, lastName].filter(Boolean).join(' '), 200);
     const email = clean(data.email, 320).toLowerCase();
     const phone = clean(data.phone, 80);
     if (!email && !phone) return json({ ok: false, error: 'Email or phone is required.' }, 422);
@@ -114,7 +158,10 @@ export async function onRequestPost({ request, env }) {
       method: 'POST',
       body: {
         locationId: env.GHL_LOCATION_ID,
-        name: name || undefined,
+        // Separate first/last name where the form collects them; single-name forms are unchanged.
+        ...(firstName || lastName
+          ? { firstName: firstName || undefined, lastName: lastName || undefined }
+          : { name: name || undefined }),
         email: email || undefined,
         phone: phone || undefined,
         createNewIfDuplicateAllowed: false
@@ -124,6 +171,19 @@ export async function onRequestPost({ request, env }) {
       return json({ ok: false, error: 'CRM contact upsert failed.', upstream_status: contactRes.status }, 502);
     }
     const contactId = contactRes.data.contact.id;
+
+    const contactOnly = CONTACT_ONLY_STREAMS[clean(data.form_stream, 200)];
+    if (contactOnly) {
+      return await contactOnlyHandoff(env, data, contactOnly, {
+        contactId,
+        contactCreated: contactRes.data.new === true,
+        submissionId,
+        propertyAddress,
+        propertyStatus,
+        enquiryService,
+        enquiryDetail
+      });
+    }
 
     const existing = await findExistingOpportunity(env, {
       contactId,
@@ -205,6 +265,129 @@ export async function onRequestPost({ request, env }) {
   } catch (err) {
     return json({ ok: false, error: 'CRM handoff error.', detail: String(err && err.message ? err.message : err) }, 500);
   }
+}
+
+async function contactOnlyHandoff(env, data, stream, ctx) {
+  const resolved = await resolveContactFields(env);
+  const refs = {};
+  const unresolved = [];
+  for (const k of Object.keys(CONTACT_FIELDS)) {
+    if (resolved.map[k]) refs[k] = { id: resolved.map[k] };
+    else {
+      refs[k] = { key: CONTACT_FIELDS[k].key.replace(/^contact\./, '') };
+      unresolved.push(CONTACT_FIELDS[k].key);
+    }
+  }
+
+  const current = await ghl('/contacts/' + encodeURIComponent(ctx.contactId), env, { method: 'GET' });
+  const existing = {};
+  const cfs = current.ok && current.data && current.data.contact && Array.isArray(current.data.contact.customFields)
+    ? current.data.contact.customFields : [];
+  for (const f of cfs) {
+    if (!f || !f.id) continue;
+    const v = f.value !== undefined ? f.value : (f.fieldValue !== undefined ? f.fieldValue : f.field_value);
+    existing[f.id] = v === undefined || v === null ? '' : String(v);
+  }
+
+  // Idempotency: a retried handoff for the same submission writes nothing further.
+  if (refs.websiteSubmissionId.id && existing[refs.websiteSubmissionId.id] === ctx.submissionId) {
+    return json({
+      ok: true,
+      contact_id: ctx.contactId,
+      contact_only: true,
+      opportunity_created: false,
+      duplicate_controlled: true
+    }, 200);
+  }
+
+  // Owner's concern verbatim: no trimming or reformatting, length cap only.
+  const concernRaw = data.owner_concern === undefined || data.owner_concern === null ? '' : String(data.owner_concern);
+  const concern = concernRaw.trim() ? concernRaw.slice(0, 10000) : '';
+
+  const values = {
+    leadOffer: stream.leadOffer,
+    intentFamily: stream.intentFamily,
+    originalEnquiry: concern,
+    websitePropertyAddress: ctx.propertyAddress,
+    propertyStatus: ctx.propertyStatus,
+    gclid: clean(data.gclid, 500),
+    utmSource: clean(data.utm_source, 500),
+    utmMedium: clean(data.utm_medium, 500),
+    utmCampaign: clean(data.utm_campaign, 500),
+    utmAdGroup: clean(data.utm_adgroup, 500),
+    utmTerm: clean(data.utm_term, 500),
+    utmContent: clean(data.utm_content, 500),
+    landingPage: clean(data.landing_page, 500),
+    ctaClicked: clean(data.cta_clicked, 500),
+    originalReferrer: clean(data.referrer, 1000),
+    formStream: clean(data.form_stream, 500),
+    enquiryService: ctx.enquiryService,
+    websiteSubmissionId: ctx.submissionId
+  };
+
+  const customFields = [];
+  const preserved = [];
+  for (const k of Object.keys(values)) {
+    const v = values[k];
+    if (v === undefined || v === null || String(v) === '') continue;
+    const ref = refs[k];
+    if (FILL_IF_EMPTY.includes(k) && ref.id && String(existing[ref.id] || '').trim() !== '') {
+      preserved.push(CONTACT_FIELDS[k].key);
+      continue;
+    }
+    customFields.push(Object.assign({}, ref, { field_value: k === 'originalEnquiry' ? v : String(v).trim() }));
+  }
+
+  const upd = await ghl('/contacts/' + encodeURIComponent(ctx.contactId), env, {
+    method: 'PUT',
+    body: { customFields }
+  });
+  if (!upd.ok) {
+    return json({ ok: false, error: 'CRM contact field update failed.', contact_id: ctx.contactId, upstream_status: upd.status }, 502);
+  }
+
+  // Per-submission note keeps the full Website Enquiry Detail, including later concerns.
+  const noteLines = [stream.noteTitle, 'Website Submission ID: ' + ctx.submissionId];
+  if (ctx.propertyAddress) noteLines.push('Property address: ' + ctx.propertyAddress);
+  if (ctx.propertyStatus) noteLines.push('Property status: ' + ctx.propertyStatus);
+  if (concern) noteLines.push('', 'Owner concern (verbatim):', concern);
+  const note = await ghl('/contacts/' + encodeURIComponent(ctx.contactId) + '/notes', env, {
+    method: 'POST',
+    body: { body: noteLines.join('\n').slice(0, 20000) }
+  });
+
+  return json({
+    ok: true,
+    contact_id: ctx.contactId,
+    contact_created: ctx.contactCreated,
+    contact_only: true,
+    opportunity_created: false,
+    fields_written: customFields.length,
+    first_touch_preserved: preserved,
+    unresolved_fields: unresolved,
+    note_created: note.ok === true
+  }, ctx.contactCreated ? 201 : 200);
+}
+
+async function resolveContactFields(env) {
+  const loc = env.GHL_LOCATION_ID;
+  if (contactFieldCache && contactFieldCache.loc === loc && Date.now() - contactFieldCache.at < 600000) {
+    return contactFieldCache;
+  }
+  const res = await ghl('/locations/' + encodeURIComponent(loc) + '/customFields?model=contact', env, { method: 'GET' });
+  const list = res.ok && res.data && Array.isArray(res.data.customFields) ? res.data.customFields : null;
+  const map = {};
+  if (list) {
+    for (const k of Object.keys(CONTACT_FIELDS)) {
+      const def = CONTACT_FIELDS[k];
+      const hit = list.find(f => f && f.fieldKey === def.key) ||
+        list.find(f => f && normal(f.name) === normal(def.name) && (!f.model || f.model === 'contact'));
+      if (hit && hit.id) map[k] = hit.id;
+    }
+    contactFieldCache = { loc, at: Date.now(), map };
+    return contactFieldCache;
+  }
+  return { loc, at: 0, map };
 }
 
 async function findExistingOpportunity(env, opts) {

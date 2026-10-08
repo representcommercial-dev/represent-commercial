@@ -3,6 +3,8 @@
   Cache-Control: public, max-age=31536000, immutable
 /nav.v*.js
   Cache-Control: public, max-age=31536000, immutable
+/rc-attribution.v*.js
+  Cache-Control: public, max-age=31536000, immutable
 
 # Legacy unversioned copies. Compatibility rule: keep these available while any
 # previously cached HTML, or a supported rollback target, may still reference them.

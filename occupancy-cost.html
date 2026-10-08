@@ -433,6 +433,7 @@
   var errEl = document.getElementById('lead-err');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (btn && btn.disabled) return; // in-flight guard: one request at a time
     if (!form.reportValidity()) return;
     errEl.style.display = 'none';
     btn.disabled = true; btn.textContent = 'Sending…';
@@ -477,6 +478,7 @@
   });
 })();
 </script>
+<script src="rc-attribution.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */
