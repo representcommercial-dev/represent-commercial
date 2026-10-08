@@ -89,7 +89,7 @@
         <details class="grp" open>
           <summary><span>Accept a lower rent now</span><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
           <div class="grp-body">
-            <div class="field"><label for="acc-rent">Achievable net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="acc-rent" type="text" inputmode="decimal" autocomplete="off" value="168" /><span class="affix affix--suf">/m&sup2; p.a.</span></div><p class="hint">The rent a tenant will sign at today, with no further downtime.</p></div>
+            <div class="field"><label for="acc-rent">Achievable net rent</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="acc-rent" type="text" inputmode="decimal" autocomplete="off" value="168" /><span class="affix affix--suf">/m&sup2; p.a.</span></div><p class="hint">The achievable rent. Allow for the time needed to agree terms and commence the lease below.</p></div>
             <div class="field"><label for="acc-vac">Downtime to lease now</label><div class="input-shell"><span class="affix affix--pre">mths</span><input id="acc-vac" type="text" inputmode="decimal" autocomplete="off" value="1" /></div><p class="hint">Months before the lower-rent lease commences. Usually short.</p></div>
             <div class="grp-total"><span>Discount to target</span><b id="g-disc">0%</b></div>
           </div>
@@ -115,7 +115,7 @@
             <div class="pos-v" id="r-acc">$0</div>
           </div>
           <div class="result-stats">
-            <div class="stat"><div class="stat__h">Break-even</div><div class="stat__v" id="s-bevac">0</div><div class="stat__k">Months of vacancy</div></div>
+            <div class="stat"><div class="stat__h">Waiting falls behind</div><div class="stat__v" id="s-bevac">0</div><div class="stat__k">Months of vacancy</div></div>
             <div class="stat"><div class="stat__h">Break-even</div><div class="stat__v" id="s-berent">$0</div><div class="stat__k">Rent to accept now</div></div>
             <div class="stat"><div class="stat__h">Cost of vacancy</div><div class="stat__v" id="s-vaccost">$0</div><div class="stat__k">Rent plus outgoings</div></div>
             <div class="stat"><div class="stat__h">Rent gap</div><div class="stat__v" id="s-gap">$0</div><div class="stat__k">Per m&sup2; p.a.</div></div>
@@ -166,24 +166,52 @@
         <p>Rent is accrued month by month from the date the lease commences to the end of the period assessed, escalating at the annual review on each anniversary of commencement. Outgoings are charged for every month the tenancy sits empty, and the letting fee is charged once on the first year&rsquo;s net rent.</p>
         <h4>Why vacancy costs more than the rent</h4>
         <p>An empty tenancy earns nothing and still incurs rates, land tax, insurance and upkeep. The months lost also shorten the income period, so the higher rent is collected for fewer months than the lower one.</p>
-        <h4>Break-even vacancy</h4>
-        <p>The number of months of vacancy at which holding out for the target rent produces the same net income as accepting the lower rent now. Beyond that point the discount is the better commercial outcome.</p>
+        <h4>When waiting falls behind</h4>
+        <p>The first whole month of vacancy at which holding out produces less modelled net income than accepting the lower rent after the downtime entered. The exact break-even point may sit between whole months. This is an income comparison, not a complete leasing recommendation.</p>
+        <p>Vacancy inputs are rounded to whole months. The assessment period is rounded to whole years, between one and 25 years. Both leases are assumed to continue to the end of that period. Amounts exclude GST.</p>
         <h4>Break-even rent</h4>
-        <p>The rent that, signed today, produces the same net income as holding out for the target. Any offer above it beats waiting.</p>
+        <p>The rent that, after the downtime entered for the lower-rent option, produces the same modelled net income as holding out for the target. A higher rent produces more income on these assumptions.</p>
         <h4>What is excluded</h4>
         <p>Incentives, rent-free periods, fitout contributions, marketing costs, the time value of money, tenant covenant and the effect of a lower passing rent on the asset&rsquo;s capital value are not modelled. A lower rent locked in for a long term carries a valuation consequence beyond the income comparison.</p>
       </div>
     </details>
 
+    <article class="card" style="margin-top:26px;font-size:1rem;line-height:1.65;" aria-labelledby="worked-example-title">
+      <h2 id="worked-example-title">A lower rent can leave an owner ahead</h2>
+      <p>This illustrative example compares a 500 m&sup2; tenancy over three years from today. The target is $200/m&sup2; net with three months of vacancy. The alternative is $190/m&sup2; net with one month of downtime. Vacancy outgoings are $40/m&sup2; p.a., the letting fee is 15% of first-year net rent in both options, and annual reviews are set to zero to make the comparison easy to follow. These are example inputs, not market rental evidence or a fee quote.</p>
+      <div class="table-scroll"><table class="yr">
+        <caption style="text-align:left;padding-bottom:12px;">Three-year income comparison, excluding GST</caption>
+        <thead><tr><th>Option</th><th>Rent collected</th><th>Vacancy outgoings</th><th>Letting fee</th><th>Net income</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Wait for $200/m&sup2;</th><td>$275,000</td><td>$5,000</td><td>$15,000</td><td>$255,000</td></tr>
+          <tr><th scope="row">Accept $190/m&sup2;</th><td>$277,083</td><td>$1,667</td><td>$14,250</td><td>$261,167</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>Accepting the 5% lower rent produces approximately $6,167 more net income over the same three years.</strong> The extra two months of income and lower vacancy costs outweigh the rent reduction on these assumptions. Figures are rounded independently.</p>
+      <button type="button" class="lead-btn" id="load-example">Try these example numbers</button>
+      <p id="example-status" role="status" style="margin-top:12px;"></p>
+      <h2 style="margin-top:28px;">A lease is an asset decision</h2>
+      <p>The calculation gives you a starting point. Before changing the asking rent, consider:</p>
+      <ul>
+        <li><strong>Evidence:</strong> comparable premises, competing stock, enquiry quality and inspection feedback. Weak enquiry may reflect presentation, access or suitability as well as price.</li>
+        <li><strong>The tenant:</strong> ability to pay, proposed use, security and the risk of needing to relet.</li>
+        <li><strong>The whole deal:</strong> incentives, fitout contributions, lease term, reviews, options and the costs you can recover.</li>
+        <li><strong>The asset strategy:</strong> how the lease supports future sale, refinancing, refurbishment or redevelopment.</li>
+      </ul>
+      <p>A lower rent with a stronger tenant may be attractive. A lower rent with substantial incentives or weak security may not be. Test the numbers, then assess the lease.</p>
+      <p><a href="#leasing-strategy-enquiry">Discuss the leasing strategy for your property</a></p>
+      <p style="font-size:0.875rem;">Prepared by Represent Commercial. Before relying on a result, check the inputs and the exclusions explained above.</p>
+    </article>
+
   </div>
 </section>
 
-<section class="calc-cta">
+<section class="calc-cta" id="leasing-strategy-enquiry">
   <div class="calc-wrap">
     <div class="lead-card">
       <div id="lead-intro">
-        <div class="lead-h">Every month vacant is a month you cannot get back.</div>
-        <p class="lead-p">The right answer depends on the depth of enquiry, the covenant on offer and what the lower rent does to the asset&rsquo;s value. Represent leases and manages commercial property with that whole picture in view.</p>
+        <div class="lead-h">Discuss the leasing strategy for your property.</div>
+        <p class="lead-p">Share your details and the assumptions you have tested. Nick will discuss the property, current enquiry and the trade-offs between rent, downtime and the quality of the proposed lease.</p>
         <form id="lead-form">
           <div class="lead-grid">
             <div class="lead-field"><label for="vacancy-vs-rent-reduction-name">Name</label><input id="vacancy-vs-rent-reduction-name" name="name" autocomplete="name" /></div>
@@ -191,7 +219,7 @@
             <div class="lead-field"><label for="vacancy-vs-rent-reduction-phone">Phone</label><input id="vacancy-vs-rent-reduction-phone" name="phone" autocomplete="tel" /></div>
           </div>
           <div class="lead-actions">
-            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Vacancy</button>
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss My Leasing Strategy</button>
             <a class="lead-link" href="/leasing">Explore Commercial Leasing &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
@@ -364,7 +392,7 @@
     }
     txt('r-cross', be === null
       ? 'The target rent stays ahead across the whole period'
-      : 'Break-even at ' + be + ' months of vacancy \u00b7 ' + money2(beRent(hold.net, accVac, p)) + '/m\u00b2 accepted now');
+      : 'Waiting falls behind at ' + be + ' whole months of vacancy \u00b7 ' + money2(beRent(hold.net, accVac, p)) + '/m\u00b2 accepted now');
 
     txt('r-hold', moneyShort(hold.net));
     txt('r-acc', moneyShort(acc.net));
@@ -419,6 +447,12 @@
   bindPlain(['horizon', 'og', 'rev', 'hold-rent', 'vac', 'fee', 'acc-rent', 'acc-vac'], calc);
   resetAll(DEFAULTS, calc);
   calc();
+  document.getElementById('load-example').addEventListener('click', function () {
+    var example = { area: '500', horizon: '3', og: '40', rev: '0', 'hold-rent': '200', vac: '3', fee: '15', 'acc-rent': '190', 'acc-vac': '1' };
+    Object.keys(example).forEach(function (id) { document.getElementById(id).value = example[id]; });
+    calc();
+    document.getElementById('example-status').textContent = 'Example loaded. Your calculator results above now show the three-year comparison.';
+  });
 
   function summaryFields() {
     var s = store;
@@ -433,7 +467,7 @@
       net_income_holding: money(s.hold.net),
       net_income_accepting: money(s.acc.net),
       outcome: (s.holdWins ? 'Holding ahead by ' : 'Accepting ahead by ') + money(Math.abs(s.diff)),
-      break_even_vacancy: s.be === null ? 'Target stays ahead all period' : s.be + ' mths',
+      waiting_falls_behind: s.be === null ? 'Target stays ahead all period' : s.be + ' whole mths',
       break_even_rent_now: money2(beRent(s.hold.net, s.accVac, s.p)) + '/m2 p.a.'
     };
   }
@@ -460,10 +494,15 @@
     };
     var extra = summaryFields();
     for (var k in extra) payload[k] = extra[k];
+    if (window.rcAttribution && typeof window.rcAttribution.fields === 'function') {
+      var attribution = window.rcAttribution.fields();
+      Object.keys(attribution).forEach(function (key) { payload[key] = attribution[key]; });
+    }
+    payload.campaign_test = 'vacancy-leasing-strategy-2026-10';
     var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
     function fail(message) {
-      btn.disabled = false; btn.textContent = 'Discuss Your Vacancy';
+      btn.disabled = false; btn.textContent = 'Discuss My Leasing Strategy';
       errEl.textContent = message; errEl.style.display = 'block';
     }
     var controller = ('AbortController' in window) ? new AbortController() : null;
