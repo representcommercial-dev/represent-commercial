@@ -26,6 +26,8 @@
   Cache-Control: public, max-age=604800, must-revalidate
 /*.svg
   Cache-Control: public, max-age=604800, must-revalidate
+/*.pdf
+  Cache-Control: public, max-age=86400, must-revalidate
 
 # HTML — always revalidate so a new release is picked up immediately.
 /*.html
