@@ -65,10 +65,9 @@ const CF = {
   propertyIdentified: 'rUbRxCVCrp4Y9AjrM53q'          // opportunity.property_identified
 };
 
-// Contact-only streams: create/update the HighLevel Contact, never an Opportunity.
-// Opportunities for these leads are created manually after Nick qualifies them.
-// Every other stream (e.g. preliminary-acquisition-brief) keeps the opportunity flow below.
-const CONTACT_ONLY_STREAMS = {
+// Review streams enrich the Contact before creating/reusing an intake Opportunity.
+// Preserve the existing first-touch fields and per-submission enquiry notes.
+const REVIEW_STREAMS = {
   'commercial-property-performance-review': {
     leadOffer: 'Property Performance Review',
     intentFamily: 'Owner Performance',
@@ -136,7 +135,8 @@ export async function onRequestPost({ request, env }) {
       return json({ ok: false, error: 'Invalid email address.' }, 422);
     }
 
-    const route = routeFor(data.service_line, data.enquiry_service);
+    const reviewStream = REVIEW_STREAMS[clean(data.form_stream, 200)];
+    const route = reviewStream ? ROUTES.pm : routeFor(data.service_line, data.enquiry_service);
     if (!route) return json({ ok: false, error: 'Unsupported service line.' }, 422);
 
     const submissionId = clean(data.website_submission_id, 128);
@@ -146,7 +146,7 @@ export async function onRequestPost({ request, env }) {
 
     const propertyAddress = clean(data.property_address || data.address || data.property, 500);
     const propertyStatus = clean(data.property_status || data.owner_situation, 500);
-    const enquiryService = clean(data.enquiry_service, 300) || route.serviceLine;
+    const enquiryService = reviewStream ? 'Commercial Property Performance Review' : clean(data.enquiry_service, 300) || route.serviceLine;
     const currentAgent = clean(data.current_agent, 300);
     const enquiryDetail = buildEnquiryDetail(data);
     const originalLeadSource = deriveOriginalLeadSource(data);
@@ -172,9 +172,8 @@ export async function onRequestPost({ request, env }) {
     }
     const contactId = contactRes.data.contact.id;
 
-    const contactOnly = CONTACT_ONLY_STREAMS[clean(data.form_stream, 200)];
-    if (contactOnly) {
-      return await contactOnlyHandoff(env, data, contactOnly, {
+    if (reviewStream) {
+      const enrichment = await reviewContactHandoff(env, data, reviewStream, {
         contactId,
         contactCreated: contactRes.data.new === true,
         submissionId,
@@ -183,6 +182,7 @@ export async function onRequestPost({ request, env }) {
         enquiryService,
         enquiryDetail
       });
+      if (!enrichment.ok) return enrichment;
     }
 
     const existing = await findExistingOpportunity(env, {
@@ -190,7 +190,8 @@ export async function onRequestPost({ request, env }) {
       route,
       submissionId,
       propertyAddress,
-      enquiryService
+      enquiryService,
+      formStream: clean(data.form_stream, 200)
     });
     if (existing) {
       return json({
@@ -208,7 +209,7 @@ export async function onRequestPost({ request, env }) {
     addField(fields, CF.campaignSourceDetail, campaignDetail);
     addField(fields, CF.opportunityType, opportunityType);
     addField(fields, CF.enquiryReceivedTimestamp, receivedAt);
-    addField(fields, CF.nextAction, 'Review website enquiry and make contact');
+    addField(fields, CF.nextAction, reviewStream ? 'Contact owner and arrange Commercial Property Performance Review' : 'Review website enquiry and make contact');
 
     addField(fields, CF.gclid, clean(data.gclid, 500));
     addField(fields, CF.utmSource, clean(data.utm_source, 500));
@@ -267,7 +268,7 @@ export async function onRequestPost({ request, env }) {
   }
 }
 
-async function contactOnlyHandoff(env, data, stream, ctx) {
+async function reviewContactHandoff(env, data, stream, ctx) {
   const resolved = await resolveContactFields(env);
   const refs = {};
   const unresolved = [];
@@ -294,7 +295,7 @@ async function contactOnlyHandoff(env, data, stream, ctx) {
     return json({
       ok: true,
       contact_id: ctx.contactId,
-      contact_only: true,
+      contact_enriched: true,
       opportunity_created: false,
       duplicate_controlled: true
     }, 200);
@@ -360,7 +361,7 @@ async function contactOnlyHandoff(env, data, stream, ctx) {
     ok: true,
     contact_id: ctx.contactId,
     contact_created: ctx.contactCreated,
-    contact_only: true,
+    contact_enriched: true,
     opportunity_created: false,
     fields_written: customFields.length,
     first_touch_preserved: preserved,
@@ -395,11 +396,14 @@ async function findExistingOpportunity(env, opts) {
     locationId: env.GHL_LOCATION_ID,
     pipelineId: opts.route.pipelineId,
     contactId: opts.contactId,
-    status: 'open',
+    ...(REVIEW_STREAMS[opts.formStream] ? {} : { status: 'open' }),
     limit: '100'
   });
   const res = await ghl('/opportunities/search?' + qs.toString(), env, { method: 'GET' });
-  if (!res.ok || !res.data || !Array.isArray(res.data.opportunities)) return null;
+  if (!res.ok || !res.data || !Array.isArray(res.data.opportunities)) {
+    if (REVIEW_STREAMS[opts.formStream]) throw new Error('Could not verify existing review opportunities; creation deferred.');
+    return null;
+  }
 
   for (const opp of res.data.opportunities) {
     const values = fieldMap(opp.customFields || []);
@@ -408,7 +412,7 @@ async function findExistingOpportunity(env, opts) {
     const sameProperty = opts.propertyAddress &&
       normal(values[CF.websitePropertyAddress]) === normal(opts.propertyAddress);
     const sameService = normal(values[CF.enquiryService]) === normal(opts.enquiryService);
-    if (sameProperty && sameService) return opp;
+    if (sameProperty && sameService && (!REVIEW_STREAMS[opts.formStream] || opp.status === 'open')) return opp;
   }
   return null;
 }
@@ -505,6 +509,7 @@ function fieldMap(fields) {
     if (!f || !f.id) continue;
     if (typeof f.fieldValueString === 'string') out[f.id] = f.fieldValueString;
     else if (typeof f.fieldValue === 'string') out[f.id] = f.fieldValue;
+    else if (typeof f.value === 'string') out[f.id] = f.value;
   }
   return out;
 }

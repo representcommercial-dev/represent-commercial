@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Ads tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18457265873');
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commercial Property Performance Review Brisbane | Represent Commercial</title>
@@ -19,13 +27,7 @@
 <meta name="twitter:description" content="An owner-side assessment of your commercial property, personally reviewed by Nick O'Toole. Brisbane and South East Queensland." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 
-<!-- MEASUREMENT INTEGRATION POINT (no IDs supplied yet; do not add placeholders)
-     Insert the single Google tag snippet here once IDs are supplied:
-       gtag.js loader + gtag('config', 'G-XXXXXXX')  (GA4)
-       gtag('config', 'AW-XXXXXXX')                   (Google Ads; conversion linker is on by default)
-     Events already push to window.dataLayer and to gtag() when it exists (rcTrack() at page foot):
-       performance_review_cta_click, performance_review_form_submit, click_to_call
-     Google Ads conversion: map performance_review_form_submit to the Ads conversion label. -->
+<!-- Review conversion fires only after Web3Forms confirms success. -->
 
 <script type="application/ld+json">
 {
@@ -733,6 +735,19 @@ window.rcTrack = function (name, params) {
         done.setAttribute('role', 'status');
         done.focus();
         rcTrack('performance_review_form_submit', { form_stream: payload.form_stream, property_status: payload.property_status, cta_location: payload.cta_clicked || 'direct' });
+
+        // Count a received review request, never a page visit or attempted submission.
+        // Measurement errors must not interrupt the CRM handoff.
+        try {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', {
+              send_to: 'AW-18457265873/ceEjCNqu35UdENGNjuFE',
+              transaction_id: payload.website_submission_id
+            });
+          }
+        } catch (trackingError) {
+          console.error('Represent conversion tracking:', trackingError);
+        }
 
         var crmPayload = {};
         Object.keys(payload).forEach(function (k) {
