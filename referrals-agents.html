@@ -137,7 +137,7 @@
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 700px;">
-      Refer a management instruction and we commit — in writing — to sending any future sale or new leasing of that property straight back to you. Enter the details and the agreement lands in your inbox.
+      Refer a management instruction and we commit — in writing — to sending any future sale or new leasing of that property straight back to you. Enter the details and the agreement is recorded on submission.
     </p>
     <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px;">
       <a href="#referral-live" class="btn btn--lg btn--gold">Refer a Client</a>
@@ -242,21 +242,21 @@
         <!-- Acceptance -->
         <div class="accept-box" id="accept-box">
           <input type="checkbox" id="f-accept" />
-          <label for="f-accept">Ticking this box creates a reciprocal referral agreement: I refer the management of this property to Represent Commercial, and Represent Commercial commits to referring any future sale or new leasing of this property back to me. This excludes lease renewals, rent reviews, and options with existing tenants, which remain part of Represent Commercial's management role. No fee is payable either way. A copy of this agreement, recording the date and time of acceptance, will be emailed to both parties and takes effect on submission.</label>
+          <label for="f-accept">Ticking this box creates a reciprocal referral agreement: I refer the management of this property to Represent Commercial, and Represent Commercial commits to referring any future sale or new leasing of this property back to me. This excludes lease renewals, rent reviews, and options with existing tenants, which remain part of Represent Commercial's management role. No fee is payable either way. The date and time of acceptance are recorded, and the agreement takes effect on submission. Nick will provide a copy of this agreement separately.</label>
         </div>
 
-        <button type="button" class="form-submit" id="submit-btn">Accept &amp; email the agreement
+        <button type="button" class="form-submit" id="submit-btn">Accept &amp; submit the agreement
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
         </button>
-        <p class="form-error" id="form-error"></p>
+        <p class="form-error" id="form-error" role="alert" aria-live="assertive"></p>
       </div>
     </div>
 
     <!-- Success (hidden until submit) -->
-    <div id="referral-success" style="display: none;">
+    <div id="referral-success" style="display: none;" tabindex="-1" role="status">
       <div class="success-card">
         <div class="success-card__tick"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <h2>Referral logged — agreement on its way</h2>
+        <h2>Referral and agreement recorded</h2>
         <p id="success-text"></p>
         <a class="back-link" href="/referrals"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg> Back to referrals</a>
       </div>
@@ -317,7 +317,7 @@
       <div class="footer-col footer-contact">
         <h3>Contact</h3>
         <div>Nick O'Toole</div>
-        <div>Principal &amp; Licensee</div>
+        <div>Founder &amp; Director</div>
         <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
         <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
         <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
@@ -325,7 +325,8 @@
     </div>
     <div class="footer-meta">
       <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
-      <div class="footer-meta__legals">
+      <div class="footer-meta__legals" style="flex-wrap: wrap; row-gap: 6px;">
+        <div><span>Licensee</span>Nicholas O'Toole</div>
         <div><span>Real Estate Agent Licence</span>4949809</div>
         <div><span>ABN</span>59 696 915 170</div>
         <div><a href="/privacy">Privacy Policy</a></div>
@@ -336,9 +337,25 @@
 
 <script>
 (function () {
+  // Reciprocal referral agreement → Web3Forms (Referrals configuration → referrals@represent.au).
+  var ACCESS_KEY = 'd4d35cc8-e70b-4d77-bd5d-0e788dfac3a8';
+  var AGREEMENT_TEXT =
+    'Ticking the acceptance box creates a reciprocal referral agreement: the referring agent refers the ' +
+    'management of this property to Represent Commercial, and Represent Commercial commits to referring ' +
+    'any future sale or new leasing of this property back to the referring agent. This excludes lease renewals, ' +
+    'rent reviews, and options with existing tenants, which remain part of Represent Commercial\u2019s management ' +
+    'role. No fee is payable either way. The date and time of acceptance are recorded, and the agreement takes ' +
+    'effect on submission.';
+  var DISCLAIMER =
+    'The referral agreement is a mutual commitment to refer business and does not create an agency, ' +
+    'partnership, or fee obligation between the parties. It does not oblige any property owner to appoint ' +
+    'either party. Represent Commercial \u2014 Real Estate Agent Licence 4949809.';
+
   var btn = document.getElementById('submit-btn');
   var errEl = document.getElementById('form-error');
   var acceptBox = document.getElementById('accept-box');
+  var LABEL = btn.innerHTML;
+  var busy = false;
 
   // Live input formatting: thousands separators on rent, spaced AU mobiles.
   (function () {
@@ -360,11 +377,29 @@
     fmtPhone(document.getElementById('f-owner-mobile'));
   })();
 
+  // Attribution (same session store + aliases as the other site forms)
+  var attr = {};
+  try {
+    attr = JSON.parse(sessionStorage.getItem('rc_attr') || '{}');
+    var q = new URLSearchParams(location.search);
+    var map = { utm_source: 'utm_source', utm_medium: 'utm_medium', utm_campaign: 'utm_campaign', utm_adgroup: 'utm_adgroup', adgroup: 'utm_adgroup', utm_term: 'utm_term', keyword: 'utm_term', utm_content: 'utm_content', gclid: 'gclid' };
+    Object.keys(map).forEach(function (k) { var v = q.get(k); if (v && !(k !== map[k] && q.get(map[k]))) attr[map[k]] = v; });
+    if (!attr.referrer && document.referrer && document.referrer.indexOf(location.host) === -1) attr.referrer = document.referrer;
+    sessionStorage.setItem('rc_attr', JSON.stringify(attr));
+  } catch (e) {}
+
   function val(id) { return (document.getElementById(id).value || '').trim(); }
   function isEmail(s) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s); }
+  function track(name, params) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, params || {}));
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    } catch (e) {}
+  }
 
-  // Holds the id/timestamp of the last attempted referral so retries of an
-  // unchanged submission send an identical payload (see the retry safeguard below).
+  // An unchanged referral keeps its submission id and acceptance timestamp across
+  // retries, so a repeat after an uncertain result is identifiable in the inbox.
   var lastSubmission = null;
   function newSubmissionId() {
     if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
@@ -380,8 +415,16 @@
     var f = document.querySelector('.field[data-field="' + sel + '"]');
     if (f) f.classList.add('is-invalid');
   }
+  function fail(message) {
+    busy = false;
+    btn.disabled = false;
+    btn.innerHTML = LABEL;
+    errEl.textContent = message;
+    errEl.classList.add('is-shown');
+  }
 
   btn.addEventListener('click', function () {
+    if (busy) return;
     clearInvalid();
     var name = val('f-name');
     var email = val('f-email');
@@ -393,97 +436,105 @@
     if (!email || !isEmail(email)) { markInvalid('email'); problems.push('a valid email'); }
     if (!property) { markInvalid('property'); problems.push('the property address'); }
     if (!accepted) { acceptBox.classList.add('is-invalid'); problems.push('the referral agreement box'); }
-
     if (problems.length) {
       errEl.textContent = 'Please add ' + problems.join(', ') + ' before submitting.';
       errEl.classList.add('is-shown');
       return;
     }
 
-    var payload = {
-      name: name,
+    var fields = {
+      referring_agent_name: name,
       agency: val('f-agency'),
       email: email,
       phone: val('f-phone'),
       property_address: property,
-      current_rent: val('f-rent'),
-      owner_name: val('f-owner'),
+      current_gross_rent: val('f-rent'),
+      owner_entity_name: val('f-owner'),
       owner_contact_name: val('f-contact'),
       owner_mobile: val('f-owner-mobile'),
       owner_email: val('f-owner-email'),
-      notes: val('f-notes'),
-      accepted: true
+      notes: val('f-notes')
     };
-
-    // Retry safeguard: an unchanged referral keeps its submission id, acceptance
-    // timestamp and payload across retries, so the endpoint can pass one stable
-    // idempotency key to Resend. Editing any field produces a new submission.
-    // Limits: this is per-browser-session and only covers retries of an identical
-    // payload. It is not permanent duplicate prevention and does not survive a
-    // page reload or a submission from another device.
-    var fingerprint = JSON.stringify(payload);
-    if (lastSubmission && lastSubmission.fingerprint === fingerprint) {
-      payload.submission_id = lastSubmission.id;
-      payload.accepted_at = lastSubmission.acceptedAt;
-    } else {
+    var fingerprint = JSON.stringify(fields);
+    if (!lastSubmission || lastSubmission.fingerprint !== fingerprint) {
+      var now = new Date();
       lastSubmission = {
         fingerprint: fingerprint,
         id: newSubmissionId(),
-        acceptedAt: new Date().toISOString()
+        acceptedAt: now.toISOString(),
+        acceptedLocal: now.toLocaleString('en-AU', { timeZone: 'Australia/Brisbane', dateStyle: 'full', timeStyle: 'long' })
       };
-      payload.submission_id = lastSubmission.id;
-      payload.accepted_at = lastSubmission.acceptedAt;
     }
 
-    var original = btn.innerHTML;
+    var payload = {
+      access_key: ACCESS_KEY,
+      subject: 'Reciprocal referral agreement: ' + property,
+      from_name: 'Represent Commercial Website',
+      form_stream: 'referrals',
+      enquiry_service: 'Agent reciprocal referral',
+      replyto: email,
+      name: name
+    };
+    Object.keys(fields).forEach(function (k) { payload[k] = fields[k]; });
+    payload.agreement_text = AGREEMENT_TEXT;
+    payload.agreement_disclaimer = DISCLAIMER;
+    payload.agreement_accepted = 'Yes. The referring agent ticked the acceptance box before submitting.';
+    payload.accepted_at_utc = lastSubmission.acceptedAt;
+    payload.accepted_at_brisbane = lastSubmission.acceptedLocal;
+    payload.submission_id = lastSubmission.id;
+    payload.page = location.href.split('#')[0];
+    payload.landing_page = 'referrals-agents';
+    ['gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_adgroup', 'utm_term', 'utm_content', 'referrer'].forEach(function (k) {
+      payload[k] = attr[k] || '';
+    });
+    payload.botcheck = '';
+
+    busy = true;
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
+    // Success requires ok + JSON content-type + success === true (Web3Forms contract).
+    // Entered details are preserved on every failure path; no automatic retry.
+    var FAIL = 'Something went wrong sending your referral. Your details are still here. Please try again, or call Nick on 0401 825 999.';
+    var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on 0401 825 999 before sending it again.';
     var controller = ('AbortController' in window) ? new AbortController() : null;
     var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    var confirmed = false;
 
-    fetch('/api/referral', {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
       signal: controller ? controller.signal : undefined
     }).then(function (res) {
-      // A 2xx alone is not success: a misrouted HTML 200 must not look like a sent referral.
       var type = res.headers.get('content-type') || '';
-      if (type.indexOf('application/json') === -1) {
-        throw new Error('Unexpected response type: ' + (type || 'none'));
-      }
-      return res.json().then(function (body) {
-        if (!res.ok || !body || body.ok !== true) {
-          throw new Error('HTTP ' + res.status + ' — ' + JSON.stringify(body));
-        }
-        return body;
-      });
-    }).then(function () {
+      if (!res.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return res.json();
+    }).then(function (body) {
       if (timer) clearTimeout(timer);
+      if (!body || body.success !== true) { fail(FAIL); return; }
+      confirmed = true;
       document.getElementById('success-text').textContent =
-        'A copy of the reciprocal referral agreement for ' + property +
-        ' is being emailed to you at ' + email +
-        '. Nick will be in touch to take the management instruction from here — and any sale or new leasing on this property comes back to you.';
+        'Your referral for ' + property + ' and the accepted reciprocal referral agreement have been submitted and recorded. ' +
+        'Nick will provide a copy of the agreement separately and will be in touch to take the management instruction from here. ' +
+        'Any sale or new leasing on this property comes back to you.';
       document.getElementById('referral-live').style.display = 'none';
-      document.getElementById('referral-success').style.display = 'block';
+      var ok = document.getElementById('referral-success');
+      ok.style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      try { ok.focus({ preventScroll: true }); } catch (e) {}
+      track('agent_referral_submit', { form_stream: 'referrals' });
     }).catch(function (err) {
       if (timer) clearTimeout(timer);
-      btn.disabled = false;
-      btn.innerHTML = original;
-      var aborted = err && (err.name === 'AbortError');
-      errEl.textContent = aborted
-        ? 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on 0401 825 999 if you need confirmation.'
-        : 'Something went wrong sending your referral. Your details are still here — please try again, or call Nick on 0401 825 999.';
-      errEl.classList.add('is-shown');
-      console.error('Referral submit failed:', err && err.message);
+      if (confirmed) { console.error('Post-submit step failed:', err); return; }
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
     });
   });
 })();
 </script>
 
-  <script src="nav.v14.js" defer></script>
+  <script src="rc-attribution.v1.js"></script>
+<script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for amounts typed into free-text fields */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

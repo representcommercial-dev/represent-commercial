@@ -10,5 +10,9 @@
 /buyers/how-to-avoid-buying-the-wrong-commercial-property   /how-to-avoid-buying-the-wrong-commercial-property   301
 /buyers/how-to-avoid-buying-the-wrong-commercial-property/  /how-to-avoid-buying-the-wrong-commercial-property   301
 
+# Retired headshot filenames (superseded by nick-otoole-headshot.*)
+/nick-otoole.jpg    /nick-otoole-headshot.jpg    301
+/nick-otoole.webp   /nick-otoole-headshot.webp   301
+
 # Clean URLs are served natively by Cloudflare Pages (/page.html redirects to /page).
 # Do not add /page -> /page.html 200 rewrites: they conflict with that behaviour.
