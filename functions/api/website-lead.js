@@ -374,6 +374,15 @@ async function reviewContactHandoff(env, data, stream, ctx) {
 
   // Per-submission note keeps the full Website Enquiry Detail, including later concerns.
   const noteLines = [stream.noteTitle, 'Website Submission ID: ' + ctx.submissionId];
+  if (stream.intentFamily === 'Buyer Acquisition') {
+    for (const [label, value] of [
+      ['Buyer purpose', data.buyer_type], ['Property type', data.property_type],
+      ['Budget', data.budget], ['Timing', data.timing],
+      ['Property identified', data.property_identified]
+    ]) {
+      if (clean(value, 500)) noteLines.push(label + ': ' + clean(value, 500));
+    }
+  }
   if (ctx.propertyAddress) noteLines.push('Property address: ' + ctx.propertyAddress);
   if (ctx.propertyStatus) noteLines.push('Property status: ' + ctx.propertyStatus);
   if (concern) noteLines.push('', 'Owner concern (verbatim):', concern);
