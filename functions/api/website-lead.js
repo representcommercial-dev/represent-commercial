@@ -280,6 +280,10 @@ async function contactOnlyHandoff(env, data, stream, ctx) {
   }
 
   const current = await ghl('/contacts/' + encodeURIComponent(ctx.contactId), env, { method: 'GET' });
+  // Never treat an unreadable existing contact as empty: that could overwrite first touch.
+  if (!current.ok || !current.data || !current.data.contact || !Array.isArray(current.data.contact.customFields)) {
+    return json({ ok: false, error: 'CRM contact lookup failed; original attribution was not updated.', contact_id: ctx.contactId, upstream_status: current.status }, 502);
+  }
   const existing = {};
   const cfs = current.ok && current.data && current.data.contact && Array.isArray(current.data.contact.customFields)
     ? current.data.contact.customFields : [];
