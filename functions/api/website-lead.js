@@ -9,6 +9,7 @@
 
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
+const GHL_OPPORTUNITIES_VERSION = 'v3';
 
 const ROUTES = {
   pm: {
@@ -242,6 +243,7 @@ export async function onRequestPost({ request, env }) {
     const oppName = buildOpportunityName(enquiryService, propertyAddress, name);
     const oppRes = await ghl('/opportunities/', env, {
       method: 'POST',
+      version: GHL_OPPORTUNITIES_VERSION,
       body: {
         locationId: env.GHL_LOCATION_ID,
         pipelineId: route.pipelineId,
@@ -416,7 +418,7 @@ async function findExistingOpportunity(env, opts) {
     ...(REVIEW_STREAMS[opts.formStream] ? {} : { status: 'open' }),
     limit: '100'
   });
-  const res = await ghl('/opportunities/search?' + qs.toString(), env, { method: 'GET' });
+  const res = await ghl('/opportunities/search?' + qs.toString(), env, { method: 'GET', version: GHL_OPPORTUNITIES_VERSION });
   if (!res.ok || !res.data || !Array.isArray(res.data.opportunities)) {
     if (REVIEW_STREAMS[opts.formStream]) throw new Error('Could not verify existing review opportunities; creation deferred.');
     return null;
@@ -440,7 +442,7 @@ async function ghl(path, env, options) {
     headers: {
       'Accept': 'application/json',
       'Authorization': 'Bearer ' + env.GHL_PRIVATE_INTEGRATION_TOKEN,
-      'Version': GHL_VERSION
+      'Version': options.version || GHL_VERSION
     }
   };
   if (options.body) {
