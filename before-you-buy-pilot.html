@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Before You Buy | Staging Concept | Represent Commercial</title>
+<meta name="description" content="Independent buyer-side commercial property acquisition advice across Brisbane and South East Queensland.">
+<link rel="stylesheet" href="/styles.v3.css"><script src="/rc-attribution.v1.js" defer></script>
+<style>
+:root{color-scheme:light}body{margin:0;background:#f5f5f0;color:#123e2c;font-family:"DM Sans",Arial,sans-serif}header{background:#004225;color:white;padding:22px max(20px,calc((100vw - 1080px)/2));font-weight:700;letter-spacing:.13em}header small{display:block;font-size:10px;letter-spacing:.23em;color:#d2bb77}
+main{max-width:1080px;margin:auto;padding:52px 22px 90px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:#856c29;font-weight:700}h1{font-size:clamp(38px,6vw,66px);line-height:1.05;max-width:760px;margin:16px 0 24px}p{line-height:1.65;max-width:720px}.layout{display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:start}.panel{background:white;border:1px solid #d8ddd7;border-radius:14px;padding:30px;box-shadow:0 12px 38px #003a1a0a}fieldset{border:0;padding:0;margin:0 0 24px}legend{font-weight:700;margin-bottom:12px}.choices{display:grid;gap:9px}.choice{display:flex;gap:12px;align-items:center;border:1px solid #ccd4cc;border-radius:8px;padding:13px;cursor:pointer;min-height:46px}.choice:has(input:checked){border-color:#004225;background:#eff5ef}.choice input{accent-color:#004225}button,.cta{background:#004225;color:white;border:0;border-radius:8px;padding:15px 20px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}button:focus-visible,.choice:focus-within{outline:3px solid #c9a84c;outline-offset:3px}.muted{font-size:13px;color:#5d6c61}.status{border-left:3px solid #c9a84c;padding:12px;background:#f6f3e9}.progress{font-size:13px;color:#56665c;margin-bottom:18px}.hidden{display:none!important}@media(max-width:800px){.layout{grid-template-columns:1fr;gap:28px}main{padding-top:34px}.panel{padding:22px}}
+</style></head><body>
+<header>REPRESENT <small>COMMERCIAL</small></header>
+<main><div class="eyebrow">Staging concept only · Not accepting enquiries</div>
+<div class="layout"><section><h1>The advertised yield is only part of the story.</h1>
+<p>Before you buy a commercial property, understand the lease, tenant covenant, rental sustainability and risks that could affect future income and value.</p>
+<p>Represent Commercial provides independent, principal-led acquisition advice for investors and owner-occupiers across Brisbane and South East Queensland.</p>
+<p><strong>Exclusively on your side of the table.</strong></p>
+<p class="muted">This prototype does not transmit or store personal details. No advertising campaign is active.</p></section>
+<section class="panel" aria-label="Acquisition brief qualification preview">
+<div class="eyebrow">Preliminary Acquisition Brief</div><h2>Tell us what you are looking for.</h2>
+<p class="muted">Four short questions to help clarify your requirement.</p>
+<form id="brief"><div id="progress" class="progress" aria-live="polite"></div>
+<fieldset data-step="0"><legend>What are you purchasing for?</legend><div class="choices">
+<label class="choice"><input type="radio" name="purpose" value="Investment" required>Commercial investment</label>
+<label class="choice"><input type="radio" name="purpose" value="Owner-occupier">My business premises</label>
+<label class="choice"><input type="radio" name="purpose" value="Exploring">Still exploring</label></div></fieldset>
+<fieldset data-step="1" class="hidden"><legend>What property type interests you?</legend><div class="choices">
+<label class="choice"><input type="radio" name="asset" value="Industrial">Industrial / warehouse</label>
+<label class="choice"><input type="radio" name="asset" value="Retail">Retail</label>
+<label class="choice"><input type="radio" name="asset" value="Office">Office</label>
+<label class="choice"><input type="radio" name="asset" value="Flexible">Open to opportunities</label></div></fieldset>
+<fieldset data-step="2" class="hidden"><legend>What is your indicative budget?</legend><div class="choices">
+<label class="choice"><input type="radio" name="budget" value="Under $2m">Under $2 million</label>
+<label class="choice"><input type="radio" name="budget" value="$2m-$4m">$2m–$4m</label>
+<label class="choice"><input type="radio" name="budget" value="$4m-$7m">$4m–$7m</label>
+<label class="choice"><input type="radio" name="budget" value="$7m+">$7m+</label>
+<label class="choice"><input type="radio" name="budget" value="Undetermined">Not yet determined</label></div></fieldset>
+<fieldset data-step="3" class="hidden"><legend>When are you looking to purchase?</legend><div class="choices">
+<label class="choice"><input type="radio" name="timing" value="Immediately">Immediately / property identified</label>
+<label class="choice"><input type="radio" name="timing" value="3-6 months">Within 3–6 months</label>
+<label class="choice"><input type="radio" name="timing" value="6-12 months">Within 6–12 months</label>
+<label class="choice"><input type="radio" name="timing" value="Researching">Researching options</label></div></fieldset>
+<div id="result" class="hidden" role="status"><h3>Your preliminary requirements</h3><p id="summary"></p><p class="status">Preview only. To make an actual enquiry, use the existing Preliminary Acquisition Brief form.</p><a class="cta" href="/preliminary-acquisition-brief">Open existing acquisition brief</a></div>
+<div id="controls"><button id="back" type="button" class="hidden" style="background:#e6ece6;color:#004225">Back</button> <button id="next" type="button">Continue</button></div></form></section></div></main>
+<script>
+(function(){var step=0,fields=Array.from(document.querySelectorAll('[data-step]')),next=document.getElementById('next'),back=document.getElementById('back'),form=document.getElementById('brief');function render(){fields.forEach(function(f,i){f.classList.toggle('hidden',i!==step)});document.getElementById('progress').textContent='Question '+(step+1)+' of '+fields.length;back.classList.toggle('hidden',step===0);next.textContent=step===fields.length-1?'Review answers':'Continue'}next.addEventListener('click',function(){var chosen=fields[step].querySelector('input:checked');if(!chosen){fields[step].querySelector('input').focus();return}if(step<fields.length-1){step++;render();return}var data=new FormData(form);fields.forEach(function(f){f.classList.add('hidden')});document.getElementById('controls').classList.add('hidden');document.getElementById('progress').textContent='Completed preview';document.getElementById('summary').textContent='Purpose: '+data.get('purpose')+' · Property: '+data.get('asset')+' · Budget: '+data.get('budget')+' · Timing: '+data.get('timing');document.getElementById('result').classList.remove('hidden')});back.addEventListener('click',function(){if(step>0){step--;render()}});form.addEventListener('submit',function(e){e.preventDefault()});render()})();
+</script></body></html>
