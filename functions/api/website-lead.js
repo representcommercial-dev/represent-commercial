@@ -445,6 +445,8 @@ function deriveOriginalLeadSource(d) {
   const src = normal(d.utm_source);
   if (clean(d.gclid, 500) || src.includes('google')) return 'Google';
   if (src.includes('facebook') || src.includes('instagram') || src.includes('meta')) return 'Meta';
+  if (src.includes('linkedin')) return 'LinkedIn';
+  if (src.includes('youtube')) return 'YouTube';
   if (src.includes('chatgpt') || src.includes('openai')) return 'ChatGPT';
   if (src.includes('realcommercial')) return 'RealCommercial';
   return 'Direct / Organic';
