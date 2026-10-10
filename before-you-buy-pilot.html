@@ -5,18 +5,18 @@
 <link rel="stylesheet" href="/styles.v3.css"><script src="/rc-attribution.v1.js" defer></script>
 <style>
 :root{color-scheme:light}body{margin:0;background:#f5f5f0;color:#123e2c;font-family:"DM Sans",Arial,sans-serif}header{background:#004225;color:white;padding:22px max(20px,calc((100vw - 1080px)/2));font-weight:700;letter-spacing:.13em}header small{display:block;font-size:10px;letter-spacing:.23em;color:#d2bb77}
-main{max-width:1080px;margin:auto;padding:52px 22px 90px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:#856c29;font-weight:700}h1{font-size:clamp(38px,6vw,66px);line-height:1.05;max-width:760px;margin:16px 0 24px}p{line-height:1.65;max-width:720px}.layout{display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:start}.panel{background:white;border:1px solid #d8ddd7;border-radius:14px;padding:30px;box-shadow:0 12px 38px #003a1a0a}fieldset{border:0;padding:0;margin:0 0 24px}legend{font-weight:700;margin-bottom:12px}.choices{display:grid;gap:9px}.choice{display:flex;gap:12px;align-items:center;border:1px solid #ccd4cc;border-radius:8px;padding:13px;cursor:pointer;min-height:46px}.choice:has(input:checked){border-color:#004225;background:#eff5ef}.choice input{accent-color:#004225}button,.cta{background:#004225;color:white;border:0;border-radius:8px;padding:15px 20px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}button:focus-visible,.choice:focus-within{outline:3px solid #c9a84c;outline-offset:3px}.muted{font-size:13px;color:#5d6c61}.status{border-left:3px solid #c9a84c;padding:12px;background:#f6f3e9}.progress{font-size:13px;color:#56665c;margin-bottom:18px}.hidden{display:none!important}@media(max-width:800px){.layout{grid-template-columns:1fr;gap:28px}main{padding-top:34px}.panel{padding:22px}}
+main{max-width:1080px;margin:auto;padding:52px 22px 90px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:#856c29;font-weight:700}h1{font-size:clamp(38px,6vw,66px);line-height:1.05;max-width:760px;margin:16px 0 24px}p{line-height:1.65;max-width:720px}.layout{display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:start}.panel{background:white;border:1px solid #d8ddd7;border-radius:14px;padding:30px;box-shadow:0 12px 38px #003a1a0a}fieldset{border:0;padding:0;margin:0 0 24px}legend{font-weight:700;margin-bottom:12px}.choices{display:grid;gap:9px}.choice{display:flex;gap:12px;align-items:center;border:1px solid #ccd4cc;border-radius:8px;padding:13px;cursor:pointer;min-height:46px}.choice:has(input:checked){border-color:#004225;background:#eff5ef}.choice input{accent-color:#004225}button,.cta{background:#004225;color:white;border:0;border-radius:8px;padding:15px 20px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}button:focus-visible,.choice:focus-within{outline:3px solid #c9a84c;outline-offset:3px}.muted{font-size:13px;color:#5d6c61}.status{border-left:3px solid #c9a84c;padding:12px;background:#f6f3e9}.choices>input{padding:12px;border:1px solid #ccd4cc;border-radius:8px;font:inherit;min-width:0}.progress{font-size:13px;color:#56665c;margin-bottom:18px}.hidden{display:none!important}@media(max-width:800px){.layout{grid-template-columns:1fr;gap:28px}main{padding-top:34px}.panel{padding:22px}}
 </style></head><body>
 <header>REPRESENT <small>COMMERCIAL</small></header>
-<main><div class="eyebrow">Staging concept only · Not accepting enquiries</div>
+<main><div class="eyebrow">Staging pilot · Not yet approved for advertising</div>
 <div class="layout"><section><h1>The advertised yield is only part of the story.</h1>
 <p>Before you buy a commercial property, understand the lease, tenant covenant, rental sustainability and risks that could affect future income and value.</p>
 <p>Represent Commercial provides independent, principal-led acquisition advice for investors and owner-occupiers across Brisbane and South East Queensland.</p>
 <p><strong>Exclusively on your side of the table.</strong></p>
-<p class="muted">This prototype does not transmit or store personal details. No advertising campaign is active.</p></section>
+<p class="muted">Enquiries submitted through this staging page are delivered to Represent Commercial and recorded as contacts for personal review. No advertising campaign is active.</p></section>
 <section class="panel" aria-label="Acquisition brief qualification preview">
 <div class="eyebrow">Preliminary Acquisition Brief</div><h2>Tell us what you are looking for.</h2>
-<p class="muted">Four short questions to help clarify your requirement.</p>
+<p class="muted">Four short questions, followed by your contact details.</p>
 <form id="brief"><div id="progress" class="progress" aria-live="polite"></div>
 <fieldset data-step="0"><legend>What are you purchasing for?</legend><div class="choices">
 <label class="choice"><input type="radio" name="purpose" value="Investment" required>Commercial investment</label>
@@ -38,8 +38,46 @@ main{max-width:1080px;margin:auto;padding:52px 22px 90px}.eyebrow{text-transform
 <label class="choice"><input type="radio" name="timing" value="3-6 months">Within 3–6 months</label>
 <label class="choice"><input type="radio" name="timing" value="6-12 months">Within 6–12 months</label>
 <label class="choice"><input type="radio" name="timing" value="Researching">Researching options</label></div></fieldset>
-<div id="result" class="hidden" role="status"><h3>Your preliminary requirements</h3><p id="summary"></p><p class="status">Preview only. To make an actual enquiry, use the existing Preliminary Acquisition Brief form.</p><a class="cta" href="/preliminary-acquisition-brief">Open existing acquisition brief</a></div>
+<fieldset data-step="4" class="hidden"><legend>Where can Nick contact you?</legend><p class="muted">Your requirements will be personally reviewed. Free, no obligation.</p><div class="choices"><label for="pilot-name">Full name</label><input id="pilot-name" name="name" autocomplete="name" maxlength="200" required><label for="pilot-email">Email</label><input id="pilot-email" name="email" type="email" autocomplete="email" maxlength="320" required><label for="pilot-phone">Phone</label><input id="pilot-phone" name="phone" type="tel" autocomplete="tel" maxlength="80" required><label class="choice"><input type="checkbox" id="pilot-identified" name="property_identified" value="Yes"> I have already identified a property</label><p class="muted">Your details will be used to respond to this enquiry. See our <a href="/privacy">Privacy Policy</a>.</p></div></fieldset><p id="submit-error" class="status hidden" role="alert"></p><div id="result" class="hidden" role="status"><h3>Your preliminary requirements</h3><p id="summary"></p><p class="status">Your enquiry has been received. Nick will review your requirements and respond within one business day.</p><a class="cta" href="/preliminary-acquisition-brief">Open existing acquisition brief</a></div>
 <div id="controls"><button id="back" type="button" class="hidden" style="background:#e6ece6;color:#004225">Back</button> <button id="next" type="button">Continue</button></div></form></section></div></main>
 <script>
-(function(){var step=0,fields=Array.from(document.querySelectorAll('[data-step]')),next=document.getElementById('next'),back=document.getElementById('back'),form=document.getElementById('brief');function render(){fields.forEach(function(f,i){f.classList.toggle('hidden',i!==step)});document.getElementById('progress').textContent='Question '+(step+1)+' of '+fields.length;back.classList.toggle('hidden',step===0);next.textContent=step===fields.length-1?'Review answers':'Continue'}next.addEventListener('click',function(){var chosen=fields[step].querySelector('input:checked');if(!chosen){fields[step].querySelector('input').focus();return}if(step<fields.length-1){step++;render();return}var data=new FormData(form);fields.forEach(function(f){f.classList.add('hidden')});document.getElementById('controls').classList.add('hidden');document.getElementById('progress').textContent='Completed preview';document.getElementById('summary').textContent='Purpose: '+data.get('purpose')+' · Property: '+data.get('asset')+' · Budget: '+data.get('budget')+' · Timing: '+data.get('timing');document.getElementById('result').classList.remove('hidden')});back.addEventListener('click',function(){if(step>0){step--;render()}});form.addEventListener('submit',function(e){e.preventDefault()});render()})();
+(function(){
+  var step=0,fields=Array.from(document.querySelectorAll('[data-step]')),next=document.getElementById('next'),back=document.getElementById('back'),form=document.getElementById('brief'),err=document.getElementById('submit-error');
+  var locked=false;
+  function render(){fields.forEach(function(f,i){f.classList.toggle('hidden',i!==step)});document.getElementById('progress').textContent='Step '+(step+1)+' of '+fields.length;back.classList.toggle('hidden',step===0);next.textContent=step===fields.length-1?'Submit enquiry':'Continue'}
+  function error(message){err.textContent=message;err.classList.remove('hidden');next.disabled=false;back.disabled=false;next.textContent='Submit enquiry';locked=false}
+  function id(){return window.crypto&&window.crypto.randomUUID?window.crypto.randomUUID():'web-'+Date.now()+'-'+Math.random().toString(36).slice(2)}
+  function post(url,payload){return fetch(url,{method:'POST',headers:{Accept:'application/json','Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json().then(function(d){if(!r.ok||!d||!(d.ok===true||d.success===true))throw Error('Submission failed');return d})})}
+  next.addEventListener('click',function(){
+    if(locked)return;
+    err.classList.add('hidden');
+    if(step<4){if(!fields[step].querySelector('input:checked')){fields[step].querySelector('input').focus();return}step++;render();return}
+    if(!form.reportValidity())return;
+    locked=true;next.disabled=true;back.disabled=true;next.textContent='Sending…';
+    var f=new FormData(form),p={};
+    f.forEach(function(v,k){p[k]=String(v)});
+    p.buyer_type=p.purpose==='Investment'?'Investor':p.purpose==='Owner-occupier'?'Owner-occupier':'Unsure / exploring';
+    p.property_type=p.asset;
+    p.property_identified=p.property_identified||'No';
+    p.service_line='Buyer-Side Acquisition / Advisory';
+    p.enquiry_service='Before You Buy acquisition enquiry';
+    p.form_stream='before-you-buy-pilot';
+    p.website_submission_id=id();
+    p.cta_clicked='before-you-buy-pilot';
+    p.landing_page='/before-you-buy-pilot';
+    p.requirement=['Buyer purpose: '+p.buyer_type,'Property type: '+p.property_type,'Budget: '+p.budget,'Timing: '+p.timing,'Property identified: '+p.property_identified].join('\n');
+    var a=window.rcAttribution&&window.rcAttribution.fields?window.rcAttribution.fields():{};
+    Object.keys(a).forEach(function(k){if(a[k])p[k]=a[k]});
+    var emailPayload=Object.assign({},p,{access_key:'35499d27-a409-4125-9171-b5df6f1dfa97',subject:'Before You Buy staging acquisition enquiry',from_name:'Represent Commercial Website',replyto:p.email});
+    post('https://api.web3forms.com/submit',emailPayload).then(function(){
+      fields.forEach(function(f){f.classList.add('hidden')});document.getElementById('controls').classList.add('hidden');document.getElementById('progress').textContent='Enquiry received';
+      document.getElementById('summary').textContent=p.requirement;document.getElementById('result').classList.remove('hidden');
+      var crmPayload=Object.assign({},p);delete crmPayload.purpose;delete crmPayload.asset;
+      return post('/api/website-lead',crmPayload).catch(function(e){console.error('CRM handoff requires review',e)});
+    }).catch(function(){error('We could not confirm your enquiry was received. Please call Nick on 0401 825 999 before attempting to send again.')});
+  });
+  back.addEventListener('click',function(){if(!locked&&step>0){step--;render()}});
+  form.addEventListener('submit',function(e){e.preventDefault()});
+  render();
+})();
 </script></body></html>
