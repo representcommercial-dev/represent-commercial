@@ -69,6 +69,11 @@ const CF = {
 // Review streams enrich the Contact before creating/reusing an intake Opportunity.
 // Preserve the existing first-touch fields and per-submission enquiry notes.
 const REVIEW_STREAMS = {
+  'before-you-buy-pilot': {
+    leadOffer: 'Before You Buy',
+    intentFamily: 'Buyer Acquisition',
+    noteTitle: 'Before You Buy: website qualification submission'
+  },
   'commercial-property-performance-review': {
     leadOffer: 'Property Performance Review',
     intentFamily: 'Owner Performance',
@@ -138,7 +143,7 @@ export async function onRequestPost({ request, env }) {
     }
 
     const reviewStream = REVIEW_STREAMS[clean(data.form_stream, 200)];
-    const route = reviewStream ? ROUTES.pm : routeFor(data.service_line, data.enquiry_service);
+    const route = reviewStream ? (clean(data.form_stream, 200) === 'before-you-buy-pilot' ? ROUTES.buyer : ROUTES.pm) : routeFor(data.service_line, data.enquiry_service);
     if (!route) return json({ ok: false, error: 'Unsupported service line.' }, 422);
 
     const submissionId = clean(data.website_submission_id, 128);
@@ -184,7 +189,8 @@ export async function onRequestPost({ request, env }) {
         enquiryService,
         enquiryDetail
       });
-      if (!enrichment.ok) return enrichment;
+      // Contact-only review streams must never create an opportunity automatically.
+      return enrichment;
     }
 
     const existing = await findExistingOpportunity(env, {
