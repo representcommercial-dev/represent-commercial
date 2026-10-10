@@ -78,14 +78,15 @@ const CONTACT_ONLY_STREAMS = {
 
 // Contact-level fields (confirmed in HighLevel, 6 October 2026). Resolved to IDs at runtime
 // from GET /locations/{id}/customFields?model=contact by fieldKey, then by exact name.
-// GCLID is the standard contact.gclid field; no custom GCLID field exists or is created.
+// The contact write API has no native GCLID property. Store the captured click ID
+// in Website First-touch GCLID; native HighLevel attribution is left untouched.
 const CONTACT_FIELDS = {
   leadOffer:              { key: 'contact.lead_offer',               name: 'Lead Offer' },
   intentFamily:           { key: 'contact.intent_family',            name: 'Intent Family' },
   originalEnquiry:        { key: 'contact.original_enquiry',         name: 'Original Enquiry' },
   websitePropertyAddress: { key: 'contact.website_property_address', name: 'Website Property Address' },
   propertyStatus:         { key: 'contact.property_status',          name: 'Property Status' },
-  gclid:                  { key: 'contact.gclid',                    name: 'GCLID' },
+  gclid:                  { key: 'contact.website_firsttouch_gclid', name: 'Website First-touch GCLID' },
   utmSource:              { key: 'contact.utm_source',               name: 'UTM Source' },
   utmMedium:              { key: 'contact.utm_medium',               name: 'UTM Medium' },
   utmCampaign:            { key: 'contact.utm_campaign',             name: 'UTM Campaign' },
@@ -350,7 +351,7 @@ async function contactOnlyHandoff(env, data, stream, ctx) {
   if (!clean(contact.source, 500)) {
     const savedSource = refs.utmSource.id && existing[refs.utmSource.id];
     updateBody.source = deriveOriginalLeadSource(savedSource
-      ? { utm_source: savedSource, gclid: contact.gclid || '' }
+      ? { utm_source: savedSource, gclid: (refs.gclid.id && existing[refs.gclid.id]) || contact.gclid || '' }
       : data);
   }
 
