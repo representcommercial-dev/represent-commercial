@@ -18,7 +18,9 @@ const DESTINATIONS = {
 
 export async function onRequest({ request, params }) {
   const raw = Array.isArray(params.path) ? params.path : String(params.path || '').split('/');
-  const parts = raw.map(cleanSlug).filter(Boolean);
+  // Reject malformed segments instead of silently changing their attribution.
+  if (raw.some(v => !/^[a-z0-9-]{1,100}$/i.test(String(v)))) return notFound();
+  const parts = raw.map(v => String(v).toLowerCase());
   const platform = parts[0];
 
   if (!PLATFORMS.has(platform)) return notFound();
@@ -65,10 +67,6 @@ function profileContent(platform) {
   if (platform === 'instagram') return 'bio';
   if (platform === 'youtube') return 'channel';
   return 'profile';
-}
-
-function cleanSlug(v) {
-  return String(v || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 100);
 }
 
 function notFound() {
