@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Ads tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18457265873');
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commercial Property Performance Review Brisbane | Represent Commercial</title>
@@ -19,13 +27,7 @@
 <meta name="twitter:description" content="An owner-side assessment of your commercial property, personally reviewed by Nick O'Toole. Brisbane and South East Queensland." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 
-<!-- MEASUREMENT INTEGRATION POINT (no IDs supplied yet; do not add placeholders)
-     Insert the single Google tag snippet here once IDs are supplied:
-       gtag.js loader + gtag('config', 'G-XXXXXXX')  (GA4)
-       gtag('config', 'AW-XXXXXXX')                   (Google Ads; conversion linker is on by default)
-     Events already push to window.dataLayer and to gtag() when it exists (rcTrack() at page foot):
-       performance_review_cta_click, performance_review_form_submit, click_to_call
-     Google Ads conversion: map performance_review_form_submit to the Ads conversion label. -->
+<!-- Review conversion fires only after Web3Forms confirms success. -->
 
 <script type="application/ld+json">
 {
@@ -626,6 +628,11 @@
         <div class="stack"><a href="tel:+61401825999" data-track="click_to_call" data-location="footer">+61 401 825 999</a></div>
         <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
         <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+        <div class="stack" style="display: flex; flex-wrap: wrap; gap: 4px 18px;">
+          <a href="https://www.linkedin.com/in/nickotoole/" target="_blank" rel="noopener" class="footer-linkedin" style="gap: 6px; margin-top: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+          <a href="https://www.youtube.com/@NickOToole" target="_blank" rel="noopener" class="footer-linkedin" style="gap: 6px; margin-top: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg> YouTube</a>
+          <a href="https://www.instagram.com/nick.otoole/" target="_blank" rel="noopener" class="footer-linkedin" style="gap: 6px; margin-top: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg> Instagram</a>
+        </div>
       </div>
     </div>
     <ul class="pr-ft__links">
@@ -728,6 +735,19 @@ window.rcTrack = function (name, params) {
         done.setAttribute('role', 'status');
         done.focus();
         rcTrack('performance_review_form_submit', { form_stream: payload.form_stream, property_status: payload.property_status, cta_location: payload.cta_clicked || 'direct' });
+
+        // Count a received review request, never a page visit or attempted submission.
+        // Measurement errors must not interrupt the CRM handoff.
+        try {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', {
+              send_to: 'AW-18457265873/ceEjCNqu35UdENGNjuFE',
+              transaction_id: payload.website_submission_id
+            });
+          }
+        } catch (trackingError) {
+          console.error('Represent conversion tracking:', trackingError);
+        }
 
         var crmPayload = {};
         Object.keys(payload).forEach(function (k) {
