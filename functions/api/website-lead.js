@@ -342,9 +342,21 @@ async function contactOnlyHandoff(env, data, stream, ctx) {
     customFields.push(Object.assign({}, ref, { field_value: k === 'originalEnquiry' ? v : String(v).trim() }));
   }
 
+  // Contact Source is the standard contact-level roll-up. The granular platform
+  // remains in UTM Source. Fill Source only while empty, using any established
+  // first-touch UTM source rather than a later submission's campaign.
+  const updateBody = { customFields };
+  const contact = current.data.contact;
+  if (!clean(contact.source, 500)) {
+    const savedSource = refs.utmSource.id && existing[refs.utmSource.id];
+    updateBody.source = deriveOriginalLeadSource(savedSource
+      ? { utm_source: savedSource, gclid: contact.gclid || '' }
+      : data);
+  }
+
   const upd = await ghl('/contacts/' + encodeURIComponent(ctx.contactId), env, {
     method: 'PUT',
-    body: { customFields }
+    body: updateBody
   });
   if (!upd.ok) {
     return json({ ok: false, error: 'CRM contact field update failed.', contact_id: ctx.contactId, upstream_status: upd.status }, 502);
