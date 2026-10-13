@@ -562,7 +562,11 @@ window.rcTrack = function (name, params) {
         done.style.display = 'block';
         done.setAttribute('role', 'status');
         done.focus();
-        rcTrack('acquisition_brief_form_submit', { form_stream: payload.form_stream, buyer_type: payload.buyer_type, cta_location: payload.cta_clicked });
+        try {
+          rcTrack('acquisition_brief_form_submit', { form_stream: payload.form_stream, buyer_type: payload.buyer_type, cta_location: payload.cta_clicked });
+        } catch (trackingError) {
+          console.error('Represent event tracking:', trackingError);
+        }
 
         // HighLevel handoff via the existing Function. The requirement is summarised
         // into `requirement` (read by the Function's enquiry-detail builder).

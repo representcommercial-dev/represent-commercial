@@ -734,7 +734,11 @@ window.rcTrack = function (name, params) {
         done.style.display = 'block';
         done.setAttribute('role', 'status');
         done.focus();
-        rcTrack('performance_review_form_submit', { form_stream: payload.form_stream, property_status: payload.property_status, cta_location: payload.cta_clicked || 'direct' });
+        try {
+          rcTrack('performance_review_form_submit', { form_stream: payload.form_stream, property_status: payload.property_status, cta_location: payload.cta_clicked || 'direct' });
+        } catch (trackingError) {
+          console.error('Represent event tracking:', trackingError);
+        }
 
         // Count a received review request, never a page visit or attempted submission.
         // Measurement errors must not interrupt the CRM handoff.
