@@ -11,13 +11,13 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CGT Treatment Calculator — Represent Commercial</title>
+<title>CGT Treatment Calculator | Represent Commercial</title>
 <meta name="description" content="Compare the former CGT treatment (50% discount) against the legislated rules (CPI cost-base indexation with a 30% minimum floor) for a commercial property acquired 1 July 2027." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/cgt-calculator" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/cgt-calculator" />
-<meta property="og:title" content="CGT Treatment Calculator — Represent Commercial" />
+<meta property="og:title" content="CGT Treatment Calculator | Represent Commercial" />
 <meta property="og:description" content="Former 50% discount vs the legislated CPI-indexation rules, modelled over your hold period." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
@@ -111,7 +111,7 @@
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+    <a href="/" class="logo" aria-label="Represent Commercial home">
       <div class="logo__primary">REPRESENT</div>
       <div class="logo__sub">COMMERCIAL</div>
     </a>
@@ -149,8 +149,8 @@
     <div class="cgt">
 
       <div class="assume">
-        <b>⚠ Illustration only — confirm the application to your circumstances with your accountant</b>
-        Based on the legislated rules applying to relevant gains accruing from 1 July 2027. An asset purchased <strong>on 1 July 2027</strong> falls entirely under the new regime (the pre/post split-valuation transitional rules apply only to assets bought <em>before</em> that date). <strong>New regime:</strong> the cost base is indexed by CPI over the hold period, and only the real gain above inflation is taxed — at the 47% marginal rate, subject to a 30% minimum floor on the real gain. <strong>Former treatment (shown for comparison):</strong> 50% discount on the nominal gain, taxed at 47%. This is an illustration, not tax advice. The relevant rules have been legislated and apply to relevant gains accruing from 1 July 2027. Tax treatment depends on individual circumstances and should be confirmed with an appropriately qualified adviser. For simplicity, this calculation does not include any rent, income, or holding expenses — it models the capital gain and CGT on sale only. It also does not include purchase costs or any other factor that impacts cost base (e.g. capex, depreciation etc).
+        <b>⚠ Illustration only. Confirm the application to your circumstances with your accountant</b>
+        Based on the legislated rules applying to relevant gains accruing from 1 July 2027. An asset purchased <strong>on 1 July 2027</strong> falls entirely under the new regime (the pre/post split-valuation transitional rules apply only to assets bought <em>before</em> that date). <strong>New regime:</strong> the cost base is indexed by CPI over the hold period, and only the real gain above inflation is taxed, at the 47% marginal rate, subject to a 30% minimum floor on the real gain. <strong>Former treatment (shown for comparison):</strong> 50% discount on the nominal gain, taxed at 47%. This is an illustration, not tax advice. The relevant rules have been legislated and apply to relevant gains accruing from 1 July 2027. Tax treatment depends on individual circumstances and should be confirmed with an appropriately qualified adviser. For simplicity, this calculation does not include any rent, income, or holding expenses. It models the capital gain and CGT on sale only. It also does not include purchase costs or any other factor that impacts cost base (e.g. capex, depreciation etc).
       </div>
 
       <div class="panel">
@@ -164,7 +164,7 @@
           <div class="ctrl">
             <div class="lab"><label for="cpi">Average CPI (inflation)</label><span class="val" id="cpiVal">3.0%</span></div>
             <input type="range" id="cpi" min="0" max="8" step="0.1" value="3" />
-            <div class="hint">Average annual CPI — indexes the cost base under the new regime.</div>
+            <div class="hint">Average annual CPI. Indexes the cost base under the new regime.</div>
           </div>
           <div class="ctrl">
             <div class="lab"><label for="growth">Average capital growth</label><span class="val" id="growthVal">5.0%</span></div>
@@ -179,7 +179,7 @@
           <div class="ctrl">
             <div class="lab"><label for="mtr">Marginal tax rate</label><span class="val" id="mtrVal">47%</span></div>
             <input type="range" id="mtr" min="0" max="47" step="1" value="47" />
-            <div class="hint">Your marginal rate on the gain. The new regime applies a 30% minimum floor — if this falls below 30%, the floor applies instead.</div>
+            <div class="hint">Your marginal rate on the gain. The new regime applies a 30% minimum floor. If this falls below 30%, the floor applies instead.</div>
           </div>
         </div>
       </div>
@@ -187,9 +187,9 @@
       <div class="results">
         <div class="r-head">Estimated outcome at sale</div>
         <div class="r-grid">
-          <div class="r-item"><div class="rk">Sale value</div><div class="rv" id="oSale">—</div></div>
-          <div class="r-item"><div class="rk">Nominal gain</div><div class="rv" id="oNominal">—</div></div>
-          <div class="r-item"><div class="rk">Indexed cost base</div><div class="rv" id="oIndexed">—</div></div>
+          <div class="r-item"><div class="rk">Sale value</div><div class="rv" id="oSale">–</div></div>
+          <div class="r-item"><div class="rk">Nominal gain</div><div class="rv" id="oNominal">–</div></div>
+          <div class="r-item"><div class="rk">Indexed cost base</div><div class="rv" id="oIndexed">–</div></div>
         </div>
         <div class="cmp">
           <div class="cmp-row cmp-row--head">
@@ -199,38 +199,38 @@
           </div>
           <div class="cmp-row">
             <div class="cmp-k">Taxable gain</div>
-            <div class="cmp-v" id="cTaxPre">—</div>
-            <div class="cmp-v" id="cTaxNew">—</div>
+            <div class="cmp-v" id="cTaxPre">–</div>
+            <div class="cmp-v" id="cTaxNew">–</div>
           </div>
           <div class="cmp-row">
             <div class="cmp-k">Effective rate on the gain</div>
-            <div class="cmp-v" id="cRatePre">—</div>
-            <div class="cmp-v" id="cRateNew">—</div>
+            <div class="cmp-v" id="cRatePre">–</div>
+            <div class="cmp-v" id="cRateNew">–</div>
           </div>
           <div class="cmp-row">
             <div class="cmp-k">After-tax position</div>
-            <div class="cmp-v" id="oNetPre">—</div>
-            <div class="cmp-v" id="oNetPost">—</div>
+            <div class="cmp-v" id="oNetPre">–</div>
+            <div class="cmp-v" id="oNetPost">–</div>
           </div>
           <div class="cmp-row cmp-row--total">
             <div class="cmp-k">CGT payable</div>
-            <div class="cmp-v" id="oPre">—</div>
-            <div class="cmp-v" id="oPost">—</div>
+            <div class="cmp-v" id="oPre">–</div>
+            <div class="cmp-v" id="oPost">–</div>
           </div>
           <div class="cmp-diff">
             <div class="cmp-k">Difference in CGT payable</div>
-            <div class="cmp-v" id="oDiff">—</div>
+            <div class="cmp-v" id="oDiff">–</div>
           </div>
         </div>
       </div>
 
       <div class="charts">
-        <div class="chart-card"><h3>CGT payable — former vs new</h3><canvas id="barChart" height="220"></canvas></div>
+        <div class="chart-card"><h3>CGT payable: former vs new</h3><canvas id="barChart" height="220"></canvas></div>
         <div class="chart-card"><h3>Difference by hold period</h3><canvas id="lineChart" height="220"></canvas></div>
       </div>
 
       <div class="foot">
-        <b>Illustration only — not tax advice.</b> Based on the legislated rules applying to relevant gains accruing from 1 July 2027. Their application to a particular gain depends on the taxpayer, the asset and the transitional provisions. The model applies a simplified calculation: sale value compounds purchase price at the growth rate; the new-regime cost base is indexed at CPI; tax is the real gain × 47% (the 30% floor does not bind at a 47% marginal rate). It ignores capital works deductions, other cost-base adjustments, carried losses, entity structure, super-fund or company treatment, small-business concessions, and every other factor affecting a real liability. Note that super funds and companies are treated differently under the reform. CGT is a matter for a qualified accountant or tax adviser. Represent Commercial provides property services, not taxation advice.
+        <b>Illustration only, not tax advice.</b> Based on the legislated rules applying to relevant gains accruing from 1 July 2027. Their application to a particular gain depends on the taxpayer, the asset and the transitional provisions. The model applies a simplified calculation: sale value compounds purchase price at the growth rate; the new-regime cost base is indexed at CPI; tax is the real gain × 47% (the 30% floor does not bind at a 47% marginal rate). It ignores capital works deductions, other cost-base adjustments, carried losses, entity structure, super-fund or company treatment, small-business concessions, and every other factor affecting a real liability. Note that super funds and companies are treated differently under the reform. CGT is a matter for a qualified accountant or tax adviser. Represent Commercial provides property services, not taxation advice.
       </div>
 
     </div>

@@ -7,13 +7,13 @@
 - Supporting service descriptor: Property Management, Leasing, Buyer’s Agency & Tenant Representation.
 
 ## Services
-1. Commercial Property Management — property management delivered with an asset-management mindset
-2. Commercial Leasing — owner-side leasing of vacant commercial space
-3. Buyer’s Agency & Acquisition Advisory — independent buyer representation, never acting for the vendor
-4. Tenant Representation — tenant-side representation for occupiers
+1. Commercial Property Management: property management delivered with an asset-management mindset
+2. Commercial Leasing: owner-side leasing of vacant commercial space
+3. Buyer’s Agency & Acquisition Advisory: independent buyer representation, never acting for the vendor
+4. Tenant Representation: tenant-side representation for occupiers
 
 ## Pages
-- [Home](https://represent.au/): Three client pathways — buyers, property owners, tenants
+- [Home](https://represent.au/): Three client pathways - buyers, property owners, tenants
 - [Commercial Property Management Brisbane](https://represent.au/services): Property management for owners, delivered with an asset-management mindset
 - [Commercial Property Leasing Brisbane](https://represent.au/leasing): Owner-side leasing of vacant commercial space
 - [Commercial Buyer’s Agent Brisbane, South East Queensland & Regional Queensland](https://represent.au/buyers-agency): Independent acquisition representation for investors and owner-occupiers
@@ -21,7 +21,7 @@
 - [Market Intelligence](https://represent.au/insights): Guides, calculators and precinct data
 - [Case Studies](https://represent.au/case-studies): Principal experience and asset outcomes
 - [Locations](https://represent.au/locations): Brisbane industrial precincts covered
-- [About](https://represent.au/about): About Represent Commercial — principal-led representation for owners, buyers and tenants, built around clear client alignment.
+- [About](https://represent.au/about): About Represent Commercial - principal-led representation for owners, buyers and tenants, built around clear client alignment.
 - [Referrals](https://represent.au/referrals): Four referral pathways for accountants, brokers and agents
 - [Introduce a client](https://represent.au/refer-a-client): General introduction for a buyer, owner or tenant across any service
 - [Contact](https://represent.au/contact): Speak with Nick directly

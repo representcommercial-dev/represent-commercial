@@ -11,7 +11,7 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rent Offset Saving Calculator — Represent Commercial</title>
+<title>Rent Offset Saving Calculator | Represent Commercial</title>
 <meta name="description" content="See what parking commercial rent in your offset account saves in loan interest. An investor tool from Represent Commercial, South East Queensland." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/calculator" />
@@ -118,7 +118,7 @@
 <!-- ─── HEADER ─── -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+    <a href="/" class="logo" aria-label="Represent Commercial home">
       <div class="logo__primary">REPRESENT</div>
       <div class="logo__sub">COMMERCIAL</div>
     </a>
@@ -199,7 +199,7 @@
       <div class="card result-card">
         <p class="result-label">Interest saved per year</p>
         <div class="result-number" id="r-annual">$0</div>
-        <p class="result-explain">Modest by design — the saving is real but bounded by how long rent actually sits idle. The longer it stays offset before you spend it, the more it earns.</p>
+        <p class="result-explain">Modest by design. The saving is real but bounded by how long rent actually sits idle. The longer it stays offset before you spend it, the more it earns.</p>
         <div class="result-stats">
           <div class="stat">
             <div class="stat__v" id="r-offset">$0</div>
@@ -226,7 +226,7 @@
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">Small levers, run properly</div>
-        <p class="lead-p">This is one small lever. Arrears, rent reviews, outgoings recovery — the levers that move real money are the ones we run every day. Send your details and Nick will show you what that looks like on your asset.</p>
+        <p class="lead-p">This is one small lever. Arrears, rent reviews, outgoings recovery: the levers that move real money are the ones we run every day. Send your details and Nick will show you what that looks like on your asset.</p>
         <form id="lead-form">
           <div class="lead-grid">
             <div class="lead-field"><label for="calculator-name">Name</label><input id="calculator-name" name="name" autocomplete="name" /></div>
@@ -238,7 +238,7 @@
         </form>
       </div>
       <div id="lead-done" style="display:none;">
-        <div class="lead-h" style="margin-bottom:6px;">Thanks — we'll be in touch.</div>
+        <div class="lead-h" style="margin-bottom:6px;">Thanks, we'll be in touch.</div>
         <p class="lead-p" style="margin:0;">Nick will come back to you personally.</p>
       </div>
     </div>
@@ -248,7 +248,7 @@
 <!-- ─── DISCLAIMER ─── -->
 <section class="calc-disclaimer">
   <div class="calc-wrap">
-    <p>Indicative only and not personal financial, investment, or taxation advice. Assumes the rent is your own funds offsetting your own loan; it does not apply to rent held on behalf of a lessor, which must be held in a statutory trust account. Saving assumes a constant interest rate and excludes account fees and tax. Represent Commercial — Real Estate Agent Licence 4949809. Obtain independent advice before acting.</p>
+    <p>Indicative only and not personal financial, investment, or taxation advice. Assumes the rent is your own funds offsetting your own loan; it does not apply to rent held on behalf of a lessor, which must be held in a statutory trust account. Saving assumes a constant interest rate and excludes account fees and tax. Represent Commercial. Real Estate Agent Licence 4949809. Obtain independent advice before acting.</p>
   </div>
 </section>
 
@@ -391,7 +391,7 @@
     var payload = {
       access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
       form_stream: 'enquiries',
-      subject: 'Enquiry — Rent Offset Saving Calculator',
+      subject: 'Enquiry: Rent Offset Saving Calculator',
       from_name: 'Represent Commercial Website',
       name: form.name.value,
       email: form.email.value,
@@ -407,7 +407,7 @@
     };
     // Success requires ok + JSON content-type + success === true (Web3Forms contract).
     // Entered details are preserved on every failure path; no automatic retry.
-    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
     function fail(message) {
       btn.disabled = false; btn.textContent = 'Talk to us';

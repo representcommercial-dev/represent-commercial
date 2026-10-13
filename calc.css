@@ -1,4 +1,4 @@
-/* Shared calculator page styles — Represent Commercial */
+/* Shared calculator page styles - Represent Commercial */
 :root{--calc-green:#004225;--calc-gold:#B8935A;--calc-gold-cta:#D4AF37;--calc-bg:#F7F5F0;--calc-ink:#0E1A14;--f-cond:'Barlow Condensed','Arial Narrow',sans-serif;--f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'DM Sans',system-ui,sans-serif}
 .calc-page{background:var(--calc-bg);color:var(--calc-ink)}
 .calc-wrap{max-width:1120px;margin:0 auto;padding:0 24px}

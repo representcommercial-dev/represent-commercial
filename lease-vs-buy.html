@@ -11,7 +11,7 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lease vs Own Calculator — Represent Commercial</title>
+<title>Lease vs Own Calculator | Represent Commercial</title>
 <meta name="description" content="Compare leasing commercial premises against owning them over 5, 10, 15 and 20 years, with equity, finance, ownership costs and opportunity cost of capital modelled." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/lease-vs-buy" />
@@ -242,7 +242,7 @@
 <!-- ─── HEADER ─── -->
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="logo" aria-label="Represent Commercial — Home">
+    <a href="/" class="logo" aria-label="Represent Commercial home">
       <div class="logo__primary">REPRESENT</div>
       <div class="logo__sub">COMMERCIAL</div>
     </a>
@@ -312,7 +312,7 @@
                 <span class="affix affix--pre">$</span>
                 <input id="loanamt" type="text" readonly tabindex="-1" value="" />
               </div>
-              <p class="hint">Calculated — purchase price less deposit.</p>
+              <p class="hint">Calculated: purchase price less deposit.</p>
             </div>
             <div class="field-row">
               <div class="field">
@@ -359,7 +359,7 @@
                 <span class="affix affix--pre">$</span>
                 <input id="duty" type="text" inputmode="numeric" autocomplete="off" value="" />
               </div>
-              <p class="hint" id="duty-hint">Estimated at the Queensland general transfer duty rate on the purchase price. Editable — foreign acquirer surcharge, concessions and GST are not modelled.</p>
+              <p class="hint" id="duty-hint">Estimated at the Queensland general transfer duty rate on the purchase price. Editable. Foreign acquirer surcharge, concessions and GST are not modelled.</p>
             </div>
             <div class="field-row">
               <div class="field">
@@ -485,8 +485,8 @@
             <div class="field">
               <label>Assume sale at end of period</label>
               <div class="seg seg--full" id="sale-seg">
-                <button type="button" data-sale="no" class="is-on">No — continue to hold</button>
-                <button type="button" data-sale="yes">Yes — sell</button>
+                <button type="button" data-sale="no" class="is-on">No, continue to hold</button>
+                <button type="button" data-sale="yes">Yes, sell</button>
               </div>
               <p class="hint" id="sale-hint">Disposal costs are not deducted from the ownership position; net sale proceeds are shown separately for reference.</p>
             </div>
@@ -519,11 +519,11 @@
         <p class="result-label" id="r-atyear">At year 15</p>
 
         <div class="pos-row">
-          <div class="pos-k">Own — property equity<small id="r-ownsub">Estimated property value less outstanding loan</small></div>
+          <div class="pos-k">Own: property equity<small id="r-ownsub">Estimated property value less outstanding loan</small></div>
           <div class="pos-v" id="r-ownpos">$0</div>
         </div>
         <div class="pos-row">
-          <div class="pos-k">Lease — invested capital value<small>Capital not committed to the purchase, compounded at the selected alternative return, adjusted for the annual cash-flow difference</small></div>
+          <div class="pos-k">Lease: invested capital value<small>Capital not committed to the purchase, compounded at the selected alternative return, adjusted for the annual cash-flow difference</small></div>
           <div class="pos-v" id="r-leasepos">$0</div>
         </div>
 
@@ -645,7 +645,7 @@
         <h4>Ownership costs</h4>
         <p>Rates, land tax, insurance, upkeep and capital reserve start at the figure you enter and increase each year at the ownership cost growth rate.</p>
         <h4>Alternative capital</h4>
-        <p>The lease scenario starts with the cash the purchase would have absorbed — deposit plus acquisition costs, less any initial lease costs — and compounds it at the alternative return. Each year the difference between the cost of owning (repayments plus ownership costs) and the cost of leasing (rent plus outgoings) is added to or drawn from that capital, so both strategies assume the same total spend on premises. That is what makes the two sides comparable: every dollar of acquisition cost, interest and ownership cost sits on the lease side of the ledger as capital the tenant still holds.</p>
+        <p>The lease scenario starts with the cash the purchase would have absorbed (deposit plus acquisition costs, less any initial lease costs) and compounds it at the alternative return. Each year the difference between the cost of owning (repayments plus ownership costs) and the cost of leasing (rent plus outgoings) is added to or drawn from that capital, so both strategies assume the same total spend on premises. That is what makes the two sides comparable: every dollar of acquisition cost, interest and ownership cost sits on the lease side of the ledger as capital the tenant still holds.</p>
         <h4>Net advantage</h4>
         <p>At each year the modelled ownership position is compared against the modelled lease position. Where a sale is assumed at the end of the period, disposal costs are deducted from the ownership position; where it is not, property equity is shown gross and net sale proceeds appear separately for reference.</p>
         <h4>What is excluded</h4>
@@ -677,7 +677,7 @@
         </form>
       </div>
       <div id="lead-done" style="display:none;">
-        <div class="lead-h" style="margin-bottom:6px;">Thanks — we'll be in touch.</div>
+        <div class="lead-h" style="margin-bottom:6px;">Thanks, we'll be in touch.</div>
         <p class="lead-p" style="margin:0;">Nick will come back to you personally about your requirement.</p>
       </div>
     </div>
@@ -687,7 +687,7 @@
 <!-- ─── DISCLAIMER ─── -->
 <section class="calc-disclaimer">
   <div class="calc-wrap">
-    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal, valuation or investment advice. Results are based entirely on the assumptions entered and actual outcomes may differ materially. Taxation, depreciation and GST effects are excluded — GST treatment on a commercial acquisition depends on transaction structure, GST registration, going-concern treatment and input tax credit eligibility, and is not modelled as an economic cost. Financing terms, transaction costs, property performance and individual circumstances should be independently verified before making an acquisition decision. Represent Commercial — Real Estate Agent Licence 4949809.</p>
+    <p>This calculator provides indicative modelling only and does not constitute financial, taxation, legal, valuation or investment advice. Results are based entirely on the assumptions entered and actual outcomes may differ materially. Taxation, depreciation and GST effects are excluded. GST treatment on a commercial acquisition depends on transaction structure, GST registration, going-concern treatment and input tax credit eligibility, and is not modelled as an economic cost. Financing terms, transaction costs, property performance and individual circumstances should be independently verified before making an acquisition decision. Represent Commercial. Real Estate Agent Licence 4949809.</p>
   </div>
 </section>
 
@@ -838,7 +838,7 @@
 
   // Year-by-year model. Ownership position = property equity (less disposal costs if a sale is assumed).
   // Lease position = capital the purchase would have absorbed, compounded, plus the annual cash-flow
-  // difference between owning and leasing — so acquisition, interest and ownership costs are all reflected.
+  // difference between owning and leasing - so acquisition, interest and ownership costs are all reflected.
   function model(p, N) {
     var M = payment(p.loan, p.rate, p.term);
     var nMonths = p.term * 12;
@@ -1148,7 +1148,7 @@
     var payload = {
       access_key: '35499d27-a409-4125-9171-b5df6f1dfa97',
       form_stream: 'enquiries',
-      subject: 'Enquiry — Lease vs Own Calculator',
+      subject: 'Enquiry: Lease vs Own Calculator',
       from_name: 'Represent Commercial Website',
       name: form.name.value,
       email: form.email.value,
@@ -1175,7 +1175,7 @@
     };
     // Success requires ok + JSON content-type + success === true (Web3Forms contract).
     // Entered details are preserved on every failure path; no automatic retry.
-    var FAIL = 'We could not send your request. Your details are still here — please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
+    var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
     function fail(message) {
       btn.disabled = false; btn.textContent = 'Discuss Your Requirement';
