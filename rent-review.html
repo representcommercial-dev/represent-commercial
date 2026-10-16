@@ -475,6 +475,7 @@
     buildTable(rows, area, r);
     drawChart(rows, rent0, N);
     store = { rent0: rent0, area: area, N: N, r: r, final: final, tot: tot, eff: eff, uplift: uplift };
+    if (window.rcEvents) window.rcEvents.calculatorComplete(rent0 > 0 && isFinite(final));
   }
 
   function buildTable(rows, area, r) {
@@ -652,6 +653,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -663,6 +665,7 @@
 })();
 </script>
 <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

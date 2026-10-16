@@ -364,6 +364,7 @@
     calc._recoverable = Math.round(grossRecovered);
     calc._net = Math.round(netBenefit);
     calc._gross = gross; calc._cur = cur; calc._our = our;
+    if (window.rcEvents) window.rcEvents.calculatorComplete(gross > 0 && isFinite(netBenefit));
   }
 
   function formatCommaField(el) {
@@ -430,6 +431,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         form.style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -444,6 +446,7 @@
 </script>
 
   <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

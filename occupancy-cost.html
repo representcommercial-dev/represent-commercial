@@ -409,6 +409,7 @@
     rows += '<tr><td class="yr-c">Total</td>' + opts.map(function (o) { return '<td>' + money(o.total) + '</td>'; }).join('') + '</tr>';
     document.getElementById('yr-rows').innerHTML = rows;
     store = { m: m, best: best, worst: worst, saving: saving };
+    if (window.rcEvents) window.rcEvents.calculatorComplete(best.area > 0 && isFinite(best.eff));
   }
 
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -492,6 +493,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -503,6 +505,7 @@
 })();
 </script>
 <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

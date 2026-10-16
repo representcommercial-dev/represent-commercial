@@ -536,6 +536,7 @@
     }).then(function (body) {
       if (timer) clearTimeout(timer);
       if (!body || body.success !== true) { fail(FAIL); return; }
+      if (window.rcEvents) window.rcEvents.enquirySuccess();
       confirmed = true;
       document.getElementById('success-text').textContent =
         'Your referral for ' + property + ' and the accepted reciprocal referral agreement have been submitted and recorded. ' +
@@ -557,6 +558,7 @@
 </script>
 
   <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for amounts typed into free-text fields */

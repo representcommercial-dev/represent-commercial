@@ -947,6 +947,7 @@
     store = { p: p, years: p.years, ownPos: end.ownPos, leasePos: end.leasePos, adv: adv, ownAhead: ownAhead, cross: cross };
     buildTables(rows, p.years, cross);
     drawChart(rows, p.years, cross);
+    if (window.rcEvents) window.rcEvents.calculatorComplete(p.price > 0 && num(el.rent) > 0 && isFinite(adv));
   }
 
   function leadPill(r) {
@@ -1204,6 +1205,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -1216,6 +1218,7 @@
 </script>
 
   <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

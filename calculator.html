@@ -366,6 +366,7 @@
     document.getElementById('r-total').textContent = money(total);
     document.getElementById('r-total-k').textContent = 'Saved over ' + fmt0.format(Math.round(years)) + (Math.round(years) === 1 ? ' year' : ' years');
     calc._annual = Math.round(annual); calc._total = Math.round(total); calc._rent = rent; calc._rate = rate; calc._days = days; calc._years = years;
+    if (window.rcEvents) window.rcEvents.calculatorComplete(rent > 0 && years > 0 && isFinite(annual));
   }
 
   // Comma formatting for the rent field, preserving caret at end (fires on plain digit entry).
@@ -436,6 +437,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -448,6 +450,7 @@
 </script>
 
   <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

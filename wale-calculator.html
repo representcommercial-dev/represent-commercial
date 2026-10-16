@@ -445,6 +445,7 @@
     }).join('') : '<tr><td colspan="6" style="color:#8A857A;">No complete tenancies entered.</td></tr>';
 
     store = { rows: rows, income: income, wale: wale, expiring12: expiring12, expiring36: expiring36, top: top };
+    if (window.rcEvents) window.rcEvents.calculatorComplete(rows.length > 0 && income > 0 && isFinite(wale));
   }
 
   function escapeHtml(s) {
@@ -544,6 +545,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -555,6 +557,7 @@
 })();
 </script>
 <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 </body>
 </html>
