@@ -189,8 +189,11 @@ export async function onRequestPost({ request, env }) {
         enquiryService,
         enquiryDetail
       });
-      // Contact-only review streams must never create an opportunity automatically.
-      return enrichment;
+      // The buyer pilot remains contact-only. Performance Review continues
+      // through duplicate control and opportunity creation after enrichment.
+      if (!enrichment.ok || clean(data.form_stream, 200) !== 'commercial-property-performance-review') {
+        return enrichment;
+      }
     }
 
     const existing = await findExistingOpportunity(env, {
