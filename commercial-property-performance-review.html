@@ -270,12 +270,12 @@
     <div class="container pr-hero" style="position: relative; z-index: 1;">
       <div>
         <p class="svc-h1">Commercial Property Performance Review</p>
-        <h1 class="brandline h-1">Your commercial property needs an asset plan, not just <span class="italic" style="color: var(--gold);">administration.</span></h1>
+        <h1 class="brandline h-1">Could your commercial property be delivering a <span class="italic" style="color: var(--gold);">better return?</span></h1>
         <hr class="gold-rule" style="margin-bottom: 28px;" />
-        <p class="pr-offer">Property management should connect every lease, maintenance decision and operating expense to what you are trying to achieve with the asset.</p>
-        <p class="pr-offer">Represent Commercial’s Commercial Property Performance Review examines your property’s income, leasing position, lease risks, expenditure and other priorities to identify what may deserve attention and what should happen next.</p>
+        <p class="pr-offer">Discover opportunities to improve rental income, reduce leasing risks and strengthen your property’s long-term performance.</p>
+        <p class="pr-offer">Request a Commercial Property Performance Review personally assessed by Nick O’Toole, Founder &amp; Director of Represent Commercial. With more than 20 years of owner-side experience, Nick examines the decisions that influence income, occupancy, expenditure and asset performance.</p>
         <div class="pr-acts">
-          <a href="#form-card" class="btn btn--lg btn--gold" data-cta="hero">Request a Property Performance Review</a>
+          <a href="#form-card" class="btn btn--lg btn--gold" data-cta="hero">Request My Property Review</a>
           <a href="tel:+61401825999" class="btn btn--lg btn--outline" data-track="click_to_call" data-location="hero">Speak with Nick</a>
         </div>
       </div>
@@ -283,7 +283,7 @@
         <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Personally reviewed by Nick O'Toole</li>
         <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>For owners of leased, partly vacant and vacant property</li>
         <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Brisbane and South East Queensland</li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>No commitment to appoint Represent Commercial</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confidential enquiry. No obligation to appoint Represent Commercial</li>
       </ul>
     </div>
   </section>
@@ -709,6 +709,16 @@ window.rcTrack = function (name, params) {
   var UNCERTAIN = 'We could not confirm that your request was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
 
+  var formStarted = false;
+  form.addEventListener('focusin', function (e) {
+    if (!formStarted && e.target && e.target.matches('input:not([type="hidden"]), select, textarea')) {
+      formStarted = true;
+      rcTrack('performance_review_form_start', { form_stream: 'commercial-property-performance-review' });
+    }
+  });
+  form.addEventListener('invalid', function (e) {
+    rcTrack('performance_review_validation_error', { field: e.target && e.target.name || 'unknown' });
+  }, true);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (btn.disabled) return;
