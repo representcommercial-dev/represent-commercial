@@ -388,6 +388,7 @@
     $('oDiff').innerHTML = sign + compact(Math.abs(o.diff)).replace('−','') + '<em>' + (o.diff>=0?'more under new regime':'less under new regime') + '</em>';
 
     drawCharts(purchase, cpi, growth, years, mtr, o);
+    if (window.rcEvents) window.rcEvents.calculatorComplete(purchase > 0 && years > 0 && isFinite(o.sale));
   }
 
   function drawCharts(purchase, cpi, growth, years, mtr, o){
@@ -417,6 +418,7 @@
   calc();
 </script>
 <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 </body>
 </html>

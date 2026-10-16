@@ -412,6 +412,7 @@
         '<td>' + money(mm.uplift) + '</td></tr>';
     }).join('');
     store = m;
+    if (window.rcEvents) window.rcEvents.calculatorComplete(m.area > 0 && m.passing > 0 && m.market > 0 && m.y > 0 && isFinite(m.uplift));
   }
 
   bindMoney(['area', 'price', 'og', 'cost'], calc);
@@ -479,6 +480,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -490,6 +492,7 @@
 })();
 </script>
 <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

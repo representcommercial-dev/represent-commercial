@@ -421,6 +421,7 @@
         '<td>' + (flip ? '<span class="adv adv--on">Relocation</span>' : '<span class="adv adv--off">Renewal</span>') + '</td></tr>';
     }).join('');
     store = { m: m, diff: diff, renewWins: renewWins };
+    if (window.rcEvents) window.rcEvents.calculatorComplete(m.curArea > 0 && m.nArea > 0 && isFinite(diff));
   }
 
   bindMoney(['curarea', 'r-cap', 'n-area', 'n-fit', 'n-move', 'n-mg'], calc);
@@ -482,6 +483,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -493,6 +495,7 @@
 })();
 </script>
 <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

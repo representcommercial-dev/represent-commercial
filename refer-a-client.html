@@ -354,6 +354,7 @@
       }).then(function (data) {
         if (timer) clearTimeout(timer);
         if (data && data.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
           form.style.display = 'none';
           success.style.display = 'block';
           success.setAttribute('role', 'status');
@@ -368,6 +369,7 @@
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script src="nav.v14.js" defer></script>
 </body>
 </html>

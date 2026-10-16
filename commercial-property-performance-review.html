@@ -663,6 +663,7 @@
 </footer>
 
 <script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
 <script>
 window.rcTrack = function (name, params) {
   params = params || {};
@@ -738,6 +739,7 @@ window.rcTrack = function (name, params) {
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
+          if (window.rcEvents) window.rcEvents.enquirySuccess();
         confirmed = true;
         form.style.display = 'none';
         done.style.display = 'block';
