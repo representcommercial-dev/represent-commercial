@@ -218,6 +218,9 @@
 @media (max-width:900px){
   .pr-hero,.pr-main,.pr-split,.pr-recv,.pr-look,.pr-vid{grid-template-columns:1fr;gap:40px}
   .pr-prop__body{grid-template-columns:1fr}
+  /* Put the request fields ahead of the process explanation on mobile. */
+  [data-screen-label="06 Form"] .pr-main > .reveal{grid-row:1}
+  [data-screen-label="06 Form"] .pr-main > .svc-lead{grid-row:2}
   .pr-ex{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:700px){
@@ -231,8 +234,8 @@
   .pr-hd__acts{gap:8px}
   .pr-hd__cta{padding:8px 12px !important;font-size:12px !important}
   .pr-hd__cta .pr-long{display:none}
-  .section--hero.pr-hero-s{padding-top:84px;padding-bottom:52px}
-  .pr-hero .brandline{font-size:34px !important;margin-bottom:20px}
+  .section--hero.pr-hero-s{padding-top:84px;padding-bottom:28px}
+  .pr-hero .brandline{font-size:30px !important;margin-bottom:16px}
   .pr-hero .svc-h1{font-size:15px}
   .pr-offer{font-size:15.5px;line-height:1.6;margin-bottom:10px}
   .pr-acts{margin-top:22px;gap:4px 14px}
@@ -285,6 +288,86 @@
         <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Brisbane and South East Queensland</li>
         <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>No commitment to appoint Represent Commercial</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="section" data-screen-label="06 Form">
+    <div class="container pr-main">
+      <div class="svc-lead reveal">
+        <div class="eyebrow eyebrow--dim-light">Request a review</div>
+        <h2>Tell us about the property.</h2>
+        <p class="pr-p">The request takes a few minutes. You do not need to send documents to start. If a lease, tenancy schedule or outgoings budget would help, Nick will ask for it.</p>
+        <ol class="pr-steps">
+          <li><span>01</span>You describe the property and what concerns you.</li>
+          <li><span>02</span>Nick personally reviews the information and relevant available context.</li>
+          <li><span>03</span>Nick contacts you to discuss the property and what may deserve attention.</li>
+        </ol>
+      </div>
+
+      <div class="reveal">
+        <div class="form-card pr-form" id="form-card">
+          <form id="pr-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
+            <input type="hidden" name="subject" value="Property Performance Review request, Represent Commercial" />
+            <input type="hidden" name="from_name" value="Represent Commercial Website" />
+            <input type="hidden" name="form_stream" value="commercial-property-performance-review" />
+            <input type="hidden" name="enquiry_service" value="Commercial Property Performance Review" />
+            <input type="hidden" name="service_line" value="Property Management &amp; Leasing" />
+            <input type="hidden" name="lead_offer" value="Property Performance Review" />
+            <input type="hidden" name="intent_family" value="Owner Performance" />
+            <input type="hidden" name="landing_page" value="commercial-property-performance-review" />
+            <input type="hidden" name="cta_clicked" value="" />
+            <input type="hidden" name="referrer" value="" />
+            <input type="hidden" name="gclid" value="" />
+            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_medium" value="" />
+            <input type="hidden" name="utm_campaign" value="" />
+            <input type="hidden" name="utm_adgroup" value="" />
+            <input type="hidden" name="utm_term" value="" />
+            <input type="hidden" name="utm_content" value="" />
+            <input type="hidden" name="website_submission_id" value="" />
+            <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+            <div class="form-card__eyebrow">Commercial Property Performance Review</div>
+            <h2>Request your review</h2>
+            <p class="pr-form__sub">All fields are required unless marked optional.</p>
+            <div class="form-grid">
+              <div class="field" style="margin-bottom: 0;"><label for="pr-first">First name</label><input id="pr-first" name="first_name" type="text" autocomplete="given-name" required /></div>
+              <div class="field" style="margin-bottom: 0;"><label for="pr-last">Last name</label><input id="pr-last" name="last_name" type="text" autocomplete="family-name" required /></div>
+            </div>
+            <div class="form-grid">
+              <div class="field" style="margin-bottom: 0;"><label for="pr-email">Email</label><input id="pr-email" name="email" type="email" autocomplete="email" required /></div>
+              <div class="field" style="margin-bottom: 0;"><label for="pr-phone">Phone</label><input id="pr-phone" name="phone" type="tel" autocomplete="tel" required /></div>
+            </div>
+            <div class="field"><label for="pr-address">Property address</label><input id="pr-address" name="property_address" type="text" autocomplete="off" required /></div>
+            <div class="field">
+              <label for="pr-status">What’s happening with the property?</label>
+              <select id="pr-status" name="property_status" required>
+                <option value="" selected disabled>Select one</option>
+                <option>Fully leased</option>
+                <option>Partially vacant</option>
+                <option>Vacant and currently marketed</option>
+                <option>Vacant and not currently marketed</option>
+                <option>Lease expiry approaching</option>
+                <option>Recently acquired</option>
+                <option>Considering changing management/leasing strategy</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field"><label for="pr-concern">What concerns you most about the property’s current performance? <span style="text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label><textarea id="pr-concern" name="owner_concern" rows="4"></textarea></div>
+            <button type="submit" class="form-submit">Request My Property Performance Review</button>
+            <p class="pr-form__assure">Submitting this request does not commit you to appointing Represent Commercial.</p>
+            <div class="pr-err" id="pr-err" role="alert"></div>
+            <p class="form-note">By submitting, you agree to Represent Commercial contacting you about this request. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
+          </form>
+          <div class="form-success pr-done" id="pr-done" style="display:none;" tabindex="-1">
+            <div class="form-success__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A35E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
+            <h2>Thank you. Your request has been received.</h2>
+            <p>Nick O'Toole will review the details you have provided and be in contact to discuss the property.</p>
+            <p>If you would like to share supporting documents, such as the current lease or a tenancy schedule, you can email them to <a href="mailto:nick@represent.au">nick@represent.au</a>. They are optional.</p>
+            <p>If it is urgent, call Nick on <a href="tel:+61401825999" data-track="click_to_call" data-location="success">0401 825 999</a>.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -379,85 +462,7 @@
     </div>
   </section>
 
-  <section class="section" data-screen-label="06 Form">
-    <div class="container pr-main">
-      <div class="svc-lead reveal">
-        <div class="eyebrow eyebrow--dim-light">Request a review</div>
-        <h2>Tell us about the property.</h2>
-        <p class="pr-p">The request takes a few minutes. You do not need to send documents to start. If a lease, tenancy schedule or outgoings budget would help, Nick will ask for it.</p>
-        <ol class="pr-steps">
-          <li><span>01</span>You describe the property and what concerns you.</li>
-          <li><span>02</span>Nick personally reviews the information and relevant available context.</li>
-          <li><span>03</span>Nick contacts you to discuss the property and what may deserve attention.</li>
-        </ol>
-      </div>
 
-      <div class="reveal">
-        <div class="form-card pr-form" id="form-card">
-          <form id="pr-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
-            <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
-            <input type="hidden" name="subject" value="Property Performance Review request, Represent Commercial" />
-            <input type="hidden" name="from_name" value="Represent Commercial Website" />
-            <input type="hidden" name="form_stream" value="commercial-property-performance-review" />
-            <input type="hidden" name="enquiry_service" value="Commercial Property Performance Review" />
-            <input type="hidden" name="service_line" value="Property Management &amp; Leasing" />
-            <input type="hidden" name="lead_offer" value="Property Performance Review" />
-            <input type="hidden" name="intent_family" value="Owner Performance" />
-            <input type="hidden" name="landing_page" value="commercial-property-performance-review" />
-            <input type="hidden" name="cta_clicked" value="" />
-            <input type="hidden" name="referrer" value="" />
-            <input type="hidden" name="gclid" value="" />
-            <input type="hidden" name="utm_source" value="" />
-            <input type="hidden" name="utm_medium" value="" />
-            <input type="hidden" name="utm_campaign" value="" />
-            <input type="hidden" name="utm_adgroup" value="" />
-            <input type="hidden" name="utm_term" value="" />
-            <input type="hidden" name="utm_content" value="" />
-            <input type="hidden" name="website_submission_id" value="" />
-            <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
-            <div class="form-card__eyebrow">Commercial Property Performance Review</div>
-            <h2>Request your review</h2>
-            <p class="pr-form__sub">All fields are required unless marked optional.</p>
-            <div class="form-grid">
-              <div class="field" style="margin-bottom: 0;"><label for="pr-first">First name</label><input id="pr-first" name="first_name" type="text" autocomplete="given-name" required /></div>
-              <div class="field" style="margin-bottom: 0;"><label for="pr-last">Last name</label><input id="pr-last" name="last_name" type="text" autocomplete="family-name" required /></div>
-            </div>
-            <div class="form-grid">
-              <div class="field" style="margin-bottom: 0;"><label for="pr-email">Email</label><input id="pr-email" name="email" type="email" autocomplete="email" required /></div>
-              <div class="field" style="margin-bottom: 0;"><label for="pr-phone">Phone</label><input id="pr-phone" name="phone" type="tel" autocomplete="tel" required /></div>
-            </div>
-            <div class="field"><label for="pr-address">Property address</label><input id="pr-address" name="property_address" type="text" autocomplete="off" required /></div>
-            <div class="field">
-              <label for="pr-status">What’s happening with the property?</label>
-              <select id="pr-status" name="property_status" required>
-                <option value="" selected disabled>Select one</option>
-                <option>Fully leased</option>
-                <option>Partially vacant</option>
-                <option>Vacant and currently marketed</option>
-                <option>Vacant and not currently marketed</option>
-                <option>Lease expiry approaching</option>
-                <option>Recently acquired</option>
-                <option>Considering changing management/leasing strategy</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="field"><label for="pr-concern">What concerns you most about the property’s current performance? <span style="text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label><textarea id="pr-concern" name="owner_concern" rows="4"></textarea></div>
-            <button type="submit" class="form-submit">Request My Property Performance Review</button>
-            <p class="pr-form__assure">Submitting this request does not commit you to appointing Represent Commercial.</p>
-            <div class="pr-err" id="pr-err" role="alert"></div>
-            <p class="form-note">By submitting, you agree to Represent Commercial contacting you about this request. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
-          </form>
-          <div class="form-success pr-done" id="pr-done" style="display:none;" tabindex="-1">
-            <div class="form-success__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A35E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
-            <h2>Thank you. Your request has been received.</h2>
-            <p>Nick O'Toole will review the details you have provided and be in contact to discuss the property.</p>
-            <p>If you would like to share supporting documents, such as the current lease or a tenancy schedule, you can email them to <a href="mailto:nick@represent.au">nick@represent.au</a>. They are optional.</p>
-            <p>If it is urgent, call Nick on <a href="tel:+61401825999" data-track="click_to_call" data-location="success">0401 825 999</a>.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="section section--deep pr-dk" data-screen-label="07 Asset strategy">
     <div class="circle" style="width: 900px; height: 900px; right: -300px;"></div>
@@ -708,6 +713,18 @@ window.rcTrack = function (name, params) {
   var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on 0401 825 999.';
   var UNCERTAIN = 'We could not confirm that your request was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
+
+  var formStarted = false;
+  form.addEventListener('focusin', function (e) {
+    if (!formStarted && e.isTrusted && e.target &&
+        e.target.matches('input:not([type="hidden"]):not([name="botcheck"]), select, textarea')) {
+      formStarted = true;
+      rcTrack('performance_review_form_start', { form_stream: 'commercial-property-performance-review' });
+    }
+  });
+  form.addEventListener('invalid', function () {
+    rcTrack('performance_review_validation_error', { form_stream: 'commercial-property-performance-review' });
+  }, true);
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
