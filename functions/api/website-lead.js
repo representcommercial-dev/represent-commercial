@@ -205,6 +205,20 @@ export async function onRequestPost({ request, env }) {
       formStream: clean(data.form_stream, 200)
     });
     if (existing) {
+      const existingFields = fieldMap(existing.customFields || []);
+      const incomingGclid = clean(data.gclid, 500);
+      // Preserve an established opportunity click ID. A repeat enquiry may
+      // supply its first Google click after the original organic enquiry.
+      if (incomingGclid && !clean(existingFields[CF.gclid], 500)) {
+        const attributionUpdate = await ghl('/opportunities/' + encodeURIComponent(existing.id), env, {
+          method: 'PUT',
+          version: GHL_OPPORTUNITIES_VERSION,
+          body: { customFields: [{ id: CF.gclid, fieldValue: incomingGclid }] }
+        });
+        if (!attributionUpdate.ok) {
+          return json({ ok: false, error: 'CRM opportunity attribution update failed.', contact_id: contactId, opportunity_id: existing.id, upstream_status: attributionUpdate.status }, 502);
+        }
+      }
       return json({
         ok: true,
         contact_id: contactId,
