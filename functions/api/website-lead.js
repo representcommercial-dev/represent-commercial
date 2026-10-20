@@ -66,8 +66,8 @@ const CF = {
   propertyIdentified: 'rUbRxCVCrp4Y9AjrM53q'          // opportunity.property_identified
 };
 
-// Review streams enrich the Contact before creating/reusing an intake Opportunity.
-// Preserve the existing first-touch fields and per-submission enquiry notes.
+// Review offers remain contact-first until Nick qualifies the enquiry.
+// Preserve first-touch fields and per-submission enquiry notes without creating opportunities.
 const REVIEW_STREAMS = {
   'before-you-buy-pilot': {
     leadOffer: 'Before You Buy',
@@ -189,11 +189,9 @@ export async function onRequestPost({ request, env }) {
         enquiryService,
         enquiryDetail
       });
-      // The buyer pilot remains contact-only. Performance Review continues
-      // through duplicate control and opportunity creation after enrichment.
-      if (!enrichment.ok || clean(data.form_stream, 200) !== 'commercial-property-performance-review') {
-        return enrichment;
-      }
+      // Both review offers stop at the contact; standard acquisition and
+      // service enquiries continue through opportunity intake below.
+      return enrichment;
     }
 
     const existing = await findExistingOpportunity(env, {
