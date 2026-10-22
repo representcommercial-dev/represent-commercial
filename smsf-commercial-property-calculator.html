@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Ads tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18457265873');
+  gtag('config', 'G-D0RB6DF7H3');
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "yyk80juahe");
+</script>
+<!-- ChatGPT Ads Measurement Pixel (official snippet, as on commercial-property-buyers-agent). No user object is passed.
+     debug is on for every host except represent.au / www.represent.au.
+     lead_created fires only after Web3Forms confirms an acquisition enquiry (see page foot). -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
+    debug: !/^(www\.)?represent\.au$/.test(location.hostname)
+  });
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SMSF Commercial Property Calculator | Represent Commercial</title>
+<meta name="description" content="Estimate the cash an SMSF needs to buy a Queensland commercial property and test cash flow under different borrowing, cost and vacancy assumptions." />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://represent.au/smsf-commercial-property-calculator" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/smsf-commercial-property-calculator" />
+<meta property="og:title" content="SMSF Commercial Property Calculator | Represent Commercial" />
+<meta property="og:description" content="Estimate the cash an SMSF needs to buy a Queensland commercial property and test cash flow under different borrowing, cost and vacancy assumptions." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SMSF Commercial Property Calculator | Represent Commercial" />
+<meta name="twitter:description" content="Estimate the cash an SMSF needs to buy a Queensland commercial property and test cash flow under different borrowing, cost and vacancy assumptions." />
+<meta name="twitter:image" content="https://represent.au/og-default.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="styles.v3.css" />
+<link rel="stylesheet" href="calc.css" />
+<style>
+[hidden]{display:none!important}
+.hint{color:#5F5B52}
+.reset-btn{color:#5F5B52}
+.calc-disclaimer p{color:#5A5A52}
+.sm-eyebrow{font-family:var(--f-cond);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin:0 0 18px}
+.sm-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.sm-btn{font-family:var(--f-cond);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--calc-green);background:#fff;border:1px solid #CFC8B8;border-radius:8px;padding:10px 16px;min-height:44px;cursor:pointer}
+.sm-btn:hover{opacity:.85}
+.rc-fs{border:0;padding:0;margin:0 0 22px;min-width:0}
+.rc-fs legend{font-family:var(--f-cond);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.11em;color:var(--calc-ink);margin-bottom:9px;padding:0}
+.rc-seg{display:flex;flex-wrap:wrap;gap:3px;background:var(--calc-bg);border:1px solid #DED8CB;border-radius:9px;padding:3px}
+.rc-seg label{flex:1 1 140px;position:relative;margin:0;display:block}
+.rc-seg input{position:absolute;opacity:0;width:1px;height:1px}
+.rc-seg span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;box-sizing:border-box;padding:8px 12px;border-radius:7px;font-family:var(--f-cond);font-size:13.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#4A5850;cursor:pointer;line-height:1.25}
+.rc-seg--stack{flex-direction:column}
+.rc-seg--stack label{flex:none}
+.rc-seg--stack span{justify-content:flex-start;text-align:left;text-transform:none;letter-spacing:0;font-family:var(--f-sans);font-size:14.5px;font-weight:500;padding:10px 14px}
+.rc-seg input:checked+span{background:var(--calc-green);color:#fff}
+.rc-seg input:focus-visible+span{outline:2px solid var(--calc-gold);outline-offset:2px}
+.sm-note{background:#FBF9F5;border:1px solid #E6E1D6;border-radius:9px;padding:14px 16px;font-family:var(--f-sans);font-size:13.5px;line-height:1.6;color:#3E4A44;margin:0 0 22px}
+.sm-note strong{color:var(--calc-ink)}
+.err-msg{font-family:var(--f-sans);font-size:13px;line-height:1.45;color:#A0341F;margin:8px 0 0}
+.field.is-err .input-shell{border-color:#A0341F;box-shadow:0 0 0 1px #A0341F}
+.sm-errsum{border:1px solid #A0341F;background:#FCF4F1;border-radius:9px;padding:14px 16px;font-family:var(--f-sans);font-size:14px;line-height:1.55;color:#7A2716;margin:0 0 22px}
+.sm-errsum ul{margin:6px 0 0;padding-left:18px}
+.sm-errsum a{color:#7A2716}
+.sm-prov{display:inline-block;font-family:var(--f-cond);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:rgba(201,168,76,.2);color:#5E4A10;padding:5px 9px;border-radius:4px;margin:0 0 12px}
+.sm-flag{font-family:var(--f-sans);font-size:13.5px;line-height:1.55;color:#7A2716;margin:12px 0 0}
+.sm-sub{font-family:var(--f-sans);font-size:12.5px;line-height:1.5;color:#5F5B52;margin:14px 0 0}
+.kv-row small{display:block;font-size:11.5px;color:#5F5B52;margin-top:2px}
+.kv-row--sep{border-top:1px solid #E6E1D6}
+.kv-row--later span,.kv-row--later b{color:#5F5B52}
+.sm-withheld{font-family:var(--f-sans);font-size:15px;line-height:1.6;color:#3E4A44}
+.sm-src{margin:0;padding-left:18px;font-family:var(--f-sans);font-size:13.5px;line-height:1.7;color:#3E4A44}
+.sm-src a{color:var(--calc-green);word-break:break-word}
+.sm-src a:hover{opacity:.85}
+.method-body ul{font-family:var(--f-sans);font-size:13.5px;line-height:1.75;color:#5A6660;margin:6px 0 0;padding-left:18px;max-width:74ch}
+.calc-cta .lead-p{color:#3E4A44}
+#print-sheet{display:none}
+.sm-costs-stack{display:flex;flex-direction:column}
+.sm-costs-stack>.field{width:100%}
+.pj-table th,.pj-table td{white-space:nowrap;text-align:right}
+.pj-table th[scope="row"],.pj-table thead th:first-child{text-align:left;position:sticky;left:0;z-index:1}
+.pj-table thead th{color:#5F5B52}
+.pj-table th[scope="row"]{background:#fff;border-top:0;border-bottom:1px solid #F0ECE3;font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--calc-green)}
+.pj-table thead th{white-space:normal;min-width:96px;vertical-align:bottom;line-height:1.3}
+.pj-table thead th:first-child{min-width:0}
+.pj-table th[scope="row"] small{display:block;font-family:var(--f-sans);font-size:11.5px;font-weight:600;text-transform:none;letter-spacing:0;color:#6B5413;margin-top:2px}
+.pj-table tr.is-mat th,.pj-table tr.is-mat td{background:#FBF5E6}
+.pj-table tfoot th,.pj-table tfoot td{font-weight:700;border-top:2px solid #E6E1D6}
+.pj-notes{margin:0;padding:18px 34px 30px 52px;font-family:var(--f-sans);font-size:13.5px;line-height:1.65;color:#3E4A44;max-width:none}
+.pj-notes li{margin:0 0 4px;max-width:90ch}
+@media (max-width:600px){.pj-notes{padding:16px 20px 24px 38px}}
+.sme-card{background:#fff;border:1px solid #E6E1D6;border-radius:14px;padding:40px 42px;scroll-margin-top:84px}
+.sme-card .form-card__eyebrow{color:#806318;margin-bottom:10px}
+.sme-h{font-family:var(--f-cond);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(28px,3.6vw,40px);line-height:1;color:var(--calc-green);margin:0 0 12px;text-wrap:balance}
+.sme-sub{font-family:var(--f-sans);font-size:15px;line-height:1.6;color:#3E4A44;margin:0 0 6px;max-width:600px}
+.sme-req{font-family:var(--f-sans);font-size:13.5px;line-height:1.5;color:#3E4A44;margin:0 0 22px}
+.sme-form .field{margin-bottom:16px}
+.sme-form .form-grid{gap:16px;margin-bottom:16px}
+.sme-form .form-grid .field{margin-bottom:0}
+.sme-form .field label,.sme-seg legend{font-family:var(--f-cond);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.11em;color:var(--calc-ink);margin:0 0 8px}
+.sme-form .field input,.sme-form .field select,.sme-form .field textarea{min-height:46px;font-size:16px;box-sizing:border-box}
+.sme-form .field input:focus-visible,.sme-form .field select:focus-visible,.sme-form .field textarea:focus-visible{outline:2px solid var(--calc-green);outline-offset:1px}
+.sme-opt{text-transform:none;letter-spacing:0;font-family:var(--f-sans);font-size:13px;font-weight:400;color:#3E4A44}
+.sme-help{font-family:var(--f-sans);font-size:13px;line-height:1.5;color:#3E4A44;margin:0 0 8px}
+.sme-seg{border:0;margin:0 0 16px;padding:0;min-width:0}
+.sme-seg legend{display:block;width:100%;padding:0;line-height:1.3}
+.sme-form .field label{line-height:1.3}
+.sme-seg__row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.sme-seg label{position:relative;display:block;cursor:pointer}
+.sme-seg input{position:absolute;opacity:0;width:1px;height:1px}
+.sme-seg span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;box-sizing:border-box;padding:8px 10px;border:1.5px solid var(--border-light);border-radius:8px;background:var(--bg-light);font-family:var(--f-sans);font-size:14px;font-weight:600;line-height:1.25;color:#3E4A44}
+.sme-seg input:checked+span{background:var(--calc-green);border-color:var(--calc-green);color:#fff}
+.sme-seg input:focus-visible+span{outline:2px solid var(--calc-green);outline-offset:2px}
+.sme-form .form-submit{min-height:52px;padding:14px 16px;line-height:1.3;font-size:16px;margin-top:4px}
+.sme-form .form-submit[disabled]{opacity:.7;cursor:progress}
+.sme-form .form-submit:focus-visible{outline:2px solid var(--calc-gold);outline-offset:3px}
+.sme-err{display:none;font-family:var(--f-sans);font-size:14px;line-height:1.6;color:#8B1E1E;background:#FBEDEC;border:1px solid #E8C4C1;border-radius:8px;padding:12px 14px;margin:14px 0 0}
+.sme-next{font-family:var(--f-sans);font-size:14px;line-height:1.55;color:#3E4A44;margin:14px 0 0;padding:12px 14px;background:rgba(0,66,37,.05);border-radius:8px}
+.sme-next h3{font-family:var(--f-sans);font-size:14px;font-weight:700;line-height:1.4;text-transform:none;letter-spacing:0;color:var(--calc-green);margin:0 0 4px}
+.sme-next p{margin:0 0 6px}.sme-next p:last-child{margin:0}
+.sme-next strong{color:var(--calc-green)}
+.sme-form .form-note{font-size:13px;color:#3E4A44;line-height:1.6;margin-top:12px;text-align:left}
+.sme-form .form-note a,.sme-done a{color:var(--calc-green)}
+.sme-done{text-align:left;padding:4px 0}
+.sme-done:focus{outline:none}
+.sme-done .form-success__icon{margin:0 0 20px}
+.sme-done h2{font-family:var(--f-cond);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:30px;line-height:1.05;color:var(--calc-green);margin:0 0 14px}
+.sme-done p{font-family:var(--f-sans);font-size:15px;line-height:1.7;color:#3E4A44;margin:0 0 12px}
+.sme-done a{font-weight:600}
+@media (max-width:600px){.sme-card{padding:28px 20px}.sme-form .form-grid{grid-template-columns:1fr}.sme-seg__row{grid-template-columns:1fr}}
+@media (max-width:600px){.calc-wrap{padding:0 16px}.card{padding:26px 18px}.rc-seg label{flex-basis:100%}}
+@media print{
+  @page{margin:14mm}
+  body>*:not(#print-sheet){display:none!important}
+  body{background:#fff}
+  #print-sheet{display:block!important;font-family:'DM Sans',Arial,sans-serif;color:#0E1A14;font-size:10pt;line-height:1.45}
+  #print-sheet h1{font-family:'Barlow Condensed',Arial,sans-serif;font-size:20pt;text-transform:uppercase;letter-spacing:.03em;color:#004225;margin:0 0 4px}
+  #print-sheet h2{font-family:'Barlow Condensed',Arial,sans-serif;font-size:12pt;text-transform:uppercase;letter-spacing:.08em;color:#004225;margin:16px 0 6px;break-after:avoid}
+  #print-sheet .ps-brand{font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;letter-spacing:.2em;color:#004225;font-size:11pt;margin:0 0 10px}
+  #print-sheet p{margin:0 0 6px}
+  #print-sheet table{width:100%;border-collapse:collapse;margin:0 0 6px;break-inside:auto}
+  #print-sheet tr{break-inside:avoid}
+  #print-sheet th,#print-sheet td{border-bottom:1px solid #DDD8CC;padding:4px 6px;text-align:left;vertical-align:top}
+  #print-sheet td.n,#print-sheet th.n{text-align:right;white-space:nowrap}
+  #print-sheet th{font-size:8.5pt;text-transform:uppercase;letter-spacing:.06em;color:#3E4A44}
+  #print-sheet .ps-small{font-size:8.5pt;color:#3E4A44}
+  #print-sheet a{color:#004225;word-break:break-all}
+}
+</style>
+</head>
+<body class="calc-page">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="/" class="logo" aria-label="Represent Commercial home">
+      <div class="logo__primary">REPRESENT</div>
+      <div class="logo__sub">COMMERCIAL</div>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
+      <a href="/services" class="site-nav__link">Property Owners</a>
+      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/insights" class="site-nav__link is-active">Insights</a>
+      <a href="/about" class="site-nav__link">About</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+    </nav>
+  </div>
+</header>
+<main id="main-content" tabindex="-1">
+
+<section class="section section--green section--hero">
+  <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
+  <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
+  <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
+    <p class="sm-eyebrow">Queensland only</p>
+    <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px; text-transform: uppercase;">SMSF commercial property <span class="italic" style="color: var(--gold);">acquisition calculator</span></h1>
+    <hr class="gold-rule" style="margin-bottom: 28px;" />
+    <p class="lede" style="max-width: 680px;">Estimate the cash required to buy a Queensland commercial property and explore its cash flow under different borrowing, cost and vacancy assumptions.</p>
+    <p class="lede" style="max-width: 680px; font-size: 15px; margin-top: 16px; color: rgba(255,255,255,.86);">A general property cash flow illustration. It does not assess investment suitability, SMSF eligibility or loan approval, and it is not financial, tax or legal advice.</p>
+  </div>
+</section>
+
+<section class="calc-body" data-clarity-mask="true">
+  <div class="calc-wrap">
+    <div class="calc-grid">
+
+      <form class="card" id="sm-form" novalidate onsubmit="return false;">
+        <div class="card-head">
+          <p class="card-label">Your assumptions</p>
+          <div class="sm-actions">
+            <button type="button" class="reset-btn" id="reset-btn">Reset assumptions</button>
+          </div>
+        </div>
+        <p class="hint" style="margin:-10px 0 22px;">Illustrative defaults in AUD. Every figure is editable. Enter cash payable; no GST credits are assumed.</p>
+
+        <div id="err-sum" class="sm-errsum" role="alert" hidden></div>
+
+        <details class="grp" open>
+          <summary><span>Property and GST</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+              <div class="field" data-f="price"><label for="price">Purchase price excluding GST</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="price" type="text" inputmode="decimal" autocomplete="off" value="1,000,000" aria-describedby="price-err" /></div><p class="err-msg" id="price-err" hidden></p></div>
+              <div class="field" data-f="higher"><label for="higher">Higher dutiable or market value</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="higher" type="text" inputmode="decimal" autocomplete="off" value="0" aria-describedby="higher-hint higher-err" /></div><p class="hint" id="higher-hint">Optional. Enter 0 if not applicable. Duty uses the higher of this and the price.</p><p class="err-msg" id="higher-err" hidden></p></div>
+            </div>
+            <fieldset class="rc-fs">
+              <legend>Purchase GST</legend>
+              <div class="rc-seg rc-seg--stack">
+                <label><input type="radio" name="gst" value="unknown" checked /><span>Not yet confirmed</span></label>
+                <label><input type="radio" name="gst" value="none" /><span>No purchase GST assumed (confirm with adviser)</span></label>
+                <label><input type="radio" name="gst" value="payable" /><span>GST payable at settlement</span></label>
+              </div>
+            </fieldset>
+            <p class="sm-note" id="gst-unknown-note"><strong>Provisional results.</strong> Funding and duty exclude any purchase GST until the GST treatment is confirmed.</p>
+            <div data-show="payable" hidden>
+              <div class="field-row">
+                <div class="field" data-f="gstAmt"><label for="gstAmt">GST paid at settlement</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="gstAmt" type="text" inputmode="decimal" autocomplete="off" value="100,000" aria-describedby="gstAmt-hint gstAmt-err" /></div><p class="hint" id="gstAmt-hint">Starts at 10% of the price. Edit to the amount in the contract.</p><p class="err-msg" id="gstAmt-err" hidden></p></div>
+                <div class="field" data-f="gstRefund"><label for="gstRefund">Possible later GST refund</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="gstRefund" type="text" inputmode="decimal" autocomplete="off" value="0" aria-describedby="gstRefund-hint gstRefund-err" /></div><p class="hint" id="gstRefund-hint">Shown separately as conditional future cash. Never deducted from settlement cash. Cannot exceed the GST paid.</p><p class="err-msg" id="gstRefund-err" hidden></p></div>
+              </div>
+            </div>
+            <p class="hint" style="margin:0;">Whether a sale is GST-free as a going concern, and whether the fund can later claim a GST credit, depends on the contract and each party&rsquo;s GST position. Confirm both with your accountant and solicitor. A tenanted property is not automatically GST-free.</p>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Funding</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <fieldset class="rc-fs">
+              <legend>Funding method</legend>
+              <div class="rc-seg">
+                <label><input type="radio" name="fund" value="cash" /><span>Cash purchase</span></label>
+                <label><input type="radio" name="fund" value="lrba" checked /><span>LRBA illustration</span></label>
+              </div>
+            </fieldset>
+            <div data-show="lrba">
+              <p class="sm-note">From 10 August 2026, a new limited recourse borrowing arrangement used to buy real property can only acquire business real property, and ongoing requirements apply. This calculator cannot confirm business real property status, the fund&rsquo;s investment strategy, related-party compliance, the holding trust structure or finance. Commercial zoning or marketing alone does not establish business real property.</p>
+              <div class="field-row">
+                <div class="field" data-f="lvr"><label for="lvr">Target loan to value ratio</label><div class="input-shell"><input id="lvr" type="text" inputmode="decimal" autocomplete="off" value="70" aria-describedby="lvr-hint lvr-err" /><span class="affix affix--suf">%</span></div><p class="hint" id="lvr-hint">Illustration only, 0 to 100. Not a lender policy.</p><p class="err-msg" id="lvr-err" hidden></p></div>
+                <div class="field" data-f="val"><label for="val">Lender valuation</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="val" type="text" inputmode="decimal" autocomplete="off" value="1,000,000" aria-describedby="val-hint val-err" /></div><p class="hint" id="val-hint">Starts at the price. The loan uses the lower of price and valuation.</p><p class="err-msg" id="val-err" hidden></p></div>
+              </div>
+              <div class="field-row">
+                <div class="field" data-f="rate"><label for="rate">Interest rate</label><div class="input-shell"><input id="rate" type="text" inputmode="decimal" autocomplete="off" value="7.5" aria-describedby="rate-err" /><span class="affix affix--suf">% p.a.</span></div><p class="err-msg" id="rate-err" hidden></p></div>
+                <div class="field" data-f="term"><label for="term">Loan term</label><div class="input-shell"><input id="term" type="text" inputmode="decimal" autocomplete="off" value="20" aria-describedby="term-err" /><span class="affix affix--suf">years</span></div><p class="err-msg" id="term-err" hidden></p></div>
+              </div>
+              <fieldset class="rc-fs">
+                <legend>Repayment type</legend>
+                <div class="rc-seg">
+                  <label><input type="radio" name="repay" value="pi" checked /><span>Principal and interest, monthly</span></label>
+                  <label><input type="radio" name="repay" value="io" /><span>Interest only</span></label>
+                </div>
+              </fieldset>
+              <p class="hint" id="io-hint" hidden style="margin:-12px 0 18px;">The full principal remains outstanding. No approved interest-only period is implied.</p>
+              <p class="hint" style="margin:0;">Loan = LVR &times; the lower of the price excluding GST and the valuation. It excludes any financing of GST or costs. The actual loan is set by the lender.</p>
+            </div>
+            <p class="hint" data-show="cash" hidden style="margin:0;">No borrowing. Loan and debt service are nil.</p>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Duty and upfront costs</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <fieldset class="rc-fs">
+              <legend>Queensland transfer duty</legend>
+              <div class="rc-seg">
+                <label><input type="radio" name="dutyMode" value="auto" checked /><span>General rates, automatic</span></label>
+                <label><input type="radio" name="dutyMode" value="manual" /><span>Manual override</span></label>
+              </div>
+            </fieldset>
+            <p class="hint" id="duty-auto-hint" style="margin:-12px 0 22px;">Calculated at Queensland general transfer duty rates with no concessions: <b id="duty-auto-val">$38,025</b>.</p>
+            <div data-show="manual" hidden>
+              <div class="field" data-f="dutyManual"><label for="dutyManual">Duty amount, manual override</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="dutyManual" type="text" inputmode="decimal" autocomplete="off" value="38,025" aria-describedby="dutyManual-hint dutyManual-err" /></div><p class="hint" id="dutyManual-hint">Used in every output and the printed summary in place of the automatic figure.</p><p class="err-msg" id="dutyManual-err" hidden></p></div>
+            </div>
+            <div class="sm-costs-stack">
+              <div class="field" data-f="legal"><label for="legal">Legal and due diligence</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="legal" type="text" inputmode="decimal" autocomplete="off" value="10,000" aria-describedby="legal-err" /></div><p class="err-msg" id="legal-err" hidden></p></div>
+              <div class="field" data-f="setup"><label for="setup">SMSF, holding trust and lender setup</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="setup" type="text" inputmode="decimal" autocomplete="off" value="5,000" aria-describedby="setup-err" /></div><p class="err-msg" id="setup-err" hidden></p></div>
+            </div>
+            <div class="field" data-f="other"><label for="other">Titles, registration and other acquisition costs</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="other" type="text" inputmode="decimal" autocomplete="off" value="5,000" aria-describedby="other-hint other-err" /></div><p class="hint" id="other-hint">Cost figures are placeholders, not quotes.</p><p class="err-msg" id="other-err" hidden></p></div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Fund cash</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+              <div class="field" data-f="avail"><label for="avail">Available liquid SMSF cash</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="avail" type="text" inputmode="decimal" autocomplete="off" value="500,000" aria-describedby="avail-hint avail-err" /></div><p class="hint" id="avail-hint">Cash the fund can apply to this transaction, not the total fund balance.</p><p class="err-msg" id="avail-err" hidden></p></div>
+              <div class="field" data-f="reserve"><label for="reserve">Chosen liquidity reserve</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="reserve" type="text" inputmode="decimal" autocomplete="off" value="50,000" aria-describedby="reserve-hint reserve-err" /></div><p class="hint" id="reserve-hint">Your chosen buffer. Not a regulatory or lender minimum.</p><p class="err-msg" id="reserve-err" hidden></p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Income and holding costs</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+              <div class="field" data-f="rent"><label for="rent">Annual base rent excluding GST</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="rent" type="text" inputmode="decimal" autocomplete="off" value="65,000" aria-describedby="rent-err" /><span class="affix affix--suf">p.a.</span></div><p class="err-msg" id="rent-err" hidden></p></div>
+              <div class="field" data-f="vac"><label for="vac">Vacancy</label><div class="input-shell"><input id="vac" type="text" inputmode="decimal" autocomplete="off" value="0" aria-describedby="vac-hint vac-err" /><span class="affix affix--suf">months a year</span></div><p class="hint" id="vac-hint">0 to 12 months.</p><p class="err-msg" id="vac-err" hidden></p></div>
+            </div>
+            <div class="field-row">
+              <div class="field" data-f="owner"><label for="owner">Owner costs after tenant recoveries</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="owner" type="text" inputmode="decimal" autocomplete="off" value="5,000" aria-describedby="owner-hint owner-err" /><span class="affix affix--suf">p.a.</span></div><p class="hint" id="owner-hint">Retained management, insurance, rates, land tax, strata and repairs.</p><p class="err-msg" id="owner-err" hidden></p></div>
+              <div class="field" data-f="vacExtra"><label for="vacExtra">Extra owner costs if vacant</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="vacExtra" type="text" inputmode="decimal" autocomplete="off" value="0" aria-describedby="vacExtra-hint vacExtra-err" /><span class="affix affix--suf">p.a.</span></div><p class="hint" id="vacExtra-hint">Applies only when vacancy is more than 0 months.</p><p class="err-msg" id="vacExtra-err" hidden></p></div>
+            </div>
+            <div class="field-row">
+              <div class="field" data-f="admin"><label for="admin">SMSF admin and audit allocation</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="admin" type="text" inputmode="decimal" autocomplete="off" value="3,000" aria-describedby="admin-err" /><span class="affix affix--suf">p.a.</span></div><p class="err-msg" id="admin-err" hidden></p></div>
+              <div class="field" data-f="capex"><label for="capex">Capital expenditure allowance</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="capex" type="text" inputmode="decimal" autocomplete="off" value="2,000" aria-describedby="capex-err" /><span class="affix affix--suf">p.a.</span></div><p class="err-msg" id="capex-err" hidden></p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="grp" open>
+          <summary><span>Scenario allocations</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+              <div class="field" data-f="contrib"><label for="contrib">Net contributions available</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="contrib" type="text" inputmode="decimal" autocomplete="off" value="0" aria-describedby="contrib-hint contrib-err" /><span class="affix affix--suf">p.a.</span></div><p class="hint" id="contrib-hint">After contributions tax and fees. Optional.</p><p class="err-msg" id="contrib-err" hidden></p></div>
+              <div class="field" data-f="outflow"><label for="outflow">Pension and other allocated outflows</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="outflow" type="text" inputmode="decimal" autocomplete="off" value="0" aria-describedby="outflow-err" /><span class="affix affix--suf">p.a.</span></div><p class="err-msg" id="outflow-err" hidden></p></div>
+            </div>
+            <p class="hint" style="margin:0;">Allocations to this scenario only. Not a whole-fund model or a contribution eligibility calculation.</p>
+          </div>
+        </details>
+        <details class="grp" open>
+          <summary><span>Projection assumptions</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="grp-body">
+            <div class="field-row">
+              <div class="field" data-f="rentG"><label for="rentG">Annual rent growth</label><div class="input-shell"><input id="rentG" type="text" autocomplete="off" value="3" aria-describedby="growth-hint rentG-err" /><span class="affix affix--suf">% a year</span></div><p class="err-msg" id="rentG-err" hidden></p></div>
+              <div class="field" data-f="costG"><label for="costG">Annual holding cost growth</label><div class="input-shell"><input id="costG" type="text" autocomplete="off" value="3" aria-describedby="growth-hint costG-err" /><span class="affix affix--suf">% a year</span></div><p class="err-msg" id="costG-err" hidden></p></div>
+            </div>
+            <p class="hint" id="growth-hint" style="margin:0;">Illustrative assumptions for the 10-year cash flow, not forecasts. Applied from Year 2. Negative values above &minus;100% are allowed.</p>
+          </div>
+        </details>
+      </form>
+
+      <div class="calc-col" id="results-col" aria-live="polite">
+        <div class="card result-card" id="withheld" hidden>
+          <p class="result-label">Results withheld</p>
+          <p class="sm-withheld">Some inputs are blank or invalid. Correct the highlighted fields to see results. Figures are withheld rather than calculated on assumed values.</p>
+        </div>
+
+        <div id="results">
+          <div class="card result-card">
+            <p class="result-label">Cash required at settlement</p>
+            <p class="sm-prov" id="r-prov">Provisional: excludes any purchase GST</p>
+            <div class="adv-block" style="border-top:0;margin-top:0;padding-top:0;">
+              <p class="adv-label">SMSF cash at settlement</p>
+              <p class="adv-value"><em id="r-settle">$0</em></p>
+              <p class="adv-note" id="r-settle-note">Price, GST, duty and upfront costs, less the loan.</p>
+            </div>
+            <div class="pos-row" style="border-top:1px solid #E6E1D6;margin-top:24px;padding-top:18px;">
+              <div class="pos-k">Target including reserve<small>Settlement cash plus your chosen reserve</small></div>
+              <div class="pos-v" id="r-target">$0</div>
+            </div>
+            <div class="pos-row">
+              <div class="pos-k">Cash left after settlement<small>Available liquid cash less settlement cash</small></div>
+              <div class="pos-v" id="r-left">$0</div>
+            </div>
+            <div class="pos-row">
+              <div class="pos-k">Reserve shortfall<small>How far cash left falls below the reserve</small></div>
+              <div class="pos-v" id="r-short">$0</div>
+            </div>
+            <p class="sm-flag" id="r-flag" hidden></p>
+            <div class="result-stats">
+              <div class="stat"><div class="stat__h">Loan</div><div class="stat__v" id="s-loan">$0</div><div class="stat__k" id="s-loan-k">Illustration</div></div>
+              <div class="stat"><div class="stat__h">Duty</div><div class="stat__v" id="s-duty">$0</div><div class="stat__k" id="s-duty-k">General rates</div></div>
+              <div class="stat"><div class="stat__h">Net yield</div><div class="stat__v" id="s-yield">0%</div><div class="stat__k">On price, before finance</div></div>
+              <div class="stat"><div class="stat__h">Cash flow</div><div class="stat__v" id="s-cf">$0</div><div class="stat__k">Per year, before contributions</div></div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:26px;">
+            <p class="card-label">Funding at settlement</p>
+            <div id="k-fund"></div>
+          </div>
+
+          <div class="card" style="margin-top:26px;">
+            <p class="card-label">Year one cash flow, before income tax</p>
+            <div id="k-cf"></div>
+            <p class="sm-sub">Before income tax. Excludes depreciation, capital gains tax, growth and any sale. Principal repayments and capital expenditure are not treated as tax deductions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card" id="proj-card">
+      <p class="card-label">Annual cash flow: first 10 years</p>
+      <p class="hint" style="padding:0 34px;margin:-14px 0 18px;">Twelve-month periods from acquisition, before income tax, based on the current inputs. Bracketed figures are cash paid out.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Annual cash flow, first 10 years">
+        <table class="yr pj-table">
+          <thead><tr><th scope="col">Year</th><th scope="col">Rent collected</th><th scope="col">Holding costs</th><th scope="col">Interest</th><th scope="col">Principal</th><th scope="col">Cash flow before contributions</th><th scope="col">Cash flow after contributions and outflows</th><th scope="col">Loan balance at year end</th></tr></thead>
+          <tbody id="pj-rows"></tbody>
+          <tfoot id="pj-foot"></tfoot>
+        </table>
+      </div>
+      <ul class="pj-notes" id="pj-notes"></ul>
+    </div>
+
+    <div class="card" style="margin-top:28px;">
+      <div class="card-head" style="margin-bottom:12px;">
+        <p class="card-label">Save your scenario</p>
+      </div>
+      <p class="hint" style="margin:0 0 16px;">Print or save a PDF with your inputs, results, 10-year cash flow, date and sources. Your figures stay in this browser. They are not stored, added to the page address or sent to analytics. The enquiry form below does not include them; your contact details are sent only if you submit it.</p>
+      <div class="sm-actions">
+        <button type="button" class="sm-btn" id="print-btn">Print or save PDF</button>
+        <button type="button" class="sm-btn" id="reset-btn-2">Reset assumptions</button>
+      </div>
+    </div>
+
+    <details class="fold fold--method">
+      <summary><span>How this is calculated</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="method-body">
+        <h4>Queensland transfer duty</h4>
+        <p>General rates on the higher of the price plus any purchase GST, or the higher dutiable value entered: nil to $5,000; $1.50 per $100 or part above $5,000 to $75,000; $1,050 plus $3.50 per $100 or part above $75,000 to $540,000; $17,325 plus $4.50 per $100 or part above $540,000 to $1,000,000; and $38,025 plus $5.75 per $100 or part above $1,000,000. No residential or other concession is applied. While GST is not yet confirmed, duty excludes GST and is provisional. A manual override replaces the automatic figure everywhere.</p>
+        <h4>Loan and settlement cash</h4>
+        <p>Loan = LVR &times; the lower of the price excluding GST and the valuation. Settlement cash = price + purchase GST + duty + upfront costs &minus; loan. Cash left = available liquid cash &minus; settlement cash, shown as a negative where the fund is short. Reserve shortfall = the reserve less cash left, where positive. Any later GST refund is conditional future cash and is never used to fund settlement.</p>
+        <h4>Income</h4>
+        <p>Rent collected = base rent &times; (1 &minus; vacancy months &divide; 12). Net operating income = rent collected &minus; owner costs &minus; extra vacancy costs, which apply only when vacancy is above 0. Net yield = net operating income &divide; price, adjusted for vacancy, before finance, fund costs and capital expenditure.</p>
+        <h4>Debt service</h4>
+        <p>The term in months is the term in years &times; 12, rounded to the nearest whole month, with a minimum of one month. Principal and interest uses a fixed monthly payment at the annual rate &divide; 12; at 0% the payment is the loan &divide; months. The final payment is capped at the exact outstanding principal plus interest, and the balance carries continuously across all 120 months, so the loan never goes below zero and there are no payments after maturity. Interest only charges monthly interest on the full principal, which is repaid in full in the maturity month. No refinance or extension is assumed. Year one figures are the first 12 months of this schedule.</p>
+        <h4>Cash flow</h4>
+        <p>Before contributions = net operating income &minus; debt service &minus; SMSF admin and audit &minus; capital expenditure allowance. After contributions = that figure + net contributions &minus; allocated outflows. All figures are before income tax.</p>
+        <h4>Ten-year cash flow</h4>
+        <p>Each year is a 12-month period from acquisition. Rent collected = base rent &times; (1 + rent growth)<sup>year &minus; 1</sup> &times; (1 &minus; vacancy months &divide; 12). Holding costs = (owner costs after recoveries + extra vacancy costs, where vacancy is above 0 + SMSF admin and audit + capital expenditure allowance) &times; (1 + holding cost growth)<sup>year &minus; 1</sup>. Cash flow before contributions = rent collected &minus; holding costs &minus; interest &minus; principal. After contributions adds net contributions and deducts allocated outflows. Vacancy months, the interest rate, contributions and outflows stay constant in every year. Purchase price, GST, duty, upfront costs and any later GST refund are excluded. The figures are not a total investment return or a whole-fund balance, and the 10-year total does not include loan balances.</p>
+        <h4>Not modelled</h4>
+        <ul>
+          <li>Income tax, depreciation, capital gains tax, growth and sale.</li>
+          <li>Business real property status, the fund&rsquo;s investment strategy, related-party rules, contribution caps or eligibility, and lender approval.</li>
+          <li>Financing of GST or costs, lender fees beyond those entered, and any concession, exemption, surcharge or landholder duty.</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="card" style="margin-top:28px;">
+      <p class="card-label" style="margin-bottom:16px;">Sources, checked 16 October 2026</p>
+      <ul class="sm-src" id="sources">
+        <li>Queensland Revenue Office, transfer duty rates: <a href="https://qro.qld.gov.au/duties/transfer-duty/calculate/rates/" target="_blank" rel="noopener">qro.qld.gov.au/duties/transfer-duty/calculate/rates/</a></li>
+        <li>Queensland Revenue Office, how to calculate transfer duty: <a href="https://qro.qld.gov.au/duties/transfer-duty/calculate/how-to-calculate/" target="_blank" rel="noopener">qro.qld.gov.au/duties/transfer-duty/calculate/how-to-calculate/</a></li>
+        <li>Australian Taxation Office, changes to limited recourse borrowing arrangements: <a href="https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/self-managed-super-funds-smsf/smsf-investing/restrictions-on-smsf-investments/smsf-borrowing-restrictions/limited-recourse-borrowing-arrangements/changes-to-limited-recourse-borrowing-arrangements" target="_blank" rel="noopener">ato.gov.au, changes to limited recourse borrowing arrangements</a></li>
+        <li>ASIC Moneysmart, SMSFs and property: <a href="https://moneysmart.gov.au/property-investment/smsfs-and-property" target="_blank" rel="noopener">moneysmart.gov.au/property-investment/smsfs-and-property</a></li>
+        <li>Australian Taxation Office, selling commercial premises (GST): <a href="https://www.ato.gov.au/businesses-and-organisations/assets-and-property/property/property-used-in-running-a-business/selling-commercial-premises" target="_blank" rel="noopener">ato.gov.au, selling commercial premises</a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="calc-cta" id="smsf-enquiry" aria-labelledby="sme-heading">
+  <div class="calc-wrap">
+    <div class="sme-card" id="sme-card">
+      <form id="sme-form" class="sme-form" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
+        <input type="hidden" name="subject" value="Buyer's agency enquiry (SMSF calculator), Represent Commercial" />
+        <input type="hidden" name="from_name" value="Represent Commercial Website" />
+        <input type="hidden" name="redirect" value="https://represent.au/enquiry-received" />
+        <input type="hidden" name="enquiry_type" value="acquisition" />
+        <input type="hidden" name="form_stream" value="commercial-property-buyers-agent" />
+        <input type="hidden" name="enquiry_service" value="Buyer's Agency and Acquisition Advisory" />
+        <input type="hidden" name="service_line" value="Buyer-Side Acquisition / Advisory" />
+        <input type="hidden" name="intent_family" value="Buyer Acquisition" />
+        <input type="hidden" name="landing_page" value="smsf-commercial-property-calculator" />
+        <input type="hidden" name="cta_clicked" value="smsf-calculator-form" />
+        <input type="hidden" name="referrer" value="" />
+        <input type="hidden" name="gclid" value="" />
+        <input type="hidden" name="utm_source" value="" />
+        <input type="hidden" name="utm_medium" value="" />
+        <input type="hidden" name="utm_campaign" value="" />
+        <input type="hidden" name="utm_adgroup" value="" />
+        <input type="hidden" name="utm_term" value="" />
+        <input type="hidden" name="utm_content" value="" />
+        <input type="hidden" name="website_submission_id" value="" />
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+        <div class="form-card__eyebrow">SMSF property enquiry</div>
+        <h2 class="sme-h" id="sme-heading">Discuss your SMSF purchase.</h2>
+        <p class="sme-sub">Tell Nick about the commercial property you want to buy through your SMSF, or share a property you are considering.</p>
+        <p class="sme-req">Fields are required unless marked optional.</p>
+        <div class="field"><label for="sme-name">Name</label><input id="sme-name" name="name" type="text" autocomplete="name" autocapitalize="words" required /></div>
+        <div class="form-grid">
+          <div class="field"><label for="sme-email">Email</label><input id="sme-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
+          <div class="field"><label for="sme-phone">Phone</label><input id="sme-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" required /></div>
+        </div>
+        <fieldset class="sme-seg">
+          <legend>What will the property be used for?</legend>
+          <div class="sme-seg__row">
+            <label><input type="radio" name="buyer_type" value="Investment" required /><span>Investment</span></label>
+            <label><input type="radio" name="buyer_type" value="My business" /><span>Your business premises</span></label>
+            <label><input type="radio" name="buyer_type" value="Still deciding" /><span>Still deciding</span></label>
+          </div>
+        </fieldset>
+        <div class="form-grid">
+          <div class="field">
+            <label for="sme-budget">Indicative SMSF property purchase budget <span class="sme-opt">(optional)</span></label>
+            <select id="sme-budget" name="budget">
+              <option value="" selected>Select a range</option>
+              <option>Under $1M</option>
+              <option>$1M to $2M</option>
+              <option>$2M to $5M</option>
+              <option>$5M to $10M</option>
+              <option>$10M to $20M</option>
+              <option>Over $20M</option>
+              <option>Not determined yet</option>
+            </select>
+          </div>
+          <div class="field"><label for="sme-location">Preferred location <span class="sme-opt">(optional)</span></label><input id="sme-location" name="preferred_location" type="text" autocomplete="off" /></div>
+        </div>
+        <div class="field"><label for="sme-context">Tell Nick about your SMSF property plans <span class="sme-opt">(optional)</span></label><p class="sme-help" id="sme-context-help">Include a property address or listing link, preferred property type, timing and whether you are looking for an investment or premises for your business.</p><textarea id="sme-context" name="acquisition_context" rows="3" maxlength="2000" aria-describedby="sme-context-help"></textarea></div>
+        <button type="submit" class="form-submit">Discuss my SMSF purchase</button>
+        <div class="sme-err" id="sme-err" role="alert"></div>
+        <div class="sme-next"><h3>What happens next?</h3><p>Nick will discuss your property requirements, timing and how Represent Commercial can help with the search, commercial assessment and negotiation. Before you decide to appoint, you will understand the proposed scope and fees.</p><p><strong>Nick will respond within one business day.</strong></p><p>Your SMSF structure, tax position and borrowing arrangements should be confirmed with your accountant, licensed financial adviser and lender.</p></div>
+        <p class="form-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>. Calculator figures are not included.</p>
+      </form>
+      <div class="form-success sme-done" id="sme-done" style="display:none;" tabindex="-1">
+        <div class="form-success__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A35E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
+        <h2>Thank you. Your SMSF property enquiry has been received.</h2>
+        <p>Nick O’Toole will respond personally within one business day to discuss your property requirements and how Represent Commercial can help with the search, assessment and negotiation.</p>
+        <p>If you already have a property in mind, you can email the listing or address to <a href="mailto:nick@represent.au">nick@represent.au</a>.</p>
+        <p>To speak with Nick directly, call <a href="tel:+61401825999" data-location="smsf-success">0401 825 999</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc-disclaimer">
+  <div class="calc-wrap">
+    <p>This calculator is a general property cash flow illustration for Queensland commercial property only. It does not assess investment suitability, SMSF compliance, business real property status, contribution eligibility or loan approval, and it is not financial, tax, legal or credit advice. Figures depend entirely on the assumptions entered. Transfer duty uses Queensland general rates without concessions and should be confirmed with your solicitor or the Queensland Revenue Office. Seek advice from a licensed financial adviser, an SMSF accountant, a solicitor and your lender before committing. Represent Commercial. Real Estate Agent Licence 4949809.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="footer-brand">
+        <div class="logo__primary">REPRESENT</div>
+        <div class="logo__sub">COMMERCIAL</div>
+        <hr class="gold-rule" />
+        <div class="tagline">Exclusively on your side of the table.</div>
+        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
+          <li><a href="/services">Commercial Property Management</a></li>
+          <li><a href="/leasing">Commercial Property Leasing</a></li>
+          <li><a href="/tenant-representation">Tenant Representation</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Company</h3>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/for-lease">For lease</a></li>
+          <li><a href="/referrals">Referrals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Insights</h3>
+        <ul>
+          <li><a href="/insights">Knowledge</a></li>
+          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/tools">Resources &amp; Tools</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;">Locations</h3>
+        <ul>
+          <li><a href="/locations">All Locations</a></li>
+          <li><a href="/Acacia%20Ridge">Acacia Ridge</a></li>
+          <li><a href="/Brendale">Brendale</a></li>
+          <li><a href="/Hemmant">Hemmant</a></li>
+          <li><a href="/Yatala">Yatala</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Contact</h3>
+        <div>Nick O'Toole</div>
+        <div>Founder &amp; Director</div>
+        <div class="stack"><a href="tel:+61401825999">+61 401 825 999</a></div>
+        <div><a href="mailto:nick@represent.au">nick@represent.au</a></div>
+        <div class="stack">Suite 36, Level 3, 240 Queen St<br />Brisbane Queensland 4000</div>
+        <div class="stack" style="display: flex; flex-wrap: wrap; gap: 4px 18px;">
+          <a href="https://www.linkedin.com/in/nickotoole/" target="_blank" rel="noopener" class="footer-linkedin" style="gap: 6px; margin-top: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+          <a href="https://www.youtube.com/@NickOToole" target="_blank" rel="noopener" class="footer-linkedin" style="gap: 6px; margin-top: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg> YouTube</a>
+          <a href="https://www.instagram.com/nick.otoole/" target="_blank" rel="noopener" class="footer-linkedin" style="gap: 6px; margin-top: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg> Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div>© 2026 Represent Commercial Pty Ltd. All rights reserved.</div>
+      <div class="footer-meta__legals" style="flex-wrap: wrap; row-gap: 6px;">
+        <div><span>Licensee</span>Nicholas O'Toole</div>
+        <div><span>Real Estate Agent Licence</span>4949809</div>
+        <div><span>ABN</span>59 696 915 170</div>
+        <div><a href="/privacy">Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="print-sheet" aria-hidden="true"></div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var f0 = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 });
+  var f2 = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  var fp = new Intl.NumberFormat('en-AU', { maximumFractionDigits: 2 });
+  var fy = new Intl.NumberFormat('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function money(n) { var r = Math.round(n); return (r < 0 ? '\u2212' : '') + '$' + f0.format(Math.abs(r)); }
+  function moneyC(n) { return Math.abs(n - Math.round(n)) > 0.004 ? (n < 0 ? '\u2212' : '') + '$' + f2.format(Math.abs(n)) : money(n); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  var DEF = { price: '1,000,000', higher: '0', gstAmt: '100,000', gstRefund: '0', lvr: '70', val: '1,000,000', rate: '7.5', term: '20',
+    legal: '10,000', setup: '5,000', other: '5,000', dutyManual: '38,025', reserve: '50,000', avail: '500,000',
+    rent: '65,000', vac: '0', owner: '5,000', vacExtra: '0', admin: '3,000', capex: '2,000', contrib: '0', outflow: '0', rentG: '3', costG: '3' };
+  var NEG = ['rentG', 'costG'];
+  var RAD = { gst: 'unknown', fund: 'lrba', repay: 'pi', dutyMode: 'auto' };
+  var MONEY = ['price', 'higher', 'gstAmt', 'gstRefund', 'val', 'legal', 'setup', 'other', 'dutyManual', 'reserve', 'avail', 'rent', 'owner', 'vacExtra', 'admin', 'capex', 'contrib', 'outflow'];
+  var IDS = Object.keys(DEF);
+  var touched = { gstAmt: false, val: false };
+
+  function qldDuty(v) {
+    if (v <= 5000) return 0;
+    if (v <= 75000) return 1.5 * Math.ceil((v - 5000) / 100);
+    if (v <= 540000) return 1050 + 3.5 * Math.ceil((v - 75000) / 100);
+    if (v <= 1000000) return 17325 + 4.5 * Math.ceil((v - 540000) / 100);
+    return 38025 + 5.75 * Math.ceil((v - 1000000) / 100);
+  }
+  window.__rcSmsf = { qldDuty: qldDuty };
+
+  function radio(name) { var el = document.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : RAD[name]; }
+  function state() { return { gst: radio('gst'), fund: radio('fund'), repay: radio('repay'), dutyMode: radio('dutyMode') }; }
+  function active(id, s) {
+    if (id === 'gstAmt' || id === 'gstRefund') return s.gst === 'payable';
+    if (id === 'lvr' || id === 'val' || id === 'rate' || id === 'term') return s.fund === 'lrba';
+    if (id === 'dutyManual') return s.dutyMode === 'manual';
+    return true;
+  }
+  function parse(id) {
+    var raw = $(id).value.trim().replace(/\u2212/g, '-').replace(/[\s,$%]/g, '');
+    if (raw === '') return { e: 'Enter a value. Use 0 if none.' };
+    if (!/^-?(\d+\.?\d*|\.\d+)$/.test(raw)) return { e: 'Enter a number, for example 5000.' };
+    var v = parseFloat(raw);
+    if (!isFinite(v)) return { e: 'Enter a valid number.' };
+    if (v < 0 && NEG.indexOf(id) < 0) return { e: 'Enter zero or more.' };
+    return { v: v };
+  }
+  function labelOf(id) { var l = document.querySelector('label[for="' + id + '"]'); return l ? l.textContent : id; }
+
+  function read() {
+    var s = state(), v = {}, errs = {};
+    IDS.forEach(function (id) {
+      if (!active(id, s)) return;
+      var p = parse(id);
+      if (p.e) errs[id] = p.e; else v[id] = p.v;
+    });
+    if (v.price !== undefined && v.price <= 0) errs.price = 'Enter a price above 0.';
+    if (v.term !== undefined && !(Math.round(v.term * 12) >= 1)) errs.term = 'Enter a term of at least one month (0.05 years or more).';
+    NEG.forEach(function (g) {
+      if (v[g] === undefined) return;
+      if (v[g] <= -100) errs[g] = 'Enter a rate above \u2212100%.';
+      else if (!isFinite(Math.pow(1 + v[g] / 100, 9))) errs[g] = 'Enter a smaller rate.';
+    });
+    if (v.val !== undefined && v.val <= 0) errs.val = 'Enter a valuation above 0.';
+    if (v.lvr !== undefined && v.lvr > 100) errs.lvr = 'Enter an LVR from 0 to 100%.';
+    if (v.vac !== undefined && v.vac > 12) errs.vac = 'Enter 0 to 12 months.';
+    if (v.gstRefund !== undefined && v.gstAmt !== undefined && v.gstRefund > v.gstAmt) errs.gstRefund = 'The refund cannot exceed the GST paid (' + money(v.gstAmt) + ').';
+    if (s.gst !== 'payable') { v.gstAmt = 0; v.gstRefund = 0; }
+    if (s.fund !== 'lrba') { v.lvr = 0; v.val = 0; v.rate = 0; v.term = 0; }
+    return { s: s, v: v, errs: errs };
+  }
+
+  function schedule(loan, rateP, n, repay) {
+    var mr = rateP / 100 / 12, pmt = 0, bal = loan, yrs = [];
+    if (loan > 0 && n >= 1 && repay !== 'io') pmt = mr === 0 ? loan / n : loan * mr / (1 - Math.pow(1 + mr, -n));
+    for (var y = 0; y < 10; y++) {
+      var it = 0, pr = 0;
+      for (var k = 1; k <= 12; k++) {
+        var mth = y * 12 + k;
+        if (loan <= 0 || mth > n || bal <= 0) continue;
+        var i1 = bal * mr, p1;
+        if (repay === 'io') p1 = mth === n ? bal : 0;
+        else p1 = mth === n ? bal : Math.min(Math.max(pmt - i1, 0), bal);
+        it += i1; pr += p1; bal -= p1;
+        if (bal < 1e-6) bal = 0;
+      }
+      yrs.push({ int: it, prin: pr, close: bal });
+    }
+    return { pmt: pmt, yrs: yrs, matYear: (loan > 0 && n >= 1 && n <= 120) ? Math.ceil(n / 12) : 0 };
+  }
+  window.__rcSmsf.schedule = schedule;
+
+  function compute(v, s) {
+    var lrba = s.fund === 'lrba';
+    var gstPaid = s.gst === 'payable' ? v.gstAmt : 0;
+    var dutyBase = Math.max(v.price + gstPaid, v.higher);
+    var dutyAuto = qldDuty(dutyBase);
+    var duty = s.dutyMode === 'manual' ? v.dutyManual : dutyAuto;
+    var basis = lrba ? Math.min(v.price, v.val) : 0;
+    var loan = lrba ? (v.lvr / 100) * basis : 0;
+    var upfront = v.legal + v.setup + v.other;
+    var totalCost = v.price + gstPaid + duty + upfront;
+    var settle = totalCost - loan;
+    var left = v.avail - settle;
+    var vac = v.vac;
+    var collected = v.rent * (1 - vac / 12);
+    var vacCost = vac > 0 ? v.vacExtra : 0;
+    var noi = collected - v.owner - vacCost;
+    var rateP = lrba ? v.rate : 0;
+    var n = lrba ? Math.round(v.term * 12) : 0;
+    var sch = schedule(loan, rateP, n, s.repay);
+    var holdBase = v.owner + vacCost + v.admin + v.capex;
+    var rg = v.rentG || 0, cg = v.costG || 0;
+    var proj = sch.yrs.map(function (d, i) {
+      var col = v.rent * Math.pow(1 + rg / 100, i) * (1 - vac / 12);
+      var hold = holdBase * Math.pow(1 + cg / 100, i);
+      var b = col - hold - d.int - d.prin;
+      return { y: i + 1, col: col, hold: hold, int: d.int, prin: d.prin, close: d.close, cfB: b, cfA: b + v.contrib - v.outflow };
+    });
+    var y1 = proj[0];
+    var debt = y1.int + y1.prin;
+    var cfB = noi - debt - v.admin - v.capex;
+    var cfA = cfB + v.contrib - v.outflow;
+    return { lrba: lrba, gstPaid: gstPaid, dutyBase: dutyBase, dutyAuto: dutyAuto, duty: duty, basis: basis, loan: loan, upfront: upfront,
+      totalCost: totalCost, settle: settle, target: settle + v.reserve, left: left, short: Math.max(0, v.reserve - left),
+      vac: vac, collected: collected, vacAllow: v.rent - collected, vacCost: vacCost, noi: noi, yld: noi / v.price,
+      rateP: rateP, n: n, debt: debt, pmt: sch.pmt, int1: y1.int, prin1: y1.prin, matYear: sch.matYear, proj: proj, cfB: cfB, cfA: cfA };
+  }
+  window.__rcSmsf.compute = compute;
+
+  function kv(label, value, cls, small) { return '<div class="kv-row' + (cls ? ' ' + cls : '') + '"><span>' + esc(label) + (small ? '<small>' + esc(small) + '</small>' : '') + '</span><b>' + esc(value) + '</b></div>'; }
+  function neg(n) { return Math.round(n) === 0 ? '$0' : '(' + money(Math.abs(n)) + ')'; }
+  function mo(n) { return (n < 0 ? '\u2212' : '') + '$' + f0.format(Math.abs(Math.round(n / 12))) + ' a month'; }
+
+  var last = null;
+  function update() {
+    var R = read(), s = R.s, v = R.v;
+    document.querySelectorAll('[data-show]').forEach(function (el) {
+      var k = el.getAttribute('data-show');
+      el.hidden = !((k === 'payable' && s.gst === 'payable') || (k === 'lrba' && s.fund === 'lrba') || (k === 'cash' && s.fund === 'cash') || (k === 'manual' && s.dutyMode === 'manual'));
+    });
+    $('gst-unknown-note').hidden = s.gst !== 'unknown';
+    $('io-hint').hidden = s.repay !== 'io';
+    IDS.forEach(function (id) {
+      var wrap = document.querySelector('[data-f="' + id + '"]'), msg = $(id + '-err'), e = R.errs[id];
+      wrap.classList.toggle('is-err', !!e);
+      $(id).setAttribute('aria-invalid', e ? 'true' : 'false');
+      msg.hidden = !e; msg.textContent = e || '';
+    });
+    var keys = Object.keys(R.errs), sum = $('err-sum');
+    if (keys.length) {
+      sum.hidden = false;
+      sum.innerHTML = '<strong>' + keys.length + (keys.length === 1 ? ' input needs' : ' inputs need') + ' attention.</strong> Results are withheld until corrected.<ul>' +
+        keys.map(function (id) { return '<li><a href="#' + id + '">' + esc(labelOf(id)) + '</a>: ' + esc(R.errs[id]) + '</li>'; }).join('') + '</ul>';
+      $('results').hidden = true; $('proj-card').hidden = true; $('withheld').hidden = false; $('print-btn').disabled = true;
+      $('duty-auto-val').textContent = 'shown once inputs are valid';
+      last = null; return;
+    }
+    sum.hidden = true; sum.innerHTML = '';
+    $('results').hidden = false; $('proj-card').hidden = false; $('withheld').hidden = true; $('print-btn').disabled = false;
+
+    var m = compute(v, s);
+    var prov = s.gst === 'unknown';
+    var manual = s.dutyMode === 'manual';
+    $('duty-auto-val').textContent = moneyC(m.dutyAuto) + (prov ? ' (provisional, excludes GST)' : '');
+    $('r-prov').hidden = !prov;
+    $('r-settle').textContent = money(m.settle);
+    $('r-settle-note').textContent = m.lrba ? 'Price, GST, duty and upfront costs, less the loan.' : 'Price, GST, duty and upfront costs. No loan.';
+    $('r-target').textContent = money(m.target);
+    $('r-left').textContent = money(m.left);
+    $('r-short').textContent = money(m.short);
+    var flags = [];
+    if (m.left < 0) flags.push('Available cash is ' + money(-m.left) + ' less than the settlement cash required.');
+    if (m.short > 0) flags.push('Cash left after settlement is ' + money(m.short) + ' below your chosen reserve.');
+    $('r-flag').hidden = !flags.length; $('r-flag').textContent = flags.join(' ');
+    $('s-loan').textContent = money(m.loan);
+    $('s-loan-k').textContent = m.lrba ? (s.repay === 'io' ? 'Interest only' : 'Principal and interest') : 'Cash purchase';
+    $('s-duty').textContent = money(m.duty);
+    $('s-duty-k').textContent = manual ? 'Manual override' : (prov ? 'Provisional' : 'General rates');
+    $('s-yield').textContent = fy.format(m.yld * 100) + '%';
+    $('s-cf').textContent = money(m.cfB);
+
+    var dutyLabel = manual ? 'Transfer duty, manual override' : 'Transfer duty, Queensland general rates';
+    var dutySmall = manual ? 'Automatic figure would be ' + moneyC(m.dutyAuto) : 'On ' + money(m.dutyBase) + (prov ? ', provisional, excludes GST' : '');
+    var fund = kv('Purchase price excluding GST', money(v.price)) +
+      kv('Purchase GST', s.gst === 'payable' ? money(m.gstPaid) : (prov ? 'Not yet confirmed' : '$0'), '', s.gst === 'none' ? 'No purchase GST assumed. Confirm with your adviser.' : '') +
+      kv(dutyLabel, moneyC(m.duty), '', dutySmall) +
+      kv('Legal and due diligence', money(v.legal)) +
+      kv('SMSF, holding trust and lender setup', money(v.setup)) +
+      kv('Titles, registration and other', money(v.other)) +
+      kv('Total cost at settlement', money(m.totalCost), 'kv-row--total') +
+      (m.lrba ? kv('Less loan (debt)', neg(m.loan), 'kv-neg', fp.format(v.lvr) + '% of ' + money(m.basis) + ', the lower of price and valuation') : '') +
+      kv('SMSF cash at settlement (equity)', money(m.settle), 'kv-row--total') +
+      kv('Of which duty, GST and upfront costs', money(m.upfront + m.duty + m.gstPaid), '', 'Cash the loan does not fund') +
+      (s.gst === 'payable' ? kv('Possible later GST refund', money(v.gstRefund), 'kv-row--later kv-row--sep', 'Conditional future cash. Not used to fund settlement.') : '');
+    $('k-fund').innerHTML = fund;
+
+    var cf = kv('Base rent excluding GST', money(v.rent)) +
+      (m.vac > 0 ? kv('Vacancy allowance, ' + fp.format(m.vac) + ' months', neg(m.vacAllow), 'kv-neg') : '') +
+      kv('Rent collected', money(m.collected)) +
+      kv('Owner costs after recoveries', neg(v.owner), 'kv-neg') +
+      (m.vac > 0 ? kv('Extra owner costs while vacant', neg(m.vacCost), 'kv-neg') : '') +
+      kv('Net operating income', money(m.noi), 'kv-row--total') +
+      kv('Net yield on price', fy.format(m.yld * 100) + '%', '', 'Vacancy-adjusted, before finance, fund costs and capex') +
+      (m.lrba ? kv(s.repay === 'io' ? 'Debt service, interest only' : 'Debt service, principal and interest', neg(m.debt), 'kv-neg kv-row--sep',
+        s.repay === 'io' ? (m.prin1 > 0 ? 'Interest ' + money(m.int1) + ', plus the full principal of ' + money(m.prin1) + ' repaid at maturity.' : 'Interest ' + money(m.int1) + '. Principal of ' + money(m.loan) + ' remains outstanding.') : 'Year one interest ' + money(m.int1) + ', principal ' + money(m.prin1) + '. Monthly payment ' + money(m.pmt) + '.') : '') +
+      kv('SMSF admin and audit allocation', neg(v.admin), 'kv-neg') +
+      kv('Capital expenditure allowance', neg(v.capex), 'kv-neg') +
+      kv('Cash flow before contributions', money(m.cfB), 'kv-row--total', mo(m.cfB)) +
+      kv('Net contributions', money(v.contrib)) +
+      kv('Pension and other outflows', neg(v.outflow), 'kv-neg') +
+      kv('Cash flow after contributions and outflows', money(m.cfA), 'kv-row--total', mo(m.cfA));
+    $('k-cf').innerHTML = cf;
+
+    var tot = { col: 0, hold: 0, int: 0, prin: 0, cfB: 0, cfA: 0 };
+    $('pj-rows').innerHTML = m.proj.map(function (r) {
+      Object.keys(tot).forEach(function (k) { tot[k] += r[k]; });
+      var mat = m.lrba && m.matYear === r.y;
+      return '<tr' + (mat ? ' class="is-mat"' : '') + '><th scope="row">Year ' + r.y + (mat ? '<small>Loan maturity</small>' : '') + '</th><td>' + money(r.col) + '</td><td>' + neg(r.hold) + '</td><td>' + neg(r.int) + '</td><td>' + neg(r.prin) + '</td><td>' + money(r.cfB) + '</td><td>' + money(r.cfA) + '</td><td>' + money(r.close) + '</td></tr>';
+    }).join('');
+    $('pj-foot').innerHTML = '<tr><th scope="row">10-year total</th><td>' + money(tot.col) + '</td><td>' + neg(tot.hold) + '</td><td>' + neg(tot.int) + '</td><td>' + neg(tot.prin) + '</td><td>' + money(tot.cfB) + '</td><td>' + money(tot.cfA) + '</td><td>Not summed</td></tr>';
+    var notes = projNotes(v, s, m);
+    $('pj-notes').innerHTML = notes.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+    last = { s: s, v: v, m: m, tot: tot, notes: notes };
+  }
+
+  function projNotes(v, s, m) {
+    var out = ['Holding costs combine owner costs after recoveries, extra vacancy costs, the SMSF admin and audit allocation and the capital expenditure allowance.',
+      'Rent grows at ' + fp.format(v.rentG) + '% a year and holding costs at ' + fp.format(v.costG) + '% a year from Year 2. These are illustrative assumptions, not forecasts or guaranteed rent reviews. Vacancy months, the interest rate, net contributions and allocated outflows stay at the entered amounts in every year.'];
+    if (!m.lrba) out.push('Cash purchase: no loan, interest or principal in any year.');
+    else if (m.loan <= 0) out.push('No loan amount, so there is no interest or principal in any year.');
+    else {
+      if (Math.abs(v.term * 12 - m.n) > 1e-9) out.push('A loan term of ' + fp.format(v.term) + ' years is rounded to ' + m.n + ' monthly payments.');
+      if (s.repay === 'io') out.push(m.matYear ? 'Interest only: the full principal of ' + money(m.loan) + ' is repaid at loan maturity in Year ' + m.matYear + ', shown in that year\u2019s principal and cash flow. No refinance or extension is assumed, and no approved interest-only period is implied.' : 'Interest only: the full principal of ' + money(m.loan) + ' remains outstanding at the end of Year 10 and is not repaid during the projection. No approved interest-only period is implied.');
+      else out.push(m.matYear ? 'The loan is fully repaid in Year ' + m.matYear + '. There are no loan payments after maturity.' : 'A loan balance of ' + money(m.proj[9].close) + ' remains at the end of Year 10.');
+    }
+    out.push('Excludes the purchase price, GST, duty, upfront costs, any later GST refund, income tax, depreciation, capital growth and sale. These figures are not a total investment return or a whole-fund balance.');
+    return out;
+  }
+
+  function fmtField(id) {
+    var p = parse(id); if (p.e) return;
+    if (MONEY.indexOf(id) >= 0) $(id).value = Math.abs(p.v - Math.round(p.v)) > 0.004 ? f2.format(p.v) : f0.format(p.v);
+  }
+  IDS.forEach(function (id) {
+    var el = $(id);
+    el.addEventListener('input', function () {
+      if (id === 'gstAmt' || id === 'val') touched[id] = true;
+      if (id === 'price') {
+        var p = parse('price');
+        if (!p.e) {
+          if (!touched.gstAmt) $('gstAmt').value = f0.format(Math.round(p.v * 0.1));
+          if (!touched.val) $('val').value = f0.format(p.v);
+        }
+      }
+      update();
+    });
+    el.addEventListener('blur', function () { fmtField(id); });
+  });
+  document.querySelectorAll('#sm-form input[type="radio"]').forEach(function (el) {
+    el.addEventListener('change', function () {
+      if (el.name === 'dutyMode' && el.value === 'manual' && last) $('dutyManual').value = f0.format(Math.round(last.m.dutyAuto));
+      update();
+    });
+  });
+  function reset() {
+    IDS.forEach(function (id) { $(id).value = DEF[id]; });
+    Object.keys(RAD).forEach(function (n) { document.querySelector('input[name="' + n + '"][value="' + RAD[n] + '"]').checked = true; });
+    touched.gstAmt = false; touched.val = false;
+    update();
+  }
+  $('reset-btn').addEventListener('click', reset);
+  $('reset-btn-2').addEventListener('click', reset);
+  window.__rcSmsf.update = update;
+  window.__rcSmsf.reset = reset;
+
+  function buildPrint() {
+    var el = $('print-sheet');
+    if (!last) { el.innerHTML = '<p>Results are withheld until all inputs are valid.</p>'; return; }
+    var s = last.s, v = last.v, m = last.m;
+    var date = new Intl.DateTimeFormat('en-AU', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+    var gstTxt = { unknown: 'Not yet confirmed (results provisional, exclude GST)', none: 'No purchase GST assumed (confirm with adviser)', payable: 'GST payable at settlement' }[s.gst];
+    function row(a, b) { return '<tr><td>' + esc(a) + '</td><td class="n">' + esc(b) + '</td></tr>'; }
+    var inp = row('Purchase price excluding GST', money(v.price)) + row('Higher dutiable or market value', money(v.higher)) + row('Purchase GST', gstTxt);
+    if (s.gst === 'payable') inp += row('GST paid at settlement', money(v.gstAmt)) + row('Possible later GST refund', money(v.gstRefund));
+    inp += row('Funding method', m.lrba ? 'LRBA illustration' : 'Cash purchase');
+    if (m.lrba) inp += row('Target LVR', fp.format(v.lvr) + '%') + row('Lender valuation', money(v.val)) + row('Interest rate', fp.format(v.rate) + '% p.a.') + row('Loan term', fp.format(v.term) + ' years') + row('Repayment type', s.repay === 'io' ? 'Interest only' : 'Principal and interest, monthly');
+    inp += row('Transfer duty method', s.dutyMode === 'manual' ? 'Manual override: ' + moneyC(v.dutyManual) : 'Queensland general rates, automatic') +
+      row('Legal and due diligence', money(v.legal)) + row('SMSF, holding trust and lender setup', money(v.setup)) + row('Titles, registration and other', money(v.other)) +
+      row('Available liquid SMSF cash', money(v.avail)) + row('Chosen liquidity reserve', money(v.reserve)) +
+      row('Annual base rent excluding GST', money(v.rent)) + row('Vacancy', fp.format(v.vac) + ' months') + row('Owner costs after recoveries', money(v.owner)) + row('Extra owner costs if vacant', money(v.vacExtra)) +
+      row('SMSF admin and audit allocation', money(v.admin)) + row('Capital expenditure allowance', money(v.capex)) + row('Net contributions', money(v.contrib)) + row('Pension and other outflows', money(v.outflow)) +
+      row('Annual rent growth (illustrative, from Year 2)', fp.format(v.rentG) + '%') + row('Annual holding cost growth (illustrative, from Year 2)', fp.format(v.costG) + '%');
+    var out = row('Total cost at settlement', money(m.totalCost)) + row('Transfer duty' + (s.dutyMode === 'manual' ? ' (manual override)' : (s.gst === 'unknown' ? ' (provisional)' : '')), moneyC(m.duty)) +
+      row('Loan', money(m.loan)) + row('SMSF cash at settlement', money(m.settle)) + row('Target including reserve', money(m.target)) + row('Cash left after settlement', money(m.left)) + row('Reserve shortfall', money(m.short)) +
+      (s.gst === 'payable' ? row('Possible later GST refund (conditional, not settlement funding)', money(v.gstRefund)) : '') +
+      row('Rent collected', money(m.collected)) + row('Net operating income', money(m.noi)) + row('Net yield on price (vacancy-adjusted, before finance, fund costs and capex)', fy.format(m.yld * 100) + '%') +
+      row('Year one debt service', money(m.debt)) + (m.lrba ? row('Year one interest / principal', money(m.int1) + ' / ' + money(m.prin1)) : '') +
+      row('Cash flow before contributions', money(m.cfB) + ' (' + mo(m.cfB) + ')') + row('Cash flow after contributions and outflows', money(m.cfA) + ' (' + mo(m.cfA) + ')');
+    var st = m.proj.map(function (r) { var mat = m.lrba && m.matYear === r.y; return '<tr><td>Year ' + r.y + (mat ? ' (loan maturity)' : '') + '</td><td class="n">' + money(r.col) + '</td><td class="n">' + neg(r.hold) + '</td><td class="n">' + neg(r.int) + '</td><td class="n">' + neg(r.prin) + '</td><td class="n">' + money(r.cfB) + '</td><td class="n">' + money(r.cfA) + '</td><td class="n">' + money(r.close) + '</td></tr>'; }).join('');
+    var T = last.tot;
+    st += '<tr><td><strong>10-year total</strong></td><td class="n">' + money(T.col) + '</td><td class="n">' + neg(T.hold) + '</td><td class="n">' + neg(T.int) + '</td><td class="n">' + neg(T.prin) + '</td><td class="n">' + money(T.cfB) + '</td><td class="n">' + money(T.cfA) + '</td><td class="n">Not summed</td></tr>';
+    var pn = last.notes.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+    var src = Array.prototype.map.call(document.querySelectorAll('#sources a'), function (a) { return '<li>' + esc(a.parentNode.firstChild.textContent.replace(/:\s*$/, '')) + ': <a href="' + a.href + '">' + esc(a.href) + '</a></li>'; }).join('');
+    el.innerHTML = '<p class="ps-brand">REPRESENT COMMERCIAL</p><h1>SMSF commercial property acquisition calculator</h1>' +
+      '<p>Prepared ' + date + '. Queensland commercial property only. All figures AUD, before income tax.' + (s.gst === 'unknown' ? ' <strong>Provisional: funding and duty exclude any purchase GST.</strong>' : '') + '</p>' +
+      '<h2>Inputs</h2><table>' + inp + '</table><h2>Results</h2><table>' + out + '</table>' +
+      '<h2>Annual cash flow: first 10 years</h2><p class="ps-small">Twelve-month periods from acquisition, before income tax. Bracketed figures are cash paid out.</p><table><thead><tr><th>Year</th><th class="n">Rent collected</th><th class="n">Holding costs</th><th class="n">Interest</th><th class="n">Principal</th><th class="n">Before contributions</th><th class="n">After contributions and outflows</th><th class="n">Loan balance at year end</th></tr></thead><tbody>' + st + '</tbody></table><ul class="ps-small">' + pn + '</ul>' +
+      '<h2>Sources, checked 16 October 2026</h2><ul class="ps-small">' + src + '</ul>' +
+      '<p class="ps-small">General property cash flow illustration only. Not investment suitability, financial, tax, legal or credit advice, and not an assessment of SMSF eligibility, business real property status or loan approval. Seek advice from a licensed financial adviser, an SMSF accountant, a solicitor and your lender before committing. Represent Commercial, Real Estate Agent Licence 4949809, represent.au.</p>';
+  }
+  window.addEventListener('beforeprint', buildPrint);
+  $('print-btn').addEventListener('click', function () { buildPrint(); window.print(); });
+  window.__rcSmsf.buildPrint = buildPrint;
+
+  update();
+})();
+</script>
+<script src="rc-attribution.v1.js"></script>
+<script src="rc-events.v1.js"></script>
+<script>
+window.rcTrack = window.rcTrack || function (name, params) {
+  params = params || {};
+  window.dataLayer = window.dataLayer || [];
+  var o = { event: name }; for (var k in params) o[k] = params[k];
+  window.dataLayer.push(o);
+  if (typeof window.gtag === 'function') window.gtag('event', name, params);
+};
+// Enquiry handler copied from commercial-property-buyers-agent.html. Only contact fields are sent; calculator inputs are never read.
+(function () {
+  var form = document.getElementById('sme-form');
+  var card = document.getElementById('sme-card');
+  var done = document.getElementById('sme-done');
+  var errEl = document.getElementById('sme-err');
+  if (!form || !card) return;
+
+  var KEY = 'rc_attr';
+  var q = new URLSearchParams(location.search);
+  var attr = {};
+  try { attr = JSON.parse(sessionStorage.getItem(KEY) || '{}'); } catch (e) {}
+  var map = { utm_source: 'utm_source', utm_medium: 'utm_medium', utm_campaign: 'utm_campaign', utm_adgroup: 'utm_adgroup', adgroup: 'utm_adgroup', utm_term: 'utm_term', keyword: 'utm_term', utm_content: 'utm_content', gclid: 'gclid' };
+  Object.keys(map).forEach(function (k) { if (q.get(k)) attr[map[k]] = q.get(k); });
+  if (!attr.referrer && document.referrer && document.referrer.indexOf(location.host) === -1) attr.referrer = document.referrer;
+  try { sessionStorage.setItem(KEY, JSON.stringify(attr)); } catch (e) {}
+  if (window.rcAttribution) attr = window.rcAttribution.fields();
+  Object.keys(attr).forEach(function (k) { var f = form.querySelector('[name="' + k + '"]'); if (f && attr[k]) f.value = attr[k]; });
+
+  Array.prototype.forEach.call(card.querySelectorAll('a[href^="tel:"]'), function (a) {
+    a.addEventListener('click', function () { try { rcTrack('click_to_call', { call_location: a.getAttribute('data-location') || 'page' }); } catch (e) {} });
+  });
+
+  var OPP = { 'Investment': 'Investor Acquisition', 'My business': 'Owner-Occupier Acquisition', 'Still deciding': 'Acquisition Advisory' };
+  var btn = form.querySelector('.form-submit');
+  var LABEL = btn.textContent;
+  var FAIL = 'We could not send your enquiry. Your details are still here. Please try again, or call Nick on 0401 825 999.';
+  var UNCERTAIN = 'We could not confirm that your enquiry was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
+  var sent = false;
+  var measured = {};
+  function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (btn.disabled || sent) return;
+    if (!form.reportValidity()) return;
+    errEl.style.display = 'none';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var confirmed = false;
+    var submission = form.querySelector('[name="website_submission_id"]');
+    if (submission && !submission.value) {
+      submission.value = (window.crypto && typeof window.crypto.randomUUID === 'function')
+        ? window.crypto.randomUUID()
+        : 'web-' + Date.now() + '-' + Math.random().toString(36).slice(2, 12);
+    }
+    var payload = {};
+    new FormData(form).forEach(function (v, k) { payload[k] = v; });
+    delete payload.redirect;
+    payload.replyto = payload.email;
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (!(res && res.success === true)) { fail(FAIL); return; }
+      confirmed = true; sent = true;
+      if (window.rcEvents) { try { window.rcEvents.enquirySuccess(); } catch (e) {} }
+      form.style.display = 'none';
+      done.style.display = 'block';
+      done.setAttribute('role', 'status');
+      try { done.focus(); } catch (e) {}
+
+      try {
+        rcTrack('buyer_agency_form_submit', { form_stream: payload.form_stream, buyer_type: payload.buyer_type, cta_location: payload.cta_clicked || 'direct' });
+      } catch (trackingError) { console.error('Represent event tracking:', trackingError); }
+
+      try {
+        var sid = payload.website_submission_id;
+        if (payload.enquiry_type === 'acquisition' && sid && !measured[sid] && typeof window.oaiq === 'function') {
+          measured[sid] = true;
+          window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: sid });
+        }
+      } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
+
+      var crmPayload = {};
+      Object.keys(payload).forEach(function (k) {
+        if (['access_key', 'subject', 'from_name', 'replyto', 'botcheck'].indexOf(k) === -1) crmPayload[k] = payload[k];
+      });
+      crmPayload.requirement = [
+        ['Buyer purpose', payload.buyer_type], ['Indicative budget', payload.budget],
+        ['Preferred location', payload.preferred_location], ['Further context', payload.acquisition_context]
+      ].filter(function (r) { return r[1]; }).map(function (r) { return r[0] + ': ' + r[1]; }).join('\n');
+      crmPayload.opportunity_type = OPP[payload.buyer_type] || 'Acquisition Advisory';
+      try {
+        fetch('/api/website-lead', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(crmPayload),
+          keepalive: true
+        }).then(function (r) {
+          if (!r.ok) throw new Error('CRM handoff failed');
+          return r.json();
+        }).then(function (crm) {
+          if (!crm || crm.ok !== true) throw new Error('CRM handoff unconfirmed');
+          try { rcTrack('crm_handoff_success', { form_stream: payload.form_stream, opportunity_created: crm.opportunity_created === true }); } catch (e) {}
+        }).catch(function (crmErr) {
+          console.error('Represent CRM handoff:', crmErr);
+          try { rcTrack('crm_handoff_failed', { form_stream: payload.form_stream }); } catch (e) {}
+        });
+      } catch (crmErr) { console.error('Represent CRM handoff:', crmErr); }
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      if (confirmed) { console.error('Post-submit step failed:', err); return; }
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
+<script src="nav.v17.js" defer></script>
+</body>
+</html>
