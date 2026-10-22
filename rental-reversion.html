@@ -24,6 +24,17 @@
 <meta name="description" content="Measure how far a passing rent sits below market and what capturing the reversion is worth in value at a given yield. Represent Commercial, Brisbane and Queensland." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/rental-reversion" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/rental-reversion" />
+<meta property="og:title" content="Rental Reversion &amp; Value Uplift Calculator | Represent Commercial" />
+<meta property="og:description" content="Measure how far a passing rent sits below market and what capturing the reversion is worth in value at a given yield. Represent Commercial, Brisbane and Queensland." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Rental Reversion &amp; Value Uplift Calculator | Represent Commercial" />
+<meta name="twitter:description" content="Measure how far a passing rent sits below market and what capturing the reversion is worth in value at a given yield. Represent Commercial, Brisbane and Queensland." />
+<meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
@@ -46,7 +57,7 @@
       <a href="/buyers-agency" class="site-nav__link">Buyers</a>
       <a href="/services" class="site-nav__link">Property Owners</a>
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
       <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
@@ -255,9 +266,9 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Intelligence</h3>
+        <h3>Insights</h3>
         <ul>
-          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights">Knowledge</a></li>
           <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
@@ -371,14 +382,14 @@
       '/m\u00b2 leaves the asset ' + pc1(m.revPc * 100) + ' under-rented. Capturing ' + money2(m.marketAt) +
       '/m\u00b2 at reversion lifts net income by ' + money(m.revIncome - m.passIncome) + ' a year and value by ' +
       money(m.uplift) + ' at a ' + fmt2.format(m.y * 100) + '% yield.');
-    txt('r-cross', 'Yield on price rises from ' + (m.price > 0 ? pc1(m.passIncome / m.price * 100) : '\u2014') +
-      ' to ' + (m.price > 0 ? pc1(m.revIncome / m.price * 100) : '\u2014'));
+    txt('r-cross', 'Yield on price rises from ' + (m.price > 0 ? pc1(m.passIncome / m.price * 100) : 'N/A') +
+      ' to ' + (m.price > 0 ? pc1(m.revIncome / m.price * 100) : 'N/A'));
     txt('r-now', moneyShort(m.vNow));
     txt('r-then', moneyShort(m.vThen));
     txt('s-revpc', pc1(m.revPc * 100));
     txt('s-incup', moneyShort(m.revIncome - m.passIncome));
-    txt('s-ypass', m.price > 0 ? pc1(m.passIncome / m.price * 100) : '\u2014');
-    txt('s-yrev', m.price > 0 ? pc1(m.revIncome / m.price * 100) : '\u2014');
+    txt('s-ypass', m.price > 0 ? pc1(m.passIncome / m.price * 100) : 'N/A');
+    txt('s-yrev', m.price > 0 ? pc1(m.revIncome / m.price * 100) : 'N/A');
     txt('k-pass', money(m.passIncome));
     txt('k-mkt', money(m.mktIncomeNow));
     txt('k-rev', money(m.revIncome));
@@ -388,7 +399,7 @@
     txt('k-vthen', money(m.vThenGross));
     txt('k-vcost', paren(m.cost));
     txt('k-vup', money(m.uplift));
-    txt('k-vrate', m.area > 0 ? money(m.vThen / m.area) + '/m\u00b2' : '\u2014');
+    txt('k-vrate', m.area > 0 ? money(m.vThen / m.area) + '/m\u00b2' : 'N/A');
 
     var base = m.y * 100;
     document.getElementById('y-rows').innerHTML = [-1, -0.5, -0.25, 0, 0.25, 0.5, 1].map(function (s) {
@@ -398,7 +409,7 @@
         '<td>' + money(mm.vNow) + '</td>' +
         '<td>' + money(mm.vThen) + '</td>' +
         '<td>' + money(mm.uplift) + '</td>' +
-        '<td>' + (mm.price > 0 ? pc1(mm.uplift / mm.price * 100) : '\u2014') + '</td></tr>';
+        '<td>' + (mm.price > 0 ? pc1(mm.uplift / mm.price * 100) : 'N/A') + '</td></tr>';
     }).join('');
 
     document.getElementById('r-rows').innerHTML = [-10, -5, 0, 5, 10].map(function (s) {
@@ -493,7 +504,7 @@
 </script>
 <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
-<script src="nav.v14.js" defer></script>
+<script src="nav.v17.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

@@ -24,6 +24,17 @@
 <meta name="description" content="Test whether holding out for a target rent through vacancy beats accepting a lower rent now, with break-even vacancy and break-even rent. Represent Commercial." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/vacancy-vs-rent-reduction" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/vacancy-vs-rent-reduction" />
+<meta property="og:title" content="Vacancy vs Rent Reduction Calculator | Represent Commercial" />
+<meta property="og:description" content="Test whether holding out for a target rent through vacancy beats accepting a lower rent now, with break-even vacancy and break-even rent. Represent Commercial." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Vacancy vs Rent Reduction Calculator | Represent Commercial" />
+<meta name="twitter:description" content="Test whether holding out for a target rent through vacancy beats accepting a lower rent now, with break-even vacancy and break-even rent. Represent Commercial." />
+<meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
@@ -46,7 +57,7 @@
       <a href="/buyers-agency" class="site-nav__link">Buyers</a>
       <a href="/services" class="site-nav__link">Property Owners</a>
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
       <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
@@ -257,9 +268,9 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Intelligence</h3>
+        <h3>Insights</h3>
         <ul>
-          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights">Knowledge</a></li>
           <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
@@ -367,7 +378,7 @@
     var holdWins = diff > 0;
 
     txt('g-forgone', money(p.area * holdRent / 12 * Math.round(vac)));
-    txt('g-disc', holdRent > 0 ? pc1((1 - accRent / holdRent) * 100) : '\u2014');
+    txt('g-disc', holdRent > 0 ? pc1((1 - accRent / holdRent) * 100) : 'N/A');
     txt('r-head', 'Over a ' + p.H + '-year period');
     txt('r-label', Math.abs(diff) < 1 ? 'The two courses are level' : (holdWins ? 'Holding for the target rent is ahead' : 'Accepting the lower rent is ahead'));
     txt('r-main', moneyShort(Math.abs(diff)));
@@ -385,7 +396,7 @@
 
     txt('r-hold', moneyShort(hold.net));
     txt('r-acc', moneyShort(acc.net));
-    txt('s-bevac', be === null ? '\u2014' : be + ' mths');
+    txt('s-bevac', be === null ? 'N/A' : be + ' mths');
     txt('s-berent', money2(beRent(hold.net, accVac, p)));
     txt('s-vaccost', moneyShort(p.area * holdRent / 12 * Math.round(vac) + p.area * p.og / 12 * Math.round(vac)));
     txt('s-gap', money2(holdRent - accRent));
@@ -403,7 +414,7 @@
         '<td class="yr-c">' + v + (v === 1 ? ' mth' : ' mths') + '</td>' +
         '<td>' + money(h.net) + '</td>' +
         '<td>' + (d >= 0 ? '+' : '\u2212') + '$' + fmt0.format(Math.abs(Math.round(d))) + '</td>' +
-        '<td>' + (acc.net > 0 ? (d >= 0 ? '+' : '\u2212') + pc1(Math.abs(d / acc.net * 100)) : '\u2014') + '</td>' +
+        '<td>' + (acc.net > 0 ? (d >= 0 ? '+' : '\u2212') + pc1(Math.abs(d / acc.net * 100)) : 'N/A') + '</td>' +
         '<td>' + (d >= 0 ? '<span class="adv adv--on">Hold</span>' : '<span class="adv adv--off">Accept now</span>') + '</td></tr>';
     }
     document.getElementById('vac-rows').innerHTML = rows;
@@ -415,7 +426,7 @@
       var d = a.net - hold.net;
       return '<tr' + (s === 0 ? ' class="is-be"' : '') + '>' +
         '<td class="yr-c">' + money2(r) + '/m\u00b2</td>' +
-        '<td>' + (s === 0 ? '\u2014' : pc1(Math.abs(s))) + '</td>' +
+        '<td>' + (s === 0 ? 'N/A' : pc1(Math.abs(s))) + '</td>' +
         '<td>' + money(a.net) + '</td>' +
         '<td>' + (d >= 0 ? '+' : '\u2212') + '$' + fmt0.format(Math.abs(Math.round(d))) + '</td></tr>';
     }).join('');
@@ -509,7 +520,7 @@
 </script>
 <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
-<script src="nav.v14.js" defer></script>
+<script src="nav.v17.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

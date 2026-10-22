@@ -11,7 +11,7 @@ const DESTINATIONS = {
   home: '/',
   ppr: '/commercial-property-performance-review',
   buyers: '/buyers-agency',
-  pab: '/preliminary-acquisition-brief',
+  pab: '/buyers-agency',
   leasing: '/leasing',
   tenant: '/tenant-representation'
 };

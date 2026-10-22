@@ -20,17 +20,21 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Insights | Represent Commercial | Commercial Property Knowledge Centre, Queensland</title>
-<meta name="description" content="The Represent Commercial knowledge centre: market evidence, guides, calculators and case studies for Queensland commercial property buyers, owners and tenants." />
+<title>Commercial Property Insights | Represent Commercial</title>
+<meta name="description" content="Market evidence, guides, calculators and case studies for Queensland commercial property buyers, owners and tenants, from Represent Commercial." />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <link rel="canonical" href="https://represent.au/insights" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/insights" />
-<meta property="og:title" content="Insights | Represent Commercial" />
-<meta property="og:description" content="Market evidence, guides, calculators and case studies for commercial property buyers, owners and tenants in Queensland." />
+<meta property="og:title" content="Commercial Property Insights | Represent Commercial" />
+<meta property="og:description" content="Market evidence, guides, calculators and case studies for Queensland commercial property buyers, owners and tenants, from Represent Commercial." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Commercial Property Insights | Represent Commercial" />
+<meta name="twitter:description" content="Market evidence, guides, calculators and case studies for Queensland commercial property buyers, owners and tenants, from Represent Commercial." />
+<meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
@@ -53,8 +57,12 @@
   .kc-head a:hover { color: var(--green); }
 
   .kc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .kc-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kc-all { margin: 28px 0 0; }
+  @media (max-width: 640px) { .kc-grid--4 { grid-template-columns: 1fr; } }
   .kc-grid--4 { grid-template-columns: repeat(2, 1fr); }
   .kc-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .kc-grid.kc-grid--1 { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
 
   .kc-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #E6E1D6; border-radius: 14px; padding: 30px 28px 32px; text-decoration: none; color: inherit; position: relative; transition: border-color .2s, box-shadow .2s, transform .2s; }
   a.kc-card:hover { border-color: var(--gold); box-shadow: 0 12px 32px rgba(0,66,37,0.09); transform: translateY(-3px); }
@@ -104,7 +112,7 @@
       <a href="/buyers-agency" class="site-nav__link">Buyers</a>
       <a href="/services" class="site-nav__link">Property Owners</a>
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
       <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
@@ -174,6 +182,24 @@
         </div>
       </div>
 
+      <!-- Investor School -->
+      <div class="kc-sec">
+        <div class="kc-head">
+          <div>
+            <h2>Investor School</h2>
+            <p>Free interactive lessons for commercial property investors.</p>
+          </div>
+        </div>
+        <div class="kc-grid kc-grid--1">
+          <a class="kc-card" href="/commercial-property-investor-school">
+            <div class="kc-kicker">Five interactive lessons</div>
+            <h3>Commercial Property Investor School</h3>
+            <p>Yield and value, value-add, leasing and vacancy, refinancing and downside cash flow, each worked through with your own figures. Queensland focus.</p>
+            <span class="kc-open">Start the lessons <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+
       <!-- Guides -->
       <div class="kc-sec" id="guides" style="scroll-margin-top: 96px;">
         <div class="kc-head">
@@ -234,26 +260,19 @@
         </div>
       </div>
 
-      <!-- Tools -->
+      <!-- Featured tools -->
       <div class="kc-sec">
         <div class="kc-head">
           <div>
-            <h2>Tools &amp; calculators</h2>
+            <h2>Featured tools</h2>
             <p>Free calculators for commercial property, acquisition and leasing decisions.</p>
           </div>
-          <a href="/tools">All tools →</a>
         </div>
-        <div class="kc-grid">
-          <a class="kc-card" href="/management-estimator">
+        <div class="kc-grid kc-grid--4">
+          <a class="kc-card" href="/acquisition-yield">
             <div class="kc-kicker">Calculator</div>
-            <h3>Management Value Estimator</h3>
-            <p>What active management could recover on your portfolio, against the fee to do it.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/calculator">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Rent Offset Saving Calculator</h3>
-            <p>What parking rent in your offset account saves in loan interest before it's spent.</p>
+            <h3>Acquisition Cost &amp; Yield Calculator</h3>
+            <p>The real cost after duty and finance, with yield on total cost and cash on cash.</p>
             <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="kc-card" href="/lease-vs-buy">
@@ -262,67 +281,20 @@
             <p>Weigh the cost of leasing premises against owning them over your holding period.</p>
             <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
           </a>
-          <a class="kc-card" href="/cgt-calculator">
+          <a class="kc-card" href="/management-estimator">
             <div class="kc-kicker">Calculator</div>
-            <h3>CGT Treatment Calculator</h3>
-            <p>The former 50% discount against the legislated CPI-indexation rules, over your hold period.</p>
+            <h3>Management Value Estimator</h3>
+            <p>What active management could recover on your portfolio, against the fee to do it.</p>
             <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="kc-card" href="/occupancy-cost">
             <div class="kc-kicker">Calculator</div>
-            <h3>Occupancy Cost Comparison</h3>
+            <h3>Occupancy Cost Comparison Calculator</h3>
             <p>Up to three premises on one basis, net of incentives and fitout, per m&sup2; and per person.</p>
             <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
           </a>
-          <a class="kc-card" href="/renewal-vs-relocation">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Lease Renewal vs Relocation</h3>
-            <p>Staying against moving, including fitout, removals, make-good and overlap rent.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/vacancy-vs-rent-reduction">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Vacancy vs Rent Reduction</h3>
-            <p>Whether holding out for a target rent beats the rent on the table today.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/effective-rent">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Lease Incentive &amp; Effective Rent</h3>
-            <p>A face rent and its incentive package converted into one comparable effective rent.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/rent-review">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Rent Review Calculator</h3>
-            <p>Fixed, CPI or greater-of reviews projected year by year across the term.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/yield-value">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Net Yield &amp; Property Value</h3>
-            <p>The yield an income returns at a price, or the value a market yield supports.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/rental-reversion">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Rental Reversion &amp; Value Uplift</h3>
-            <p>How far a passing rent sits below market, and what the reversion is worth.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/acquisition-yield">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Acquisition Cost &amp; Yield Sensitivity</h3>
-            <p>The real cost after duty and finance, with yield on total cost and cash on cash.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/wale-calculator">
-            <div class="kc-kicker">Calculator</div>
-            <h3>WALE Calculator</h3>
-            <p>Weighted average lease expiry by income, with the expiry profile behind it.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
         </div>
+        <p class="kc-all"><a href="/tools" class="btn btn--lg btn--green">View all tools and calculators</a></p>
       </div>
 
       <!-- Precinct data -->
@@ -407,9 +379,9 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Intelligence</h3>
+        <h3>Insights</h3>
         <ul>
-          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights">Knowledge</a></li>
           <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
@@ -451,6 +423,6 @@
 
   <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
-<script src="nav.v14.js" defer></script>
+<script src="nav.v17.js" defer></script>
 </body>
 </html>

@@ -18,10 +18,33 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
+     debug is on for every host except represent.au / www.represent.au.
+     lead_created fires only for a confirmed enquiry_type === 'acquisition' submission. -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
+    debug: !/^(www\.)?represent\.au$/.test(location.hostname)
+  });
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact Nick O’Toole | Commercial Property Brisbane | Represent Commercial</title>
-<meta name="description" content="Talk directly to Nick O’Toole about managing, leasing, buying or occupying commercial property in Brisbane. Principal-led, no account managers, no obligation." />
+<title>Contact Nick O’Toole | Represent Commercial Brisbane</title>
+<meta name="description" content="Talk directly to Nick O’Toole about managing, leasing, buying or occupying commercial property in Brisbane. Principal-led, no account managers." />
 <meta name="keywords" content="Brisbane commercial property appraisal, Queensland commercial buyers agent contact, commercial property manager contact, Nick O'Toole contact, Represent Commercial" />
 <link rel="canonical" href="https://represent.au/contact" />
 <meta name="author" content="Nick O'Toole, Represent Commercial" />
@@ -29,11 +52,15 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/contact" />
-<meta property="og:title" content="Contact | Represent Commercial Queensland" />
-<meta property="og:description" content="Buyer’s agency for investors and owner-occupiers. Property management and leasing for owners. Tenant representation for occupiers. Nick responds personally. +61 401 825 999 · nick@represent.au" />
+<meta property="og:title" content="Contact Nick O’Toole | Represent Commercial Brisbane" />
+<meta property="og:description" content="Talk directly to Nick O’Toole about managing, leasing, buying or occupying commercial property in Brisbane. Principal-led, no account managers." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Contact Nick O’Toole | Represent Commercial Brisbane" />
+<meta name="twitter:description" content="Talk directly to Nick O’Toole about managing, leasing, buying or occupying commercial property in Brisbane. Principal-led, no account managers." />
+<meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 
 <script type="application/ld+json">
 {
@@ -99,7 +126,7 @@
       <a href="/buyers-agency" class="site-nav__link">Buyers</a>
       <a href="/services" class="site-nav__link">Property Owners</a>
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link">Market Intelligence</a>
+      <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link is-active">About</a>
       <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
@@ -279,9 +306,9 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Intelligence</h3>
+        <h3>Insights</h3>
         <ul>
-          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights">Knowledge</a></li>
           <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
@@ -425,6 +452,18 @@
           form.style.display = 'none';
           success.style.display = 'block';
           success.setAttribute('role', 'status');
+          // ChatGPT Ads: acquisition enquiries only, once per confirmed submission.
+          try {
+            if (code === 'acquisition' && !form.__rcLeadMeasured && typeof window.oaiq === 'function') {
+              form.__rcLeadMeasured = true;
+              var eventId = (window.crypto && typeof window.crypto.randomUUID === 'function')
+                ? window.crypto.randomUUID()
+                : 'web-' + Date.now() + '-' + Math.random().toString(36).slice(2, 12);
+              window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: eventId });
+            }
+          } catch (trackingError) {
+            if (window.console) console.error('ChatGPT Ads measurement:', trackingError);
+          }
         } else {
           reset(FAIL);
         }
@@ -439,7 +478,7 @@
 
   <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
-<script src="nav.v14.js" defer></script>
+<script src="nav.v17.js" defer></script>
 <script>
 /* Live thousand separators for amounts typed into free-text fields */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}
