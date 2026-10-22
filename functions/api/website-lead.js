@@ -66,8 +66,8 @@ const CF = {
   propertyIdentified: 'rUbRxCVCrp4Y9AjrM53q'          // opportunity.property_identified
 };
 
-// Review offers preserve first-touch fields and per-submission enquiry notes.
-// Performance Review also enters opportunity intake; Before You Buy stays contact-only.
+// Review streams enrich the Contact before creating/reusing an intake Opportunity.
+// Preserve the existing first-touch fields and per-submission enquiry notes.
 const REVIEW_STREAMS = {
   'before-you-buy-pilot': {
     leadOffer: 'Before You Buy',
@@ -189,9 +189,8 @@ export async function onRequestPost({ request, env }) {
         enquiryService,
         enquiryDetail
       });
-      // Do not create an opportunity after failed contact enrichment. A retry
-      // that already enriched the contact must still check opportunity intake,
-      // so a previous opportunity API failure can recover on the same ID.
+      // The buyer pilot remains contact-only. Performance Review continues
+      // through duplicate control and opportunity creation after enrichment.
       if (!enrichment.ok || clean(data.form_stream, 200) !== 'commercial-property-performance-review') {
         return enrichment;
       }
@@ -206,20 +205,6 @@ export async function onRequestPost({ request, env }) {
       formStream: clean(data.form_stream, 200)
     });
     if (existing) {
-      const existingFields = fieldMap(existing.customFields || []);
-      const incomingGclid = clean(data.gclid, 500);
-      // Preserve an established opportunity click ID. A repeat enquiry may
-      // supply its first Google click after the original organic enquiry.
-      if (incomingGclid && !clean(existingFields[CF.gclid], 500)) {
-        const attributionUpdate = await ghl('/opportunities/' + encodeURIComponent(existing.id), env, {
-          method: 'PUT',
-          version: GHL_OPPORTUNITIES_VERSION,
-          body: { customFields: [{ id: CF.gclid, fieldValue: incomingGclid }] }
-        });
-        if (!attributionUpdate.ok) {
-          return json({ ok: false, error: 'CRM opportunity attribution update failed.', contact_id: contactId, opportunity_id: existing.id, upstream_status: attributionUpdate.status }, 502);
-        }
-      }
       return json({
         ok: true,
         contact_id: contactId,
