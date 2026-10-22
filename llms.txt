@@ -1,30 +1,37 @@
 # Represent Commercial
 
-> Principal-led buyer’s agency, commercial property management, leasing and tenant representation in Brisbane. Buyer’s agency across Brisbane, South East Queensland and regional Queensland. Office, retail and industrial. Typically working with commercial assets valued from $1 million to $10 million. Led by Nick O'Toole, Founder and Director, with 20+ years of owner-side commercial property experience. Real Estate Agent Licence 4949809.
+> Principal-led commercial property advisory acting for property owners, buyers and tenants, never for vendors. Buyer’s agency across Brisbane, South East Queensland and regional Queensland. Commercial property management, leasing and tenant representation in Brisbane. Office, retail and industrial. Typically working with commercial assets valued from $1 million to $10 million. Led by Nick O'Toole, Founder and Director, with 20+ years of owner-side commercial property experience. Real Estate Agent Licence 4949809.
 
 ## Brand
 - Master brand: Exclusively on your side of the table.
-- Supporting service descriptor: Property Management, Leasing, Buyer’s Agency & Tenant Representation.
 
 ## Services
-1. Commercial Property Management: property management delivered with an asset-management mindset
-2. Commercial Leasing: owner-side leasing of vacant commercial space
-3. Buyer’s Agency & Acquisition Advisory: independent buyer representation, never acting for the vendor
-4. Tenant Representation: tenant-side representation for occupiers
+1. Commercial Property Management and Asset Management: property management delivered with an asset-management mindset, Brisbane
+2. Commercial Property Leasing: owner-side leasing of vacant commercial space, Brisbane
+3. Buyer’s Agency and Acquisition Advisory: independent buyer representation for investors and owner-occupiers across Queensland, never acting for the vendor
+4. Commercial Tenant Representation: tenant-side representation for Brisbane industrial, office and retail tenants
 
 ## Pages
-- [Home](https://represent.au/): Three client pathways - buyers, property owners, tenants
+- [Home](https://represent.au/): Three client pathways: buyers, property owners, tenants
 - [Commercial Property Management Brisbane](https://represent.au/services): Property management for owners, delivered with an asset-management mindset
 - [Commercial Property Leasing Brisbane](https://represent.au/leasing): Owner-side leasing of vacant commercial space
-- [Commercial Buyer’s Agent Brisbane, South East Queensland & Regional Queensland](https://represent.au/buyers-agency): Independent acquisition representation for investors and owner-occupiers
+- [Commercial Buyer’s Agent](https://represent.au/buyers-agency): Independent acquisition representation for investors and owner-occupiers across Brisbane, South East Queensland and regional Queensland
+- [Commercial Buyer’s Agent for Investors](https://represent.au/buyers-agency-investors): Income, lease quality, price and value-add tested before an investor buys
+- [Commercial Buyer’s Agent for Owner-Occupiers](https://represent.au/buyers-agency-owner-occupiers): Business premises purchases, lease vs buy and SMSF purchases with the owner’s advisers
+- [Preliminary Acquisition Brief](https://represent.au/preliminary-acquisition-brief): Define a commercial property acquisition requirement with Nick O'Toole
 - [Commercial Tenant Representation Brisbane](https://represent.au/tenant-representation): Tenant-side representation for occupiers
-- [Market Intelligence](https://represent.au/insights): Guides, calculators and precinct data
+- [Commercial Property Performance Review](https://represent.au/commercial-property-performance-review): Owner-side review of income, leases, vacancy exposure, expenditure and management priorities
+- [Intelligence](https://represent.au/insights): Market intelligence, guides, calculators and precinct data
 - [Case Studies](https://represent.au/case-studies): Principal experience and asset outcomes
 - [Locations](https://represent.au/locations): Brisbane industrial precincts covered
-- [About](https://represent.au/about): About Represent Commercial - principal-led representation for owners, buyers and tenants, built around clear client alignment.
-- [Referrals](https://represent.au/referrals): Four referral pathways for accountants, brokers and agents
-- [Introduce a client](https://represent.au/refer-a-client): General introduction for a buyer, owner or tenant across any service
+- [For Lease](https://represent.au/for-lease): Commercial property currently for lease through Represent Commercial
+- [11/13 Loam Street, Acacia Ridge](https://represent.au/lease-11-13-loam-street-acacia-ridge): Industrial warehouse and office unit for lease
+- [About](https://represent.au/about): Principal-led representation for owners, buyers and tenants
+- [Referrals](https://represent.au/referrals): Referral pathways for accountants, brokers and agents
 - [Contact](https://represent.au/contact): Speak with Nick directly
+- [Privacy Policy](https://represent.au/privacy)
+
+## Guides
 - [How do I avoid buying the wrong commercial property?](https://represent.au/how-to-avoid-buying-the-wrong-commercial-property): Tenant, lease, vacancy, outgoings and reletting risks for buyers
 - [Lease vs Buy: what should an owner-occupier do?](https://represent.au/guide-lease-vs-buy): Leasing against buying for owner-occupiers, with a worked example
 - [How much does it cost to lease a commercial property?](https://represent.au/cost-to-lease-commercial-property-brisbane): Leasing commission, advertising, incentives and the cost of vacancy, for owners
@@ -37,10 +44,10 @@
 
 ## Tools
 - [Tools & Calculators](https://represent.au/tools)
-- [Lease vs Buy Calculator](https://represent.au/lease-vs-buy)
+- [Commercial Property Investor School](https://represent.au/commercial-property-investor-school): Five free interactive lessons for investors on yield and value, value-add, leasing and vacancy, refinancing and downside cash flow
+- [Lease vs Own Calculator](https://represent.au/lease-vs-buy)
 - [Rent Offset Saving Calculator](https://represent.au/calculator)
 - [Management Value Estimator](https://represent.au/management-estimator)
-- [CGT Treatment Calculator](https://represent.au/cgt-calculator)
 - [Rent Review Calculator](https://represent.au/rent-review)
 - [Net Yield & Property Value Calculator](https://represent.au/yield-value)
 - [WALE Calculator](https://represent.au/wale-calculator)

@@ -20,10 +20,21 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lease Incentive & Effective Rent Calculator | Represent Commercial</title>
-<meta name="description" content="Convert a face rent and incentive package into net or gross effective rent, with year-by-year cash flow and a discounted view. Represent Commercial, Brisbane." />
+<title>Effective Rent &amp; Incentive Calculator | Represent Commercial</title>
+<meta name="description" content="Convert face rent and incentives into net or gross effective rent, with year-by-year cash flow and a discounted view. Represent Commercial, Brisbane." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/effective-rent" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/effective-rent" />
+<meta property="og:title" content="Effective Rent &amp; Incentive Calculator | Represent Commercial" />
+<meta property="og:description" content="Convert face rent and incentives into net or gross effective rent, with year-by-year cash flow and a discounted view. Represent Commercial, Brisbane." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Effective Rent &amp; Incentive Calculator | Represent Commercial" />
+<meta name="twitter:description" content="Convert face rent and incentives into net or gross effective rent, with year-by-year cash flow and a discounted view. Represent Commercial, Brisbane." />
+<meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
@@ -46,7 +57,7 @@
       <a href="/buyers-agency" class="site-nav__link">Buyers</a>
       <a href="/services" class="site-nav__link">Property Owners</a>
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/insights" class="site-nav__link is-active">Intelligence</a>
       <a href="/about" class="site-nav__link">About</a>
       <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
@@ -262,7 +273,7 @@
       <div class="footer-col">
         <h3>Intelligence</h3>
         <ul>
-          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights">Intelligence</a></li>
           <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
@@ -431,9 +442,9 @@
       return '<tr' + (r.applied > 0 ? ' class="is-be"' : '') + '>' +
         '<td class="yr-c">' + r.y + '</td>' +
         '<td>' + money(r.face) + '</td>' +
-        '<td>' + (r.applied > 0 ? paren(r.applied) : '\u2014') + '</td>' +
+        '<td>' + (r.applied > 0 ? paren(r.applied) : 'N/A') + '</td>' +
         '<td>' + money(r.payable) + '</td>' +
-        '<td>' + (m.area > 0 ? money2(r.payable / m.area) : '\u2014') + '</td>' +
+        '<td>' + (m.area > 0 ? money2(r.payable / m.area) : 'N/A') + '</td>' +
         '<td>' + money(r.cum) + '</td>' +
         '<td>' + (r.payable <= 0 ? '<span class="adv adv--on">Rent free</span>' : (r.applied > 0 ? '<span class="adv adv--on">Incentive applied</span>' : '<span class="adv adv--off">Full rent</span>')) + '</td></tr>';
     }).join('');
@@ -488,10 +499,10 @@
       face_rent: money2(m.face) + '/m2 p.a. ' + (rentBasis === 'gross' ? 'gross' : 'net') + ' (' + money(m.annual1) + ' p.a.)',
       annual_review: nid('rev') + '% p.a.',
       rent_free: m.freeM + ' mths (' + money(m.freeVal) + ')',
-      abatement: nid('abate') + '% of year one rent \u2014 ' + money(m.abateAnnual) + ' p.a., ' + money(m.abateVal) + ' over the term',
+      abatement: nid('abate') + '% of year one rent, ' + money(m.abateAnnual) + ' p.a., ' + money(m.abateVal) + ' over the term',
       fitout_contribution: money(m.contrib),
       other_incentive: money(m.other),
-      total_incentive: money(m.incTotal) + ' \u2014 ' + pc1(m.incPc * 100) + ' of face rent over term',
+      total_incentive: money(m.incTotal) + ' (' + pc1(m.incPc * 100) + ' of face rent over term)',
       face_rent_over_term: money(m.faceTotal),
       effective_rent_over_term: money(m.effTotal),
       rent_basis: rentBasis === 'gross' ? 'Gross' : 'Net',
@@ -553,7 +564,7 @@
 </script>
 <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
-<script src="nav.v14.js" defer></script>
+<script src="nav.v15.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

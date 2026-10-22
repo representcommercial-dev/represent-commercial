@@ -24,6 +24,17 @@
 <meta name="description" content="Compare up to three commercial premises on effective annual occupancy cost, cost per m² and cost per person, net of incentives and fitout. Represent Commercial." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/occupancy-cost" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://represent.au/occupancy-cost" />
+<meta property="og:title" content="Occupancy Cost Comparison Calculator | Represent Commercial" />
+<meta property="og:description" content="Compare up to three commercial premises on effective annual occupancy cost, cost per m² and cost per person, net of incentives and fitout. Represent Commercial." />
+<meta property="og:image" content="https://represent.au/og-default.jpg" />
+<meta property="og:site_name" content="Represent Commercial" />
+<meta property="og:locale" content="en_AU" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Occupancy Cost Comparison Calculator | Represent Commercial" />
+<meta name="twitter:description" content="Compare up to three commercial premises on effective annual occupancy cost, cost per m² and cost per person, net of incentives and fitout. Represent Commercial." />
+<meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet" />
@@ -46,7 +57,7 @@
       <a href="/buyers-agency" class="site-nav__link">Buyers</a>
       <a href="/services" class="site-nav__link">Property Owners</a>
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link is-active">Market Intelligence</a>
+      <a href="/insights" class="site-nav__link is-active">Intelligence</a>
       <a href="/about" class="site-nav__link">About</a>
       <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
@@ -240,7 +251,7 @@
       <div class="footer-col">
         <h3>Intelligence</h3>
         <ul>
-          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights">Intelligence</a></li>
           <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
@@ -363,10 +374,10 @@
 
     if (!best) {
       txt('r-head', 'Lowest occupancy cost');
-      txt('r-main', '\u2014');
+      txt('r-main', 'N/A');
       txt('r-interp', 'Enter an area for at least one option to compare.');
       txt('r-cross', '');
-      ['s-best', 's-save', 's-rate', 's-person'].forEach(function (id) { txt(id, '\u2014'); });
+      ['s-best', 's-save', 's-rate', 's-person'].forEach(function (id) { txt(id, 'N/A'); });
       document.getElementById('opt-rows').innerHTML = '<tr><td colspan="10" style="color:#8A857A;">No options entered.</td></tr>';
       document.getElementById('yr-head').innerHTML = '';
       document.getElementById('yr-rows').innerHTML = '';
@@ -382,9 +393,9 @@
       (opts.length > 1 && saving > 0 ? ' That is ' + money(saving * m.N) + ' less than ' + worst.name + ' across the term.' : ''));
     txt('r-cross', 'Year one gross ' + money(best.gross1) + ' \u00b7 Incentive ' + money(best.incVal) + ' \u00b7 Fitout ' + money(best.fit));
     txt('s-best', best.name);
-    txt('s-save', opts.length > 1 ? moneyShort(saving * m.N) : '\u2014');
+    txt('s-save', opts.length > 1 ? moneyShort(saving * m.N) : 'N/A');
     txt('s-rate', money2(best.perM2));
-    txt('s-person', m.staff > 0 ? money(best.perPerson) : '\u2014');
+    txt('s-person', m.staff > 0 ? money(best.perPerson) : 'N/A');
 
     document.getElementById('opt-rows').innerHTML = opts.map(function (o) {
       var rank = ranked.indexOf(o) + 1;
@@ -392,12 +403,12 @@
         '<td class="yr-c">' + esc(o.name) + '</td>' +
         '<td>' + fmt0.format(o.area) + ' m\u00b2</td>' +
         '<td>' + money(o.gross1) + '</td>' +
-        '<td>' + (o.incVal > 0 ? paren(o.incVal) : '\u2014') + '</td>' +
-        '<td>' + (o.fit > 0 ? money(o.fit) : '\u2014') + '</td>' +
+        '<td>' + (o.incVal > 0 ? paren(o.incVal) : 'N/A') + '</td>' +
+        '<td>' + (o.fit > 0 ? money(o.fit) : 'N/A') + '</td>' +
         '<td>' + money(o.total) + '</td>' +
         '<td>' + money(o.eff) + '</td>' +
         '<td>' + money2(o.perM2) + '</td>' +
-        '<td>' + (m.staff > 0 ? money(o.perPerson) : '\u2014') + '</td>' +
+        '<td>' + (m.staff > 0 ? money(o.perPerson) : 'N/A') + '</td>' +
         '<td>' + (rank === 1 ? '<span class="adv adv--on">Lowest</span>' : '<span class="adv adv--off">+' + money(o.eff - best.eff) + ' p.a.</span>') + '</td></tr>';
     }).join('');
 
@@ -443,8 +454,8 @@
     var m = store.m, out = { lease_term: m.N + ' yrs', annual_review: nid('rev') + '% p.a.', headcount: m.staff > 0 ? fmt0.format(m.staff) : 'Not provided',
       fitout_treatment: amort === 'spread' ? 'Spread over term' : 'Upfront' };
     m.opts.forEach(function (o, i) {
-      out['option_' + (i + 1)] = o.name + ' \u2014 ' + fmt0.format(o.area) + ' m2 at ' + money2(o.rent) + '/m2 net + ' + money2(o.og) +
-        '/m2 outgoings, ' + o.incM + ' mths rent free, fitout ' + money(o.fit) + ' \u2014 effective ' + money(o.eff) + ' p.a. (' + money2(o.perM2) + '/m2)';
+      out['option_' + (i + 1)] = o.name + ': ' + fmt0.format(o.area) + ' m2 at ' + money2(o.rent) + '/m2 net + ' + money2(o.og) +
+        '/m2 outgoings, ' + o.incM + ' mths rent free, fitout ' + money(o.fit) + ', effective ' + money(o.eff) + ' p.a. (' + money2(o.perM2) + '/m2)';
     });
     if (store.best) {
       out.lowest_cost_option = store.best.name + ' at ' + money(store.best.eff) + ' p.a.';
@@ -506,7 +517,7 @@
 </script>
 <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
-<script src="nav.v14.js" defer></script>
+<script src="nav.v15.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

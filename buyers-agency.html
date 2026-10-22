@@ -76,7 +76,23 @@
       "name": "Do you act for owner-occupiers as well as investors?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Owner-occupier acquisitions are assessed against the business requirement as well as the investment fundamentals, including the option of continuing to lease instead of buying. The Lease vs Buy guide explains how that comparison should be framed."
+        "text": "Yes. Investments are assessed on income, lease quality and value-add potential. Owner-occupier acquisitions are assessed against the business requirement as well as the investment fundamentals, including the option of continuing to lease instead of buying. See buyer’s agency for investors and for owner-occupiers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a commercial buyer’s agent cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial acquisition brief discussion is free and does not appoint Represent Commercial."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help if I have already found a property?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Tell Nick which property you are considering and where the transaction stands. We can discuss a scope covering assessment, comparable evidence, due diligence coordination and negotiation, with the services and fees agreed before work begins."
       }
     },
     {
@@ -98,6 +114,37 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 @media (max-width:700px){.ba-scope{grid-template-columns:1fr}}
 .ba-scope div{background:#fff;border:1px solid #E6E1D6;border-radius:12px;padding:22px 24px;font-family:var(--f-body);font-size:14.5px;line-height:1.6;color:#3E4A44}
 .ba-scope strong{display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:19px;color:var(--green);margin-bottom:7px}
+.prob-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.prob-grid--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.prob-grid--3{grid-template-columns:minmax(0,1fr)}}
+.rtools--3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none}
+.ba-case{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);align-items:stretch}
+.ba-case__img{margin:0;min-height:240px}
+.ba-case__img img{display:block;width:100%;height:100%;object-fit:cover}
+.ba-case__body{padding:24px 28px}
+@media (max-width:760px){.ba-case{grid-template-columns:minmax(0,1fr)}.ba-case__img img{aspect-ratio:3/2;height:auto}.ba-case__body{padding:20px 22px}}
+@media (max-width:1000px){.rtools--3{grid-template-columns:minmax(0,1fr)}}
+.oo-side{display:flex;flex-direction:column;gap:28px;min-width:0}
+.oo-trust{list-style:none;margin:0;padding:24px 0 0;border-top:1.5px solid var(--gold);display:grid;gap:14px}
+.oo-trust li{display:flex;gap:14px;align-items:flex-start;font-family:var(--f-body);font-size:15px;line-height:1.5;color:#fff}
+.oo-trust svg{flex:none;margin-top:2px}
+.oo-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:56px;align-items:start}
+.oo-photo{margin:0;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:#002D18}
+.oo-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:52% 30%}
+@media (max-width:900px){.oo-hero{grid-template-columns:minmax(0,1fr);gap:36px}.oo-photo{aspect-ratio:3/2}}
+.ba-prin{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:56px;align-items:center}
+.ba-prin__photo{margin:0;border-radius:12px;overflow:hidden;aspect-ratio:600/761;background:#002D18}
+.ba-prin__photo img{display:block;width:100%;height:100%;object-fit:cover}
+.ba-prin__copy{min-width:0}
+@media (max-width:800px){.ba-prin{grid-template-columns:minmax(0,1fr);gap:28px}.ba-prin__photo{max-width:260px}}
+.ba-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ba-path{display:flex;flex-direction:column;background:#fff;border:1px solid #E6E1D6;border-top:3px solid var(--gold);border-radius:12px;padding:32px;text-decoration:none;color:inherit;transition:opacity .2s ease}
+.ba-path:hover{opacity:.85}
+.ba-path__k{font-family:var(--f-body);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8a6d1f;margin-bottom:12px}
+.ba-path h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:28px;line-height:1.05;color:var(--green);margin:0 0 12px}
+.ba-path p{font-family:var(--f-body);font-size:15px;line-height:1.65;color:#3E4A44;margin:0 0 20px}
+.ba-path__go{margin-top:auto;font-family:var(--f-body);font-size:14px;font-weight:600;color:var(--green)}
+@media (max-width:760px){.ba-paths{grid-template-columns:minmax(0,1fr)}.ba-path{padding:24px}}
 </style>
 </head>
 <body>
@@ -113,7 +160,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <a href="/buyers-agency" class="site-nav__link is-active">Buyers</a>
       <a href="/services" class="site-nav__link">Property Owners</a>
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link">Market Intelligence</a>
+      <a href="/insights" class="site-nav__link">Intelligence</a>
       <a href="/about" class="site-nav__link">About</a>
       <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
     </nav>
@@ -127,20 +174,60 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
     <div class="circle" style="top: -112px; right: -112px; transform: none; width: 560px; height: 560px;"></div>
     <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
     <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
-    <div class="container" style="position: relative; z-index: 1;">
+    <div class="container oo-hero" style="position: relative; z-index: 1;">
+      <div class="oo-hero__copy">
       <h1 class="svc-h1">Commercial Buyer’s Agent</h1>
       <div class="brandline h-1" style="max-width: 1000px;">
-        ACQUIRE WITH BETTER <span class="italic" style="color: var(--gold);">information.</span>
+        BUY IT RIGHT. <span class="italic" style="color: var(--gold);">Hold it properly.</span>
       </div>
       <hr class="gold-rule" style="margin-bottom: 28px;" />
       <p class="lede" style="max-width: 680px;">
-        Independent acquisition representation for investors, owner-occupiers and business owners buying commercial property. We act for the buyer through the whole process, and never for the vendor.
+        Principal-led commercial property acquisition across Brisbane, South East Queensland and regional Queensland. Nick O'Toole helps investors and owner-occupiers assess the asset, negotiate the purchase and test the plan for ownership, including opportunities to improve income and value.
       </p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px;">
-        <a href="/contact?service=acquisition#form-card" class="btn btn--lg btn--gold">Discuss Your Acquisition</a>
+        <a href="/preliminary-acquisition-brief" class="btn btn--lg btn--gold">Discuss Your Acquisition Brief</a>
+      </div>
+      <p class="body" style="max-width: 680px; margin-top: 18px; color: rgba(255,255,255,0.8);">Free initial discussion. No obligation. A buyer's agency appointment is separate and subject to agreed fees. We act for the buyer, never the vendor.</p>
+      </div>
+      <div class="oo-side">
+      <figure class="oo-photo"><picture><source type="image/webp" srcset="assets/nick-otoole-client-meeting-800.webp 800w, assets/nick-otoole-client-meeting.webp 1537w" sizes="(max-width: 900px) calc(100vw - 40px), 520px" /><img src="assets/nick-otoole-client-meeting.jpg" alt="Nick O'Toole listening during a client meeting" width="1537" height="1023" fetchpriority="high" decoding="async" /></picture></figure>
+      <ul class="oo-trust" aria-label="About the service">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Personally led by Nick O'Toole</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Buyer-side and independent of vendors</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Investment and owner-occupier acquisitions</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Brisbane, South East Queensland and regional Queensland</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Nick responds within one business day</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Free initial discussion, with no obligation</li>
+      </ul>
       </div>
     </div>
   </section>
+
+  <!-- ─── PATHWAYS ─── -->
+  <section class="section section--light" data-screen-label="Buyer pathways">
+    <div class="container">
+      <div class="svc-lead reveal" style="margin-bottom: 32px;">
+        <div class="eyebrow eyebrow--dim-light">Two kinds of buyer</div>
+        <h2>Buying for income, or buying for the business</h2>
+        <p class="body" style="margin: 0;">An investment is judged on its income and what can be done to improve it. Premises are judged first on how they work for the business. The acquisition process is the same. The questions are different.</p>
+      </div>
+      <div class="ba-paths reveal">
+        <a class="ba-path" href="/buyers-agency-investors">
+          <span class="ba-path__k">Investors</span>
+          <h3>Buy the income. Then improve it.</h3>
+          <p>Private investors, families, syndicates and SMSFs buying for income. Income, lease quality, price and value-add potential tested before you commit.</p>
+          <span class="ba-path__go">Buyer’s agency for investors →</span>
+        </a>
+        <a class="ba-path" href="/buyers-agency-owner-occupiers">
+          <span class="ba-path__k">Owner-occupiers</span>
+          <h3>Buy premises that work for the business.</h3>
+          <p>Businesses buying their own premises, including through an SMSF. Business fit, value, lease vs buy and future flexibility tested before you commit.</p>
+          <span class="ba-path__go">Buyer’s agency for owner-occupiers →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ─── BUYER PROBLEMS ─── -->
   <section class="section section--light" data-screen-label="Buyer problems">
@@ -150,7 +237,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <h2>Where commercial acquisitions come unstuck</h2>
         <p class="body" style="margin: 0;">Every property is presented by someone acting for the seller. These are the six ways buyers get caught.</p>
       </div>
-      <div class="prob-grid reveal">
+      <div class="prob-grid prob-grid--3 reveal">
         <article class="prob"><div class="prob__n">01</div><h3>Paying too much</h3><p>The yield looks acceptable, but the passing rent is above market or the outgoings recovery is weaker than assumed. Both inflate the price you are paying.</p></article>
         <article class="prob"><div class="prob__n">02</div><h3>Buying the wrong property</h3><p>A sound asset that does not suit the business or the investment objective: wrong location, wrong configuration, wrong lease profile, wrong hold period.</p></article>
         <article class="prob"><div class="prob__n">03</div><h3>Due-diligence risks found late</h3><p>Make-good exposure, unapproved works, contamination, non-recoverable outgoings, capital items falling due, a tenant weaker than the covenant suggests.</p></article>
@@ -217,78 +304,29 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
     </div>
   </section>
 
-  <!-- ─── WHO ─── -->
-  <section class="section section--deep">
-    <div class="circle" style="left: -190px; width: 640px; height: 640px;"></div>
-    <div class="circle" style="left: -125px; width: 420px; height: 420px;"></div>
-    <div class="container" style="position: relative; z-index: 1;">
-      <div class="eyebrow eyebrow--gold">Who we represent</div>
-      <h2 class="h-2" style="color: #fff; margin-bottom: 28px; max-width: 820px;">BUILT FOR PRIVATE<br />COMMERCIAL PROPERTY.</h2>
-      <hr class="gold-rule" style="margin-bottom: 48px;" />
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;">
-        <article class="client-card reveal">
-          <div class="client-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <div>
-            <h3 class="client-card__title">Private investors</h3>
-            <p class="client-card__body">Individuals and families building commercial property portfolios, acquiring for income and long-term capital position.</p>
-          </div>
-        </article>
-        <article class="client-card reveal">
-          <div class="client-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <h3 class="client-card__title">Syndicates + SMSFs</h3>
-            <p class="client-card__body">Groups requiring disciplined, evidence-led acquisition and a documented basis for the decision.</p>
-          </div>
-        </article>
-        <article class="client-card reveal">
-          <div class="client-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M10 21v-6h4v6"/></svg>
-          </div>
-          <div style="min-width: 0;">
-            <h3 class="client-card__title">Owner-occupiers</h3>
-            <p class="client-card__body">Businesses acquiring premises for their own occupation, weighing the purchase against continuing to lease.</p>
-            <a href="/lease-vs-buy" class="btn btn--sm btn--outline" style="margin-top: 18px; white-space: normal;">Considering whether to lease instead? Use the Lease vs Buy Calculator →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
+  
+  
   <!-- ─── PRINCIPAL + PROOF ─── -->
   <section class="section" data-screen-label="Principal">
-    <div class="container">
+    <div class="container ba-prin">
+      <figure class="ba-prin__photo reveal"><picture><source type="image/webp" srcset="nick-otoole-headshot.webp" /><img src="nick-otoole-headshot.jpg" alt="Nick O'Toole, Founder and Director, Represent Commercial" width="600" height="761" loading="lazy" decoding="async" /></picture></figure>
+      <div class="ba-prin__copy">
       <div class="svc-lead reveal" style="margin-bottom: 40px;">
         <div class="eyebrow eyebrow--dim-light">Principal-led</div>
         <h2>The person analysing the property is the person negotiating it</h2>
         <p class="body" style="margin: 0;">Nick O'Toole has more than 20 years in commercial property, most of it owner-side: acquisitions, asset management, leasing and development for property owners rather than for sales campaigns. Twenty years of sitting across the table from selling agents is the relevant experience when you are the buyer.</p>
       </div>
+      
       <div class="reveal" style="display: flex; gap: 12px; flex-wrap: wrap;">
         <a href="/case-studies" class="btn btn--lg btn--green">Selected project outcomes</a>
         <a href="/insights" class="btn btn--lg btn--outline-dark">Brisbane market intelligence</a>
         <a href="/about" class="btn btn--lg btn--outline-dark">About Nick</a>
       </div>
+      </div>
     </div>
   </section>
 
-  <!-- ─── RELATED TOOLS ─── -->
-  <section class="section rtools-section rtools-section--ruled" data-screen-label="Related tools">
-    <div class="container">
-      <div class="svc-lead reveal" style="margin-bottom: 32px;">
-        <div class="eyebrow eyebrow--dim-light">Related tools</div>
-        <h2>Test the numbers</h2>
-      </div>
-      <div class="rtools reveal">
-          <article class="rtool"><div class="rtool__kicker">Calculator</div><h3 class="rtool__title">Acquisition Cost &amp; Yield Sensitivity</h3><p class="rtool__body">Build the full cost of an acquisition, including duty, due diligence and finance, and see the yield on total cost.</p><a class="rtool__link" href="/acquisition-yield">Open the Acquisition Cost &amp; Yield Calculator →</a></article>
-          <article class="rtool"><div class="rtool__kicker">Calculator</div><h3 class="rtool__title">Rental Reversion &amp; Value Uplift</h3><p class="rtool__body">Measure how far a passing rent sits below market and what capturing the reversion is worth at a given yield.</p><a class="rtool__link" href="/rental-reversion">Open the Rental Reversion Calculator →</a></article>
-      </div>
-      <p class="rtools__more">The full calculator library is in <a href="/insights">Market Intelligence</a>.</p>
-    </div>
-  </section>
-
+  
   <!-- ─── FAQ ─── -->
   <section class="section section--light" data-screen-label="FAQ">
     <div class="container">
@@ -299,7 +337,9 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <div class="faq reveal">
         <div class="faq__item"><h3 class="faq__q">What does a commercial buyer’s agent do?</h3><p class="faq__a">Acts only for the buyer: setting the brief and criteria, searching on-market and off-market, shortlisting, analysing income, lease profile and market rent, coordinating pre-purchase due diligence, negotiating price and terms, and supporting you through to settlement.</p></div>
         <div class="faq__item"><h3 class="faq__q">How do I know if I am paying too much?</h3><p class="faq__a">By testing the asking price against comparable sale evidence, the passing rent against market rent, and the outgoings recovery against what the lease actually permits. A price can look acceptable on yield and still be too high if the rent sits above market or the recovery position is weaker than assumed.</p></div>
-        <div class="faq__item"><h3 class="faq__q">Do you act for owner-occupiers as well as investors?</h3><p class="faq__a">Yes. Owner-occupier acquisitions are assessed against the business requirement as well as the investment fundamentals, including the option of continuing to lease instead of buying. The <a href="/guide-lease-vs-buy">Lease vs Buy guide</a> explains how that comparison should be framed.</p></div>
+        <div class="faq__item"><h3 class="faq__q">Do you act for owner-occupiers as well as investors?</h3><p class="faq__a">Yes. Investments are assessed on income, lease quality and value-add potential. Owner-occupier acquisitions are assessed against the business requirement as well as the investment fundamentals, including the option of continuing to lease instead of buying. See buyer’s agency for <a href="/buyers-agency-investors">investors</a> and for <a href="/buyers-agency-owner-occupiers">owner-occupiers</a>.</p></div>
+        <div class="faq__item"><h3 class="faq__q">How much does a commercial buyer’s agent cost?</h3><p class="faq__a">Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial acquisition brief discussion is free and does not appoint Represent Commercial.</p></div>
+        <div class="faq__item"><h3 class="faq__q">Can you help if I have already found a property?</h3><p class="faq__a">Yes. Tell Nick which property you are considering and where the transaction stands. We can discuss a scope covering assessment, comparable evidence, due diligence coordination and negotiation, with the services and fees agreed before work begins.</p></div>
         <div class="faq__item"><h3 class="faq__q">Do you act for sellers?</h3><p class="faq__a">No. Represent Commercial does not act for vendors and does not run vendor sales campaigns. That is what makes the advice on the buy side worth having.</p></div>
       </div>
       <p class="svc-note" style="margin-top: 36px;">Precinct evidence: <a href="/Acacia%20Ridge">Acacia Ridge</a>, <a href="/Brendale">Brendale</a>, <a href="/Hemmant">Hemmant</a>, <a href="/Yatala">Yatala</a>. See <a href="/locations">all locations</a>. Once acquired, see <a href="/services">commercial property management</a>.</p>
@@ -348,7 +388,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <div class="footer-col">
         <h3>Intelligence</h3>
         <ul>
-          <li><a href="/insights">Market Intelligence</a></li>
+          <li><a href="/insights">Intelligence</a></li>
           <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
@@ -420,6 +460,6 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 
   <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
-<script src="nav.v14.js" defer></script>
+<script src="nav.v15.js" defer></script>
 </body>
 </html>
