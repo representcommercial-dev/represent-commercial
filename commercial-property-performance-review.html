@@ -707,6 +707,22 @@ details[open]>summary .ba-pm::after{transform:none}
 
 .ba-hero .pr-form .pr-steps li{padding:8px 0;font-size:14.5px}
 .ba-cases--3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.pr-pts{list-style:none;margin:28px 0 0;padding:20px 0 0;border-top:1px solid rgba(255,255,255,.18);display:grid;gap:12px;max-width:600px}
+.pr-pts li{display:flex;gap:12px;align-items:baseline;font-family:var(--f-body);font-size:15.5px;font-weight:500;line-height:1.5;color:#fff}
+.pr-pts li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px)}
+.pr-pts strong{font-family:var(--f-display);font-weight:700;font-size:22px;letter-spacing:.02em;color:var(--gold);margin-right:4px}
+@media (max-width:999px){.ba-hero .tagline{display:none}.ba-hero__form{margin-top:32px}}
+.pr-take{list-style:none;margin:0 0 18px;padding:14px 16px;background:rgba(0,66,37,.05);border-radius:8px;display:grid;gap:8px}
+.pr-take li{display:flex;gap:12px;align-items:baseline;font-family:var(--f-body);font-size:15.5px;font-weight:600;line-height:1.45;color:var(--green)}
+.pr-take li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px)}
+.pr-form .pr-form__sub{font-size:14.5px;margin-bottom:16px}
+.pr-form .form-note{font-size:13.5px;line-height:1.6;color:#3E4A44}
+.pr-form .pr-form__assure{font-size:14.5px}
+.pr-keep{font-family:var(--f-body);font-size:14px;line-height:1.55;color:var(--text-dark);margin:10px 0 0;text-align:center}
+.pr-led{display:block;width:max-content;max-width:100%;white-space:nowrap;line-height:1.3 !important;font-family:var(--f-body);font-size:13px;font-weight:600;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:4px;padding:6px 10px;margin:0 0 18px;align-self:flex-start}
+.pr-cov{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px 32px}
+.pr-cov li{display:flex;gap:12px;align-items:baseline;font-family:var(--f-body);font-size:16px;font-weight:600;line-height:1.5;color:#fff}
+.pr-cov li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -720,7 +736,7 @@ details[open]>summary .ba-pm::after{transform:none}
     </a>
     <div class="pr-hd__acts">
       <a href="tel:+61401825999" class="pr-hd__tel" data-track="click_to_call" data-location="header"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call Nick 0401 825 999</span></a>
-      <a href="#form-card" class="btn btn--sm btn--gold pr-hd__cta" data-cta="header"><span class="pr-long">Request My Property Review</span><span class="pr-short">Request a Review</span></a>
+      <a href="#form-card" class="btn btn--sm btn--gold pr-hd__cta" data-cta="header"><span class="pr-long">Request Your Free Review</span><span class="pr-short">Free Review</span></a>
     </div>
   </div>
 </header>
@@ -732,18 +748,18 @@ details[open]>summary .ba-pm::after{transform:none}
     <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
     <div class="container ba-hero" style="position: relative; z-index: 1;">
       <div class="ba-hero__copy">
-        <p class="svc-h1">Commercial Property Performance Review</p>
-        <h1>Your commercial property needs an asset plan, not just <span style="color: var(--gold);">administration.</span></h1>
+        <p class="svc-h1">Free Commercial Property Performance Review</p>
+        <h1>Know your commercial property’s <span style="color: var(--gold);">three priorities.</span></h1>
         <hr class="gold-rule" style="margin-bottom: 22px;" />
-        <p class="ba-lede">Get an experienced owner-side perspective on your property’s income, lease position and opportunities for improvement, with clear priorities for what to do next.</p>
-        <p style="font-family: var(--f-body); font-size: 16px; font-weight: 600; line-height: 1.5; color: #fff; margin: 18px 0 0; max-width: 600px; padding-left: 14px; border-left: 2px solid var(--gold);">Personally reviewed by Nick O’Toole, with more than 20 years of owner-side commercial property experience.</p>
+        <p class="ba-lede">Understand your property’s current position, what needs attention and the practical next steps. Your review is free.</p>
         <div class="ba-acts">
-          <a href="#form-card" class="btn btn--lg btn--gold" data-cta="hero">Request My Property Review</a>
-          <a href="tel:+61401825999" class="btn btn--lg btn--outline" data-track="click_to_call" data-location="hero">Speak with Nick</a>
+          <a href="#form-card" class="btn btn--lg btn--gold" data-cta="hero">Request Your Free Review</a>
         </div>
-        <p style="font-family: var(--f-body); font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,0.92); margin: 18px 0 0; max-width: 600px;">Nick confirms the scope, information required and any fee before the review begins. No commitment to appoint Represent Commercial.</p>
-        <p style="font-family: var(--f-body); font-size: 15.5px; line-height: 1.6; color: #fff; margin: 22px 0 0; max-width: 600px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.18);"><span style="font-family: var(--f-display); font-weight: 700; font-size: 26px; letter-spacing: 0.02em; color: var(--gold); margin-right: 10px;">$5M → $12M</span>West End mixed-use asset, value supported through a works and leasing programme Nick led. <a href="/case-studies#west-end" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px;">Read the case study<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);"> (opens in a new tab)</span></a></p>
-        <p class="tagline">Exclusively on your side of the table.</p>
+        <ul class="pr-pts" aria-label="About the review">
+          <li><span>Personally reviewed by Nick O’Toole, with more than 20 years of owner-side commercial property experience.</span></li>
+          <li><span><strong>$5M → $12M</strong> West End mixed-use asset, value supported through a full works and leasing programme, not a review alone. Led by Nick O’Toole.</span></li>
+          <li><span>No commitment to appoint Represent Commercial.</span></li>
+        </ul>
       </div>
 
       <div class="ba-hero__form">
@@ -770,17 +786,18 @@ details[open]>summary .ba-pm::after{transform:none}
           <input type="hidden" name="website_submission_id" value="" />
           <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
           <div class="form-card__eyebrow">Commercial Property Performance Review</div>
-          <h2>Request Your Property Review</h2>
-          <p class="pr-form__sub">Name, email and property address are required. Everything else is optional.</p>
+          <h2>Request Your Free Property Review</h2>
+<p class="pr-form__sub">Tell Nick about your property. Name, email and property address are required.</p>
           <div class="form-grid">
             <div class="field" style="margin-bottom: 0;"><label for="pr-first">First name</label><input id="pr-first" name="first_name" type="text" autocomplete="given-name" required /></div>
             <div class="field" style="margin-bottom: 0;"><label for="pr-last">Last name</label><input id="pr-last" name="last_name" type="text" autocomplete="family-name" required /></div>
           </div>
-          <div class="form-grid">
-            <div class="field" style="margin-bottom: 0;"><label for="pr-email">Email</label><input id="pr-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="field" style="margin-bottom: 0;"><label for="pr-phone">Mobile <span style="text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label><input id="pr-phone" name="phone" type="tel" autocomplete="tel" /></div>
-          </div>
+          <div class="field"><label for="pr-email">Email</label><input id="pr-email" name="email" type="email" autocomplete="email" required /></div>
           <div class="field"><label for="pr-address">Property address</label><input id="pr-address" name="property_address" type="text" autocomplete="off" required /></div>
+          <div class="field"><label for="pr-phone">Mobile <span style="text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label><input id="pr-phone" name="phone" type="tel" autocomplete="tel" /></div>
+            <details class="so-acc" style="margin: 4px 0 18px; border-bottom: 1px solid rgba(0,66,37,0.14);">
+              <summary style="padding: 14px 0;"><span style="font-family: var(--f-body); font-size: 15px; font-weight: 700; color: var(--green);">Add more property details</span><span class="so-pm" aria-hidden="true"></span></summary>
+              <div style="padding: 4px 0 2px;">
             <div class="field">
             <label for="pr-status">What’s happening with the property? <span style="text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label>
             <select id="pr-status" name="property_status">
@@ -795,14 +812,11 @@ details[open]>summary .ba-pm::after{transform:none}
               <option>Other</option>
             </select>
           </div>
-            <details class="so-acc" style="margin: 4px 0 18px; border-bottom: 1px solid rgba(0,66,37,0.14);">
-              <summary style="padding: 14px 0;"><span style="font-family: var(--f-body); font-size: 15px; font-weight: 700; color: var(--green);">Add more property details</span><span class="so-pm" aria-hidden="true"></span></summary>
-              <div style="padding: 4px 0 2px;">
                 <div class="field"><label for="pr-concern">Main concern or decision <span style="text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label><textarea id="pr-concern" name="owner_concern" rows="3"></textarea></div>
               </div>
             </details>
-            <button type="submit" class="form-submit">Request My Property Review</button>
-          <p class="pr-form__assure">Nick will review your enquiry and contact you to confirm the scope, information required and any fee before the review begins. Submitting does not commit you to appointing Represent Commercial.</p>
+            <button type="submit" class="form-submit">Request Your Free Review</button>
+          <p class="pr-form__assure">The review and follow-up discussion are free. Any subsequent services are optional, with scope and fees agreed before you proceed.</p>
           <div class="pr-err" id="pr-err" role="alert"></div>
           <p class="form-note">By submitting, you agree to Represent Commercial contacting you about this request. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
@@ -818,76 +832,44 @@ details[open]>summary .ba-pm::after{transform:none}
     </div>
   </section>
 
-  <section class="so-proof-s" aria-label="About the review" data-screen-label="01b Proof">
-    <ul class="so-proof so-proof--4 container">
-      <li><p class="so-proof__k">Personally reviewed by Nick O'Toole</p></li>
-      <li><p class="so-proof__k">For owners facing a lease, leasing or management decision</p></li>
-      <li><p class="so-proof__k">Brisbane and South East Queensland</p></li>
-      <li><p class="so-proof__k">No commitment to appoint Represent Commercial</p></li>
-    </ul>
-  </section>
-
   <section class="section section--light" data-screen-label="02 What you receive">
     <div class="container">
-      <p class="ba-k">What you receive</p>
+      <p class="ba-k">What you receive and how it works</p>
       <h2 class="ba-h2">Know what needs attention. Decide what to do next.</h2>
+      <p class="ba-p">Receive a formal written report covering your property’s position, three priorities and recommended next steps. Once you’ve received it, discuss the findings with Nick by phone or video call.</p>
       <div class="ba-paths" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));">
-        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">01</p><h3>Property position</h3><p class="ba-path__q" style="margin:0;">A concise view of the income, lease events and material issues evident from the information reviewed.</p></div>
-        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">02</p><h3>Three priorities</h3><p class="ba-path__q" style="margin:0;">The actions Nick would prioritise, with the commercial reasoning behind them.</p></div>
-        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">03</p><h3>Recommended next steps</h3><p class="ba-path__q" style="margin:0;">What to investigate, decide or implement next, including where further specialist advice is needed.</p></div>
+        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">01</p><h3>Property position</h3><p class="ba-path__q" style="margin:0;">Where the income, leases and material issues stand today.</p></div>
+        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">02</p><h3>Three priorities</h3><p class="ba-path__q" style="margin:0;">The three actions Nick would prioritise, and why.</p></div>
+        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">03</p><h3>Recommended next steps</h3><p class="ba-path__q" style="margin:0;">What to investigate, decide or implement next.</p></div>
       </div>
-      <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 24px 56px; align-items: start; padding-top: 32px; border-top: 1px solid rgba(0,66,37,0.14);">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px 64px;align-items:start;margin-top:56px;">
         <div>
-          <h3 style="font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:28px;line-height:1.05;color:var(--green);margin:0 0 12px;">Start with the property and your main concern.</h3>
-          <p class="ba-p">Nick first confirms the scope and the information needed. Documents can be requested after your enquiry. You do not need to send them to start.</p>
-          <p class="ba-p">Findings depend on the information available, and material gaps will be identified.</p>
-        </div>
-        <ul style="list-style:none;margin:0;padding:0;" aria-label="Useful information, where available">
-          <li style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:16px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px);"></span><span>Property address</span></li>
-          <li style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:16px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px);"></span><span>Current lease or tenancy summary</span></li>
-          <li style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:16px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px);"></span><span>Recent income and outgoings information</span></li>
-          <li style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:16px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px);"></span><span>Your main question or upcoming decision</span></li>
-        </ul>
-      </div>
-      <p class="ba-fine">The review is not a valuation, building inspection, engineering report, or legal, tax or financial advice. Further investigation or specialist advice may be required before particular decisions are made.</p>
-    </div>
-  </section>
-
-  <section class="section section--deep so-dk" data-screen-label="03 When useful">
-    <div class="circle" style="width: 900px; height: 900px; right: -300px;"></div>
-    <div class="container" style="position: relative; z-index: 1;">
-      <p class="so-k">Timing</p>
-      <h2 class="so-h2">When is a review useful?</h2>
-      <ul style="list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px 24px;">
-        <li style="border-top: 2px solid var(--gold); padding-top: 18px;"><h3 style="font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:24px;line-height:1.05;color:#fff;margin:0 0 10px;">An approaching lease expiry</h3><p style="font-family:var(--f-body);font-size:16px;line-height:1.6;color:rgba(255,255,255,0.85);margin:0;">You need a plan for renewal, reletting or the next stage of ownership.</p></li>
-        <li style="border-top: 2px solid var(--gold); padding-top: 18px;"><h3 style="font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:24px;line-height:1.05;color:#fff;margin:0 0 10px;">Vacancy or leasing uncertainty</h3><p style="font-family:var(--f-body);font-size:16px;line-height:1.6;color:rgba(255,255,255,0.85);margin:0;">You want to understand what may be holding the property back and what to investigate.</p></li>
-        <li style="border-top: 2px solid var(--gold); padding-top: 18px;"><h3 style="font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:24px;line-height:1.05;color:#fff;margin:0 0 10px;">Unclear property performance</h3><p style="font-family:var(--f-body);font-size:16px;line-height:1.6;color:rgba(255,255,255,0.85);margin:0;">You want a clearer view of income, ownership costs and improvement priorities.</p></li>
-        <li style="border-top: 2px solid var(--gold); padding-top: 18px;"><h3 style="font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:24px;line-height:1.05;color:#fff;margin:0 0 10px;">Management without direction</h3><p style="font-family:var(--f-body);font-size:16px;line-height:1.6;color:rgba(255,255,255,0.85);margin:0;">You receive updates but want clearer recommendations and a forward plan.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" data-screen-label="04 How it works">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 40px 64px; align-items: start;">
-        <div>
-          <p class="ba-k">What the review considers</p>
-          <h2 class="ba-h2">Four themes, weighted to your property.</h2>
-          <ul style="list-style:none;margin:20px 0 0;padding:0;">
-          <li style="padding:14px 0;border-top:1px solid rgba(0,66,37,0.14);"><strong style="display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:20px;color:var(--green);margin-bottom:4px;">Income and leases</strong><span style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:var(--text-dark);">Rent, lease events, vacancy and income quality.</span></li>
-          <li style="padding:14px 0;border-top:1px solid rgba(0,66,37,0.14);"><strong style="display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:20px;color:var(--green);margin-bottom:4px;">Costs and condition</strong><span style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:var(--text-dark);">Ownership costs, maintenance and capital expenditure evident from the available information.</span></li>
-          <li style="padding:14px 0;border-top:1px solid rgba(0,66,37,0.14);"><strong style="display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:20px;color:var(--green);margin-bottom:4px;">Opportunities</strong><span style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:var(--text-dark);">Practical leasing, presentation or asset improvements worth investigating.</span></li>
-          <li style="padding:14px 0;border-top:1px solid rgba(0,66,37,0.14);"><strong style="display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:20px;color:var(--green);margin-bottom:4px;">Action priorities</strong><span style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:var(--text-dark);">What needs attention first and what further information or advice is required.</span></li>
-          </ul>
-        </div>
-        <div>
-          <p class="ba-k">How it works</p>
-          <h2 class="ba-h2">Three steps.</h2>
-          <ol class="ba-steps" style="grid-template-columns:1fr;gap:24px;margin-top:20px;">
-          <li class="ba-step"><p class="ba-step__n">01 · ENQUIRE</p><h3>Tell Nick about the property</h3><p>Tell Nick about the property and the decision or concern.</p></li>
-          <li class="ba-step"><p class="ba-step__n">02 · CONFIRM AND REVIEW</p><h3>Agree the scope</h3><p>Agree the scope, cost and required information, then review the available material.</p></li>
-          <li class="ba-step"><p class="ba-step__n">03 · DISCUSS THE PRIORITIES</p><h3>Agree what happens next</h3><p>Discuss the findings and recommended next steps.</p></li>
+          <h3 style="font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:28px;line-height:1.02;color:var(--green);margin:0 0 18px;">Four steps</h3>
+          <ol style="list-style:none;margin:0;padding:0;">
+            <li style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px;padding:16px 0;border-top:1px solid rgba(0,66,37,0.14);"><span style="font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2;color:#806318;">01</span><span><span style="display:block;font-family:var(--f-body);font-size:16px;font-weight:700;line-height:1.4;color:var(--green);">Tell Nick about your property</span><span style="display:block;font-family:var(--f-body);font-size:15.5px;line-height:1.55;color:var(--text-dark);margin-top:2px;">Share the address and the decision you are facing.</span></span></li>
+            <li style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px;padding:16px 0;border-top:1px solid rgba(0,66,37,0.14);"><span style="font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2;color:#806318;">02</span><span><span style="display:block;font-family:var(--f-body);font-size:16px;font-weight:700;line-height:1.4;color:var(--green);">Confirm the review scope</span><span style="display:block;font-family:var(--f-body);font-size:15.5px;line-height:1.55;color:var(--text-dark);margin-top:2px;">Nick confirms the scope and the information needed.</span></span></li>
+            <li style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px;padding:16px 0;border-top:1px solid rgba(0,66,37,0.14);"><span style="font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2;color:#806318;">03</span><span><span style="display:block;font-family:var(--f-body);font-size:16px;font-weight:700;line-height:1.4;color:var(--green);">Receive your free written report</span><span style="display:block;font-family:var(--f-body);font-size:15.5px;line-height:1.55;color:var(--text-dark);margin-top:2px;">Your property’s position, three priorities and recommended next steps.</span></span></li>
+            <li style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px;padding:16px 0;border-top:1px solid rgba(0,66,37,0.14);"><span style="font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.2;color:#806318;">04</span><span><span style="display:block;font-family:var(--f-body);font-size:16px;font-weight:700;line-height:1.4;color:var(--green);">Discuss the findings</span><span style="display:block;font-family:var(--f-body);font-size:15.5px;line-height:1.55;color:var(--text-dark);margin-top:2px;">Talk them through with Nick by phone or video call.</span></span></li>
           </ol>
+        </div>
+        <div style="display:grid;gap:32px;">
+          <div>
+            <p style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#806318;margin:0 0 14px;">What the review considers</p>
+            <ul style="list-style:none;margin:0;padding:0;">
+              <li style="display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15.5px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px);"></span><span><strong style="color:var(--green);">Income and leases.</strong> Rent, lease events, vacancy and income quality.</span></li>
+              <li style="display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15.5px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px);"></span><span><strong style="color:var(--green);">Costs and condition.</strong> Ownership costs, maintenance and capital expenditure.</span></li>
+              <li style="display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15.5px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px);"></span><span><strong style="color:var(--green);">Opportunities.</strong> Leasing, presentation or asset improvements worth investigating.</span></li>
+              <li style="display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15.5px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px);"></span><span><strong style="color:var(--green);">Action priorities.</strong> What needs attention first, and what can wait.</span></li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#806318;margin:0 0 14px;">Most useful when</p>
+            <ul style="list-style:none;margin:0;padding:0;">
+              <li style="display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15.5px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px);"></span><span>A lease expiry is approaching and you need a plan for renewal or reletting.</span></li>
+              <li style="display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15.5px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px);"></span><span>Vacancy or leasing uncertainty is holding the property back.</span></li>
+              <li style="display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15.5px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-2px);"></span><span>You receive management updates but no clear forward plan.</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -895,48 +877,48 @@ details[open]>summary .ba-pm::after{transform:none}
 
   <!-- EVIDENCE MODULE: approved 7 October 2026. Card copy drawn only from /case-studies (West End, Stafford, Spring Hill).
        A future de-identified PPR example may be added here once approved. Nothing may be fabricated. -->
-  <section class="section section--deep ba-dk ba-cases-s" data-screen-label="05 Experience">
+  <section class="section section--deep ba-dk ba-cases-s" data-screen-label="03 Experience">
     <div class="circle" style="width: 900px; height: 900px; right: -300px;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="ba-cases__hd">
         <p class="ba-k">Commercial property experience</p>
         <h2 class="ba-h2">Experience behind the advice.</h2>
-        <p class="ba-p">Outcomes reflect projects Nick O'Toole led, through full works and leasing programmes rather than a review alone. Figures are indicative of the projects described and are not a forecast of future results.</p>
+        <p class="ba-p">Outcomes reflect full works and leasing programmes, not a review alone. Figures are not a forecast.</p>
       </div>
       <div class="ba-cases">
         <article class="ba-case">
           <img class="ba-case__img" src="assets/west-end-property-500.webp" srcset="assets/west-end-property-500.webp 500w, assets/west-end-property.webp 800w" sizes="(max-width:600px) calc(100vw - 92px), (max-width:999px) 584px, 380px" width="500" height="281" alt="The West End mixed-use building, viewed from the street corner" loading="lazy" decoding="async" />
           <p class="ba-case__tag">West End · Value-add unlocked</p>
           <h3>West End</h3>
+          <p class="pr-led">Led by Nick O’Toole</p>
           <div class="ba-figs" style="grid-template-columns:1fr;">
             <div><div class="ba-fig__v">$5M → $12M</div><div class="ba-fig__k">Value through works and leasing</div></div>
           </div>
-          <dl style="margin: 0 0 20px;">
-            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Situation</dt><dd style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.88);margin:0;">A mixed-use asset trading below its true potential, requiring capital works and active leasing to unlock it.</dd>
-            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Approach</dt><dd style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.88);margin:0;">Managed the acquisition, scoped and delivered the refurbishment, and led the leasing, aligning every decision to the hold thesis.</dd>
-            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Outcome</dt><dd style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.88);margin:0;">Supported a value increase from $5M to $12M through the works and leasing programme, with income and tenant quality lifted alongside.</dd>
+          <dl style="margin: 0 0 4px;">
+            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Challenge</dt><dd style="font-family:var(--f-body);font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.94);margin:0;">A mixed-use asset trading below its potential.</dd>
+            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Action</dt><dd style="font-family:var(--f-body);font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.94);margin:0;">Acquisition, refurbishment and leasing, aligned to the hold thesis.</dd>
+            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Outcome</dt><dd style="font-family:var(--f-body);font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.94);margin:0;">Value supported from $5M to $12M, with income and tenant quality lifted.</dd>
           </dl>
-          <a href="/case-studies#west-end" class="ba-link" style="margin-top:auto;" target="_blank" rel="noopener">Read the West End case study<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);"> (opens in a new tab)</span></a>
         </article>
         <article class="ba-case">
           <img class="ba-case__img" src="assets/spring-hill-property-500.webp" srcset="assets/spring-hill-property-500.webp 500w, assets/spring-hill-property.webp 800w" sizes="(max-width:600px) calc(100vw - 92px), (max-width:999px) 584px, 380px" width="500" height="375" alt="The existing building on the Spring Hill site" loading="lazy" decoding="async" />
           <p class="ba-case__tag">Spring Hill · Repositioned with development uplift</p>
           <h3>Spring Hill</h3>
+          <p class="pr-led">Led by Nick O’Toole</p>
           <div class="ba-figs" style="grid-template-columns:1fr;">
             <div><div class="ba-fig__v">100%</div><div class="ba-fig__k">Occupancy after repositioning</div></div>
           </div>
-          <dl style="margin: 0 0 20px;">
-            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Situation</dt><dd style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.88);margin:0;">A vacant, purpose-built former government building. Its built-to-purpose design made it tough to lease.</dd>
-            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Approach</dt><dd style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.88);margin:0;">Ran the acquisition and a full refurbishment and drove a leasing campaign to reset the tenancy profile and income, alongside a planning uplift to a 15-storey envelope.</dd>
-            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Outcome</dt><dd style="font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.88);margin:0;">The repositioned asset reached full occupancy and returned a 6% yield on total cost. The planning uplift increased the site's value by $15M+.</dd>
+          <dl style="margin: 0 0 4px;">
+            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Challenge</dt><dd style="font-family:var(--f-body);font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.94);margin:0;">A vacant former government building, hard to lease because of its purpose-built design.</dd>
+            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Action</dt><dd style="font-family:var(--f-body);font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.94);margin:0;">Acquisition, full refurbishment, a leasing campaign and a planning uplift to a 15-storey envelope.</dd>
+            <dt style="font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:16px 0 6px;">Outcome</dt><dd style="font-family:var(--f-body);font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.94);margin:0;">Full occupancy and a 6% yield on total cost. The planning uplift added $15M+ to site value.</dd>
           </dl>
-          <a href="/case-studies#spring-hill" class="ba-link" style="margin-top:auto;" target="_blank" rel="noopener">Read the Spring Hill case study<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);"> (opens in a new tab)</span></a>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section" data-screen-label="06 Adviser">
+  <section class="section" data-screen-label="04 Adviser">
     <div class="container">
       <div class="ba-adv">
         <picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="Nick O’Toole, Founder and Director, Represent Commercial" width="220" height="275" loading="lazy" decoding="async" /></picture>
@@ -944,7 +926,7 @@ details[open]>summary .ba-pm::after{transform:none}
           <p class="ba-k">Adviser</p>
           <h2 class="ba-h2">Personally reviewed by Nick O’Toole</h2>
           <p class="ba-adv__role">Founder &amp; Director, Represent Commercial</p>
-          <p class="ba-p">Principal-led commercial property advice backed by more than 20 years of owner-side experience. Nick personally reviews each Property Performance Review and remains accountable for the advice provided by Represent Commercial.</p>
+          <p class="ba-p">More than 20 years of owner-side commercial property experience. Nick personally reviews every request and brings practical judgement to income, leases, risk and asset priorities.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px 24px;">
             
             <a href="tel:+61401825999" class="ba-link" data-track="click_to_call" data-location="adviser">Call Nick on 0401 825 999</a>
@@ -961,42 +943,32 @@ details[open]>summary .ba-pm::after{transform:none}
     </div>
   </section>
 
-  <section class="section section--green pr-dk" data-screen-label="07 Implementation">
-    <div class="circle" style="width: 900px; height: 900px; right: -300px;"></div>
-    <div class="container" style="position: relative; z-index: 1;">
-      <div class="eyebrow eyebrow--gold">After the review</div>
-      <h2 class="h-4" style="color: #fff; margin: 0 0 20px;">A clear plan needs practical <span style="color: var(--gold);">follow-through.</span></h2>
-      <p class="pr-p" style="max-width: 760px;">Where further support is useful, asset management, property management or leasing can be separately scoped and agreed to help implement the priorities. Asset management is available throughout Queensland. Property management and leasing are available in Brisbane.</p>
-      <p class="pr-p" style="max-width: 760px;">Requesting or completing a review does not appoint Represent Commercial for ongoing services.</p>
-    </div>
-  </section>
-
-  <section class="section section--light" data-screen-label="08 FAQ">
+  <section class="section section--light" data-screen-label="05 FAQ">
     <div class="container">
       <p class="so-k">Common questions</p>
       <h2 class="so-h2">Questions owners ask</h2>
       <div class="so-faq">
-        <details class="so-acc"><summary><h3>What does the review include?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>A focused review of one commercial property, based on the information supplied, covering its position, the priorities Nick would act on and recommended next steps. The scope is confirmed with you before the review begins.</p></details>
-        <details class="so-acc"><summary><h3>What does it cost, and who is it for?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>The review is for owners of commercial property facing a lease, leasing, expenditure or management decision. Nick confirms the scope and any fee before the review begins, so you know the terms before committing.</p></details>
-        <details class="so-acc"><summary><h3>What information do I need to provide?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Start with the property address and your main concern. Where available, a lease or tenancy summary and recent income and outgoings information help. Nick will ask for anything else once the scope is agreed.</p></details>
+        <details class="so-acc"><summary><h3>What exactly will I receive?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>A formal written report outlining your property’s current position, three priorities and recommended next steps. After receiving your report, you can discuss the findings with Nick by phone or video call.</p></details>
+        <details class="so-acc"><summary><h3>Is the property review really free?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. The Commercial Property Performance Review is free. If you choose to engage Represent Commercial for further services afterwards, we’ll agree the scope and fees with you before proceeding.</p></details>
+        <details class="so-acc"><summary><h3>What information do I need to provide?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Start with the property address. A lease or tenancy summary and recent income and outgoings help if you have them. Nick will ask for anything else once the scope is agreed.</p></details>
         <details class="so-acc"><summary><h3>Is a site inspection included?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Whether an inspection is needed is confirmed as part of the scope for your property.</p></details>
-        <details class="so-acc"><summary><h3>Do I need to change property managers to request a review?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>No. The purpose of the Review is to understand the property’s current position before recommending a major change. The appropriate outcome may be to continue the existing strategy, investigate a particular issue, change an aspect of the approach or take no immediate action.</p></details>
-        <details class="so-acc"><summary><h3>Are ongoing services optional?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Asset management, property management and leasing are separate services, scoped and agreed only if you choose to proceed.</p></details>
+        <details class="so-acc"><summary><h3>Can I retain my current property manager?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. The review looks at the property’s position before any change is recommended. The right outcome may be to continue the current approach, adjust one part of it or take no immediate action.</p></details>
+        <details class="so-acc"><summary><h3>Are ongoing services optional?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Asset management, property management and leasing are separate services, scoped and agreed only if you choose to proceed. Implementation is not included in the review.</p></details>
         <details class="so-acc"><summary><h3>Where do you work?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Asset management is available throughout Queensland. Property management and leasing are available in Brisbane.</p></details>
-        <details class="so-acc"><summary><h3>Is a Property Performance Review a valuation?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>No. It is not a formal valuation, building inspection, engineering report, or legal, tax or financial advice. Where one of those is needed before a decision, the review will say so.</p></details>
+        <details class="so-acc"><summary><h3>Is a Property Performance Review a valuation?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>No. It is not a valuation, building inspection, engineering report, or legal, tax or financial advice. Where one of those is needed, the review will say so.</p></details>
       </div>
     </div>
   </section>
 
-  <section class="section section--green" data-screen-label="09 Final CTA">
+  <section class="section section--green" data-screen-label="06 Final CTA">
     <div class="circle" style="width: 900px; height: 900px; right: -300px;"></div>
     <div class="container svc-close pr-close" style="position: relative; z-index: 1;">
       <div class="reveal">
         <h2 class="h-4" style="color: #fff; margin: 0;">Know your property’s priorities before the next major <span style="color: var(--gold);">decision.</span></h2>
       </div>
       <div class="reveal">
-        <p class="lede" style="margin: 0 0 28px; color: rgba(255,255,255,0.82);">Start with an experienced review of the position and a clear discussion of what to do next.</p>
-        <a href="#form-card" class="btn btn--lg btn--gold" data-cta="final">Request My Property Review</a>
+        <p class="lede" style="margin: 0 0 28px; color: rgba(255,255,255,0.82);">Start with a free owner-side written review and a follow-up discussion with Nick.</p>
+        <a href="#form-card" class="btn btn--lg btn--gold" data-cta="final">Request Your Free Review</a>
         <p class="pr-close__by">Personally reviewed by Nick O’Toole, Founder &amp; Director, Represent Commercial.</p>
       </div>
     </div>
