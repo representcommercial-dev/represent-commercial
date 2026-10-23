@@ -453,8 +453,7 @@ async function findExistingOpportunity(env, opts) {
   });
   const res = await ghl('/opportunities/search?' + qs.toString(), env, { method: 'GET', version: GHL_OPPORTUNITIES_VERSION });
   if (!res.ok || !res.data || !Array.isArray(res.data.opportunities)) {
-    if (REVIEW_STREAMS[opts.formStream]) throw new Error('Could not verify existing review opportunities; creation deferred.');
-    return null;
+    throw new Error('Could not verify existing opportunities; creation deferred.');
   }
 
   for (const opp of res.data.opportunities) {
@@ -465,6 +464,12 @@ async function findExistingOpportunity(env, opts) {
       normal(values[CF.websitePropertyAddress]) === normal(opts.propertyAddress);
     const sameService = normal(values[CF.enquiryService]) === normal(opts.enquiryService);
     if (sameProperty && sameService && (!REVIEW_STREAMS[opts.formStream] || opp.status === 'open')) return opp;
+
+    // The compact investor form does not collect a property address. Reuse an
+    // open buyer-side opportunity for the same contact and service so repeat
+    // enquiries enrich one active acquisition conversation rather than
+    // creating parallel opportunities. Closed opportunities remain history.
+    if (opts.route === ROUTES.buyer && !opts.propertyAddress && sameService && opp.status === 'open') return opp;
   }
   return null;
 }
