@@ -760,6 +760,7 @@ window.rcTrack = function (name, params) {
   var UNCERTAIN = 'We could not confirm that your enquiry was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
   var sent = false;
   var measured = {};
+  var adsMeasured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
 
   form.addEventListener('submit', function (e) {
@@ -835,13 +836,15 @@ window.rcTrack = function (name, params) {
         }
       } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
 
-      // PLACEHOLDER: Google Ads "Investor Acquisition Enquiry" conversion (not yet created).
-      // Do NOT reuse the Commercial Property Performance Review conversion label.
-      // When the dedicated label exists, fire here only (Web3Forms success confirmed), once per submission:
-      //   if (typeof window.gtag === 'function' && sid) {
-      //     window.gtag('event', 'conversion', { send_to: 'AW-18457265873/NEW_INVESTOR_LABEL', transaction_id: sid });
-      //   }
-      // Wrap in try/catch so tracking errors never interrupt the HighLevel handoff below.
+      // Dedicated investor enquiry conversion, only after confirmed Web3Forms success.
+      // Tracking failures must never interrupt the HighLevel handoff below.
+      try {
+        var adsSid = payload.website_submission_id;
+        if (payload.enquiry_type === 'acquisition' && adsSid && !adsMeasured[adsSid] && typeof window.gtag === 'function') {
+          window.gtag('event', 'conversion', { send_to: 'AW-18457265873/0EqOCLDN86YdENGNjuFE', transaction_id: adsSid });
+          adsMeasured[adsSid] = true;
+        }
+      } catch (trackingError) { console.error('Google Ads investor measurement:', trackingError); }
 
       // HighLevel handoff via the existing Function (buyer pipeline route).
       var crmPayload = {};
