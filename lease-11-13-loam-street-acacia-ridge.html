@@ -196,7 +196,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -333,7 +333,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
         <div class="lst-leased when-leased">
           <div class="eyebrow eyebrow--gold">Leased</div>
           <p class="lede" style="font-size: 15px; margin: 0 0 24px;">This property has been leased. If you are looking for similar space, or own a property you would like leased, talk to Nick.</p>
-          <a href="/contact" class="btn btn--lg btn--gold">Discuss a property</a>
+          <a href="/contact" class="btn btn--lg btn--gold">Talk to Nick</a>
         </div>
         <div class="form-card when-available" id="form-card">
           <form id="listing-form" method="POST" action="https://api.web3forms.com/submit">
@@ -348,9 +348,9 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
             <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
             <div class="form-card__eyebrow">Book an inspection · 11/13 Loam Street</div>
             <div class="form-grid">
-              <div class="field">
-                <label for="name">Full Name</label>
-                <input id="name" name="name" type="text" autocomplete="name" required />
+              <div class="form-grid">
+                <div class="field" style="margin-bottom: 0;"><label for="first_name">First name</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
+                <div class="field" style="margin-bottom: 0;"><label for="last_name">Last name</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
               </div>
               <div class="field">
                 <label for="phone">Mobile</label>
@@ -496,6 +496,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
       if (status) status.textContent = '';
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
       var payload = new FormData(form);
+      payload.set('name', [payload.get('first_name'), payload.get('last_name')].map(function (s) { return String(s || '').trim(); }).filter(Boolean).join(' '));
       payload.set('replyto', String(payload.get('email') || ''));
       payload.set('listing_status', document.documentElement.getAttribute('data-listing-status') || '');
       var controller = ('AbortController' in window) ? new AbortController() : null;

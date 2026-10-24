@@ -333,7 +333,65 @@ details[open]>summary .ba-pm::after{transform:none}
 @media (max-width:600px){.ba-hd__cta .ba-long{display:none}}
 .ba-form .ba-acc p.ba-help{font-size:13px;line-height:1.5;padding:0;margin:0 0 6px;max-width:none}
 .ba-close .ba-h2{margin-bottom:16px}
+.ba-ico{display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;border-radius:10px;background:rgba(0,66,37,.08);color:var(--green);margin:0 0 18px}
+.ba-fhd{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;align-items:center;margin:0 0 16px}
+.ba-fhd img{display:block;width:64px;height:64px;object-fit:cover;object-position:50% 18%;border-radius:50%;background:#dfe3dc}
+.ba-fhd h2{margin:0 !important}
+@media (max-width:600px){.ba-fhd{grid-template-columns:52px minmax(0,1fr);gap:12px}.ba-fhd img{width:52px;height:52px}}
+.ba-led{font-family:var(--f-body);font-size:16px;font-weight:500;line-height:1.5;color:var(--gold);margin:16px 0 0}
+.ba-after{font-family:var(--f-body);font-size:15px;font-weight:600;line-height:1.45;color:var(--green);margin:10px 0 0;text-align:center}
+.ba-scope{font-family:var(--f-body);font-size:14px;line-height:1.45;color:var(--text-dark);margin:4px 0 0;text-align:center}
+/* Hero r15: compact first screen */
+.section--hero.ba-hero-s{padding:64px 48px 64px;min-height:0}
+.ba-hero{max-width:1200px;grid-template-columns:minmax(0,1fr) minmax(0,420px);column-gap:clamp(48px,6vw,96px);align-items:center}
+.ba-aud{font-size:13px;letter-spacing:.16em;line-height:1.4;color:rgba(255,255,255,.78);margin:0 0 18px}
+.ba-hero h1{font-size:clamp(48px,4.6vw,68px);line-height:.94;letter-spacing:.015em;margin:0 0 24px}
+.ba-h1l+.ba-h1l{margin-top:2px}
+.ba-lede{font-size:18px;line-height:1.55;max-width:470px;color:rgba(255,255,255,.9)}
+.ba-led{font-size:15.5px;margin:20px 0 0}
+.ba-hero .ba-form{padding:28px 30px}
+.ba-hero .ba-form .ba-fhd{margin:0 0 20px;padding:0;border:0}
+.ba-hero .ba-form .ba-fhd h2{font-size:26px;line-height:1.02}
+.ba-fhd__by{font-weight:500;color:var(--text-dark)}
+.ba-hero .ba-form .field{margin-bottom:12px}
+.ba-hero .ba-form .form-grid{margin-bottom:16px}
+.ba-hero .ba-form .form-submit{margin-top:0}
+.ba-after{margin-top:12px}
+.ba-scope{font-size:13.5px;color:#3E4A44}
+.ba-hero .ba-form .form-note{font-size:13.5px;margin-top:2px}
+@media (max-width:1100px){.ba-hero h1{font-size:clamp(44px,4.6vw,56px)}}
+@media (max-width:999px){
+  .section--hero.ba-hero-s{padding:44px 32px 48px}
+  .ba-hero{max-width:640px;grid-template-columns:minmax(0,1fr);row-gap:28px}
+  .ba-hero__form{max-width:none}
+  .ba-hero h1{font-size:clamp(40px,7vw,52px)}
+}
+@media (max-width:600px){
+  .section--hero.ba-hero-s{padding:28px 20px 32px}
+  .ba-hero{row-gap:24px}
+  .ba-aud{font-size:12px;letter-spacing:.14em;margin-bottom:12px}
+  .ba-hero h1{font-size:clamp(34px,9.6vw,42px);line-height:.98;margin-bottom:16px}
+  .ba-h1l{display:block}
+  .ba-lede{font-size:17px}
+  .ba-led{margin-top:14px}
+  .ba-hero .ba-form{padding:22px 20px}
+  .ba-hero .ba-form .ba-fhd{margin-bottom:16px}
+  .ba-hero .ba-form .ba-fhd h2{font-size:23px}
+}
+
+.ba-fhd__by{font-family:var(--f-body);font-size:15px;line-height:1.4;margin:4px 0 0}
+.ba-done h2{text-transform:uppercase}
+.ba-book{margin:20px 0 0;padding:20px 0 0;border-top:1px solid var(--border-light, #E2E6E3);scroll-margin-top:96px}
+.ba-book h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:22px;line-height:1.1;color:var(--green);margin:0 0 10px}
+.ba-book h3:focus{outline:none}
+.ba-book .ba-book__note{font-size:14px !important;line-height:1.6 !important;color:var(--text-mid, #4A5550) !important;margin:0 0 10px !important}
+.ba-book__frame{width:100%;max-width:100%;min-width:0;margin:16px 0 14px;border:1px solid var(--border-light, #E2E6E3);border-radius:8px;overflow:hidden;background:#fff}
+.ba-book__frame iframe{display:block;width:100%;max-width:100%;height:760px;border:0}
+.ba-book__link{display:inline-block;font-family:var(--f-body);font-size:15px}
+.ba-done__more{margin-top:22px;padding-top:16px;border-top:1px solid var(--border-light, #E2E6E3)}
+@media (max-width:600px){.ba-book__frame iframe{height:900px}.ba-book{scroll-margin-top:80px}}
 </style>
+<style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -346,7 +404,7 @@ details[open]>summary .ba-pm::after{transform:none}
     </a>
     <div class="ba-hd__acts">
       <a href="tel:+61401825999" class="ba-hd__tel" data-location="header"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>0401 825 999</span></a>
-      <a href="#enquiry" class="btn btn--sm btn--gold ba-hd__cta" data-cta="header"><span class="ba-long">Discuss My Premises Purchase</span><span class="ba-short">Enquire</span></a>
+      <a href="#enquiry" class="btn btn--sm btn--gold ba-hd__cta" data-cta="header"><span class="ba-long">Discuss My SMSF Property Plans</span><span class="ba-short">Enquire</span></a>
     </div>
   </div>
 </header>
@@ -358,17 +416,10 @@ details[open]>summary .ba-pm::after{transform:none}
     <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
     <div class="container ba-hero" style="position: relative; z-index: 1;">
       <div class="ba-hero__copy">
-        <p class="svc-h1">SMSF Business Premises | Queensland</p>
-        <h1>Your business needs premises. <span style="display: block; margin-top: 10px; color: var(--gold);">Could your SMSF own them?</span></h1>
-        <hr class="gold-rule" style="margin-bottom: 22px;" />
+        <p class="svc-h1 ba-aud">SMSF Business Premises · Queensland</p>
+        <h1><span class="ba-h1l">Your business needs premises.</span> <span class="ba-h1l" style="color: var(--gold);">Could your SMSF own them?</span></h1>
         <p class="ba-lede">Once your advisers confirm the SMSF strategy and funding, Nick helps you find, assess and negotiate premises that work for your business.</p>
-        <p style="font-family: var(--f-body); font-size: 16px; font-weight: 600; line-height: 1.5; color: #fff; margin: 18px 0 0; max-width: 600px; padding-left: 14px; border-left: 2px solid var(--gold);">Personally led by Nick O’Toole, with more than 20 years of owner-side commercial property experience.</p>
-        <div class="ba-acts">
-          <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="hero">Discuss My Premises Purchase</a>
-          <a href="tel:+61401825999" class="btn btn--lg btn--outline" data-location="hero">Call Nick</a>
-        </div>
-        <p style="font-family: var(--f-body); font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,0.92); margin: 18px 0 0; max-width: 600px;">Start with a complimentary strategy session. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed.</p>
-        <p class="tagline">Exclusively on your side of the table.</p>
+        <p class="ba-led">Led by Nick O’Toole. 20+ years of owner-side experience.</p>
       </div>
 
       <div class="ba-hero__form" id="ba-slot-hero"><div class="form-card ba-form" id="enquiry">
@@ -379,7 +430,7 @@ details[open]>summary .ba-pm::after{transform:none}
           <input type="hidden" name="redirect" value="https://represent.au/enquiry-received" />
           <input type="hidden" name="enquiry_type" value="acquisition" />
           <input type="hidden" name="form_stream" value="commercial-property-buyers-agent" />
-          <input type="hidden" name="enquiry_service" value="Buyer's Agency and Acquisition Advisory" />
+          <input type="hidden" name="enquiry_service" value="SMSF Premises Purchase" />
           <input type="hidden" name="service_line" value="Buyer-Side Acquisition / Advisory" />
           <input type="hidden" name="intent_family" value="Buyer Acquisition" />
           <input type="hidden" name="landing_page" value="smsf-owner-occupier-buyers-agent" />
@@ -396,21 +447,24 @@ details[open]>summary .ba-pm::after{transform:none}
           <input type="hidden" name="utm_content" value="" />
           <input type="hidden" name="website_submission_id" value="" />
           <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
-          <div class="form-card__eyebrow">Premises Purchase Strategy Session</div>
-          <h2>Request a Premises Purchase Strategy Session</h2>
-          <ul style="list-style:none;margin:4px 0 6px;padding:0;" aria-label="What the session covers">
-            <li style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:baseline;padding:8px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px);"></span><span>Clarify what your business needs.</span></li>
-            <li style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:baseline;padding:8px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px);"></span><span>Identify property, timing and adviser questions.</span></li>
-            <li style="display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;align-items:baseline;padding:8px 0;border-top:1px solid rgba(0,66,37,0.12);font-family:var(--f-body);font-size:15px;line-height:1.5;color:var(--text-dark);"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateY(-1px);"></span><span>Establish your next steps.</span></li>
-          </ul>
-          <p class="ba-form__req" style="margin-top:14px;">Name and email are required. Everything else is optional.</p>
-          <div class="field"><label for="ba-name">Name</label><input id="ba-name" name="name" type="text" autocomplete="name" autocapitalize="words" required /></div>
+          <div class="ba-fhd">
+            <picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="Nick O’Toole" width="64" height="64" decoding="async" /></picture>
+            <div>
+    <h2>Request a Premises Purchase Strategy Session</h2>
+              <p class="ba-fhd__by">Tell Nick what you’re looking to buy and discuss how Represent Commercial can help.</p>
+            </div>
+          </div>
+          <p class="ba-form__req">Name and email are required. Everything else is optional.</p>
+          <div class="form-grid">
+            <div class="field" style="margin-bottom: 0;"><label for="ba-first">First name</label><input id="ba-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
+            <div class="field" style="margin-bottom: 0;"><label for="ba-last">Last name <span class="ba-opt">(optional)</span></label><input id="ba-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
+          </div>
           <div class="form-grid">
             <div class="field" style="margin-bottom: 0;"><label for="ba-email">Email</label><input id="ba-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
             <div class="field" style="margin-bottom: 0;"><label for="ba-phone">Mobile <span class="ba-opt">(optional)</span></label><input id="ba-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" /></div>
           </div>
           <details class="ba-acc" style="margin: 0 0 18px; border-bottom: 1px solid rgba(0,66,37,0.14);">
-          <summary style="padding: 14px 0;"><span style="font-family: var(--f-body); font-size: 15px; font-weight: 700; color: var(--green);">Add details about your requirements</span><span class="ba-pm" aria-hidden="true"></span></summary>
+          <summary style="padding: 14px 0;"><span style="font-family: var(--f-body); font-size: 15px; font-weight: 700; color: var(--green);">Additional requirements <span class="ba-opt">(optional)</span></span><span class="ba-pm" aria-hidden="true"></span></summary>
           <div style="padding: 4px 0 2px;">
           <div class="field">
             <label for="ba-stage">Where are you in the process? <span class="ba-opt">(optional)</span></label>
@@ -440,17 +494,27 @@ details[open]>summary .ba-pm::after{transform:none}
           <div class="field"><label for="ba-context">What premises are you looking for? <span class="ba-opt">(optional)</span></label><p class="ba-help" id="ba-context-help">Property type, size, access or parking needs, timing or a property link.</p><textarea id="ba-context" name="acquisition_context" rows="3" maxlength="2000" aria-describedby="ba-context-help"></textarea></div>
           </div>
           </details>
-          <button type="submit" class="form-submit">Discuss My Premises Purchase</button>
+          <button type="submit" class="form-submit">Discuss My SMSF Property Plans</button>
           <div class="ba-err" id="ba-err" role="alert"></div>
-          <div class="ba-next"><p>Nick will review your enquiry and respond personally within one business day to arrange an initial discussion.</p><p>Detailed property assessment, sourcing and acquisition work require a separately agreed appointment.</p></div>
-          <p class="form-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
+          <p class="ba-after">After submitting, you can choose a suitable time to speak with Nick.</p>
+          <p class="ba-scope">Any subsequent advice or buyer’s agency appointment is separately scoped and agreed.</p>
+          <p class="form-note" style="font-size:13.5px;">We’ll contact you about your enquiry. <a href="/privacy" style="color:#004225;">Privacy Policy</a>.</p>
         </form>
         <div class="form-success ba-done" id="ba-done" style="display:none;" tabindex="-1">
           <div class="form-success__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A35E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
-          <h2>Thank you. Your enquiry has been received.</h2>
-          <p>Nick O’Toole will respond personally within one business day to arrange an initial discussion.</p>
+          <h2>Your enquiry has been received.</h2>
+          <p>Choose a time to discuss your commercial property requirements directly with Nick O’Toole.</p>
+          <div class="ba-book" id="ba-book" data-clarity-mask="true" hidden>
+            <h3 id="ba-book-h" tabindex="-1">Book a Commercial Property Acquisition Discussion</h3>
+            <p>Select a suitable time for a complimentary 20-minute conversation with Nick.</p>
+            <div class="ba-book__frame" id="ba-book-frame"></div>
+            <p class="ba-book__note">The initial discussion is complimentary. Any buyer’s agency, property assessment or ongoing asset-management appointment is separately scoped and agreed.</p>
+            <a class="ba-book__link" id="ba-book-link" href="https://api.leadconnectorhq.com/widget/bookings/investor-acquisition-strategy-session" target="_blank" rel="noopener">Choose a Time with Nick</a>
+          </div>
+          <div class="ba-done__more">
           <p>If you already have a property in mind, you can email the listing or address to <a href="mailto:nick@represent.au">nick@represent.au</a>.</p>
           <p>To speak with Nick directly, call <a href="tel:+61401825999" data-location="success">0401 825 999</a>.</p>
+          </div>
         </div>
       </div></div>
     </div>
@@ -466,9 +530,9 @@ details[open]>summary .ba-pm::after{transform:none}
       <h2 class="ba-h2">The premises have to work for the business, not only the fund.</h2>
       <p class="ba-p">Your premises need to support staff, customers, deliveries and day-to-day operations. The purchase also needs to make sense against your budget, growth plans and future options.</p>
       <div class="ba-paths" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));">
-        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">Business fit</p><h3>Room to operate. Room to grow.</h3><p class="ba-path__q" style="margin:0;">Location, usable space, access, parking, services and expansion potential assessed against how your business actually operates.</p></div>
-        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">Commercial value</p><h3>Know what you’re buying.</h3><p class="ba-path__q" style="margin:0;">Comparable sales, market rent, outgoings, building condition and future capital expenditure considered before you commit.</p></div>
-        <div class="ba-path"><p class="ba-k" style="margin-bottom:10px;">Future flexibility</p><h3>Look beyond moving day.</h3><p class="ba-path__q" style="margin:0;">Consider who else could lease or buy the property if your business relocates, grows or changes direction.</p></div>
+        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/></svg></span><p class="ba-k" style="margin-bottom:10px;">Business fit</p><h3>Room to operate. Room to grow.</h3><p class="ba-path__q" style="margin:0;">Location, usable space, access, parking, services and expansion potential assessed against how your business actually operates.</p></div>
+        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><p class="ba-k" style="margin-bottom:10px;">Commercial value</p><h3>Know what you’re buying.</h3><p class="ba-path__q" style="margin:0;">Comparable sales, market rent, outgoings, building condition and future capital expenditure considered before you commit.</p></div>
+        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg></span><p class="ba-k" style="margin-bottom:10px;">Future flexibility</p><h3>Look beyond moving day.</h3><p class="ba-path__q" style="margin:0;">Consider who else could lease or buy the property if your business relocates, grows or changes direction.</p></div>
       </div>
     </div>
   </section>
@@ -501,10 +565,10 @@ details[open]>summary .ba-pm::after{transform:none}
       <p class="ba-k">The acquisition process</p>
       <h2 class="ba-h2">From business requirements to the right purchase.</h2>
       <ol class="ba-steps">
-        <li class="ba-step"><p class="ba-step__n">01 · DEFINE</p><h3>Set the premises brief</h3><p>Agree a written brief covering operational fit, access, parking, power, services and growth requirements, with your adviser-confirmed budget, preferred locations and timing.</p></li>
-        <li class="ba-step"><p class="ba-step__n">02 · SEARCH</p><h3>Find and compare</h3><p>Search and compare properties against the brief, including on-market opportunities and appropriate direct approaches.</p></li>
-        <li class="ba-step"><p class="ba-step__n">03 · ASSESS</p><h3>Test the purchase</h3><p>Assess comparable sales, market rent, outgoings, condition, capital expenditure, flood, planning and strata constraints, and future leasing and resale flexibility.</p></li>
-        <li class="ba-step"><p class="ba-step__n">04 · ACQUIRE</p><h3>Negotiate and coordinate</h3><p>Negotiate price and terms, then coordinate with your SMSF adviser, accountant, lender and solicitor through to settlement.</p></li>
+        <li class="ba-step"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span><p class="ba-step__n">01 · DEFINE</p><h3>Set the premises brief</h3><p>Agree a written brief covering operational fit, access, parking, power, services and growth requirements, with your adviser-confirmed budget, preferred locations and timing.</p></li>
+        <li class="ba-step"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><p class="ba-step__n">02 · SEARCH</p><h3>Find and compare</h3><p>Search and compare properties against the brief, including on-market opportunities and appropriate direct approaches.</p></li>
+        <li class="ba-step"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span><p class="ba-step__n">03 · ASSESS</p><h3>Test the purchase</h3><p>Assess comparable sales, market rent, outgoings, condition, capital expenditure, flood, planning and strata constraints, and future leasing and resale flexibility.</p></li>
+        <li class="ba-step"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span><p class="ba-step__n">04 · ACQUIRE</p><h3>Negotiate and coordinate</h3><p>Negotiate price and terms, then coordinate with your SMSF adviser, accountant, lender and solicitor through to settlement.</p></li>
       </ol>
       <p class="ba-fine">Technical, legal, planning and other specialist conclusions come from your solicitor and the relevant consultants. Business relocation, fit-out and construction are not part of a standard buyer’s agency appointment. Fees are agreed in writing before work begins.</p>
     </div>
@@ -555,7 +619,7 @@ details[open]>summary .ba-pm::after{transform:none}
         <p class="ba-p">Discuss your property requirements, purchase timing and next steps directly with Nick.</p>
       </div>
       <div>
-        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="final">Discuss My Premises Purchase</a>
+        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="final">Discuss My SMSF Property Plans</a>
         <p class="ba-close__by">Or call Nick on <a href="tel:+61401825999" data-location="final" style="color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;">0401 825 999</a>.</p>
       </div>
     </div>
@@ -655,7 +719,7 @@ window.rcTrack = function (name, params) {
         if (r) r.checked = true;
       }
       try { rcTrack('buyer_agency_cta_click', { cta_location: cta.value }); } catch (e) {}
-      setTimeout(function () { var n = document.getElementById('ba-name'); if (n && !n.value) { try { n.focus({ preventScroll: true }); } catch (e) {} } }, 400);
+      setTimeout(function () { var n = document.getElementById('ba-first'); if (n && !n.value) { try { n.focus({ preventScroll: true }); } catch (e) {} } }, 400);
     });
   });
   Array.prototype.forEach.call(document.querySelectorAll('a[href^="tel:"]'), function (a) {
@@ -670,6 +734,11 @@ window.rcTrack = function (name, params) {
   var sent = false;
   var measured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
+
+
+  // PENDING: confirmed-booking tracking. HighLevel publishes no documented, verifiable browser
+  // event from the embedded booking widget, so no booking event or conversion fires on this page.
+  // Confirmed bookings are recorded in HighLevel only. Opening or loading the calendar is never a booking.
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -686,6 +755,7 @@ window.rcTrack = function (name, params) {
     }
     var payload = {};
     new FormData(form).forEach(function (v, k) { payload[k] = v; });
+    payload.name = [payload.first_name, payload.last_name].map(function (s) { return String(s || '').trim(); }).filter(Boolean).join(' ');
     delete payload.redirect;
     payload.replyto = payload.email;
     var controller = ('AbortController' in window) ? new AbortController() : null;
@@ -706,7 +776,48 @@ window.rcTrack = function (name, params) {
       form.style.display = 'none';
       done.style.display = 'block';
       done.setAttribute('role', 'status');
-      try { done.focus(); } catch (e) {}
+      try { done.focus({ preventScroll: true }); } catch (e) {}
+
+      // Optional booking step. One shared, active HighLevel calendar on all three buyer landing pages:
+      // "Commercial Property Acquisition Discussion", calendar ID w2kXXd3obobyu79imbMJ, 20 minutes, Google Meet.
+      // The booking-link slug keeps its original wording for continuity; do not rename it.
+      // Runs only after Web3Forms confirms success, before analytics and the CRM handoff, so neither can block it.
+      // Opening or loading the calendar is not a booking, fires no conversion and creates no opportunity.
+      // Name, email and mobile go to HighLevel as iframe URL prefill only. The visible fallback link stays
+      // un-prefilled so outbound-click analytics never records personal details; the block is masked from Clarity.
+      try {
+        var book = document.getElementById('ba-book');
+        var slot = document.getElementById('ba-book-frame');
+        if (book && slot && !slot.querySelector('iframe')) {
+          var bu = new URL('https://api.leadconnectorhq.com/widget/bookings/investor-acquisition-strategy-session');
+          var fn = String(payload.first_name || '').trim(), ln = String(payload.last_name || '').trim();
+          if (fn) bu.searchParams.set('first_name', fn);
+          if (ln) bu.searchParams.set('last_name', ln);
+          if (payload.email) bu.searchParams.set('email', payload.email);
+          var ph = String(payload.phone || '').replace(/[^0-9+]/g, '');
+          if (/^0[2-478]\d{8}$/.test(ph)) ph = '+61' + ph.slice(1);
+          else if (/^61\d{9}$/.test(ph)) ph = '+' + ph;
+          if (ph) bu.searchParams.set('phone', ph);
+          var fr = document.createElement('iframe');
+          fr.src = bu.toString();
+          fr.title = 'Book a 20-minute Commercial Property Acquisition Discussion with Nick O’Toole';
+          fr.setAttribute('scrolling', 'yes');
+          fr.setAttribute('loading', 'eager');
+          slot.appendChild(fr);
+          book.hidden = false;
+          var bh = document.getElementById('ba-book-h');
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          requestAnimationFrame(function () {
+            try {
+              var hdr = document.querySelector('.site-header, .ba-hd');
+              var off = (hdr ? hdr.getBoundingClientRect().height : 72) + 16;
+              var y = (bh || book).getBoundingClientRect().top + window.pageYOffset - off;
+              window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+              if (bh) bh.focus({ preventScroll: true });
+            } catch (scrollError) {}
+          });
+        }
+      } catch (bookingError) { console.error('Booking calendar embed:', bookingError); }
 
       // Analytics: no contact details or free text. Failures never block the CRM handoff.
       try {

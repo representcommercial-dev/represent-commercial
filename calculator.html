@@ -131,6 +131,7 @@
     .stat__v { font-size: 24px; }
   }
 </style>
+<style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </head>
 <body class="calc-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -148,7 +149,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -249,11 +250,12 @@
         <p class="lead-p">This is one small lever. Arrears, rent reviews, outgoings recovery: the levers that move real money are the ones we run every day. Send your details and Nick will show you what that looks like on your asset.</p>
         <form id="lead-form">
           <div class="lead-grid">
-            <div class="lead-field"><label for="calculator-name">Name</label><input id="calculator-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="calculator-first">First name</label><input id="calculator-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
+            <div class="lead-field"><label for="calculator-last">Last name</label><input id="calculator-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="calculator-email">Email</label><input id="calculator-email" name="email" type="email" autocomplete="email" required /></div>
             <div class="lead-field"><label for="calculator-phone">Phone</label><input id="calculator-phone" name="phone" autocomplete="tel" /></div>
           </div>
-          <button type="submit" class="lead-btn" id="lead-btn">Talk to us</button>
+          <button type="submit" class="lead-btn" id="lead-btn">Talk to Nick</button>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
         </form>
       </div>
@@ -414,7 +416,9 @@
       form_stream: 'enquiries',
       subject: 'Enquiry: Rent Offset Saving Calculator',
       from_name: 'Represent Commercial Website',
-      name: form.name.value,
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      name: [form.first_name.value, form.last_name.value].map(function (s) { return s.trim(); }).filter(Boolean).join(' '),
       email: form.email.value,
       replyto: form.email.value,
       phone: form.phone.value,
@@ -431,7 +435,7 @@
     var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
     function fail(message) {
-      btn.disabled = false; btn.textContent = 'Talk to us';
+      btn.disabled = false; btn.textContent = 'Talk to Nick';
       errEl.textContent = message;
       errEl.style.display = 'block';
     }

@@ -592,6 +592,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 @media (max-width:700px){.so-tests--2{grid-template-columns:1fr}}
 @media (max-width:600px){.ba-form-s .isf-card{padding:24px 20px}.so-hero .brandline{font-size:30px}}
 </style>
+<style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -608,7 +609,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -632,7 +633,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <hr class="gold-rule" style="margin-bottom: 28px;" />
         <p class="pr-offer">Commercial property acquisition advice for investors ready to buy with a clear ownership strategy.<br /><br />Nick O’Toole combines more than 20 years of owner-side experience with practical judgement across acquisitions, leasing and asset management, helping you assess the opportunity, negotiate the purchase and plan what comes next.</p>
         <div class="pr-acts">
-          <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-investors-hero">Request an Acquisition Strategy Session</a>
+          <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-investors-hero">Discuss My Investment Requirements</a>
           <a href="tel:+61401825999" class="btn btn--lg btn--outline" data-location="buyers-agency-investors-hero">Speak with Nick</a>
         </div>
         <p class="so-micro">Complimentary initial session for prospective acquisition clients. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed.</p>
@@ -748,9 +749,12 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
         <p class="isf-eyebrow">Investor acquisition enquiry</p>
         <h2 class="isf-h" id="isf-heading">Request an Acquisition Strategy Session</h2>
-        <p class="isf-sub">Tell Nick where you are in the buying process and what you want the investment to achieve.</p>
+        <p class="isf-sub">Tell Nick what you’re looking to buy and discuss how Represent Commercial can help.</p>
         <p class="isf-req">Name and email are required. Everything else is optional.</p>
-        <div class="field"><label for="isf-name">Name</label><input id="isf-name" name="name" type="text" autocomplete="name" autocapitalize="words" required /></div>
+        <div class="form-grid">
+          <div class="field" style="margin-bottom: 0;"><label for="isf-first">First name</label><input id="isf-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
+          <div class="field" style="margin-bottom: 0;"><label for="isf-last">Last name <span class="isf-opt">(optional)</span></label><input id="isf-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
+        </div>
         <div class="field"><label for="isf-email">Email</label><input id="isf-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
         <fieldset style="border: 0; border-top: 1px solid rgba(0,66,37,0.14); margin: 8px 0 0; padding: 18px 0 0; min-width: 0;">
         <legend style="font-family: var(--f-sans); font-size: 14px; font-weight: 700; color: #004225; padding: 0 12px 0 0;">Optional details to help Nick prepare</legend>
@@ -764,7 +768,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
           <div class="field" style="grid-column: 1 / -1;"><label for="isf-listing">Property or listing link <span class="isf-opt">(optional)</span></label><input id="isf-listing" name="listing_url" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="500" /></div>
         </div>
         </fieldset>
-        <button type="submit" class="btn btn--lg btn--gold isf-submit" data-cta="buyers-agency-investors-form-submit">Request my strategy session</button>
+        <button type="submit" class="btn btn--lg btn--gold isf-submit" data-cta="buyers-agency-investors-form-submit">Discuss My Investment Requirements</button>
         <div class="isf-err" id="isf-err" role="alert"></div>
         <div class="isf-next"><h3>What happens next?</h3><p>Nick will review your enquiry and respond personally within one business day to arrange an initial discussion and confirm whether the service fits your plans.</p><p>Complimentary initial session for prospective acquisition clients. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed. We act for the buyer, never the vendor.</p></div>
         <p class="isf-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
@@ -869,7 +873,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       </div>
       <div class="reveal">
         <p class="lede" style="margin: 0 0 28px; color: rgba(255,255,255,0.78);">Discuss your acquisition direction, ownership strategy and next steps directly with Nick.</p>
-        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-investors-final">Request an Acquisition Strategy Session</a>
+        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-investors-final">Discuss My Investment Requirements</a>
         <p class="pr-close__by">Complimentary initial session. We act for the buyer, never the vendor.</p>
       </div>
     </div>
@@ -1037,6 +1041,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
     }
     var payload = {};
     new FormData(form).forEach(function (v, k) { payload[k] = v; });
+    payload.name = [payload.first_name, payload.last_name].map(function (s) { return String(s || '').trim(); }).filter(Boolean).join(' ');
     delete payload.redirect;
     payload.replyto = payload.email;
     var attach = document.getElementById('isf-attach');

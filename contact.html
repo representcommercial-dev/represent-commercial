@@ -128,7 +128,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link is-active">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -183,9 +183,9 @@
               </fieldset>
             </div>
             <div class="form-grid">
-              <div class="field">
-                <label for="name">Full Name</label>
-                <input id="name" name="name" type="text" placeholder="Nick Smith" autocomplete="name" required />
+              <div class="form-grid">
+                <div class="field" style="margin-bottom: 0;"><label for="first_name">First name</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
+                <div class="field" style="margin-bottom: 0;"><label for="last_name">Last name</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
               </div>
               <div class="field">
                 <label for="phone">Mobile <span style="text-transform:none;letter-spacing:0;font-weight:400;opacity:.6">(optional)</span></label>
@@ -260,7 +260,7 @@
               <label for="notes">Additional Context</label>
               <textarea id="notes" name="notes" rows="3" placeholder="Anything else that helps: structure, finance position, specific concerns, timeline..."></textarea>
             </div>
-            <button type="submit" class="form-submit">Submit request</button>
+            <button type="submit" class="form-submit">Talk to Nick</button>
             <div class="form-status" id="form-status" role="alert"></div>
             <div class="form-note">No obligation. Nick responds personally within one business day.</div>
           </form>
@@ -418,7 +418,7 @@
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
 
     function reset(message) {
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit request'; }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Talk to Nick'; }
       if (status) status.textContent = message;
     }
 
@@ -429,6 +429,7 @@
       if (status) status.textContent = '';
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
       var payload = new FormData(form);
+      payload.set('name', [payload.get('first_name'), payload.get('last_name')].map(function (s) { return String(s || '').trim(); }).filter(Boolean).join(' '));
       var code = payload.get('enquiry_type');
       if (LABELS[code]) payload.set('enquiry_service', LABELS[code]);
       var controller = ('AbortController' in window) ? new AbortController() : null;

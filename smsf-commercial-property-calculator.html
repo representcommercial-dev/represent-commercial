@@ -194,7 +194,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -501,7 +501,10 @@
         <h2 class="sme-h" id="sme-heading">Discuss your SMSF purchase.</h2>
         <p class="sme-sub">Tell Nick about the commercial property you want to buy through your SMSF, or share a property you are considering.</p>
         <p class="sme-req">Fields are required unless marked optional.</p>
-        <div class="field"><label for="sme-name">Name</label><input id="sme-name" name="name" type="text" autocomplete="name" autocapitalize="words" required /></div>
+        <div class="form-grid">
+          <div class="field"><label for="sme-first">First name</label><input id="sme-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
+          <div class="field"><label for="sme-last">Last name <span class="sme-opt">(optional)</span></label><input id="sme-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
+        </div>
         <div class="form-grid">
           <div class="field"><label for="sme-email">Email</label><input id="sme-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
           <div class="field"><label for="sme-phone">Phone</label><input id="sme-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" required /></div>
@@ -531,7 +534,7 @@
           <div class="field"><label for="sme-location">Preferred location <span class="sme-opt">(optional)</span></label><input id="sme-location" name="preferred_location" type="text" autocomplete="off" /></div>
         </div>
         <div class="field"><label for="sme-context">Tell Nick about your SMSF property plans <span class="sme-opt">(optional)</span></label><p class="sme-help" id="sme-context-help">Include a property address or listing link, preferred property type, timing and whether you are looking for an investment or premises for your business.</p><textarea id="sme-context" name="acquisition_context" rows="3" maxlength="2000" aria-describedby="sme-context-help"></textarea></div>
-        <button type="submit" class="form-submit">Discuss my SMSF purchase</button>
+        <button type="submit" class="form-submit">Discuss My SMSF Property Plans</button>
         <div class="sme-err" id="sme-err" role="alert"></div>
         <div class="sme-next"><h3>What happens next?</h3><p>Nick will discuss your property requirements, timing and how Represent Commercial can help with the search, commercial assessment and negotiation. Before you decide to appoint, you will understand the proposed scope and fees.</p><p><strong>Nick will respond within one business day.</strong></p><p>Your SMSF structure, tax position and borrowing arrangements should be confirmed with your accountant, licensed financial adviser and lender.</p></div>
         <p class="form-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>. Calculator figures are not included.</p>
@@ -1000,6 +1003,7 @@ window.rcTrack = window.rcTrack || function (name, params) {
     }
     var payload = {};
     new FormData(form).forEach(function (v, k) { payload[k] = v; });
+    payload.name = [payload.first_name, payload.last_name].map(function (s) { return String(s || '').trim(); }).filter(Boolean).join(' ');
     delete payload.redirect;
     payload.replyto = payload.email;
     var controller = ('AbortController' in window) ? new AbortController() : null;

@@ -111,6 +111,18 @@ const CONTACT_FIELDS = {
 const FILL_IF_EMPTY = ['originalEnquiry', 'gclid', 'utmSource', 'utmMedium', 'utmCampaign',
   'utmAdGroup', 'utmTerm', 'utmContent', 'landingPage', 'originalReferrer'];
 
+// Booking context (2026-10-24): latest-enquiry fields written to the matched contact on every
+// confirmed non-review buyer enquiry, so the shared HighLevel calendar's appointment title and
+// notes ({{contact.enquiry_service}}, {{contact.form_stream}}) describe the current enquiry.
+// Overwrite fields only. First-touch fields (FILL_IF_EMPTY) are never written by this step.
+const BOOKING_CONTEXT_FIELDS = ['enquiryService', 'formStream', 'websiteSubmissionId', 'ctaClicked'];
+
+// Leasing booking context (2026-10-24): the leasing landing page has its own HighLevel calendar
+// ("Commercial Property Leasing Discussion", AZP0jrXSFnsbGfXyYnW3). The same latest-enquiry fields
+// are written to the matched contact; Landing Page is first-touch and is filled only while empty
+// on a contact that could be read. Scoped to this one form stream; other PM enquiries are unchanged.
+const LEASING_BOOKING_STREAM = 'commercial-property-leasing-vacancy';
+
 let contactFieldCache = null;
 
 export async function onRequestGet({ env }) {
@@ -197,6 +209,28 @@ export async function onRequestPost({ request, env }) {
       }
     }
 
+    // Buyer booking context runs before opportunity intake so the contact is updated as early as
+    // possible. A failure is reported in the response and logs and never blocks opportunity intake.
+    let contactContext = null;
+    if (!reviewStream && route === ROUTES.buyer) {
+      contactContext = await buyerBookingContext(env, contactId, {
+        enquiryService,
+        formStream: clean(data.form_stream, 500),
+        websiteSubmissionId: submissionId,
+        ctaClicked: clean(data.cta_clicked, 500)
+      });
+      if (!contactContext.ok) console.error('website-lead: contact booking context not updated', JSON.stringify(contactContext));
+    } else if (!reviewStream && route === ROUTES.pm && clean(data.form_stream, 200) === LEASING_BOOKING_STREAM) {
+      contactContext = await leasingBookingContext(env, contactId, {
+        enquiryService,
+        formStream: clean(data.form_stream, 500),
+        websiteSubmissionId: submissionId,
+        ctaClicked: clean(data.cta_clicked, 500)
+      }, clean(data.landing_page, 500));
+      if (!contactContext.ok) console.error('website-lead: leasing booking context not updated', JSON.stringify(contactContext));
+    }
+    const contextResult = contactContext ? { contact_context: contactContext } : {};
+
     const existing = await findExistingOpportunity(env, {
       contactId,
       route,
@@ -217,7 +251,7 @@ export async function onRequestPost({ request, env }) {
           body: { customFields: [{ id: CF.gclid, fieldValue: incomingGclid }] }
         });
         if (!attributionUpdate.ok) {
-          return json({ ok: false, error: 'CRM opportunity attribution update failed.', contact_id: contactId, opportunity_id: existing.id, upstream_status: attributionUpdate.status }, 502);
+          return json({ ok: false, error: 'CRM opportunity attribution update failed.', contact_id: contactId, opportunity_id: existing.id, upstream_status: attributionUpdate.status, ...contextResult }, 502);
         }
       }
       return json({
@@ -225,7 +259,8 @@ export async function onRequestPost({ request, env }) {
         contact_id: contactId,
         opportunity_id: existing.id,
         opportunity_created: false,
-        duplicate_controlled: true
+        duplicate_controlled: true,
+        ...contextResult
       }, 200);
     }
 
@@ -279,7 +314,7 @@ export async function onRequestPost({ request, env }) {
       }
     });
     if (!oppRes.ok || !oppRes.data || !oppRes.data.opportunity || !oppRes.data.opportunity.id) {
-      return json({ ok: false, error: 'CRM opportunity creation failed.', upstream_status: oppRes.status }, 502);
+      return json({ ok: false, error: 'CRM opportunity creation failed.', upstream_status: oppRes.status, ...contextResult }, 502);
     }
 
     return json({
@@ -288,7 +323,8 @@ export async function onRequestPost({ request, env }) {
       contact_created: contactRes.data.new === true,
       opportunity_id: oppRes.data.opportunity.id,
       opportunity_created: true,
-      pipeline: route.serviceLine
+      pipeline: route.serviceLine,
+      ...contextResult
     }, 201);
   } catch (err) {
     return json({ ok: false, error: 'CRM handoff error.', detail: String(err && err.message ? err.message : err) }, 500);
@@ -422,6 +458,78 @@ async function reviewContactHandoff(env, data, stream, ctx) {
   }, ctx.contactCreated ? 201 : 200);
 }
 
+async function buyerBookingContext(env, contactId, values) {
+  try {
+    const resolved = await resolveContactFields(env);
+    const customFields = [];
+    const unresolved = [];
+    for (const k of BOOKING_CONTEXT_FIELDS) {
+      if (FILL_IF_EMPTY.includes(k)) continue;
+      const v = clean(values[k], 500);
+      if (!v) continue;
+      // Existing fields only, by resolved ID: never create or guess a field.
+      if (resolved.map[k]) customFields.push({ id: resolved.map[k], field_value: v });
+      else unresolved.push(CONTACT_FIELDS[k].key);
+    }
+    if (!customFields.length) {
+      return { ok: false, error: 'No booking-context contact fields resolved.', fields_written: 0, unresolved_fields: unresolved };
+    }
+    const upd = await ghl('/contacts/' + encodeURIComponent(contactId), env, {
+      method: 'PUT',
+      body: { customFields }
+    });
+    if (!upd.ok) {
+      return { ok: false, error: 'CRM contact booking-context update failed.', upstream_status: upd.status, fields_written: 0, unresolved_fields: unresolved };
+    }
+    return { ok: true, fields_written: customFields.length, unresolved_fields: unresolved };
+  } catch (err) {
+    return { ok: false, error: 'CRM contact booking-context error.', detail: String(err && err.message ? err.message : err), fields_written: 0 };
+  }
+}
+
+async function leasingBookingContext(env, contactId, values, landingPage) {
+  try {
+    const resolved = await resolveContactFields(env);
+    const customFields = [];
+    const unresolved = [];
+    for (const k of BOOKING_CONTEXT_FIELDS) {
+      if (FILL_IF_EMPTY.includes(k)) continue;
+      const v = clean(values[k], 500);
+      if (!v) continue;
+      if (resolved.map[k]) customFields.push({ id: resolved.map[k], field_value: v });
+      else unresolved.push(CONTACT_FIELDS[k].key);
+    }
+    let landing = 'not_supplied';
+    if (landingPage && !resolved.map.landingPage) { landing = 'unresolved'; unresolved.push(CONTACT_FIELDS.landingPage.key); }
+    else if (landingPage) {
+      const current = await ghl('/contacts/' + encodeURIComponent(contactId), env, { method: 'GET' });
+      const cfs = current.ok && current.data && current.data.contact && Array.isArray(current.data.contact.customFields)
+        ? current.data.contact.customFields : null;
+      // Never treat an unreadable contact as empty: that could overwrite first touch.
+      if (!cfs) landing = 'contact_unreadable_not_written';
+      else {
+        const f = cfs.find(x => x && x.id === resolved.map.landingPage);
+        const cur = f ? (f.value !== undefined ? f.value : (f.fieldValue !== undefined ? f.fieldValue : f.field_value)) : '';
+        if (String(cur == null ? '' : cur).trim() !== '') landing = 'preserved';
+        else { customFields.push({ id: resolved.map.landingPage, field_value: landingPage }); landing = 'filled'; }
+      }
+    }
+    if (!customFields.length) {
+      return { ok: false, error: 'No booking-context contact fields resolved.', fields_written: 0, landing_page: landing, unresolved_fields: unresolved };
+    }
+    const upd = await ghl('/contacts/' + encodeURIComponent(contactId), env, {
+      method: 'PUT',
+      body: { customFields }
+    });
+    if (!upd.ok) {
+      return { ok: false, error: 'CRM contact booking-context update failed.', upstream_status: upd.status, fields_written: 0, landing_page: landing, unresolved_fields: unresolved };
+    }
+    return { ok: true, fields_written: customFields.length, landing_page: landing, unresolved_fields: unresolved };
+  } catch (err) {
+    return { ok: false, error: 'CRM contact booking-context error.', detail: String(err && err.message ? err.message : err), fields_written: 0 };
+  }
+}
+
 async function resolveContactFields(env) {
   const loc = env.GHL_LOCATION_ID;
   if (contactFieldCache && contactFieldCache.loc === loc && Date.now() - contactFieldCache.at < 600000) {
@@ -453,7 +561,8 @@ async function findExistingOpportunity(env, opts) {
   });
   const res = await ghl('/opportunities/search?' + qs.toString(), env, { method: 'GET', version: GHL_OPPORTUNITIES_VERSION });
   if (!res.ok || !res.data || !Array.isArray(res.data.opportunities)) {
-    throw new Error('Could not verify existing opportunities; creation deferred.');
+    if (REVIEW_STREAMS[opts.formStream]) throw new Error('Could not verify existing review opportunities; creation deferred.');
+    return null;
   }
 
   for (const opp of res.data.opportunities) {
@@ -464,12 +573,6 @@ async function findExistingOpportunity(env, opts) {
       normal(values[CF.websitePropertyAddress]) === normal(opts.propertyAddress);
     const sameService = normal(values[CF.enquiryService]) === normal(opts.enquiryService);
     if (sameProperty && sameService && (!REVIEW_STREAMS[opts.formStream] || opp.status === 'open')) return opp;
-
-    // The compact investor form does not collect a property address. Reuse an
-    // open buyer-side opportunity for the same contact and service so repeat
-    // enquiries enrich one active acquisition conversation rather than
-    // creating parallel opportunities. Closed opportunities remain history.
-    if (opts.route === ROUTES.buyer && !opts.propertyAddress && sameService && opp.status === 'open') return opp;
   }
   return null;
 }

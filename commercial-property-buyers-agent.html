@@ -49,13 +49,13 @@
 <link rel="canonical" href="https://represent.au/buyers-agency-investors" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/commercial-property-buyers-agent" />
-<meta property="og:title" content="Find the Upside. Buy It Well. Then Deliver the Plan." />
+<meta property="og:title" content="Value-Add Commercial Property. We Find It. We Deliver It." />
 <meta property="og:description" content="Nick O’Toole sources, assesses and negotiates value-add commercial property across Queensland, then can remain involved as asset manager after settlement." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Find the Upside. Buy It Well. Then Deliver the Plan." />
+<meta name="twitter:title" content="Value-Add Commercial Property. We Find It. We Deliver It." />
 <meta name="twitter:description" content="Nick O’Toole sources, assesses and negotiates value-add commercial property across Queensland, then can remain involved as asset manager after settlement." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 
@@ -203,13 +203,6 @@
 .ba-done p{font-family:var(--f-body);font-size:15px;line-height:1.7;color:var(--text-dark);margin:0 0 12px}
 .ba-done a{color:var(--green);font-weight:600}
 .ba-done .form-success__icon{margin:0 0 20px}
-.ba-book{margin:28px 0 0;padding:24px 0 0;border-top:1px solid var(--border-light, #E2E6E3)}
-.ba-book h3{font-size:22px;line-height:1.1;margin:0 0 10px}
-.ba-book__note{font-size:14px !important;color:var(--text-mid, #4A5550) !important}
-.ba-book__frame{width:100%;min-width:0;margin:16px 0 14px;border:1px solid var(--border-light, #E2E6E3);border-radius:8px;overflow:hidden;background:#fff}
-.ba-book__frame iframe{display:block;width:100%;height:720px;border:0}
-.ba-book__link{display:inline-block;font-family:var(--f-body);font-size:15px}
-@media (max-width:480px){.ba-book__frame iframe{height:680px}}
 /* Cases */
 .ba-cases-s{padding-top:96px;padding-bottom:96px}
 .ba-cases__hd{margin-bottom:44px}
@@ -320,10 +313,14 @@ details[open]>summary .ba-pm::after{transform:none}
 .ba-ico{display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;border-radius:10px;background:rgba(0,66,37,.08);color:var(--green);margin:0 0 18px}
 .ba-ico--sm{width:40px;height:40px;border-radius:8px;margin:0;background:rgba(0,66,37,.1)}
 .ba-next--ico{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:center}
-.ba-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:36px 0 0;padding:24px 0 0;border-top:1px solid var(--border-light)}
+.ba-termbox{margin:40px 0 0;background:#fff;border:1px solid var(--border-light);border-radius:12px;overflow:hidden}
+.ba-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;padding:0}
+.ba-terms>div{padding:28px 32px}
+.ba-terms>div+div{border-left:1px solid var(--border-light)}
+.ba-termbox .ba-fine{margin:0;max-width:none;padding:16px 32px;border-top:1px solid var(--border-light);background:var(--bg-light, #F5F6F4);font-size:14px}
 .ba-terms h3{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#806318;margin:0 0 8px}
 .ba-terms p{font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:var(--text-dark);margin:0;text-wrap:pretty}
-@media (max-width:760px){.ba-terms{grid-template-columns:1fr;gap:16px}}
+@media (max-width:760px){.ba-terms{grid-template-columns:1fr}.ba-terms>div{padding:22px 24px}.ba-terms>div+div{border-left:0;border-top:1px solid var(--border-light)}.ba-termbox .ba-fine{padding:14px 24px}}
 .ba-adv,.ba-review{max-width:1120px}
 .ba-faq{max-width:960px}
 .ba-acc p{max-width:800px}
@@ -426,7 +423,18 @@ details[open]>summary .ba-pm::after{transform:none}
   .ba-hero .ba-form .ba-fhd{margin-bottom:16px}
   .ba-hero .ba-form .ba-fhd h2{font-size:23px}
 }
+.ba-done h2{text-transform:uppercase}
+.ba-book{margin:20px 0 0;padding:20px 0 0;border-top:1px solid var(--border-light, #E2E6E3);scroll-margin-top:96px}
+.ba-book h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:22px;line-height:1.1;color:var(--green);margin:0 0 10px}
+.ba-book h3:focus{outline:none}
+.ba-book .ba-book__note{font-size:14px !important;line-height:1.6 !important;color:var(--text-mid, #4A5550) !important;margin:0 0 10px !important}
+.ba-book__frame{width:100%;max-width:100%;min-width:0;margin:16px 0 14px;border:1px solid var(--border-light, #E2E6E3);border-radius:8px;overflow:hidden;background:#fff}
+.ba-book__frame iframe{display:block;width:100%;max-width:100%;height:760px;border:0}
+.ba-book__link{display:inline-block;font-family:var(--f-body);font-size:15px}
+.ba-done__more{margin-top:22px;padding-top:16px;border-top:1px solid var(--border-light, #E2E6E3)}
+@media (max-width:600px){.ba-book__frame iframe{height:900px}.ba-book{scroll-margin-top:80px}}
 </style>
+<style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -439,7 +447,7 @@ details[open]>summary .ba-pm::after{transform:none}
     </a>
     <div class="ba-hd__acts">
       <a href="tel:+61401825999" class="ba-hd__tel" data-location="header"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>0401 825 999</span></a>
-      <a href="#enquiry" class="btn btn--sm btn--gold ba-hd__cta" data-cta="header"><span class="ba-long">Discuss My Acquisition Strategy</span><span class="ba-short">Enquire</span></a>
+      <a href="#enquiry" class="btn btn--sm btn--gold ba-hd__cta" data-cta="header"><span class="ba-long">Discuss My Investment Requirements</span><span class="ba-short">Enquire</span></a>
     </div>
   </div>
 </header>
@@ -452,7 +460,7 @@ details[open]>summary .ba-pm::after{transform:none}
     <div class="container ba-hero" style="position: relative; z-index: 1;">
       <div class="ba-hero__copy">
         <p class="svc-h1 ba-aud">Queensland Commercial Property Investors</p>
-        <h1><span class="ba-h1l">Find the upside.</span> <span class="ba-h1l">Buy it well.</span> <span class="ba-h1l" style="color: var(--gold);">Then deliver the plan.</span></h1>
+        <h1><span class="ba-h1l">Value-add commercial property.</span> <span class="ba-h1l" style="color: var(--gold);">We find it. We deliver it.</span></h1>
         <p class="ba-lede">Buyer’s agency and asset management for investors seeking value add commercial property.</p>
         <p class="ba-led">Led by Nick O’Toole. 20+ years of owner-side experience.</p>
       </div>
@@ -465,7 +473,7 @@ details[open]>summary .ba-pm::after{transform:none}
           <input type="hidden" name="redirect" value="https://represent.au/enquiry-received" />
           <input type="hidden" name="enquiry_type" value="acquisition" />
           <input type="hidden" name="form_stream" value="commercial-property-buyers-agent" />
-          <input type="hidden" name="enquiry_service" value="Buyer's Agency and Acquisition Advisory" />
+          <input type="hidden" name="enquiry_service" value="Value-Add Investment" />
           <input type="hidden" name="service_line" value="Buyer-Side Acquisition / Advisory" />
           <input type="hidden" name="intent_family" value="Buyer Acquisition" />
           <input type="hidden" name="landing_page" value="commercial-property-buyers-agent" />
@@ -484,33 +492,44 @@ details[open]>summary .ba-pm::after{transform:none}
           <div class="ba-fhd">
             <picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="Nick O’Toole" width="64" height="64" decoding="async" /></picture>
             <div>
-              <h2>Discuss your next acquisition.</h2>
-              <p class="ba-fhd__by">A complimentary conversation with Nick O’Toole.</p>
+              <h2>Let’s discuss your next acquisition.</h2>
+              <p class="ba-fhd__by">Tell Nick what you’re looking to buy and discuss how Represent Commercial can help.</p>
             </div>
           </div>
-          <div class="field"><label for="ba-name">Name</label><input id="ba-name" name="name" type="text" autocomplete="name" autocapitalize="words" required /></div>
+          <div class="form-grid">
+            <div class="field" style="margin-bottom: 0;"><label for="ba-first">First name</label><input id="ba-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
+            <div class="field" style="margin-bottom: 0;"><label for="ba-last">Last name <span class="ba-opt">(optional)</span></label><input id="ba-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
+          </div>
           <div class="form-grid">
             <div class="field" style="margin-bottom: 0;"><label for="ba-email">Email</label><input id="ba-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
             <div class="field" style="margin-bottom: 0;"><label for="ba-phone">Mobile <span class="ba-opt">(optional)</span></label><input id="ba-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" /></div>
           </div>
-                    <button type="submit" class="form-submit">Request a Call</button>
+          <details class="ba-acc" style="margin: 0 0 18px; border-bottom: 1px solid rgba(0,66,37,0.14);">
+            <summary style="padding: 14px 0;"><span style="font-family: var(--f-body); font-size: 15px; font-weight: 700; color: var(--green);">Additional requirements <span class="ba-opt">(optional)</span></span><span class="ba-pm" aria-hidden="true"></span></summary>
+            <div style="padding: 4px 0 2px;">
+              <div class="field"><label for="ba-context">What are you looking to acquire?</label><p class="ba-help" id="ba-context-help">Location, property type, budget, timing or a property link.</p><textarea id="ba-context" name="acquisition_context" rows="3" maxlength="2000" aria-describedby="ba-context-help"></textarea></div>
+            </div>
+          </details>
+          <button type="submit" class="form-submit">Discuss My Investment Requirements</button>
           <div class="ba-err" id="ba-err" role="alert"></div>
-          <p class="ba-after">Choose a call time after submitting.</p>
+          <p class="ba-after">After submitting, you can choose a suitable time to speak with Nick.</p>
           <p class="ba-scope">Acquisition and ongoing services are separately scoped and agreed.</p>
           <p class="form-note">We’ll contact you about your enquiry. <a href="/privacy">Privacy Policy</a>.</p>
         </form>
         <div class="form-success ba-done" id="ba-done" style="display:none;" tabindex="-1">
           <div class="form-success__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A35E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
-          <h2>Thank you. Your enquiry has been received.</h2>
-          <p>Choose a time below for a 15-minute call with Nick O’Toole.</p>
+          <h2>Your enquiry has been received.</h2>
+          <p>Choose a time to discuss your commercial property requirements directly with Nick O’Toole.</p>
+          <div class="ba-book" id="ba-book" data-clarity-mask="true" hidden>
+            <h3 id="ba-book-h" tabindex="-1">Book a Commercial Property Acquisition Discussion</h3>
+            <p>Select a suitable time for a complimentary 20-minute conversation with Nick.</p>
+            <div class="ba-book__frame" id="ba-book-frame"></div>
+            <p class="ba-book__note">The initial discussion is complimentary. Any buyer’s agency, property assessment or ongoing asset-management appointment is separately scoped and agreed.</p>
+            <a class="ba-book__link" id="ba-book-link" href="https://api.leadconnectorhq.com/widget/bookings/investor-acquisition-strategy-session" target="_blank" rel="noopener">Choose a Time with Nick</a>
+          </div>
+          <div class="ba-done__more">
           <p>If you already have a property in mind, you can email the listing or address to <a href="mailto:nick@represent.au">nick@represent.au</a>.</p>
           <p>To speak with Nick directly, call <a href="tel:+61401825999" data-location="success">0401 825 999</a>.</p>
-          <div class="ba-book" id="ba-book" hidden>
-            <h3>Book Your 15-Minute Acquisition Strategy Call</h3>
-            <p>Choose a time for a focused call with Nick to discuss your acquisition criteria, value-add objectives and the most appropriate next step.</p>
-            <p class="ba-book__note">Booking is optional. Your enquiry has already been received, and Nick will be in touch if you do not choose a time.</p>
-            <div class="ba-book__frame" id="ba-book-frame"></div>
-            <a class="ba-book__link" href="https://api.leadconnectorhq.com/widget/bookings/investor-acquisition-strategy-session" target="_blank" rel="noopener">Open Booking Calendar</a>
           </div>
         </div>
       </div></div>
@@ -581,7 +600,7 @@ details[open]>summary .ba-pm::after{transform:none}
         <article class="ba-case" id="case-berserker">
           <img class="ba-case__img" src="assets/berserker-property-web-500.webp" srcset="assets/berserker-property-web-500.webp 500w, assets/berserker-property-web-940.webp 940w" sizes="(max-width:600px) calc(100vw - 92px), (max-width:999px) 584px, 560px" width="500" height="333" alt="The Berserker retail and office building with on-site parking, viewed from High Street" decoding="async" />
           <p class="ba-case__tag">Berserker, Rockhampton · Retail and office</p>
-          <h3>Presentation, leases and rent evidence</h3>
+          <h3>Cosmetic refurbishment &amp; rental reversion</h3>
           <div class="ba-figs">
             <div><div class="ba-fig__v">$1.8M</div><div class="ba-fig__k">Purchase price, 2025</div></div>
             <div><div class="ba-fig__v">Under way</div><div class="ba-fig__k">Rental reversion in progress</div></div>
@@ -609,12 +628,14 @@ details[open]>summary .ba-pm::after{transform:none}
         <li class="ba-step"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span><p class="ba-step__n">03 · ACQUIRE</p><h3>Negotiate with evidence</h3><p>Negotiate price and terms using market evidence and a clear understanding of the work required after settlement.</p></li>
         <li class="ba-step"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span><p class="ba-step__n">04 · EXECUTE</p><h3>Deliver the asset plan</h3><p>After settlement, Nick can be separately appointed as asset manager to coordinate the agreed leasing, refurbishment and rental-reversion strategy.</p></li>
       </ol>
+      <div class="ba-termbox">
       <div class="ba-terms">
         <div><h3>Acquisition</h3><p>Appoint Represent Commercial for the acquisition alone, on terms agreed in writing before work begins.</p></div>
         <div><h3>After settlement</h3><p>Asset management is optional, separately agreed and has its own fee structure.</p></div>
         <div><h3>Specialists</h3><p>Legal, tax, finance, valuation, building, town planning and other technical advice remains with your appointed advisers.</p></div>
       </div>
-      <p class="ba-fine" style="margin-top:20px;">No purchase savings, yields or returns are promised.</p>
+      <p class="ba-fine">No purchase savings, yields or returns are promised.</p>
+      </div>
     </div>
   </section>
 
@@ -664,7 +685,7 @@ details[open]>summary .ba-pm::after{transform:none}
         <p class="ba-p">Discuss your acquisition plans and the practical steps required to make the opportunity work.</p>
       </div>
       <div>
-        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="final">Discuss My Acquisition Strategy</a>
+        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="final">Discuss My Investment Requirements</a>
         <p class="ba-close__by">Or call Nick on <a href="tel:+61401825999" data-location="final" style="color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;">0401 825 999</a>.</p>
       </div>
     </div>
@@ -746,7 +767,7 @@ window.rcTrack = function (name, params) {
         if (r) r.checked = true;
       }
       try { rcTrack('buyer_agency_cta_click', { cta_location: cta.value }); } catch (e) {}
-      setTimeout(function () { var n = document.getElementById('ba-name'); if (n && !n.value) { try { n.focus({ preventScroll: true }); } catch (e) {} } }, 400);
+      setTimeout(function () { var n = document.getElementById('ba-first'); if (n && !n.value) { try { n.focus({ preventScroll: true }); } catch (e) {} } }, 400);
     });
   });
   Array.prototype.forEach.call(document.querySelectorAll('a[href^="tel:"]'), function (a) {
@@ -760,8 +781,12 @@ window.rcTrack = function (name, params) {
   var UNCERTAIN = 'We could not confirm that your enquiry was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
   var sent = false;
   var measured = {};
-  var adsMeasured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
+
+
+  // PENDING: confirmed-booking tracking. HighLevel publishes no documented, verifiable browser
+  // event from the embedded booking widget, so no booking event or conversion fires on this page.
+  // Confirmed bookings are recorded in HighLevel only. Opening or loading the calendar is never a booking.
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -778,6 +803,7 @@ window.rcTrack = function (name, params) {
     }
     var payload = {};
     new FormData(form).forEach(function (v, k) { payload[k] = v; });
+    payload.name = [payload.first_name, payload.last_name].map(function (s) { return String(s || '').trim(); }).filter(Boolean).join(' ');
     delete payload.redirect;
     payload.replyto = payload.email;
     var controller = ('AbortController' in window) ? new AbortController() : null;
@@ -798,26 +824,49 @@ window.rcTrack = function (name, params) {
       form.style.display = 'none';
       done.style.display = 'block';
       done.setAttribute('role', 'status');
-      try { done.focus(); } catch (e) {}
+      try { done.focus({ preventScroll: true }); } catch (e) {}
 
-      // Optional booking step: iframe loads only after confirmed Web3Forms success.
-      // HighLevel manages availability. Opening or loading the calendar is not a booking and
-      // creates no opportunity; the published HighLevel booking workflow moves the existing open
-      // Buyer-Side Acquisition & Advisory opportunity to Strategy Meeting.
+      // Optional booking step. One shared, active HighLevel calendar on all three buyer landing pages:
+      // "Commercial Property Acquisition Discussion", calendar ID w2kXXd3obobyu79imbMJ, 20 minutes, Google Meet.
+      // The booking-link slug keeps its original wording for continuity; do not rename it.
+      // Runs only after Web3Forms confirms success, before analytics and the CRM handoff, so neither can block it.
+      // Opening or loading the calendar is not a booking, fires no conversion and creates no opportunity.
+      // Name, email and mobile go to HighLevel as iframe URL prefill only. The visible fallback link stays
+      // un-prefilled so outbound-click analytics never records personal details; the block is masked from Clarity.
       try {
         var book = document.getElementById('ba-book');
         var slot = document.getElementById('ba-book-frame');
         if (book && slot && !slot.querySelector('iframe')) {
+          var bu = new URL('https://api.leadconnectorhq.com/widget/bookings/investor-acquisition-strategy-session');
+          var fn = String(payload.first_name || '').trim(), ln = String(payload.last_name || '').trim();
+          if (fn) bu.searchParams.set('first_name', fn);
+          if (ln) bu.searchParams.set('last_name', ln);
+          if (payload.email) bu.searchParams.set('email', payload.email);
+          var ph = String(payload.phone || '').replace(/[^0-9+]/g, '');
+          if (/^0[2-478]\d{8}$/.test(ph)) ph = '+61' + ph.slice(1);
+          else if (/^61\d{9}$/.test(ph)) ph = '+' + ph;
+          if (ph) bu.searchParams.set('phone', ph);
           var fr = document.createElement('iframe');
-          fr.src = 'https://api.leadconnectorhq.com/widget/bookings/investor-acquisition-strategy-session';
-          fr.title = 'Book a 15-minute acquisition strategy call with Nick O’Toole';
+          fr.src = bu.toString();
+          fr.title = 'Book a 20-minute Commercial Property Acquisition Discussion with Nick O’Toole';
           fr.setAttribute('scrolling', 'yes');
           fr.setAttribute('loading', 'eager');
           slot.appendChild(fr);
           book.hidden = false;
+          var bh = document.getElementById('ba-book-h');
+          var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          requestAnimationFrame(function () {
+            try {
+              var hdr = document.querySelector('.site-header, .ba-hd');
+              var off = (hdr ? hdr.getBoundingClientRect().height : 72) + 16;
+              var y = (bh || book).getBoundingClientRect().top + window.pageYOffset - off;
+              window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+              if (bh) bh.focus({ preventScroll: true });
+            } catch (scrollError) {}
+          });
         }
       } catch (bookingError) { console.error('Booking calendar embed:', bookingError); }
-      // PLACEHOLDER: Google Ads "Acquisition Strategy Call Booked" conversion (not yet created).
+      // PLACEHOLDER: Google Ads "Commercial Property Acquisition Discussion Booked" conversion (not yet created).
       // Needs its own dedicated label and a reliable confirmed-booking signal from HighLevel.
       // Never fire on calendar view, iframe load or booking-link click, and never reuse the
       // enquiry or Performance Review labels. Use website_submission_id as transaction_id.
@@ -836,15 +885,13 @@ window.rcTrack = function (name, params) {
         }
       } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
 
-      // Dedicated investor enquiry conversion, only after confirmed Web3Forms success.
-      // Tracking failures must never interrupt the HighLevel handoff below.
-      try {
-        var adsSid = payload.website_submission_id;
-        if (payload.enquiry_type === 'acquisition' && adsSid && !adsMeasured[adsSid] && typeof window.gtag === 'function') {
-          window.gtag('event', 'conversion', { send_to: 'AW-18457265873/0EqOCLDN86YdENGNjuFE', transaction_id: adsSid });
-          adsMeasured[adsSid] = true;
-        }
-      } catch (trackingError) { console.error('Google Ads investor measurement:', trackingError); }
+      // PLACEHOLDER: Google Ads "Investor Acquisition Enquiry" conversion (not yet created).
+      // Do NOT reuse the Commercial Property Performance Review conversion label.
+      // When the dedicated label exists, fire here only (Web3Forms success confirmed), once per submission:
+      //   if (typeof window.gtag === 'function' && sid) {
+      //     window.gtag('event', 'conversion', { send_to: 'AW-18457265873/NEW_INVESTOR_LABEL', transaction_id: sid });
+      //   }
+      // Wrap in try/catch so tracking errors never interrupt the HighLevel handoff below.
 
       // HighLevel handoff via the existing Function (buyer pipeline route).
       var crmPayload = {};

@@ -114,7 +114,7 @@
 .cap__b{font-family:var(--f-body);font-size:14px;color:#3E4A44;line-height:1.7;margin:0}
 @media (max-width:900px){.cap-grid{grid-template-columns:1fr 1fr;gap:28px}}
 @media (max-width:560px){.cap-grid{grid-template-columns:1fr;gap:22px}}
-.mi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.mi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
 .mi-card{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid #E1E4E1;border-radius:12px;padding:26px 24px 28px;text-decoration:none;transition:border-color .2s,transform .2s,box-shadow .2s}
 .mi-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,66,37,.08)}
 .mi-card__code{font-family:var(--f-body);font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-ink)}
@@ -145,9 +145,44 @@
 .cta-split>div:first-child{padding-right:0;padding-bottom:44px}
 .cta-split>div+div{padding-left:0;padding-top:44px;border-left:0;border-top:1px solid rgba(255,255,255,.14)}
 }
+.home-hero__inner{padding:clamp(96px,12vh,128px) 48px clamp(44px,7vh,64px)}
+.home-hero__desc{font-family:var(--f-body);font-size:clamp(16px,1.4vw,19px);font-weight:600;line-height:1.4;color:var(--gold);margin:0 0 18px;max-width:640px}
+.home-hero .h-hero{font-size:clamp(52px,6.6vw,96px)}
+.proj-card{display:flex;flex-direction:column}
+.proj-card--img{padding:0;overflow:hidden}
+.proj-card__img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;background:#E6E1D6}
+.proj-card__body{display:flex;flex-direction:column;flex:1;padding:32px 36px 32px}
+.proj-card--img .proj-card__headline{font-size:clamp(34px,3.4vw,48px)}
+@media (max-width:600px){.proj-card--img{padding:0!important}.proj-card__body{padding:24px 22px}.proj-card--img .proj-card__headline{font-size:clamp(30px,9vw,40px)!important}}
+.hero-paths{display:flex;gap:12px;flex-wrap:wrap}
+.hero-paths .hero-path{background:rgba(0,45,24,.55);border-color:rgba(255,255,255,.6);color:#fff}
+.hero-paths .hero-path:hover{border-color:var(--gold);opacity:1}
+.home-tight{padding-top:88px;padding-bottom:88px}
+.proj-card__more{font-family:var(--f-body);font-size:13.5px;font-weight:600;color:var(--green);text-decoration:none;border-bottom:1px solid rgba(0,66,37,.25);align-self:flex-start;margin-top:auto;white-space:nowrap}
+.proj-card__more:hover{border-color:var(--gold)}
+.proj-card__more::after{content:' \2192'}
+.va-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:36px}
+.va-step{background:var(--bg-card-dark, rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:32px}
+.va-step__n{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.va-step h3{font-family:var(--f-display);font-size:28px;line-height:1.05;color:#fff;margin:0 0 12px;letter-spacing:.02em}
+.va-step p{font-family:var(--f-body);font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.85);margin:0}
+.va-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.va-foot p{font-family:var(--f-body);font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.78);margin:0;max-width:620px}
+@media (max-width:800px){.va-grid{grid-template-columns:1fr}.va-step{padding:24px}.va-step h3{font-size:24px}}
+.home-nick{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:56px;align-items:center}
+.home-nick__img img{display:block;width:100%;height:auto;border-radius:12px}
+.home-nick__title{font-family:var(--f-body);font-size:14px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.8);margin:0}
+.home-nick__pts{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.home-nick__pts li{font-family:var(--f-body);font-size:15.5px;line-height:1.6;color:rgba(255,255,255,.88);padding-left:20px;position:relative}
+.home-nick__pts li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+@media (max-width:1080px){.home-hero__inner{padding-left:32px;padding-right:32px}.home-tight{padding-top:72px;padding-bottom:72px}}
+@media (max-width:800px){.home-nick{grid-template-columns:1fr;gap:32px}.home-nick__img{max-width:240px}}
+@media (max-width:768px){.home-hero__inner{padding:88px 24px 48px}.home-tight{padding-top:56px;padding-bottom:56px}}
+@media (max-width:600px){.home-hero__inner{padding:80px 20px 40px}.hero-paths{flex-direction:column;align-items:stretch}.hero-paths .hero-path{width:100%;text-align:center;justify-content:center}}
 </style>
 <link rel="preload" as="image" href="south-brisbane-mobile.webp" type="image/webp" media="(max-width:768px)" fetchpriority="high" />
 <link rel="preload" as="image" href="south-brisbane.webp" type="image/webp" media="(min-width:769px)" fetchpriority="high" />
+<style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -165,7 +200,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -173,192 +208,188 @@
 <main id="main-content" tabindex="-1">
 
   <!-- ─── HERO ─── -->
-  <section class="section section--deep" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0;">
-    <div style="position: absolute; inset: 0; z-index: 0;">
+  <section class="section section--deep home-hero" data-screen-label="Hero" style="min-height: clamp(520px, 70vh, 680px); display: flex; flex-direction: column; justify-content: flex-end; padding: 0;">
+    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden;">
       <picture>
         <source media="(max-width:768px)" srcset="south-brisbane-mobile.webp" type="image/webp" />
         <source media="(max-width:768px)" srcset="south-brisbane-mobile.jpg" />
         <source srcset="south-brisbane.webp" type="image/webp" />
         <img src="south-brisbane-1600.jpg" alt="Brisbane skyline at dusk, backdrop for Represent Commercial, buyer’s agency, commercial property management, leasing and tenant representation in Brisbane" width="1600" height="871" fetchpriority="high" decoding="async"
-          style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(0.78) contrast(1.05) saturate(0.88);" />
+          style="position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 142%; object-fit: cover; object-position: center bottom; filter: brightness(0.78) contrast(1.05) saturate(0.88);" />
       </picture>
       <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,61,32,0.5), rgba(0,40,20,0.35) 50%, rgba(0,25,12,0.4)); mix-blend-mode: multiply;"></div>
       <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,20,10,0.1) 0%, rgba(0,20,10,0.18) 35%, rgba(0,20,10,0.7) 68%, rgba(0,15,8,0.97) 100%);"></div>
       <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,15,8,0.5) 0%, rgba(0,15,8,0.15) 35%, transparent 65%);"></div>
     </div>
-    <div class="container" style="position: relative; z-index: 1; padding: 120px 48px 72px;">
+    <div class="container home-hero__inner" style="position: relative; z-index: 1;">
+      <p class="home-hero__desc">Commercial property advice for buyers, owners and tenants.</p>
       <h1 class="h-hero">EXCLUSIVELY ON YOUR <span class="italic" style="color: var(--gold);">side of the table.</span></h1>
-      <div class="gold-rule" style="margin: 32px 0;"></div>
-      <div style="max-width: 560px;">
-        <p class="lede" style="font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 36px;">
-          Represent Commercial acts for commercial property buyers, owners and tenants. Buyer’s agency across Brisbane, South East Queensland and regional Queensland; property management, leasing and tenant representation in Brisbane. Principal-led, and never acting for vendors.
-        </p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="/buyers-agency" class="btn btn--lg btn--gold">Buyers</a>
-          <a href="/services" class="btn btn--lg btn--outline">Property Owners</a>
-          <a href="/tenant-representation" class="btn btn--lg btn--outline">Tenants</a>
-        </div>
+      <div class="gold-rule" style="margin: 28px 0;"></div>
+      <p class="lede" style="font-size: 18px; color: rgba(255,255,255,0.88); margin: 0 0 32px; max-width: 620px;">Buy with confidence. Lease and manage with a plan. Secure premises that suit your business.</p>
+      <div class="hero-paths">
+        <a href="/buyers-agency" class="btn btn--lg btn--outline hero-path">Buy Commercial Property</a>
+        <a href="/services" class="btn btn--lg btn--outline hero-path">Lease or Manage My Property</a>
+        <a href="/tenant-representation" class="btn btn--lg btn--outline hero-path">Find or Renew Business Premises</a>
       </div>
     </div>
   </section>
 
-  <!-- ─── THREE PATHWAYS ─── -->
-  <section class="section section--light" data-screen-label="Pathways">
+  <!-- ─── SERVICES ─── -->
+  <section class="section section--light home-tight" data-screen-label="Services">
     <div class="container">
       <div class="reveal">
         <div class="eyebrow eyebrow--dim-light">WHAT WE DO</div>
-        <h2 class="h-3" style="color: var(--green); margin-bottom: 20px; max-width: 900px;">
+        <h2 class="h-3" style="color: var(--green); margin-bottom: 36px; max-width: 900px;">
           THREE WAYS WE ACT ON YOUR <span class="italic" style="color: var(--gold);">side.</span>
         </h2>
-        <p class="body" style="max-width: 660px; margin-bottom: 48px;">
-          We act for buyers, owners and tenants, never for vendors. Principal-led representation, backed by transaction evidence we track ourselves. Start with the situation you are in.
-        </p>
       </div>
       <div class="path-grid reveal">
         <article class="path">
-          <div class="path__eyebrow">Buyers</div>
-          <h3>You are buying commercial property</h3>
-          <p>Independent acquisition advice for investors and owner-occupiers, combining experienced assessment and negotiation with a practical plan for the asset’s future.</p>
+          <h3>Buy commercial property</h3>
+          <p>Acquisition advice for investors and businesses buying their own premises.</p>
           <div class="path__svc">
-            <a href="/buyers-agency">Buyer’s Agency &amp; Acquisition Advisory</a>
+            <a href="/buyers-agency">Explore Buyer’s Agency</a>
           </div>
         </article>
         <article class="path">
-          <div class="path__eyebrow">Property Owners</div>
-          <h3>You own commercial property</h3>
-          <p>Management that protects income, tenant relationships and property condition, and leasing that gets vacant space occupied.</p>
+          <h3>Lease or manage your property</h3>
+          <p>Leasing and ongoing management focused on income, occupancy and long-term performance.</p>
           <div class="path__svc">
-            <a href="/services">Commercial Property Management</a>
             <a href="/leasing">Commercial Property Leasing</a>
+            <a href="/services">Commercial Property Management</a>
           </div>
         </article>
         <article class="path">
-          <div class="path__eyebrow">Tenants</div>
-          <h3>You are leasing premises</h3>
-          <p>Tenant-side representation for new premises, relocations and renewals, with the occupancy cost compared properly before you commit.</p>
+          <h3>Find or renew business premises</h3>
+          <p>Tenant representation for businesses assessing premises, negotiating leases or planning a renewal.</p>
           <div class="path__svc">
-            <a href="/tenant-representation">Commercial Tenant Representation</a>
+            <a href="/tenant-representation">Explore Tenant Representation</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ─── OPERATING MODEL / THE REPRESENT DIFFERENCE ─── -->
-  <section class="section section--green diff">
+  <!-- ─── VALUE-ADD SPECIALITY ─── -->
+  <section class="section section--deep home-tight" data-screen-label="Value-add">
+    <div class="circle" style="top: -160px; right: -160px; transform: none; width: 560px; height: 560px;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <div class="reveal">
-        <div class="eyebrow eyebrow--gold">WHY REPRESENT</div>
-        <h2 class="h-3" style="color: #fff; margin-bottom: 20px;">
-          THE DIFFERENCE IS <span class="italic" style="color: var(--gold);">structural,</span> NOT STYLISTIC.
-        </h2>
-        <hr class="gold-rule" style="margin-bottom: 64px;" />
+        <div class="eyebrow eyebrow--gold">Our speciality</div>
+        <h2 class="h-3" style="color: #fff; margin: 0 0 16px; max-width: 900px;">VALUE-ADD COMMERCIAL PROPERTY. WE FIND IT. WE <span class="italic" style="color: var(--gold);">deliver it.</span></h2>
+        <p class="lede" style="color: rgba(255,255,255,0.85); max-width: 680px; margin: 0 0 40px;">Under-rented space, vacancy, dated presentation or short lease terms can price a property below what it could become. We help you buy it, then help you unlock it.</p>
       </div>
-      <div class="pillar-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));">
-        <article class="pillar reveal">
-          <div class="pillar__n">01</div>
-          <h3 class="pillar__title">20+ years owner-side experience</h3>
-          <p class="pillar__body">Two decades of commercial property experience across acquisitions, leasing, construction and asset strategy. Principal-led advice throughout.</p>
+      <div class="va-grid">
+        <article class="va-step reveal">
+          <div class="va-step__n">01 · Buy the opportunity</div>
+          <h3>Find it and test it before you commit.</h3>
+          <p>We assess rent against market evidence, lease events, capital works, approvals, holding costs and downside cash flow, then negotiate price and terms on that evidence.</p>
         </article>
-        <article class="pillar reveal">
-          <div class="pillar__n">02</div>
-          <h3 class="pillar__title">Independent representation</h3>
-          <p class="pillar__body">We act for buyers, owners and tenants, with the client's commercial objective at the centre of the advice.</p>
+        <article class="va-step reveal">
+          <div class="va-step__n">02 · Unlock the value</div>
+          <h3>Carry the plan through after settlement.</h3>
+          <p>Refurbishment, leasing, rent reviews and asset management, coordinated owner-side so the uplift is delivered on the property, not only in the model.</p>
         </article>
-        <article class="pillar reveal">
-          <div class="pillar__n">03</div>
-          <h3 class="pillar__title">Evidence-led decisions</h3>
-          <p class="pillar__body">Leasing evidence, transaction intelligence and precinct activity inform the advice, rather than assumption alone.</p>
-        </article>
+      </div>
+      <div class="va-foot reveal">
+        <p>Not every property suits a value-add strategy. Where one does, scope and fees are agreed before work begins.</p>
+        <a href="/buyers-agency-investors" class="btn btn--md btn--gold">Explore Value-Add Acquisition</a>
       </div>
     </div>
   </section>
 
   <!-- ─── PROOF ─── -->
-  <section class="section section--light" style="background: #F1EFE9;">
+  <section class="section section--light home-tight" style="background: #F1EFE9;" data-screen-label="Evidence">
     <div class="container">
       <div class="reveal">
         <div class="eyebrow eyebrow--dim-light">Selected Project Highlights</div>
         <h2 class="h-3" style="color: var(--green); margin-bottom: 20px; max-width: 900px;">
           VALUE CREATED, NOT JUST <span class="italic" style="color: var(--gold);">preserved.</span>
         </h2>
-        <hr class="gold-rule" style="margin-bottom: 28px;" />
-        <p class="body" style="max-width: 700px; margin-bottom: 56px; font-size: 14px; color: #4A504A;">Led by Nick O’Toole. Figures are indicative of the projects described. <a href="/case-studies">See the case studies</a>.</p>
+        <p class="body" style="max-width: 700px; margin-bottom: 36px; font-size: 14px; color: #4A504A;">Led by Nick O’Toole. Figures are indicative of the projects described and are not a forecast of future results.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px;">
-        <article class="proj-card reveal">
-          <div class="proj-card__head">
-            <div>
-              <div class="proj-card__loc">Spring Hill</div>
-              <div class="proj-card__tag">Asset strategy</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px;">
+        <article class="proj-card proj-card--img reveal">
+          <img class="proj-card__img" src="assets/stafford-property-web-940.webp" srcset="assets/stafford-property-web-500.webp 500w, assets/stafford-property-web-940.webp 940w" sizes="(max-width: 700px) calc(100vw - 40px), 640px" alt="The Stafford strata industrial unit, showing the office entry and two roller-door bays" width="940" height="627" loading="lazy" decoding="async" />
+          <div class="proj-card__body">
+            <div class="proj-card__head">
+              <div>
+                <div class="proj-card__loc">Stafford</div>
+                <div class="proj-card__tag">COST BASIS PLAY</div>
+              </div>
+              <div style="width: 32px; height: 2px; background: var(--gold); margin-top: 8px;"></div>
             </div>
-            <div style="width: 32px; height: 2px; background: var(--gold); margin-top: 8px;"></div>
+            <div class="proj-card__headline">$1.12M → $2.15M</div>
+            <div class="proj-card__divider"></div>
+            <p class="body" style="margin: 0 0 14px;">Purchased for $1.12M in 2022 with less than two years of lease remaining and rent well under market. Held to lease expiry, then sold to strong owner-occupier demand in 2024 for $2.15M. Purchase and sale prices, before costs.</p>
+            <a class="proj-card__more" href="/case-studies#stafford">Read the Stafford case study</a>
           </div>
-          <div class="proj-card__headline">3 → 15 storeys</div>
-          <div class="proj-card__divider"></div>
-          <p class="body" style="margin: 0;">Repositioned a Spring Hill commercial asset, securing a planning uplift from 3 to 15 storeys, then running a refurbishment and leasing campaign that delivered 100% occupancy and a 6% yield on total cost.</p>
         </article>
-        <article class="proj-card reveal">
-          <div class="proj-card__head">
-            <div>
-              <div class="proj-card__loc">West End</div>
-              <div class="proj-card__tag">Asset management · Value creation</div>
+        <article class="proj-card proj-card--img reveal">
+          <img class="proj-card__img" src="assets/berserker-property-web-940.webp" srcset="assets/berserker-property-web-500.webp 500w, assets/berserker-property-web-940.webp 940w" sizes="(max-width: 700px) calc(100vw - 40px), 640px" alt="The Berserker retail and office building with on-site parking, viewed from High Street" width="940" height="627" loading="lazy" decoding="async" />
+          <div class="proj-card__body">
+            <div class="proj-card__head">
+              <div>
+                <div class="proj-card__loc">Berserker, Rockhampton</div>
+                <div class="proj-card__tag">Refurbishment &amp; reversion</div>
+              </div>
+              <div style="width: 32px; height: 2px; background: var(--gold); margin-top: 8px;"></div>
             </div>
-            <div style="width: 32px; height: 2px; background: var(--gold); margin-top: 8px;"></div>
+            <div class="proj-card__headline">Refurbished. Then repriced.</div>
+            <div class="proj-card__divider"></div>
+            <p class="body" style="margin: 0 0 14px;">A retail and office building beside Stockland Rockhampton. A full refurbishment is complete, and rents are being reset to market lease by lease as tenancies renew. Currently under way.</p>
+            <a class="proj-card__more" href="/case-studies#berserker">Read the Berserker case study</a>
           </div>
-          <div class="proj-card__headline">$5M → $12M</div>
-          <div class="proj-card__divider"></div>
-          <p class="body" style="margin: 0;">Managed the acquisition, refurbishment and leasing of a West End mixed-use asset, supporting a value increase from $5M to $12M.</p>
         </article>
-      </div>
-      <div class="reveal" style="margin-top: 44px;">
-        <a href="/case-studies" class="btn btn--md btn--outline-dark">View Case Studies →</a>
       </div>
     </div>
   </section>
 
-  <!-- ─── MARKET INTELLIGENCE ─── -->
-  <section class="section section--light">
-    <div class="container">
+  <!-- ─── NICK ─── -->
+  <section class="section section--green home-tight" data-screen-label="Nick">
+    <div class="container home-nick">
+      <div class="home-nick__img reveal">
+        <picture>
+          <source srcset="nick-otoole-headshot.webp" type="image/webp" />
+          <img src="nick-otoole-headshot.jpg" alt="Nick O’Toole, Founder &amp; Director of Represent Commercial" width="600" height="761" loading="lazy" decoding="async" />
+        </picture>
+      </div>
       <div class="reveal">
-        <div class="eyebrow eyebrow--dim-light">MARKET INTELLIGENCE</div>
-        <h2 class="h-3" style="color: var(--green); margin-bottom: 20px; max-width: 860px;">
-          KNOW THE MARKET BEFORE MAKING THE <span class="italic" style="color: var(--gold);">decision.</span>
-        </h2>
-        <p class="body" style="font-size: 16px; margin-bottom: 48px; max-width: 700px;">Represent tracks leasing, sales and precinct activity across Brisbane's commercial property markets. That intelligence informs both the assessment of new acquisitions and the management of existing assets.</p>
-      </div>
-      <div class="mi-grid">
-        <a class="mi-card reveal" href="/Acacia%20Ridge"><span class="mi-card__code">QLD 4110</span><span class="mi-card__name">Acacia Ridge</span><span class="mi-card__sub">South-west industrial corridor</span></a>
-        <a class="mi-card reveal" href="/Brendale"><span class="mi-card__code">QLD 4500</span><span class="mi-card__name">Brendale</span><span class="mi-card__sub">North Brisbane industrial</span></a>
-        <a class="mi-card reveal" href="/Hemmant"><span class="mi-card__code">QLD 4174</span><span class="mi-card__name">Hemmant</span><span class="mi-card__sub">East Brisbane trade &amp; port services</span></a>
-        <a class="mi-card reveal" href="/Yatala"><span class="mi-card__code">QLD 4207</span><span class="mi-card__name">Yatala</span><span class="mi-card__sub">Gold Coast–Brisbane corridor</span></a>
-      </div>
-      <div class="reveal" style="margin-top: 40px;">
-        <a href="/insights" class="btn btn--md" style="background: transparent; border-color: rgba(0,66,37,0.3); color: var(--green);" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(0,66,37,0.3)';this.style.color='var(--green)'">Explore Market Intelligence →</a>
+        <div class="eyebrow eyebrow--gold">How we work</div>
+        <h2 class="h-3" style="color: #fff; margin: 0 0 10px;">Work directly with Nick O’Toole.</h2>
+        <p class="home-nick__title">Founder &amp; Director, Represent Commercial</p>
+        <hr class="gold-rule" style="margin: 24px 0;" />
+        <p class="lede" style="color: rgba(255,255,255,0.85); margin: 0 0 24px; max-width: 600px;">More than 20 years of owner-side commercial property experience, applied to your next acquisition, leasing decision or property strategy.</p>
+        <ul class="home-nick__pts">
+          <li>Direct access to the principal leading your appointment.</li>
+          <li>Advice grounded in property evidence and commercial priorities.</li>
+          <li>Clear scope, practical recommendations and accountability.</li>
+        </ul>
+        <a href="/about" class="btn btn--md btn--outline" style="margin-top: 28px;">Meet Nick</a>
       </div>
     </div>
   </section>
 
   <!-- ─── CTA STRIP ─── -->
-  <section class="section section--green" style="padding-top: 80px; padding-bottom: 80px;">
+  <section class="section section--green" style="padding-top: 72px; padding-bottom: 72px;" data-screen-label="Enquiry paths">
     <div class="container cta-3">
       <div class="cta-col">
         <div class="eyebrow eyebrow--gold">For Buyers</div>
         <h2 class="h-4" style="color: #fff;">BUYING COMMERCIAL PROPERTY?</h2>
-        <p class="body" style="color: rgba(255,255,255,0.55);">Independent acquisition representation for investors and owner-occupiers across Brisbane, South East Queensland and regional Queensland.</p>
-        <a href="/contact?service=acquisition#form-card" class="btn btn--lg btn--gold">Discuss Your Acquisition</a>
+        <p class="body" style="color: rgba(255,255,255,0.75);">Independent acquisition representation for investors and owner-occupiers across Brisbane, South East Queensland and regional Queensland.</p>
+        <a href="/contact?service=acquisition#form-card" class="btn btn--lg btn--gold">Discuss My Acquisition</a>
       </div>
       <div class="cta-col">
         <div class="eyebrow eyebrow--gold">For Owners</div>
         <h2 class="h-4" style="color: #fff;">OWN COMMERCIAL PROPERTY?</h2>
-        <p class="body" style="color: rgba(255,255,255,0.55);">Principal-led management and leasing across Brisbane: income, tenants, lease events and long-term property performance.</p>
-        <a href="/contact?service=management#form-card" class="btn btn--lg btn--gold">Discuss Your Property</a>
+        <p class="body" style="color: rgba(255,255,255,0.75);">Discuss leasing, management or a current or upcoming vacancy.</p>
+        <a href="/contact?service=management#form-card" class="btn btn--lg btn--gold">Discuss My Property</a>
       </div>
       <div class="cta-col">
         <div class="eyebrow eyebrow--gold">For Tenants</div>
-        <h2 class="h-4" style="color: #fff;">LEASING PREMISES?</h2>
-        <p class="body" style="color: rgba(255,255,255,0.55);">Tenant-side representation for new premises, relocations and lease renewals, with occupancy cost compared before you commit.</p>
-        <a href="/contact?service=tenant#form-card" class="btn btn--lg btn--gold">Discuss Your Requirement</a>
+        <h2 class="h-4" style="color: #fff;">NEED BUSINESS PREMISES?</h2>
+        <p class="body" style="color: rgba(255,255,255,0.75);">Discuss your premises search, lease negotiation or renewal.</p>
+        <a href="/contact?service=tenant#form-card" class="btn btn--lg btn--gold">Discuss My Premises</a>
       </div>
     </div>
   </section>
