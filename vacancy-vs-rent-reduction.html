@@ -43,6 +43,8 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
 <link rel="stylesheet" href="calc.css" />
+<style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
+<style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </head>
 <body class="calc-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -59,7 +61,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -214,12 +216,13 @@
         <p class="lead-p">The right answer depends on the depth of enquiry, the covenant on offer and what the lower rent does to the asset&rsquo;s value. Represent leases and manages commercial property with that whole picture in view.</p>
         <form id="lead-form">
           <div class="lead-grid">
-            <div class="lead-field"><label for="vacancy-vs-rent-reduction-name">Name</label><input id="vacancy-vs-rent-reduction-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="vacancy-vs-rent-reduction-first">First name</label><input id="vacancy-vs-rent-reduction-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
+            <div class="lead-field"><label for="vacancy-vs-rent-reduction-last">Last name</label><input id="vacancy-vs-rent-reduction-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="vacancy-vs-rent-reduction-email">Email</label><input id="vacancy-vs-rent-reduction-email" name="email" type="email" autocomplete="email" required /></div>
             <div class="lead-field"><label for="vacancy-vs-rent-reduction-phone">Phone</label><input id="vacancy-vs-rent-reduction-phone" name="phone" autocomplete="tel" /></div>
           </div>
           <div class="lead-actions">
-            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Vacancy</button>
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss Leasing My Property</button>
             <a class="lead-link" href="/leasing">Explore Commercial Leasing &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
@@ -481,7 +484,9 @@
       form_stream: 'enquiries',
       subject: 'Enquiry: Vacancy vs Rent Reduction Calculator',
       from_name: 'Represent Commercial Website',
-      name: form.name.value,
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      name: [form.first_name.value, form.last_name.value].map(function (s) { return s.trim(); }).filter(Boolean).join(' '),
       email: form.email.value,
       replyto: form.email.value,
       phone: form.phone.value,
@@ -492,7 +497,7 @@
     var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
     function fail(message) {
-      btn.disabled = false; btn.textContent = 'Discuss Your Vacancy';
+      btn.disabled = false; btn.textContent = 'Discuss Leasing My Property';
       errEl.textContent = message; errEl.style.display = 'block';
     }
     var controller = ('AbortController' in window) ? new AbortController() : null;

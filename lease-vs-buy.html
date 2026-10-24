@@ -255,6 +255,8 @@
   @media (max-width: 1040px) { .calc-grid { grid-template-columns: minmax(0,1fr); } }
   @media (max-width: 860px) { .mini-grid { grid-template-columns: minmax(0,1fr); } }
 </style>
+<style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
+<style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </head>
 <body class="calc-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -272,7 +274,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -685,12 +687,13 @@
         <p class="lead-p">A financially attractive purchase can still be the wrong property. Represent assesses the location, building, market evidence, future requirements and exit position before recommending an acquisition.</p>
         <form id="lead-form">
           <div class="lead-grid">
-            <div class="lead-field"><label for="lease-vs-buy-name">Name</label><input id="lease-vs-buy-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="lease-vs-buy-first">First name</label><input id="lease-vs-buy-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
+            <div class="lead-field"><label for="lease-vs-buy-last">Last name</label><input id="lease-vs-buy-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="lease-vs-buy-email">Email</label><input id="lease-vs-buy-email" name="email" type="email" autocomplete="email" required /></div>
             <div class="lead-field"><label for="lease-vs-buy-phone">Phone</label><input id="lease-vs-buy-phone" name="phone" autocomplete="tel" /></div>
           </div>
           <div class="lead-actions">
-            <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Requirement</button>
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss My Lease Options</button>
             <a class="lead-link" href="/buyers-agency">Explore Buyers Agency →</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
@@ -1171,7 +1174,9 @@
       form_stream: 'enquiries',
       subject: 'Enquiry: Lease vs Own Calculator',
       from_name: 'Represent Commercial Website',
-      name: form.name.value,
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      name: [form.first_name.value, form.last_name.value].map(function (s) { return s.trim(); }).filter(Boolean).join(' '),
       email: form.email.value,
       replyto: form.email.value,
       phone: form.phone.value,
@@ -1199,7 +1204,7 @@
     var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
     function fail(message) {
-      btn.disabled = false; btn.textContent = 'Discuss Your Requirement';
+      btn.disabled = false; btn.textContent = 'Discuss My Lease Options';
       errEl.textContent = message;
       errEl.style.display = 'block';
     }

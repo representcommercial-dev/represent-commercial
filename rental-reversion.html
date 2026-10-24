@@ -43,6 +43,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
 <link rel="stylesheet" href="calc.css" />
+<style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </head>
 <body class="calc-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -59,7 +60,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -212,7 +213,8 @@
         <p class="lead-p">Whether it is capturable depends on the lease, the tenant, the building and the depth of leasing demand at the rent being assumed. Represent tests that before a buyer pays for it.</p>
         <form id="lead-form">
           <div class="lead-grid">
-            <div class="lead-field"><label for="rental-reversion-name">Name</label><input id="rental-reversion-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="rental-reversion-first">First name</label><input id="rental-reversion-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
+            <div class="lead-field"><label for="rental-reversion-last">Last name</label><input id="rental-reversion-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="rental-reversion-email">Email</label><input id="rental-reversion-email" name="email" type="email" autocomplete="email" required /></div>
             <div class="lead-field"><label for="rental-reversion-phone">Phone</label><input id="rental-reversion-phone" name="phone" autocomplete="tel" /></div>
           </div>
@@ -465,7 +467,9 @@
       form_stream: 'enquiries',
       subject: 'Enquiry: Rental Reversion & Value Uplift Calculator',
       from_name: 'Represent Commercial Website',
-      name: form.name.value,
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      name: [form.first_name.value, form.last_name.value].map(function (s) { return s.trim(); }).filter(Boolean).join(' '),
       email: form.email.value,
       replyto: form.email.value,
       phone: form.phone.value,

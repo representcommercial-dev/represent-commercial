@@ -43,6 +43,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
 <link rel="stylesheet" href="calc.css" />
+<style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </head>
 <body class="calc-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -59,7 +60,7 @@
       <a href="/tenant-representation" class="site-nav__link">Tenants</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss a Property</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
     </nav>
   </div>
 </header>
@@ -213,7 +214,8 @@
         <p class="lead-p">Expiry dates get staggered, terms get lengthened and covenants get tested through active leasing decisions made years before the numbers matter. Represent manages and leases commercial property with the expiry profile in view.</p>
         <form id="lead-form">
           <div class="lead-grid">
-            <div class="lead-field"><label for="wale-calculator-name">Name</label><input id="wale-calculator-name" name="name" autocomplete="name" /></div>
+            <div class="lead-field"><label for="wale-calculator-first">First name</label><input id="wale-calculator-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
+            <div class="lead-field"><label for="wale-calculator-last">Last name</label><input id="wale-calculator-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="wale-calculator-email">Email</label><input id="wale-calculator-email" name="email" type="email" autocomplete="email" required /></div>
             <div class="lead-field"><label for="wale-calculator-phone">Phone</label><input id="wale-calculator-phone" name="phone" autocomplete="tel" /></div>
           </div>
@@ -522,7 +524,9 @@
       form_stream: 'enquiries',
       subject: 'Enquiry: WALE Calculator',
       from_name: 'Represent Commercial Website',
-      name: form.name.value,
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      name: [form.first_name.value, form.last_name.value].map(function (s) { return s.trim(); }).filter(Boolean).join(' '),
       email: form.email.value,
       replyto: form.email.value,
       phone: form.phone.value,
