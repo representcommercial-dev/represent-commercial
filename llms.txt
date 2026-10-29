@@ -13,8 +13,8 @@
 
 ## Pages
 - [Home](https://represent.au/): Three client pathways: buyers, property owners, tenants
-- [Commercial Property Management Brisbane](https://represent.au/services): Property management for owners, delivered with an asset-management mindset
-- [Commercial Property Leasing Brisbane](https://represent.au/leasing): Owner-side leasing of vacant commercial space
+- [Commercial Property Management Brisbane](https://represent.au/commercial-property-management): Property management for owners, delivered with an asset-management mindset
+- [Commercial Property Leasing Brisbane](https://represent.au/commercial-property-leasing): Owner-side leasing of vacant commercial space
 - [Commercial Buyer’s Agent](https://represent.au/buyers-agency): Independent acquisition representation for investors and owner-occupiers across Brisbane, South East Queensland and regional Queensland
 - [Commercial Buyer’s Agent for Investors](https://represent.au/buyers-agency-investors): Income, lease quality, price and value-add tested before an investor buys
 - [Commercial Buyer’s Agent for Owner-Occupiers](https://represent.au/buyers-agency-owner-occupiers): Business premises purchases, lease vs buy and SMSF purchases with the owner’s advisers

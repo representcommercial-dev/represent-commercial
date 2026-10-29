@@ -12,7 +12,7 @@ const DESTINATIONS = {
   ppr: '/commercial-property-performance-review',
   buyers: '/buyers-agency',
   pab: '/buyers-agency',
-  leasing: '/leasing',
+  leasing: '/commercial-property-leasing',
   tenant: '/tenant-representation'
 };
 
