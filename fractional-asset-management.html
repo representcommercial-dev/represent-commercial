@@ -20,9 +20,9 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fractional Commercial Asset Management | Represent Commercial</title>
+<title>STAGING TEST ONLY | Fractional Commercial Asset Management | Represent Commercial</title>
 <meta name="description" content="Senior asset management for syndicators and private owners of office, retail and industrial property, priced by the project. Led by Nick O’Toole." />
-<meta name="robots" content="noindex, follow" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
 <link rel="canonical" href="https://represent.au/commercial-asset-management" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/fractional-asset-management" />
@@ -490,7 +490,7 @@ details[open]>summary .ba-pm::after{transform:none}
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<div id="am-draft" style="background:#F6EDCF;color:#47380F;text-align:center;font-family:var(--f-body);font-size:13px;font-weight:600;line-height:1.5;padding:8px 16px;position:relative;z-index:201;">Draft for review. The enquiry form is in preview mode and does not send.</div>
+<div id="am-draft" style="background:#8B1E1E;color:#fff;text-align:center;font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:.04em;line-height:1.5;padding:8px 16px;position:relative;z-index:201;">STAGING TEST ONLY. This form sends to enquiries@represent.au and HighLevel. Not for public use.</div>
 
 <header class="site-header" style="position:sticky;">
   <div class="site-header__inner">
@@ -521,7 +521,7 @@ details[open]>summary .ba-pm::after{transform:none}
       <div class="ba-hero__form" id="ba-slot-hero"><div class="form-card ba-form" id="enquiry">
         <form id="ba-form" method="POST" action="https://api.web3forms.com/submit">
           <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
-          <input type="hidden" name="subject" value="Fractional asset management enquiry, Represent Commercial" />
+          <input type="hidden" name="subject" value="[STAGING TEST] Fractional asset management enquiry, Represent Commercial" />
           <input type="hidden" name="from_name" value="Represent Commercial Website" />
           <input type="hidden" name="enquiry_type" value="asset-management" />
           <input type="hidden" name="form_stream" value="fractional-asset-management" />
@@ -739,13 +739,10 @@ details[open]>summary .ba-pm::after{transform:none}
 <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
 <script>
-// REVIEW DRAFT. SENDING_APPROVED stays false until the routing tests pass and the dedicated Ads conversion is supplied.
-// Once approved, the form sends only when the hostname is exactly represent.au. Every other host stays in preview mode.
-var SENDING_APPROVED = false;
-var PREVIEW_ONLY = !SENDING_APPROVED || location.hostname !== 'represent.au';
-// Dedicated Google Ads conversion: "Fractional Asset Management Enquiry" (conversion action ID 7882263594).
-// Never the Commercial Property Performance Review label.
-var FAM_CONVERSION_SEND_TO = 'AW-18457265873/juvqCKqYx64dENGNjuFE';
+// STAGING TEST ONLY: sends only when the hostname is exactly staging-qa.represent-commercial.pages.dev. Every other host stays in preview mode.
+var PREVIEW_ONLY = location.hostname !== 'staging-qa.represent-commercial.pages.dev';
+// STAGING TEST ONLY: Google Ads conversion disabled.
+var FAM_CONVERSION_SEND_TO = '';
 window.rcTrack = function (name, params) {
   params = params || {};
   window.dataLayer = window.dataLayer || [];
@@ -759,7 +756,7 @@ window.rcTrack = function (name, params) {
   var done = document.getElementById('ba-done');
   var errEl = document.getElementById('ba-err');
   if (!form || !card) return;
-  var draft = document.getElementById('am-draft'); if (draft && !PREVIEW_ONLY) draft.hidden = true;
+  // Staging banner stays visible on every host.
 
 
   // Attribution (same session store + aliases as the other landing pages)
