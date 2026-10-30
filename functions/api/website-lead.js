@@ -123,6 +123,10 @@ const BOOKING_CONTEXT_FIELDS = ['enquiryService', 'formStream', 'websiteSubmissi
 // on a contact that could be read. Scoped to this one form stream; other PM enquiries are unchanged.
 const LEASING_BOOKING_STREAM = 'commercial-property-leasing-vacancy';
 
+// Fractional asset management ads page (2026-10-29): Property Management & Leasing pipeline, opportunity
+// named 'Asset Management | <property address or location>'. Scoped to this one form stream.
+const ASSET_MANAGEMENT_STREAM = 'fractional-asset-management';
+
 let contactFieldCache = null;
 
 export async function onRequestGet({ env }) {
@@ -299,7 +303,7 @@ export async function onRequestPost({ request, env }) {
       addField(fields, CF.propertyIdentified, clean(data.property_identified, 50));
     }
 
-    const oppName = buildOpportunityName(enquiryService, propertyAddress, name);
+    const oppName = buildOpportunityName(clean(data.form_stream, 200) === ASSET_MANAGEMENT_STREAM ? 'Asset Management' : enquiryService, propertyAddress, name);
     const oppRes = await ghl('/opportunities/', env, {
       method: 'POST',
       version: GHL_OPPORTUNITIES_VERSION,
@@ -622,7 +626,7 @@ function deriveOpportunityType(d, route) {
     'Management + Leasing', 'Leasing Only', 'Management Only', 'Property Review / Advisory',
     'Owner-Occupier Acquisition', 'Investor Acquisition', 'Acquisition Advisory',
     'Due Diligence / Negotiation', 'New Lease Search', 'Relocation',
-    'Renewal / Renegotiation', 'Expansion / Contraction', 'Other'
+    'Renewal / Renegotiation', 'Expansion / Contraction', 'Asset Management', 'Other'
   ];
   return allowed.includes(requested) ? requested : route.defaultOpportunityType;
 }
