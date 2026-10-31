@@ -43,9 +43,9 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Brisbane Tenant Representation | Represent Commercial</title>
+<title>STAGING TEST ONLY | Brisbane Tenant Representation | Represent Commercial</title>
 <meta name="description" content="Looking to lease business premises in Brisbane? Represent Commercial helps you find the right space and negotiate your lease, from a new search to a renewal or a property you have already found." />
-<meta name="robots" content="noindex, follow" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
 <link rel="canonical" href="https://represent.au/tenant-representation" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/brisbane-tenant-representation" />
@@ -461,7 +461,7 @@ details[open]>summary .ba-pm::after{transform:none}
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<div class="tr-draft" id="tr-draft" hidden>Draft for review. The enquiry form is in preview mode and does not send.</div>
+<div class="tr-draft" id="tr-draft" style="background:#8B1E1E;color:#fff;font-weight:700;letter-spacing:.04em;">STAGING TEST ONLY. This form sends to enquiries@represent.au and HighLevel. Not for public use.</div>
 
 <header class="site-header" style="position:sticky;">
   <div class="site-header__inner">
@@ -496,7 +496,7 @@ details[open]>summary .ba-pm::after{transform:none}
       <div class="ba-hero__form"><div class="form-card ba-form" id="enquiry">
         <form id="tr-form" method="POST" action="https://api.web3forms.com/submit">
           <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
-          <input type="hidden" name="subject" value="Tenant representation enquiry (Brisbane campaign), Represent Commercial" />
+          <input type="hidden" name="subject" value="[STAGING TEST] Tenant representation enquiry (Brisbane campaign), Represent Commercial" />
           <input type="hidden" name="from_name" value="Represent Commercial Website" />
           <input type="hidden" name="redirect" value="https://represent.au/enquiry-received" />
           <input type="hidden" name="enquiry_type" value="tenant" />
@@ -694,8 +694,8 @@ details[open]>summary .ba-pm::after{transform:none}
 <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v1.js"></script>
 <script>
-// PRODUCTION: sends only when the hostname is exactly represent.au. Every other host (including Cloudflare deployment URLs and staging) stays in preview mode.
-var PREVIEW_ONLY = location.hostname !== 'represent.au';
+// STAGING TEST ONLY: sends only when the hostname is exactly staging-qa.represent-commercial.pages.dev. Every other host stays in preview mode.
+var PREVIEW_ONLY = location.hostname !== 'staging-qa.represent-commercial.pages.dev';
 window.rcTrack = function (name, params) {
   params = params || {};
   window.dataLayer = window.dataLayer || [];
@@ -709,7 +709,7 @@ window.rcTrack = function (name, params) {
   var errEl = document.getElementById('tr-err');
   var prev = document.getElementById('tr-preview');
   var banner = document.getElementById('tr-draft');
-  if (banner) banner.hidden = !PREVIEW_ONLY;
+  // Staging banner stays visible on every host.
   if (!form) return;
 
   var KEY = 'rc_attr';

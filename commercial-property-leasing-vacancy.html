@@ -20,9 +20,9 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Commercial Property Leasing for Vacancies | Greater Brisbane | Represent Commercial</title>
+<title>STAGING TEST ONLY | Commercial Property Leasing for Vacancies | Greater Brisbane | Represent Commercial</title>
 <meta name="description" content="Vacant now or lease ending soon? Nick O’Toole plans and runs commercial property leasing campaigns for owners across Greater Brisbane." />
-<meta name="robots" content="noindex, follow" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
 <link rel="canonical" href="https://represent.au/commercial-property-leasing" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/commercial-property-leasing-vacancy" />
@@ -506,6 +506,7 @@ details[open]>summary .ba-pm::after{transform:none}
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<div id="lv-staging" role="note" style="background:#8B1E1E;color:#fff;text-align:center;font-family:var(--f-body);font-size:13px;font-weight:700;letter-spacing:.04em;line-height:1.5;padding:8px 16px;position:relative;z-index:201;">STAGING TEST ONLY. Submissions create test records in Web3Forms and HighLevel but do not record a Google Ads conversion.</div>
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -536,7 +537,7 @@ details[open]>summary .ba-pm::after{transform:none}
       <div class="ba-hero__form" id="ba-slot-hero"><div class="form-card ba-form" id="enquiry">
         <form id="ba-form" method="POST" action="https://api.web3forms.com/submit">
           <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
-          <input type="hidden" name="subject" value="Owner vacancy / leasing enquiry, Represent Commercial" />
+          <input type="hidden" name="subject" value="[STAGING TEST] Owner vacancy / leasing enquiry, Represent Commercial" />
           <input type="hidden" name="from_name" value="Represent Commercial Website" />
           <input type="hidden" name="enquiry_type" value="leasing" />
           <input type="hidden" name="form_stream" value="commercial-property-leasing-vacancy" />
@@ -777,6 +778,8 @@ window.rcTrack = function (name, params) {
   var done = document.getElementById('ba-done');
   var errEl = document.getElementById('ba-err');
   if (!form || !card) return;
+  // STAGING TEST ONLY: sends only when the hostname is exactly staging-qa.represent-commercial.pages.dev. Every other host stays in preview mode.
+  var PREVIEW_ONLY = location.hostname !== 'staging-qa.represent-commercial.pages.dev';
 
 
   // Attribution (same session store + aliases as the other landing pages)
@@ -818,6 +821,7 @@ window.rcTrack = function (name, params) {
     e.preventDefault();
     if (btn.disabled || sent) return;
     if (!form.reportValidity()) return;
+    if (PREVIEW_ONLY) { errEl.textContent = 'Preview only. This staging copy sends only on staging-qa.represent-commercial.pages.dev. Nothing was sent.'; errEl.style.display = 'block'; return; }
     errEl.style.display = 'none';
     btn.disabled = true; btn.textContent = 'Sending…';
     var confirmed = false;
@@ -928,18 +932,7 @@ window.rcTrack = function (name, params) {
         rcTrack('leasing_form_submit', { form_stream: payload.form_stream, vacancy_status: payload.vacancy_status || 'not_given', cta_location: payload.cta_clicked || 'direct' });
       } catch (trackingError) { console.error('Represent event tracking:', trackingError); }
 
-      // Google Ads: confirmed owner vacancy / leasing enquiries only.
-      // The submission ID deduplicates retries; never send contact details to Ads.
-      try {
-        var conversionId = String(payload.website_submission_id || '');
-        if (conversionId && !measured[conversionId] && typeof window.gtag === 'function') {
-          window.gtag('event', 'conversion', {
-            send_to: 'AW-18457265873/p8_gCP7Lmq8dENGNjuFE',
-            transaction_id: conversionId
-          });
-          measured[conversionId] = true;
-        }
-      } catch (adsError) { console.error('Represent leasing conversion:', adsError); }
+      // STAGING TEST ONLY: Google Ads conversion disabled. No conversion is recorded from this copy.
     }).catch(function (err) {
       if (timer) clearTimeout(timer);
       if (confirmed) { console.error('Post-submit step failed:', err); return; }
