@@ -358,7 +358,7 @@ details[open]>summary .ba-pm::after{transform:none}
 .section--hero.ba-hero-s{padding:64px 48px 64px;min-height:0}
 .ba-hero{max-width:1200px;grid-template-columns:minmax(0,1fr) minmax(0,420px);column-gap:clamp(48px,6vw,96px);align-items:center}
 .ba-aud{font-size:13px;letter-spacing:.16em;line-height:1.4;color:rgba(255,255,255,.78);margin:0 0 18px}
-.ba-hero h1{font-size:clamp(48px,4.6vw,68px);line-height:.94;letter-spacing:.015em;margin:0 0 24px}
+.ba-hero h1{font-size:clamp(44px,4vw,58px);line-height:.96;letter-spacing:.015em;margin:0 0 24px;text-wrap:balance}
 .ba-h1l+.ba-h1l{margin-top:2px}
 .ba-lede{font-size:18px;line-height:1.55;max-width:520px;color:rgba(255,255,255,.9)}
 .ba-led{font-size:15.5px;margin:20px 0 0}
@@ -416,10 +416,10 @@ details[open]>summary .ba-pm::after{transform:none}
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="/" class="logo" aria-label="Represent Commercial Home">
+    <div class="logo" role="img" aria-label="Represent Commercial">
       <div class="logo__primary">REPRESENT</div>
       <div class="logo__sub">COMMERCIAL</div>
-    </a>
+    </div>
     <div class="ba-hd__acts">
       <a href="tel:+61401825999" class="ba-hd__tel" data-track="click_to_call" data-location="header"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>0401 825 999</span></a>
       <a href="#form-card" class="btn btn--sm btn--gold ba-hd__cta" data-cta="header"><span class="ba-long">Request My Free Property Review</span><span class="ba-short">Free Review</span></a>
@@ -435,9 +435,9 @@ details[open]>summary .ba-pm::after{transform:none}
     <div class="container ba-hero" style="position: relative; z-index: 1;">
       <div class="ba-hero__copy">
         <p class="svc-h1 ba-aud">Free Commercial Property Performance Review</p>
-        <h1>Know your commercial property’s <span style="color: var(--gold);">three priorities.</span></h1>
-        <p class="ba-lede">Receive a free written report identifying your property’s position, three priorities and recommended next steps. Discuss the findings with Nick by phone or video afterwards.</p>
-        <p class="ba-led">Personally reviewed by Nick O’Toole. 20+ years of owner-side experience.</p>
+        <h1>Get your commercial property’s <span style="color: var(--gold);">three priorities</span> in a free written report.</h1>
+        <p class="ba-lede">Understand where your property stands, what needs attention and what to do next. Personally reviewed by Nick O’Toole, with a follow-up discussion by phone or video.</p>
+        <p class="ba-led">20+ years of owner-side commercial property experience.</p>
       </div>
 
       <div class="ba-hero__form" id="ba-slot-hero">
@@ -520,9 +520,9 @@ details[open]>summary .ba-pm::after{transform:none}
       <h2 class="ba-h2">Know what needs attention. Decide what to do next.</h2>
       <p class="ba-p">Receive a formal written report covering your property’s position, three priorities and recommended next steps. Once you’ve received it, discuss the findings with Nick by phone or video call.</p>
       <div class="ba-paths" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));">
-        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span><p class="ba-k" style="margin-bottom:10px;">01</p><h3>Property position</h3><p class="ba-path__q" style="margin:0;">Where the income, leases and material issues stand today.</p></div>
-        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="M4 10h2"/><path d="M4 6h1v4"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></span><p class="ba-k" style="margin-bottom:10px;">02</p><h3>Three priorities</h3><p class="ba-path__q" style="margin:0;">The three actions Nick would prioritise, and why.</p></div>
-        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg></span><p class="ba-k" style="margin-bottom:10px;">03</p><h3>Recommended next steps</h3><p class="ba-path__q" style="margin:0;">What to investigate, decide or implement next.</p></div>
+        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span><h3>Property position</h3><p class="ba-path__q" style="margin:0;">Where the income, leases and material issues stand today.</p></div>
+        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="M4 10h2"/><path d="M4 6h1v4"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></span><h3>Three priorities</h3><p class="ba-path__q" style="margin:0;">The three actions Nick would prioritise, and why.</p></div>
+        <div class="ba-path"><span class="ba-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg></span><h3>Recommended next steps</h3><p class="ba-path__q" style="margin:0;">What to investigate, decide or implement next.</p></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px 64px;align-items:start;margin-top:56px;">
         <div>
