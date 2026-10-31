@@ -18,6 +18,29 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
+     debug is on for every host except represent.au / www.represent.au.
+     lead_created fires only after Web3Forms confirms an owner-occupier acquisition enquiry (see page foot). -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
+    debug: !/^(www\.)?represent\.au$/.test(location.hostname)
+  });
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commercial Buyer’s Agent for Owner-Occupiers, Queensland | Represent Commercial</title>
@@ -1039,6 +1062,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
   var FAIL = 'We could not send your enquiry. Your details are still here. Please try again, or call Nick on 0401 825 999.';
   var UNCERTAIN = 'We could not confirm that your enquiry was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
   var sent = false;
+  var measured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
 
   form.addEventListener('submit', function (e) {
@@ -1087,6 +1111,16 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       try {
         rcTrack('buyer_agency_form_submit', { form_stream: payload.form_stream, buyer_type: payload.buyer_type, cta_location: payload.cta_clicked || 'direct' });
       } catch (trackingError) { console.error('Represent event tracking:', trackingError); }
+
+      // ChatGPT Ads: one lead_created per confirmed owner-occupier acquisition enquiry,
+      // deduplicated by website_submission_id. Tracking failures never block the CRM handoff.
+      try {
+        var sid = payload.website_submission_id;
+        if (payload.enquiry_type === 'acquisition' && sid && !measured[sid] && typeof window.oaiq === 'function') {
+          measured[sid] = true;
+          window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: sid });
+        }
+      } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
 
       var crmPayload = {};
       Object.keys(payload).forEach(function (k) {
