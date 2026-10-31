@@ -746,6 +746,7 @@ window.rcTrack = function (name, params) {
   var FAIL = 'We could not send your enquiry. Your details are still here. Please try again, or call Nick on 0401 825 999.';
   var UNCERTAIN = 'We could not confirm that your enquiry was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
   var sent = false;
+  var oaiMeasured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
 
   form.addEventListener('submit', function (e) {
@@ -786,6 +787,16 @@ window.rcTrack = function (name, params) {
       if (!(res && res.success === true)) { fail(FAIL); return; }
       confirmed = true; sent = true;
       if (window.rcEvents) { try { window.rcEvents.enquirySuccess(); } catch (e) {} }
+      // ChatGPT Ads: one lead_created per confirmed enquiry, deduplicated by website_submission_id.
+      // No contact details or free-text fields are sent. Measurement failures never block the CRM handoff.
+      try {
+        var oaiSid = payload.website_submission_id;
+        if (oaiSid && !oaiMeasured[oaiSid] && typeof window.oaiq === 'function') {
+          oaiMeasured[oaiSid] = true;
+          window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: oaiSid });
+        }
+      } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
+
       form.style.display = 'none';
       done.style.display = 'block';
       done.setAttribute('role', 'status');
