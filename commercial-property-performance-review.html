@@ -18,6 +18,29 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
+     debug is on for every host except represent.au / www.represent.au.
+     lead_created fires only after Web3Forms confirms an enquiry (see page foot). -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
+    debug: !/^(www\.)?represent\.au$/.test(location.hostname)
+  });
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commercial Property Performance Review Brisbane | Represent Commercial</title>
@@ -735,6 +758,7 @@ window.rcTrack = function (name, params) {
   var LABEL = btn.textContent;
   var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on 0401 825 999.';
   var UNCERTAIN = 'We could not confirm that your request was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
+  var oaiMeasured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
 
   var formStarted = false;
@@ -781,6 +805,16 @@ window.rcTrack = function (name, params) {
       if (res && res.success === true) {
           if (window.rcEvents) window.rcEvents.enquirySuccess();
         confirmed = true;
+        // ChatGPT Ads: one lead_created per confirmed enquiry, deduplicated by website_submission_id.
+        // No contact details or free-text fields are sent. Measurement failures never block the CRM handoff.
+        try {
+          var oaiSid = payload.website_submission_id;
+          if (oaiSid && !oaiMeasured[oaiSid] && typeof window.oaiq === 'function') {
+            oaiMeasured[oaiSid] = true;
+            window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: oaiSid });
+          }
+        } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
+
         form.style.display = 'none';
         done.style.display = 'block';
         done.setAttribute('role', 'status');
