@@ -18,6 +18,29 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
+     debug is on for every host except represent.au / www.represent.au.
+     lead_created fires only after Web3Forms confirms an enquiry (see page foot). -->
+<script>
+  (function (w, d, s, u) {
+    if (w.oaiq) return;
+    var q = function () {
+      q.q.push(arguments);
+    };
+    q.q = [];
+    w.oaiq = q;
+    var js = d.createElement(s);
+    js.async = true;
+    js.src = u;
+    var f = d.getElementsByTagName(s)[0];
+    f.parentNode.insertBefore(js, f);
+  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+  oaiq("init", {
+    pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
+    debug: !/^(www\.)?represent\.au$/.test(location.hostname)
+  });
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Fractional Commercial Asset Management | Represent Commercial</title>
@@ -793,6 +816,7 @@ window.rcTrack = function (name, params) {
   var sent = false;
   var converted = false;
   var measured = {};
+  var oaiMeasured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
 
 
@@ -835,6 +859,16 @@ window.rcTrack = function (name, params) {
       if (!(res && res.success === true)) { fail(FAIL); return; }
       confirmed = true; sent = true;
       if (window.rcEvents) { try { window.rcEvents.enquirySuccess(); } catch (e) {} }
+      // ChatGPT Ads: one lead_created per confirmed enquiry, deduplicated by website_submission_id.
+      // No contact details or free-text fields are sent. Measurement failures never block the CRM handoff.
+      try {
+        var oaiSid = payload.website_submission_id;
+        if (oaiSid && !oaiMeasured[oaiSid] && typeof window.oaiq === 'function') {
+          oaiMeasured[oaiSid] = true;
+          window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: oaiSid });
+        }
+      } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
+
       form.style.display = 'none';
       done.style.display = 'block';
       done.setAttribute('role', 'status');
