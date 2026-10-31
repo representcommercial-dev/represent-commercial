@@ -928,10 +928,18 @@ window.rcTrack = function (name, params) {
         rcTrack('leasing_form_submit', { form_stream: payload.form_stream, vacancy_status: payload.vacancy_status || 'not_given', cta_location: payload.cta_clicked || 'direct' });
       } catch (trackingError) { console.error('Represent event tracking:', trackingError); }
 
-      // PLACEHOLDER: Google Ads "Owner Vacancy / Leasing Enquiry" conversion (not yet created).
-      // Do NOT reuse the Commercial Property Performance Review conversion label. When a dedicated
-      // label exists, fire here only (Web3Forms success confirmed), once per submission, with
-      // website_submission_id as transaction_id, wrapped in try/catch so it never blocks the CRM handoff.
+      // Google Ads: confirmed owner vacancy / leasing enquiries only.
+      // The submission ID deduplicates retries; never send contact details to Ads.
+      try {
+        var conversionId = String(payload.website_submission_id || '');
+        if (conversionId && !measured[conversionId] && typeof window.gtag === 'function') {
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-18457265873/p8_gCP7Lmq8dENGNjuFE',
+            transaction_id: conversionId
+          });
+          measured[conversionId] = true;
+        }
+      } catch (adsError) { console.error('Represent leasing conversion:', adsError); }
     }).catch(function (err) {
       if (timer) clearTimeout(timer);
       if (confirmed) { console.error('Post-submit step failed:', err); return; }
