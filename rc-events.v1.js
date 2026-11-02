@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   if (window.rcEvents) return;
-  var enquirySent = false, calculatorSent = false, editedAt = 0;
+  var enquirySent = false, calculatorSent = false, formStartSent = false, editedAt = 0;
 
   function emit(name) {
     try {
@@ -39,6 +39,14 @@
   }
   document.addEventListener('input', edited, true);
   document.addEventListener('change', edited, true);
+  document.addEventListener('focusin', function (e) {
+    try {
+      var target = e.target;
+      if (formStartSent || !e.isTrusted || !target || !target.closest ||
+          !target.closest('form')) return;
+      formStartSent = emit('form_start');
+    } catch (err) { /* Tracking must never interrupt form use. */ }
+  }, true);
   document.addEventListener('click', function (e) {
     try {
       if (!e.isTrusted || (e.button != null && e.button !== 0)) return;
