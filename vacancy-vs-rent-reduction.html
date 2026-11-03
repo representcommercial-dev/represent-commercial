@@ -19,6 +19,26 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
+     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
+     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+<script>
+  (function () {
+    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1090298970505526');
+    fbq('track', 'PageView');
+  })();
+</script>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Vacancy vs Rent Reduction Calculator | Represent Commercial</title>
@@ -48,6 +68,7 @@
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 </head>
 <body class="calc-page">
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
 <header class="site-header">
@@ -516,7 +537,7 @@
     }).then(function (res) {
       if (timer) clearTimeout(timer);
       if (res && res.success === true) {
-          if (window.rcEvents) window.rcEvents.enquirySuccess();
+          if (window.rcEvents) window.rcEvents.enquirySuccess(payload);
         document.getElementById('lead-intro').style.display = 'none';
         document.getElementById('lead-done').style.display = 'block';
       } else { fail(FAIL); }
@@ -528,7 +549,7 @@
 })();
 </script>
 <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v1.js"></script>
+<script src="rc-events.v2.js"></script>
 <script src="nav.v20.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */

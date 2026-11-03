@@ -19,6 +19,26 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
+     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
+     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+<script>
+  (function () {
+    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1090298970505526');
+    fbq('track', 'PageView');
+  })();
+</script>
+<!-- End Meta Pixel Code -->
 <!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
      debug is on for every host except represent.au / www.represent.au.
      lead_created fires only after Web3Forms confirms an enquiry (see page foot). -->
@@ -513,6 +533,7 @@ details[open]>summary .ba-pm::after{transform:none}
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
 <header class="site-header" style="position:sticky;">
@@ -760,7 +781,7 @@ details[open]>summary .ba-pm::after{transform:none}
 </footer>
 
 <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v1.js"></script>
+<script src="rc-events.v2.js"></script>
 <script>
 // PRODUCTION: sends only when SENDING_APPROVED is true and the hostname is exactly represent.au.
 // Every other host (including Cloudflare deployment URLs and staging) stays in preview mode.
@@ -859,7 +880,7 @@ window.rcTrack = function (name, params) {
       if (timer) clearTimeout(timer);
       if (!(res && res.success === true)) { fail(FAIL); return; }
       confirmed = true; sent = true;
-      if (window.rcEvents) { try { window.rcEvents.enquirySuccess(); } catch (e) {} }
+      if (window.rcEvents) { try { window.rcEvents.enquirySuccess(payload); } catch (e) {} }
       // ChatGPT Ads: one lead_created per confirmed enquiry, deduplicated by website_submission_id.
       // No contact details or free-text fields are sent. Measurement failures never block the CRM handoff.
       try {
