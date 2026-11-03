@@ -19,6 +19,26 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
+     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
+     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+<script>
+  (function () {
+    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1090298970505526');
+    fbq('track', 'PageView');
+  })();
+</script>
+<!-- End Meta Pixel Code -->
 <!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
      debug is on for every host except represent.au / www.represent.au.
      lead_created fires only after Web3Forms confirms an acquisition enquiry (see page foot). -->
@@ -44,9 +64,9 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>STAGING TEST ONLY | Brisbane Tenant Representation | Represent Commercial</title>
+<title>Brisbane Tenant Representation | Represent Commercial</title>
 <meta name="description" content="Looking to lease business premises in Brisbane? Represent Commercial helps you find the right space and negotiate your lease, from a new search to a renewal or a property you have already found." />
-<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://represent.au/tenant-representation" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/brisbane-tenant-representation" />
@@ -461,8 +481,9 @@ details[open]>summary .ba-pm::after{transform:none}
 </style>
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<div class="tr-draft" id="tr-draft" style="background:#8B1E1E;color:#fff;font-weight:700;letter-spacing:.04em;">STAGING TEST ONLY. This form sends to enquiries@represent.au and HighLevel. Not for public use.</div>
+<div class="tr-draft" id="tr-draft" hidden>Draft for review. The enquiry form is in preview mode and does not send.</div>
 
 <header class="site-header" style="position:sticky;">
   <div class="site-header__inner">
@@ -497,7 +518,7 @@ details[open]>summary .ba-pm::after{transform:none}
       <div class="ba-hero__form"><div class="form-card ba-form" id="enquiry">
         <form id="tr-form" method="POST" action="https://api.web3forms.com/submit">
           <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
-          <input type="hidden" name="subject" value="[STAGING TEST] Tenant representation enquiry (Brisbane campaign), Represent Commercial" />
+          <input type="hidden" name="subject" value="Tenant representation enquiry (Brisbane campaign), Represent Commercial" />
           <input type="hidden" name="from_name" value="Represent Commercial Website" />
           <input type="hidden" name="redirect" value="https://represent.au/enquiry-received" />
           <input type="hidden" name="enquiry_type" value="tenant" />
@@ -693,10 +714,10 @@ details[open]>summary .ba-pm::after{transform:none}
 </footer>
 
 <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v1.js"></script>
+<script src="rc-events.v2.js"></script>
 <script>
-// STAGING TEST ONLY: sends only when the hostname is exactly staging-qa.represent-commercial.pages.dev. Every other host stays in preview mode.
-var PREVIEW_ONLY = location.hostname !== 'staging-qa.represent-commercial.pages.dev';
+// PRODUCTION: sends only when the hostname is exactly represent.au. Every other host (including Cloudflare deployment URLs and staging) stays in preview mode.
+var PREVIEW_ONLY = location.hostname !== 'represent.au';
 window.rcTrack = function (name, params) {
   params = params || {};
   window.dataLayer = window.dataLayer || [];
@@ -710,7 +731,7 @@ window.rcTrack = function (name, params) {
   var errEl = document.getElementById('tr-err');
   var prev = document.getElementById('tr-preview');
   var banner = document.getElementById('tr-draft');
-  // Staging banner stays visible on every host.
+  if (banner) banner.hidden = !PREVIEW_ONLY;
   if (!form) return;
 
   var KEY = 'rc_attr';
@@ -787,7 +808,7 @@ window.rcTrack = function (name, params) {
       if (timer) clearTimeout(timer);
       if (!(res && res.success === true)) { fail(FAIL); return; }
       confirmed = true; sent = true;
-      if (window.rcEvents) { try { window.rcEvents.enquirySuccess(); } catch (e) {} }
+      if (window.rcEvents) { try { window.rcEvents.enquirySuccess(payload); } catch (e) {} }
       // ChatGPT Ads: one lead_created per confirmed enquiry, deduplicated by website_submission_id.
       // No contact details or free-text fields are sent. Measurement failures never block the CRM handoff.
       try {

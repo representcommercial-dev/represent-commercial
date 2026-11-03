@@ -19,6 +19,26 @@
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
+<!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
+     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
+     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+<script>
+  (function () {
+    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1090298970505526');
+    fbq('track', 'PageView');
+  })();
+</script>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>For Lease: 11/13 Loam Street, Acacia Ridge | Industrial Warehouse | Represent Commercial</title>
@@ -175,6 +195,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
 </style>
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
 <!--
   LISTING STATUS: set data-listing-status on <html> above to one of:
     available    → "Available now" badge, enquiry form shown
@@ -514,7 +535,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
       }).then(function (data) {
         if (timer) clearTimeout(timer);
         if (data && data.success === true) {
-          if (window.rcEvents) window.rcEvents.enquirySuccess();
+          if (window.rcEvents) window.rcEvents.enquirySuccess(payload);
           form.style.display = 'none';
           success.style.display = 'block';
           success.setAttribute('role', 'status');
@@ -552,7 +573,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v1.js"></script>
+<script src="rc-events.v2.js"></script>
 <script src="nav.v20.js" defer></script>
 </body>
 </html>
