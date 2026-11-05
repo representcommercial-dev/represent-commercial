@@ -803,6 +803,7 @@ window.rcTrack = function (name, params) {
   var UNCERTAIN = 'We could not confirm that your enquiry was received. It may have been. Your details are still here. Please call Nick on 0401 825 999 before sending it again.';
   var sent = false;
   var measured = {};
+  var adsMeasured = {};
   function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.textContent = m; errEl.style.display = 'block'; }
 
 
@@ -898,6 +899,17 @@ window.rcTrack = function (name, params) {
         rcTrack('buyer_agency_form_submit', { form_stream: payload.form_stream, buyer_type: payload.buyer_type, cta_location: payload.cta_clicked || 'direct' });
       } catch (trackingError) { console.error('Represent event tracking:', trackingError); }
 
+      // Google Ads "Investor Acquisition Enquiry" conversion. Fires only here, after Web3Forms success,
+      // once per submission (deduplicated by website_submission_id, also sent as transaction_id).
+      // Never the Performance Review label. Errors are caught so the HighLevel handoff always runs.
+      try {
+        var adsSid = payload.website_submission_id;
+        if (adsSid && !adsMeasured[adsSid] && typeof window.gtag === 'function') {
+          adsMeasured[adsSid] = true;
+          window.gtag('event', 'conversion', { send_to: 'AW-18457265873/0EqOCLDN86YdENGNjuFE', transaction_id: adsSid });
+        }
+      } catch (conversionError) { console.error('Represent Ads conversion:', conversionError); }
+
       // ChatGPT Ads: one lead_created per confirmed acquisition enquiry, deduplicated by submission ID.
       try {
         var sid = payload.website_submission_id;
@@ -906,14 +918,6 @@ window.rcTrack = function (name, params) {
           window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: sid });
         }
       } catch (trackingError) { console.error('ChatGPT Ads measurement:', trackingError); }
-
-      // PLACEHOLDER: Google Ads "Investor Acquisition Enquiry" conversion (not yet created).
-      // Do NOT reuse the Commercial Property Performance Review conversion label.
-      // When the dedicated label exists, fire here only (Web3Forms success confirmed), once per submission:
-      //   if (typeof window.gtag === 'function' && sid) {
-      //     window.gtag('event', 'conversion', { send_to: 'AW-18457265873/NEW_INVESTOR_LABEL', transaction_id: sid });
-      //   }
-      // Wrap in try/catch so tracking errors never interrupt the HighLevel handoff below.
 
       // HighLevel handoff via the existing Function (buyer pipeline route).
       var crmPayload = {};
