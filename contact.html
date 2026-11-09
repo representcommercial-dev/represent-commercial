@@ -127,6 +127,8 @@
 .enq-fieldset legend{font-family:var(--f-body);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:10px;padding:0}
 .form-status{margin-top:12px;font-family:var(--f-body);font-size:13px;line-height:1.6;color:#B3261E}
 .form-status:empty{display:none}
+#form-card{scroll-margin-top:100px}
+#appraisal-form .field[hidden]{display:none!important}
 
 /* QA fix: two-column contact grid must shrink at 320px */
 #main-content .container[style*="grid-template-columns: 1fr 1fr"] > * { min-width: 0; }
@@ -454,6 +456,7 @@
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
       var payload = new FormData(form);
       payload.set('name', [payload.get('first_name'), payload.get('last_name')].map(function (s) { return String(s || '').trim(); }).filter(Boolean).join(' '));
+      if (window.rcManagementSwitch) window.rcManagementSwitch.prepare(payload);
       var code = payload.get('enquiry_type');
       if (LABELS[code]) payload.set('enquiry_service', LABELS[code]);
       var controller = ('AbortController' in window) ? new AbortController() : null;
@@ -473,7 +476,8 @@
       }).then(function (data) {
         if (timer) clearTimeout(timer);
         if (data && data.success === true) {
-          if (window.rcEvents) window.rcEvents.enquirySuccess(payload);
+          if (window.rcEvents) { try { window.rcEvents.enquirySuccess(payload); } catch (trackingError) {} }
+          if (window.rcManagementSwitch) window.rcManagementSwitch.confirmed(payload);
           form.style.display = 'none';
           success.style.display = 'block';
           success.setAttribute('role', 'status');
@@ -503,6 +507,7 @@
 
   <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v2.js"></script>
+<script src="management-switch.v1.js"></script>
 <script src="nav.v20.js" defer></script>
 <script>
 /* Live thousand separators for amounts typed into free-text fields */
