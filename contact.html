@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
+    if (arguments[0] === 'event' && /_form_submit$/.test(arguments[1])) {
+      var details = arguments[2] || {};
+      var sid = window.rcMeasurement.submissionId();
+      if (sid) details.website_submission_id = sid;
+      arguments[2] = details;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +23,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -40,11 +50,11 @@
 </script>
 <!-- End Meta Pixel Code -->
 <!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
-     debug is on for every host except represent.au / www.represent.au.
+     Measurement is disabled outside represent.au and in measurement test mode.
      lead_created fires only for a confirmed enquiry_type === 'acquisition' submission. -->
 <script>
   (function (w, d, s, u) {
-    if (w.oaiq) return;
+    if (w.oaiq || !w.rcMeasurement || !w.rcMeasurement.allowed()) return;
     var q = function () {
       q.q.push(arguments);
     };
@@ -57,7 +67,7 @@
     f.parentNode.insertBefore(js, f);
   })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
 
-  oaiq("init", {
+  if (typeof window.oaiq === "function") oaiq("init", {
     pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
     debug: !/^(www\.)?represent\.au$/.test(location.hostname)
   });
@@ -479,7 +489,7 @@
           success.setAttribute('role', 'status');
           // ChatGPT Ads: acquisition enquiries only, once per confirmed submission.
           try {
-            if (code === 'acquisition' && !form.__rcLeadMeasured && typeof window.oaiq === 'function') {
+            if (code === 'acquisition' && !form.__rcLeadMeasured && typeof window.oaiq === 'function' && window.rcMeasurement && window.rcMeasurement.allowed()) {
               form.__rcLeadMeasured = true;
               var eventId = (window.crypto && typeof window.crypto.randomUUID === 'function')
                 ? window.crypto.randomUUID()
@@ -502,7 +512,7 @@
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
+<script src="rc-events.v3.js"></script>
 <script src="nav.v20.js" defer></script>
 <script>
 /* Live thousand separators for amounts typed into free-text fields */
