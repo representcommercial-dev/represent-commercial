@@ -190,6 +190,44 @@
 .lc-ex__total span{font-family:var(--f-body);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--green)}
 .lc-ex__total b{font-family:var(--f-display);font-size:clamp(48px,5vw,64px);font-weight:700;color:var(--green);line-height:.9}
 .ar .lc-ex{margin:28px 0 0}
+
+/* Management-switch enquiry (2026-11-09): checklist invitation + embedded article form */
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.ar-invite{margin:32px 0 0;padding:28px 32px;border-radius:12px;background:var(--bg-light);border:1px solid var(--border-light)}
+.ar .ar-invite h3{font-size:clamp(22px,2.4vw,26px);line-height:1.08;margin:0 0 10px}
+.ar .ar-invite p{margin:0 0 20px;max-width:56ch}
+.ar .ar-invite .btn{white-space:normal;text-align:center;max-width:100%;text-decoration:none;min-height:48px;color:#fff}
+.ar-enq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:72px;align-items:start;scroll-margin-top:92px}
+.ar-enq__intro h2{font-size:clamp(30px,3.4vw,44px);line-height:1.02;color:#fff;margin:0 0 18px;letter-spacing:.02em}
+.ar-enq__intro p{font-family:var(--f-body);font-size:17px;line-height:1.7;color:rgba(255,255,255,.86);margin:0 0 18px;max-width:46ch;text-wrap:pretty}
+.ar-enq__call{display:flex;flex-direction:column;gap:4px;margin:28px 0 0;padding:20px 0 0;border-top:1px solid rgba(255,255,255,.14)}
+.ar-enq__call span{font-family:var(--f-body);font-size:14px;color:rgba(255,255,255,.78)}
+.ar-enq__call a{display:inline-flex;align-items:center;min-height:44px;font-family:var(--f-display);font-size:30px;font-weight:700;letter-spacing:.03em;color:#fff;text-decoration:none}
+.ar-enq__call a:hover{opacity:.85}
+.ar-enq .tagline{color:var(--gold);margin:28px 0 0}
+.ar-form{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:32px;color:var(--text-dark)}
+.ar-form .field{margin-bottom:16px}
+.ar-form .field label{font-size:12px;letter-spacing:.08em;color:#2F3A34;margin-bottom:6px}
+.ar-form .field input,.ar-form .field textarea{min-height:48px;font-size:16px;line-height:1.5;padding:12px 14px;border-radius:8px}
+.ar-form .field textarea{min-height:128px}
+.ar-form .field input:focus-visible,.ar-form .field textarea:focus-visible{outline:3px solid var(--gold-text-on-light);outline-offset:2px;border-color:var(--green)}
+.ar-form .form-submit{min-height:52px;padding:14px 16px;line-height:1.3;font-size:16px;margin-top:4px}
+.ar-form .form-submit:focus-visible{outline:3px solid var(--gold-text-on-light);outline-offset:3px}
+.ar-form .form-submit[disabled]{opacity:.7;cursor:progress}
+.ar-form__scope{font-family:var(--f-body);font-size:14px;line-height:1.6;color:var(--text-dark);margin:14px 0 0}
+.ar-form__privacy{font-family:var(--f-body);font-size:14px;line-height:1.6;margin:8px 0 0}
+.ar-form__privacy a{display:inline-flex;align-items:center;min-height:44px;color:var(--green);text-decoration:underline;text-underline-offset:3px}
+.ar-form__msg{display:none;font-family:var(--f-body);font-size:15px;line-height:1.6;border-radius:8px;padding:12px 14px;margin:14px 0 0}
+.ar-form__msg--err{color:#8B1E1E;background:#FBEDEC;border:1px solid #E8C4C1}
+.ar-form__msg--err a{color:#8B1E1E;font-weight:700}
+.ar-form__msg--preview{color:#47380F;background:#F6EDCF;border:1px solid #E6D49A}
+.ar-done{padding:8px 0;text-align:left}
+.ar-done:focus{outline:none}
+.ar-done .form-success__icon{margin:0 0 20px}
+.ar-done p{font-family:var(--f-body);font-size:17px;line-height:1.7;color:var(--text-dark);margin:0 0 12px}
+.ar-done a{color:var(--green);font-weight:700}
+@media (max-width:1040px){.ar-enq{grid-template-columns:minmax(0,1fr);gap:36px}.ar-enq__intro p{max-width:60ch}}
+@media (max-width:600px){.ar-invite{padding:24px 20px}.ar .ar-invite .btn{display:block;width:100%}.ar-form{padding:24px 18px}.ar-enq__call a{font-size:28px}}
 </style>
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 </head>
@@ -219,12 +257,53 @@
 <section class="section section--light"><div class="container"><div class="dq-answer"><div><span class="dq-tag">Direct answer</span><h2>Where should you start?</h2></div><div><p>Start by reviewing your current management appointment, confirming how it can be ended and agreeing the incoming manager’s scope. Then coordinate the records, funds, security, critical dates and tenant communication around a clear changeover date. The tenant’s lease and the agent’s management appointment are separate agreements.</p></div></div></div></section>
 <section class="section"><div class="container ar-wrap"><article class="ar"><section class="ar-sec" id="before-notice"><h2>Before giving notice</h2><p>Write down what is failing and what you expect the next manager to do differently. A missed rent review, repeated arrears, unexplained expenditure and poor communication need different remedies. Ask whether the issue is administration, strategy or both.</p><p>Obtain the signed management appointment and any variations. Check the services, term, termination provisions, notice requirements, fees and any separate leasing authority. Do not assume residential management notice rules apply to a commercial appointment. If the position is disputed or unclear, have your solicitor confirm it before notice is issued.</p><p>Queensland’s Office of Fair Trading identifies Form 6A as the commercial agent appointment form and requires the written appointment to record the agreed services and payment terms. See the <a href="https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/property-industry-regulation/legal-requirements-for-the-property-industry/appointment-to-act-as-a-property-agent">official appointment guidance</a>.</p></section>
 <section class="ar-sec" id="scope-and-fees"><h2>Agree the new scope and fees</h2><p>Compare what each manager actually includes. A percentage alone does not show who handles rent reviews, renewals, outgoings reconciliation, inspections or vacancy planning. Confirm which services carry additional fees, how expenditure is authorised and what reporting you will receive.</p><p>Ask who will make the decisions and who you will speak with when a tenant stops paying or an expiry approaches. At Represent Commercial, Nick O’Toole leads the appointment personally. Our <a href="/commercial-property-management">commercial property management service</a> sets out the available scope.</p></section>
-<section class="ar-sec" id="handover-checklist"><h2>The commercial management handover checklist</h2><p>Agree who is responsible for each item, when it will arrive and how it will be checked:</p><ul class="ar-ul"><li><b>Lease records:</b> signed leases, variations, disclosure documents where relevant, side agreements and correspondence.</li><li><b>Financial position:</b> tenant ledgers, arrears, invoices, owner statements, approved expenditure, outgoings budgets and reconciliation records.</li><li><b>Funds and security:</b> trust balances, deposits, bonds and original bank guarantees, including their custody and expiry details. Confirm the correct transfer process for each item.</li><li><b>Critical dates:</b> reviews, options, expiries, insurance renewals and outstanding tenant commitments.</li><li><b>Property operations:</b> keys, access controls, contractor contacts, maintenance history, compliance records and open work orders.</li></ul><p>Reconcile the opening position against the outgoing manager’s closing records. A file transfer is only useful when the information is complete and the balances agree.</p></section>
+<section class="ar-sec" id="handover-checklist"><h2>The commercial management handover checklist</h2><p>Agree who is responsible for each item, when it will arrive and how it will be checked:</p><ul class="ar-ul"><li><b>Lease records:</b> signed leases, variations, disclosure documents where relevant, side agreements and correspondence.</li><li><b>Financial position:</b> tenant ledgers, arrears, invoices, owner statements, approved expenditure, outgoings budgets and reconciliation records.</li><li><b>Funds and security:</b> trust balances, deposits, bonds and original bank guarantees, including their custody and expiry details. Confirm the correct transfer process for each item.</li><li><b>Critical dates:</b> reviews, options, expiries, insurance renewals and outstanding tenant commitments.</li><li><b>Property operations:</b> keys, access controls, contractor contacts, maintenance history, compliance records and open work orders.</li></ul><p>Reconcile the opening position against the outgoing manager’s closing records. A file transfer is only useful when the information is complete and the balances agree.</p><aside class="ar-invite" aria-labelledby="ar-invite-h"><h3 id="ar-invite-h">Considering changing property managers?</h3><p>Discuss your current arrangements, what you need to improve and how a handover could work with Nick.</p><a href="#enquiry" class="btn btn--md btn--green" data-cta="changing-commercial-property-managers-brisbane:checklist">Discuss My Property’s Management</a></aside></section>
 <section class="ar-sec" id="tenants"><h2>Keep tenants informed</h2><p>Agree the effective date and who will tell tenants about the change. The notice should explain the new contact, maintenance and payment arrangements clearly. Coordinate the final invoice from the outgoing manager with the first invoice from the incoming manager to avoid duplicate demands.</p><p>Tenants should independently verify changed bank details through a trusted contact before paying. Changing managers does not itself renegotiate the rent, lease term or other agreed tenant obligations.</p></section>
 <section class="ar-sec" id="first-review"><h2>What should happen after the handover?</h2><p>The first review should confirm rent and arrears, the next lease events, security held, outstanding maintenance and any unreconciled outgoings. Agree a short list of priorities with dates and responsibility, rather than treating the handover as complete when the keys arrive.</p><p>If the issue is strategic oversight while your existing manager continues the administration, <a href="/commercial-asset-management">commercial asset management</a> may be the more suitable scope. If you want an independent starting point, request a <a href="/commercial-property-performance-review">free written Property Performance Review</a>.</p></section>
-<section class="ar-sec" id="questions"><h2>Questions owners ask</h2><h3>Can I change managers during a tenant’s lease?</h3><p>A tenant’s lease is separate from the management appointment. A change can be possible during the lease, subject to properly ending the current appointment and arranging the handover. Check your own agreement before committing to a date.</p><h3>Do I need to contact the outgoing manager myself?</h3><p>Once appointed, Represent Commercial can prepare the proposed notice for you to sign and coordinate the handover with your current manager. Any disputed contractual issue should be referred to your solicitor.</p><h3>How long does a change take?</h3><p>The timetable depends on your appointment, agreed notice, record availability and open issues. Confirm the dates after those matters are checked rather than relying on a standard turnaround.</p></section>
+<section class="ar-sec" id="questions"><h2>Questions owners ask</h2><h3>Can I change managers during a tenant’s lease?</h3><p>A tenant’s lease is separate from the management appointment. A change can be possible during the lease, subject to properly ending the current appointment and arranging the handover. Check your own agreement before committing to a date.</p><h3>Do I need to contact the outgoing manager myself?</h3><p>Once appointed, Represent Commercial can prepare the proposed notice for you to sign and coordinate the handover with your current manager. Any disputed contractual issue should be referred to your solicitor.</p><h3>How long does a change take?</h3><p>The timetable depends on your appointment, agreed notice, record availability and open issues. Confirm the dates after those matters are checked rather than relying on a standard turnaround.</p><p>A short summary of the change process sits in our <a href="/commercial-property-faqs#how-to-change-property-managers">commercial property FAQs</a>.</p></section>
 <p class="ar-note">General information only. The right course depends on the property, lease and agency appointment. Obtain legal advice on contractual or disputed matters. Real Estate Agent Licence 4949809.</p></article><nav class="ar-toc" aria-label="In this article"><p class="ar-toc__h">In this article</p><ol><li><a href="#before-notice">Before giving notice</a></li><li><a href="#scope-and-fees">Agree the new scope and fees</a></li><li><a href="#handover-checklist">The commercial management handover checklist</a></li><li><a href="#tenants">Keep tenants informed</a></li><li><a href="#first-review">What should happen after the handover?</a></li><li><a href="#questions">Questions owners ask</a></li></ol></nav></div></section>
-<section class="section section--green"><div class="container svc-close ar-close"><div><h2 class="h-4" style="color:#fff">A better handover starts with a clear scope.</h2></div><div><p class="lede">Tell Nick about the property, your current arrangements and what needs to improve. Represent Commercial provides principal-led commercial property management in Brisbane. Scope and fees are agreed before appointment.</p><a href="/contact?service=management" class="btn btn--lg btn--gold" data-cta="changing-commercial-property-managers-brisbane:end">Discuss Changing My Property Manager</a><p class="tagline" style="margin-top:28px">Exclusively on your side of the table.</p></div></div></section>
+<section class="section section--green" data-screen-label="Article enquiry"><div class="container ar-enq ar-close" id="enquiry">
+<div class="ar-enq__intro"><div class="eyebrow eyebrow--gold">Commercial property management</div><h2>Considering changing property managers?</h2><p>Tell Nick about your property, your current arrangements and what you would like improved.</p><div class="ar-enq__call"><span>Prefer to call?</span><a href="tel:+61401825999" data-location="article-enquiry">0401 825 999</a></div><p class="tagline">Exclusively on your side of the table.</p></div>
+<div class="ar-form" id="mgmt-card">
+<form id="mgmt-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
+<input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
+<input type="hidden" name="subject" value="Property management enquiry (changing managers article), Represent Commercial" />
+<input type="hidden" name="from_name" value="Represent Commercial Website" />
+<input type="hidden" name="enquiry_type" value="management" />
+<input type="hidden" name="form_stream" value="changing-commercial-property-managers-brisbane" />
+<input type="hidden" name="enquiry_service" value="Commercial Property Management" />
+<input type="hidden" name="service_line" value="Property Management &amp; Leasing" />
+<input type="hidden" name="lead_offer" value="Changing property managers" />
+<input type="hidden" name="intent_family" value="Owner Property Management" />
+<input type="hidden" name="landing_page" value="/changing-commercial-property-managers-brisbane" />
+<input type="hidden" name="cta_clicked" value="" />
+<input type="hidden" name="referrer" value="" />
+<input type="hidden" name="gclid" value="" />
+<input type="hidden" name="utm_source" value="" />
+<input type="hidden" name="utm_medium" value="" />
+<input type="hidden" name="utm_campaign" value="" />
+<input type="hidden" name="utm_adgroup" value="" />
+<input type="hidden" name="utm_term" value="" />
+<input type="hidden" name="utm_content" value="" />
+<input type="hidden" name="website_submission_id" value="" />
+<input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+<div class="field"><label for="mgmt-name">Name</label><input id="mgmt-name" name="name" type="text" autocomplete="name" autocapitalize="words" maxlength="200" required /></div>
+<div class="field"><label for="mgmt-email">Email</label><input id="mgmt-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" maxlength="320" required /></div>
+<div class="field"><label for="mgmt-address">Property address</label><input id="mgmt-address" name="property_address" type="text" autocomplete="street-address" maxlength="500" required /></div>
+<div class="field"><label for="mgmt-concern">What would you like improved?</label><textarea id="mgmt-concern" name="owner_concern" rows="5" maxlength="5000" required></textarea></div>
+<button type="submit" class="form-submit">Discuss My Property’s Management</button>
+<div class="ar-form__msg ar-form__msg--err" id="mgmt-err" role="alert"></div>
+<div class="ar-form__msg ar-form__msg--preview" id="mgmt-preview" role="status"></div>
+<p class="ar-form__scope">An initial discussion does not appoint Represent Commercial. Scope and fees are agreed before appointment.</p>
+<p class="ar-form__privacy"><a href="/privacy">Privacy Policy</a></p>
+</form>
+<div class="form-success ar-done" id="mgmt-done" style="display:none;" tabindex="-1">
+<div class="form-success__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A35E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg></div>
+<p>Thank you. Your enquiry has been received. Nick will be in touch to discuss your property.</p>
+<p>Prefer to call? <a href="tel:+61401825999" data-location="article-enquiry-success">0401 825 999</a></p>
+</div>
+</div>
+</div></section>
 </main>
 
 <footer class="site-footer">
@@ -344,6 +423,115 @@
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 <script src="rc-attribution.v1.js"></script>
 <script src="rc-events.v2.js"></script>
+<script>
+// Management-switch article enquiry (2026-11-09). Web3Forms (enquiries@represent.au) first; /api/website-lead
+// (Property Management & Leasing route) only after Web3Forms success === true. Sends only on exactly represent.au.
+(function () {
+  var PREVIEW_ONLY = location.hostname !== 'represent.au';
+  var form = document.getElementById('mgmt-form');
+  var done = document.getElementById('mgmt-done');
+  var errEl = document.getElementById('mgmt-err');
+  var pv = document.getElementById('mgmt-preview');
+  if (!form || !done) return;
+  var STREAM = 'changing-commercial-property-managers-brisbane';
+  function track(name, params) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      var o = { event: name }; for (var k in params) o[k] = params[k];
+      window.dataLayer.push(o);
+      if (typeof window.gtag === 'function') window.gtag('event', name, params);
+    } catch (e) {}
+  }
+  // First-touch attribution (rc-attribution.v1.js) is canonical; never overwritten by this page.
+  try {
+    var attr = window.rcAttribution ? window.rcAttribution.fields() : {};
+    Object.keys(attr).forEach(function (k) { var f = form.querySelector('[name="' + k + '"]'); if (f && attr[k]) f.value = attr[k]; });
+  } catch (e) {}
+  // Entry point: checklist invitation, else a direct submission at the article end.
+  var cta = form.querySelector('[name="cta_clicked"]');
+  cta.value = STREAM + ':end';
+  Array.prototype.forEach.call(document.querySelectorAll('a[href="#enquiry"][data-cta]'), function (a) {
+    a.addEventListener('click', function () {
+      cta.value = a.getAttribute('data-cta');
+      setTimeout(function () { var n = document.getElementById('mgmt-name'); if (n && !n.value) { try { n.focus({ preventScroll: true }); } catch (e) {} } }, 500);
+    });
+  });
+  var btn = form.querySelector('.form-submit');
+  var LABEL = btn.textContent;
+  var FAIL = 'We could not send your enquiry. Your details are still here. Please try again, or call Nick on <a href="tel:+61401825999">0401 825 999</a>.';
+  var UNCERTAIN = 'We could not confirm that your enquiry was received. It may have been. Your details are still here. Please call Nick on <a href="tel:+61401825999">0401 825 999</a> before sending it again.';
+  var sent = false;
+  function fail(m) { btn.disabled = false; btn.textContent = LABEL; errEl.innerHTML = m; errEl.style.display = 'block'; }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (btn.disabled || sent) return;
+    errEl.style.display = 'none';
+    Array.prototype.forEach.call(form.querySelectorAll('input[required], textarea[required]'), function (f) { if (typeof f.value === 'string' && f.value.trim() === '') f.value = ''; });
+    if (!form.reportValidity()) return;
+    if (PREVIEW_ONLY) { pv.textContent = 'Preview only. Your entries have not been sent or saved.'; pv.style.display = 'block'; return; }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var confirmed = false;
+    var submission = form.querySelector('[name="website_submission_id"]');
+    if (!submission.value) {
+      submission.value = (window.crypto && typeof window.crypto.randomUUID === 'function')
+        ? window.crypto.randomUUID()
+        : 'web-' + Date.now() + '-' + Math.random().toString(36).slice(2, 12);
+    }
+    var payload = {};
+    new FormData(form).forEach(function (v, k) { payload[k] = typeof v === 'string' ? v.trim() : v; });
+    payload.replyto = payload.email;
+    var controller = ('AbortController' in window) ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 20000) : null;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    }).then(function (r) {
+      var type = r.headers.get('content-type') || '';
+      if (!r.ok || type.indexOf('application/json') === -1) throw new Error('unexpected response');
+      return r.json();
+    }).then(function (res) {
+      if (timer) clearTimeout(timer);
+      if (!(res && res.success === true)) { fail(FAIL); return; }
+      confirmed = true; sent = true;
+      if (window.rcEvents) { try { window.rcEvents.enquirySuccess(payload); } catch (e) {} }
+      form.style.display = 'none';
+      done.style.display = 'block';
+      done.setAttribute('role', 'status');
+      try { done.focus({ preventScroll: true }); } catch (e) {}
+      // HighLevel handoff (Property Management & Leasing route). Never awaited; never undoes success.
+      var crmPayload = {};
+      Object.keys(payload).forEach(function (k) {
+        if (['access_key', 'subject', 'from_name', 'replyto', 'botcheck'].indexOf(k) === -1) crmPayload[k] = payload[k];
+      });
+      crmPayload.opportunity_type = 'Management Only';
+      try {
+        fetch('/api/website-lead', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(crmPayload),
+          keepalive: true
+        }).then(function (r) {
+          if (!r.ok) throw new Error('CRM handoff failed');
+          return r.json();
+        }).then(function (crm) {
+          if (!crm || crm.ok !== true) throw new Error('CRM handoff unconfirmed');
+          track('crm_handoff_success', { form_stream: STREAM, opportunity_created: crm.opportunity_created === true });
+        }).catch(function (crmErr) {
+          console.error('Represent CRM handoff:', crmErr);
+          track('crm_handoff_failed', { form_stream: STREAM });
+        });
+      } catch (crmErr) { console.error('Represent CRM handoff:', crmErr); }
+      // Analytics: fixed labels only. No name, email, address or free text.
+      track('management_enquiry_form_submit', { form_stream: STREAM, cta_location: payload.cta_clicked || STREAM + ':end' });
+    }).catch(function (err) {
+      if (timer) clearTimeout(timer);
+      if (confirmed) { console.error('Post-submit step failed:', err); return; }
+      fail(err && err.name === 'AbortError' ? UNCERTAIN : FAIL);
+    });
+  });
+})();
+</script>
 <script src="nav.v20.js" defer></script>
 </body>
 </html>
