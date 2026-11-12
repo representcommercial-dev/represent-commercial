@@ -124,9 +124,11 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
 <style>
+/* Keep keyboard-focused controls clear of the fixed header. */
+html{scroll-padding-top:84px}
 .enq-toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}@media (max-width:420px){.enq-toggle{grid-template-columns:1fr}}
 .enq-opt{position:relative;display:flex;align-items:center;justify-content:center;padding:13px 16px;border:1px solid #DCD8CC;border-radius:10px;background:#fff;cursor:pointer;font-family:var(--f-body);font-size:14px;font-weight:600;color:#5A655E;transition:border-color .2s,color .2s,background .2s}
-.enq-opt input{position:absolute;opacity:0;pointer-events:none}
+.enq-opt input{position:absolute;top:50%;left:16px;width:1px;height:1px;transform:translateY(-50%);opacity:0;pointer-events:none;scroll-margin-block:24px}
 .enq-opt{text-align:left;justify-content:flex-start;min-height:48px;text-transform:none!important;letter-spacing:0!important;font-size:14.5px!important;line-height:1.35!important}
 .enq-toggle--list{grid-template-columns:1fr}
 .enq-opt--wide{grid-column:1 / -1}
