@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -42,7 +51,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About Represent Commercial | Commercial Property Advisor Brisbane</title>
-<meta name="description" content="Meet Nick O'Toole and Represent Commercial, providing principal-led buyer's agency and tenant representation across Queensland, and property management and leasing in Brisbane." />
+<meta name="description" content="Meet Nick O'Toole and Represent Commercial: principal-led commercial property representation for established businesses renewing, relocating or buying their premises in Brisbane and South East Queensland." />
 <meta name="keywords" content="Represent Commercial, Nick O'Toole, Brisbane commercial property advisor, Queensland real estate licensee, commercial property principal South East Queensland" />
 <link rel="canonical" href="https://represent.au/about" />
 <meta name="author" content="Nick O'Toole, Represent Commercial" />
@@ -50,14 +59,14 @@
 
 <meta property="og:type" content="profile" />
 <meta property="og:url" content="https://represent.au/about" />
-<meta property="og:title" content="About Represent Commercial | Principal-led advice for buyers, owners and tenants" />
-<meta property="og:description" content="A principal-led commercial property advisory business representing buyers and tenants across Queensland, with property management and leasing for owners in Brisbane. Real Estate Agent Licence 4949809." />
+<meta property="og:title" content="About Represent Commercial | Representation for business occupiers" />
+<meta property="og:description" content="Meet Nick O'Toole and Represent Commercial: principal-led commercial property representation for established businesses renewing, relocating or buying their premises in Brisbane and South East Queensland. Real Estate Agent Licence 4949809." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="About Represent Commercial | Principal-led advice for buyers, owners and tenants" />
-<meta name="twitter:description" content="A principal-led commercial property advisory business representing buyers and tenants across Queensland, with property management and leasing for owners in Brisbane. Real Estate Agent Licence 4949809." />
+<meta name="twitter:title" content="About Represent Commercial | Representation for business occupiers" />
+<meta name="twitter:description" content="Meet Nick O'Toole and Represent Commercial: principal-led commercial property representation for established businesses renewing, relocating or buying their premises in Brisbane and South East Queensland. Real Estate Agent Licence 4949809." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 
 <script type="application/ld+json">
@@ -74,8 +83,8 @@
   "sameAs": ["https://www.linkedin.com/in/nickotoole/"],
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Queensland" },
   "hasCredential": "Queensland Real Estate Agent Licence 4949809",
-  "knowsAbout": ["Commercial Property Management", "Commercial Property Leasing", "Commercial Asset Management", "Buyer's Agency and Acquisition Advisory", "Commercial Tenant Representation"],
-  "description": "Founder & Director of Represent Commercial, a principal-led commercial property advisory business providing buyer-side acquisition advisory, commercial asset management, property management and leasing, and commercial tenant representation. More than 20 years in commercial property across office, retail and industrial. Bachelor of Commerce (Finance) and Bachelor of Business Management (Real Estate and Development), University of Queensland."
+  "knowsAbout": ["Commercial Tenant Representation", "Buyer's Agency for Business Premises", "Lease Renewal", "Business Relocation", "Lease vs Buy"],
+  "description": "Founder & Director of Represent Commercial, a principal-led commercial property advisory business representing established businesses renewing, relocating or buying their premises, through commercial tenant representation and buyer's agency for business premises. More than 20 years in commercial property across office, retail and industrial. Bachelor of Commerce (Finance) and Bachelor of Business Management (Real Estate and Development), University of Queensland."
 }
 </script>
 
@@ -123,12 +132,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link is-active">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -145,10 +154,11 @@
         <h1 class="about-h1">About Represent Commercial</h1>
         <div class="brandline">EXCLUSIVELY ON YOUR <span class="italic" style="color: var(--gold); text-transform: none;">side of the table.</span></div>
         <hr class="gold-rule" style="margin-bottom: 24px;" />
-        <p class="hero-descriptor">Commercial Buyer&rsquo;s Agency, Property Management, Leasing &amp; Tenant Representation.</p>
+        <p class="hero-descriptor">Commercial property representation for established businesses.</p>
         <p class="lede" style="max-width: 620px;">
-          Represent Commercial is a principal-led commercial property advisory business representing buyers across Brisbane, South East Queensland and regional Queensland, tenants throughout Queensland, and owners in Brisbane for property management and leasing. Each instruction begins with a clear position: who we represent, what matters to them and how their commercial interests will be protected.
+          Represent Commercial helps established businesses make and execute their next premises decision. Whether the right course is to renew, relocate or buy, Nick O&rsquo;Toole provides independent property advice and direct representation from the occupier&rsquo;s side of the transaction.
         </p>
+        <p class="lede" style="max-width: 620px; margin-top: 16px; color: #fff; font-weight: 600;">More than 20 years on the ownership side. Now applied on the occupier&rsquo;s side.</p>
       </div>
       <div class="headshot">
         <div class="headshot__back"></div>
@@ -184,7 +194,7 @@
           Before founding Represent Commercial, Nick spent more than two decades advising private property owners and managing commercial property portfolios. This included 13 years as Asset and Development Manager at Nicolas Malouf Investments, a Brisbane-based private investment group, following earlier roles spanning acquisitions, asset management, development, leasing and property analysis across the industrial, office and retail sectors.
         </p>
         <p class="body" style="margin-bottom: 20px;">
-          Today, Nick applies that experience across Represent Commercial&rsquo;s services: buyer-side acquisition advisory, commercial asset management, property management and leasing, and commercial tenant representation.
+          Today, Nick applies that experience on the occupier&rsquo;s side: representing businesses renewing a lease, relocating or buying their own premises.
         </p>
         <p class="body" style="margin-bottom: 20px;">
           Whether acting for a buyer, owner or occupier, his role is the same: to provide clear advice, rigorous analysis and commercially focused representation from someone sitting exclusively on the client&rsquo;s side of the table.
@@ -195,7 +205,7 @@
         <blockquote class="tagline tagline--quote" style="font-size: 22px; margin-bottom: 32px;">
           &ldquo;The person you engage is the person examining the detail, challenging assumptions and representing your commercial interests.&rdquo;
         </blockquote>
-        <a href="/contact" class="btn btn--md btn--green">Talk to Nick</a>
+        <a href="/contact" class="btn btn--md btn--green">Discuss Your Premises</a>
       </div>
 
       <div class="reveal">
@@ -206,8 +216,8 @@
           <div class="cred-card"><div class="cred-card__label">Education</div><div class="cred-card__value">Bachelor of Commerce (Finance) and Bachelor of Business Management (Real Estate &amp; Development), UQ</div></div>
           <div class="cred-card"><div class="cred-card__label">Licence</div><div class="cred-card__value">Queensland Real Estate Agent Licence 4949809</div></div>
           <div class="cred-card"><div class="cred-card__label">Coverage</div><div class="cred-card__value">Brisbane and throughout Queensland · Industrial · Office · Retail</div></div>
-          <div class="cred-card"><div class="cred-card__label">Clients</div><div class="cred-card__value">Investors · Owner-occupiers · Property owners · Business occupiers</div></div>
-          <div class="cred-card"><div class="cred-card__label">Services</div><div class="cred-card__value">Acquisition Advisory · Commercial Asset Management · Property Management &amp; Leasing · Tenant Representation</div></div>
+          <div class="cred-card"><div class="cred-card__label">Clients</div><div class="cred-card__value">Established businesses · Business tenants · Owner-occupiers</div></div>
+          <div class="cred-card"><div class="cred-card__label">Services</div><div class="cred-card__value">Tenant Representation · Buyer&rsquo;s Agency for Business Premises</div></div>
         </div>
 
         <div style="background: var(--green); border-radius: 12px; padding: 28px;">
@@ -231,40 +241,36 @@
     </div>
   </section>
 
-  <!-- ─── WHO WE REPRESENT ─── -->
-  <section class="section section--light" style="background: #F1EFE9;" data-screen-label="Who we represent">
+  <!-- ─── RENEW. RELOCATE. OR BUY. ─── -->
+  <section class="section section--light" style="background: #F1EFE9;" data-screen-label="Renew, relocate or buy">
     <div class="container">
       <div class="reveal">
-        <div class="eyebrow eyebrow--dim-light">Who We Represent</div>
+        <div class="eyebrow eyebrow--dim-light">The Premises Decision</div>
         <h2 class="h-3" style="color: var(--green); margin-bottom: 20px; max-width: 900px;">
-          THREE CLIENT POSITIONS. ONE STANDARD OF <span class="italic" style="color: var(--gold);">representation.</span>
+          RENEW. RELOCATE. OR <span class="italic" style="color: var(--gold);">buy.</span>
         </h2>
         <hr class="gold-rule wwr-rule" style="margin-bottom: 48px;" />
       </div>
       <div class="path-grid reveal">
         <article class="path">
-          <h3>Buy commercial property</h3>
-          <p>Acquisition advice for investors and businesses buying their own premises.</p>
-          <div class="path__svc">
-            <a href="/buyers-agency">Explore Buyer&rsquo;s Agency</a>
-            <a href="/buyers-agency-investors">Buyer&rsquo;s Agency for Investors</a>
-            <a href="/buyers-agency-owner-occupiers">Buyer&rsquo;s Agency for Owner-Occupiers</a>
-          </div>
-        </article>
-        <article class="path">
-          <h3>Lease or manage your property</h3>
-          <p>Leasing, property management and asset management focused on income, occupancy and long-term performance.</p>
-          <div class="path__svc">
-            <a href="/commercial-property-leasing">Commercial Property Leasing</a>
-            <a href="/commercial-property-management">Commercial Property Management</a>
-            <a href="/commercial-asset-management">Commercial Asset Management</a>
-          </div>
-        </article>
-        <article class="path">
-          <h3>Find or renew business premises</h3>
-          <p>Tenant representation for businesses assessing premises, negotiating leases or planning a renewal.</p>
+          <h3>Renew the existing lease</h3>
+          <p>Test the landlord&rsquo;s renewal proposal against current market terms, incentives, occupancy costs and credible alternatives, then negotiate from the tenant&rsquo;s side.</p>
           <div class="path__svc">
             <a href="/tenant-representation">Explore Tenant Representation</a>
+          </div>
+        </article>
+        <article class="path">
+          <h3>Relocate to new premises</h3>
+          <p>Define the requirement, search and compare suitable premises on total occupancy cost, then negotiate rent, incentives, flexibility and make-good.</p>
+          <div class="path__svc">
+            <a href="/tenant-representation">Explore Tenant Representation</a>
+          </div>
+        </article>
+        <article class="path">
+          <h3>Buy business premises</h3>
+          <p>Compare ownership with continued leasing, set the premises brief and receive buyer-side representation through search, assessment and negotiation.</p>
+          <div class="path__svc">
+            <a href="/buyers-agency-owner-occupiers">Explore Buying Premises</a>
           </div>
         </article>
       </div>
@@ -311,21 +317,20 @@
         <h2 class="h-3" style="font-size: clamp(34px, 4vw, 52px); color: #fff; max-width: 900px;">
           WHICH SIDE OF THE TABLE ARE <span class="italic" style="color: var(--gold);">you on?</span>
         </h2>
-        <div class="italic" style="font-family: var(--f-editorial); font-size: 18px; color: rgba(255,255,255,0.45); margin-top: 10px; letter-spacing: normal;">Tell Nick what you are trying to manage, lease, acquire or occupy.</div>
+        <div class="italic" style="font-family: var(--f-editorial); font-size: 18px; color: rgba(255,255,255,0.7); margin-top: 10px; letter-spacing: normal;">Tell Nick where your premises decision currently stands.</div>
       </div>
       <div class="cta-paths reveal">
         <div class="cta-path">
-          <div class="cta-path__title">Buying Commercial Property?</div>
-          <a href="/contact?service=acquisition#form-card" class="btn btn--md btn--gold">Discuss Your Acquisition</a>
+          <div class="cta-path__title">Renewing a Lease?</div>
+          <a href="/contact?service=renew#form-card" class="btn btn--md btn--gold">Discuss My Renewal</a>
         </div>
         <div class="cta-path">
-          <div class="cta-path__title">Own Commercial Property?</div>
-          <a href="/contact?service=management#form-card" class="btn btn--md btn--gold">Discuss My Property’s Management</a>
-          <a href="/contact?service=leasing#form-card" class="cta-path__secondary">Have vacant space? Discuss Leasing My Property →</a>
+          <div class="cta-path__title">Relocating?</div>
+          <a href="/contact?service=relocate#form-card" class="btn btn--md btn--gold">Discuss My Relocation</a>
         </div>
         <div class="cta-path">
-          <div class="cta-path__title">Leasing Premises?</div>
-          <a href="/contact?service=tenant#form-card" class="btn btn--md btn--gold">Discuss My Lease Options</a>
+          <div class="cta-path__title">Buying Premises?</div>
+          <a href="/contact?service=buy#form-card" class="btn btn--md btn--gold">Discuss My Premises Purchase</a>
         </div>
       </div>
     </div>
@@ -341,22 +346,22 @@
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
-          <li><a href="/about">About</a></li>
+          <li><a href="/about" style="color: var(--gold);">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -364,7 +369,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -435,7 +440,7 @@
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

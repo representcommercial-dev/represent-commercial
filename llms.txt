@@ -1,41 +1,35 @@
 # Represent Commercial
 
-> Principal-led commercial property advisory acting for property owners, buyers and tenants, never for vendors. Buyer’s agency across Brisbane, South East Queensland and regional Queensland. Commercial property management and owner-side leasing in Brisbane. Asset management and tenant representation throughout Queensland. Office, retail and industrial. Typically working with commercial assets valued from $1 million to $10 million. Led by Nick O'Toole, Founder and Director, with 20+ years of owner-side commercial property experience. Real Estate Agent Licence 4949809.
+> Represent Commercial helps established businesses renew, relocate or buy the premises they operate from: commercial property representation for business occupiers in Brisbane and South East Queensland, with particular relevance to industrial and warehouse occupiers. Principal-led. When appointed on a tenancy it acts for the tenant; when appointed on a purchase it acts for the buyer, never the vendor or landlord. Office, retail and industrial premises. Led by Nick O'Toole, Founder and Director, with 20+ years of owner-side commercial property experience. Real Estate Agent Licence 4949809.
 
 ## Brand
 - Master brand: Exclusively on your side of the table.
 
 ## Services
-1. Commercial Property Management and Asset Management: property management delivered with an asset-management mindset, Brisbane; project-based asset management throughout Queensland
-2. Commercial Property Leasing: owner-side leasing of vacant commercial space, Brisbane
-3. Buyer’s Agency and Acquisition Advisory: independent buyer representation for investors and owner-occupiers across Queensland, never acting for the vendor
-4. Commercial Tenant Representation: tenant-side representation for industrial, office and retail tenants in Brisbane and throughout Queensland
+1. Commercial Tenant Representation: tenant-side representation for businesses renewing a lease or relocating, for industrial, office and retail occupiers in Brisbane and throughout Queensland
+2. Buyer's Agency for Business Premises: independent buyer representation for businesses buying the premises they will occupy, including through an SMSF, across Brisbane, South East Queensland and regional Queensland, never acting for the vendor
 
 ## Pages
-- [Home](https://represent.au/): Three client pathways: buyers, property owners, tenants
-- [Commercial Property Management Brisbane](https://represent.au/commercial-property-management): Property management for owners, delivered with an asset-management mindset
-- [Commercial Asset Management](https://represent.au/commercial-asset-management): Project-based asset management for syndicators and private owners throughout Queensland: property manager oversight, capital expenditure, leasing strategy and investor reporting
-- [Commercial Property Leasing Brisbane](https://represent.au/commercial-property-leasing): Owner-side leasing of vacant commercial space
-- [Commercial Buyer’s Agent](https://represent.au/buyers-agency): Independent acquisition representation for investors and owner-occupiers across Brisbane, South East Queensland and regional Queensland
-- [Commercial Buyer’s Agent for Investors](https://represent.au/buyers-agency-investors): Income, lease quality, price and value-add tested before an investor buys
-- [Commercial Buyer’s Agent for Owner-Occupiers](https://represent.au/buyers-agency-owner-occupiers): Business premises purchases, lease vs buy and SMSF purchases with the owner’s advisers
-- [Commercial Tenant Representation Brisbane](https://represent.au/tenant-representation): Tenant-side representation for occupiers
-- [Commercial Property Performance Review](https://represent.au/commercial-property-performance-review): Owner-side review of income, leases, vacancy exposure, expenditure and management priorities
-- [Commercial Property Questions](https://represent.au/commercial-property-faqs): Filterable FAQs for property owners, investors, owner-occupiers and business tenants on managing, leasing and buying commercial property
-- [Intelligence](https://represent.au/insights): Market intelligence, guides, calculators and precinct data
-- [Case Studies](https://represent.au/case-studies): Principal experience and asset outcomes
-- [Locations](https://represent.au/locations): Brisbane industrial precincts covered
+- [Home](https://represent.au/): Commercial property representation for business occupiers: renew, relocate or buy
+- [Business Premises](https://represent.au/business-premises): Hub for established businesses comparing renewing, relocating and buying their premises
+- [Commercial Tenant Representation Brisbane](https://represent.au/tenant-representation): Tenant-side representation for lease renewals and relocations
+- [Buy Business Premises](https://represent.au/buyers-agency-owner-occupiers): Buyer-side representation for businesses buying their own premises, including lease vs buy and SMSF purchases with the owner's advisers
+- [Commercial Buyer Advisory](https://represent.au/commercial-buyer-advisory): Full acquisition, 12-week advisory and single-property assessment options for businesses searching for their own premises
+- [Lease vs Buy](https://represent.au/lease-vs-buy): Compare leasing with owning business premises
+- [Commercial Property Questions](https://represent.au/commercial-property-faqs): FAQs for businesses buying premises and for tenants leasing or renewing
+- [Insights](https://represent.au/insights): Guides and tools for businesses renewing, relocating or buying premises
+- [Experience](https://represent.au/case-studies): Selected examples from Nick O'Toole's owner-side experience and the lessons for occupiers
+- [Locations](https://represent.au/locations): Brisbane industrial precincts covered, with lease and sale evidence
 - [For Lease](https://represent.au/for-lease): Commercial property currently for lease through Represent Commercial
 - [11/13 Loam Street, Acacia Ridge](https://represent.au/lease-11-13-loam-street-acacia-ridge): Industrial warehouse and office unit for lease
-- [About](https://represent.au/about): Principal-led representation for owners, buyers and tenants
-- [Referrals](https://represent.au/referrals): Referral pathways for accountants, brokers and agents
+- [About](https://represent.au/about): Principal-led commercial property representation for established businesses
+- [Referrals](https://represent.au/referrals): Introduce a business considering a lease renewal, relocation or premises purchase
 - [Contact](https://represent.au/contact): Speak with Nick directly
 - [Privacy Policy](https://represent.au/privacy)
 
 ## Guides
-- [How do I avoid buying the wrong commercial property?](https://represent.au/how-to-avoid-buying-the-wrong-commercial-property): Tenant, lease, vacancy, outgoings and reletting risks for buyers
-- [Lease vs Buy: what should an owner-occupier do?](https://represent.au/guide-lease-vs-buy): Leasing against buying for owner-occupiers, with a worked example
-- [How much does it cost to lease a commercial property?](https://represent.au/cost-to-lease-commercial-property-brisbane): Leasing commission, advertising, incentives and the cost of vacancy, for owners
+- [How do I avoid buying the wrong premises for my business?](https://represent.au/how-to-avoid-buying-the-wrong-commercial-property): Operational fit, total occupancy cost, timing, planning and future flexibility for business buyers
+- [Lease vs Buy: what should an owner-occupier do?](https://represent.au/guide-lease-vs-buy): Leasing against buying for business owners, with a worked example
 
 ## Precinct market data
 - [Acacia Ridge](https://represent.au/Acacia%20Ridge)
@@ -45,28 +39,16 @@
 
 ## Tools
 - [Tools & Calculators](https://represent.au/tools)
-- [Commercial Property Investor School](https://represent.au/commercial-property-investor-school): Five free interactive lessons for investors on yield and value, value-add, leasing and vacancy, refinancing and downside cash flow
-- [Lease vs Own Calculator](https://represent.au/lease-vs-buy)
-- [Rent Offset Saving Calculator](https://represent.au/calculator)
-- [Management Value Estimator](https://represent.au/management-estimator)
-- [Rent Review Calculator](https://represent.au/rent-review)
-- [Net Yield & Property Value Calculator](https://represent.au/yield-value)
-- [WALE Calculator](https://represent.au/wale-calculator)
-- [Occupancy Cost Comparison Calculator](https://represent.au/occupancy-cost)
+- [Lease vs Buy Calculator](https://represent.au/lease-vs-buy)
+- [Occupancy Cost Comparison](https://represent.au/occupancy-cost)
 - [Lease Renewal vs Relocation Calculator](https://represent.au/renewal-vs-relocation)
-- [Vacancy vs Rent Reduction Calculator](https://represent.au/vacancy-vs-rent-reduction)
 - [Lease Incentive & Effective Rent Calculator](https://represent.au/effective-rent)
-- [Rental Reversion & Value Uplift Calculator](https://represent.au/rental-reversion)
-- [Acquisition Cost & Yield Sensitivity Calculator](https://represent.au/acquisition-yield)
+- [Rent Review Calculator](https://represent.au/rent-review)
+- [SMSF Business Premises Calculator](https://represent.au/smsf-commercial-property-calculator)
 
 ## Contact
 - Nick O'Toole, Founder & Director
 - Phone: +61 401 825 999
 - Email: nick@represent.au
 - Office: Suite 36, Level 3, 240 Queen St, Brisbane Queensland 4000
-- Area served: buyer’s agency across Brisbane, South East Queensland and regional Queensland; property management and owner-side leasing in Brisbane; asset management and tenant representation throughout Queensland
-- Typical asset range: commercial assets from $1 million to $10 million
-
-## Owner guides
-- [Changing commercial property managers in Brisbane](https://represent.au/changing-commercial-property-managers-brisbane): Appointment checks, fee and scope comparison, records and security handover, tenant communication and opening priorities
-- [Why is my commercial property not leasing?](https://represent.au/why-commercial-property-not-leasing): A practical diagnostic of demand, competing stock, pricing, property information, enquiries and inspections
+- Area served: tenant representation throughout Queensland; buyer's agency for business premises across Brisbane, South East Queensland and regional Queensland

@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -41,20 +50,20 @@
 <!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Commercial Property Insights | Represent Commercial</title>
-<meta name="description" content="Market evidence, guides, calculators and case studies for Queensland commercial property buyers, owners and tenants, from Represent Commercial." />
+<title>Business Premises Insights | Represent Commercial</title>
+<meta name="description" content="Practical guidance for Brisbane businesses renewing a lease, relocating, buying premises or comparing leasing with ownership." />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <link rel="canonical" href="https://represent.au/insights" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/insights" />
-<meta property="og:title" content="Commercial Property Insights | Represent Commercial" />
-<meta property="og:description" content="Market evidence, guides, calculators and case studies for Queensland commercial property buyers, owners and tenants, from Represent Commercial." />
+<meta property="og:title" content="Business Premises Insights | Represent Commercial" />
+<meta property="og:description" content="Practical guidance for Brisbane businesses renewing a lease, relocating, buying premises or comparing leasing with ownership." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Commercial Property Insights | Represent Commercial" />
-<meta name="twitter:description" content="Market evidence, guides, calculators and case studies for Queensland commercial property buyers, owners and tenants, from Represent Commercial." />
+<meta name="twitter:title" content="Business Premises Insights | Represent Commercial" />
+<meta name="twitter:description" content="Practical guidance for Brisbane businesses renewing a lease, relocating, buying premises or comparing leasing with ownership." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,7 +78,11 @@
   .kc-body { background: #F7F5F0; padding: 88px 0 40px; }
   .kc-wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
 
-  .kc-sec { margin-bottom: 64px; }
+  .kc-sec { margin-bottom: 64px; scroll-margin-top: 96px; }
+  .kc-alias { display: block; height: 0; overflow: hidden; scroll-margin-top: 96px; }
+  .kc-jump { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 48px; }
+  .kc-jump a { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 0 18px; border: 1px solid #E6E1D6; border-radius: 8px; background: #fff; font-family: var(--f-body); font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--green); text-decoration: none; transition: border-color .2s; }
+  .kc-jump a:hover { border-color: var(--gold); color: var(--green); }
   .kc-sec:last-child { margin-bottom: 0; }
   .kc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 26px; border-bottom: 1px solid #E6E1D6; padding-bottom: 16px; flex-wrap: wrap; }
   .kc-head h2 { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 3vw, 34px); line-height: 1; color: var(--green); letter-spacing: 0.02em; margin: 0; }
@@ -131,12 +144,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -150,11 +163,11 @@
     <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
     <div class="container" style="position: relative; z-index: 1;">
       <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 1000px;">
-        THE KNOWLEDGE <span class="italic" style="color: var(--gold);">centre.</span>
+        BUSINESS PREMISES <span class="italic" style="color: var(--gold);">insights.</span>
       </h1>
       <hr class="gold-rule" style="margin-bottom: 28px;" />
       <p class="lede" style="max-width: 680px;">
-        Commercial property intelligence for buyers, owners and tenants. Market evidence, precinct intelligence and practical analysis for buyers assessing acquisitions, owners managing assets and tenants making occupancy decisions.
+        Practical guidance for Brisbane businesses renewing a lease, relocating, buying premises or comparing leasing with ownership.
       </p>
     </div>
   </section>
@@ -163,170 +176,142 @@
   <section class="kc-body">
     <div class="kc-wrap">
 
-      <!-- Case studies -->
-      <div class="kc-sec">
+      <nav class="kc-jump" aria-label="Insights sections">
+        <a href="#guides">Guides</a>
+        <a href="#tools">Calculators &amp; tools</a>
+        <a href="#services">Advisory &amp; representation</a>
+        <a href="/commercial-property-faqs">FAQs</a>
+      </nav>
+
+      <div class="kc-sec" id="guides">
         <div class="kc-head">
           <div>
-            <h2>Case studies</h2>
-            <p>Four assets, four different plays: planning uplift, value-add, a short-lease acquisition and a refurbishment reversion.</p>
+            <h2>Guides</h2>
+            <p>Longer-form guidance for the decisions that shape a business premises purchase or lease-versus-buy assessment.</p>
           </div>
-          <a href="/case-studies">All case studies →</a>
         </div>
-        <div class="kc-grid kc-cs">
-          <a class="kc-card kc-csc" href="/case-studies#spring-hill">
-            <div class="kc-kicker">Spring Hill · Planning uplift &amp; reposition</div>
-            <div class="kc-metric">$15M+</div>
-            <h3>Planning uplift &amp; full occupancy on a future development site</h3>
-            <p>A vacant, incorrectly zoned former government building taken to a 15-storey envelope, refurbished and re-leased to full occupancy at a 6% yield on total cost.</p>
-            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card kc-csc" href="/case-studies#west-end">
-            <div class="kc-kicker">West End · Value-add</div>
-            <div class="kc-metric">$7M</div>
-            <h3>A mixed-use value-add, end to end</h3>
-            <p>An asset trading below its potential, taken through acquisition, refurbishment and leasing owner-side, lifting value from $5M to $12M.</p>
-            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card kc-csc" href="/case-studies#stafford">
-            <div class="kc-kicker">Stafford · Strata industrial</div>
-            <div class="kc-metric">$1M</div>
-            <h3>Under-rented strata, bought for the expiry</h3>
-            <p>Acquired at $1.12M in 2022 with under two years of lease left and rent below market; sold in 2024 for $2.15M into owner-occupier demand.</p>
-            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card kc-csc" href="/case-studies#berserker">
-            <div class="kc-kicker">Berserker · Refurbishment &amp; reversion</div>
-            <div class="kc-metric">Under way</div>
-            <h3>Refurbishment &amp; rental reversion beside a regional centre</h3>
-            <p>A retail and office building next to Stockland Rockhampton, fully refurbished, with rents reset to market as tenancies come up for renewal.</p>
-            <span class="kc-open">Read the study <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
+        <div class="kc-grid kc-grid--2">
+        <a class="kc-card" href="/how-to-avoid-buying-the-wrong-commercial-property">
+          <div class="kc-kicker">Guide</div>
+          <h3>How do I avoid buying the wrong business premises?</h3>
+          <p>Operational fit, access, power, planning, flood, strata, fit-out costs and future flexibility.</p>
+          <span class="kc-open">Read guide <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/guide-lease-vs-buy">
+          <div class="kc-kicker">Guide</div>
+          <h3>Lease vs buy for the owner-occupier</h3>
+          <p>The real cost comparison beyond the mortgage: equity, outgoings, capital works and freed capital.</p>
+          <span class="kc-open">Read guide <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
         </div>
       </div>
 
-      <!-- Investor School -->
-      <div class="kc-sec">
+      <div class="kc-sec" id="tools">
+        <span id="explainers" class="kc-alias" aria-hidden="true"></span>
         <div class="kc-head">
           <div>
-            <h2>Investor School</h2>
-            <p>Free interactive lessons for commercial property investors.</p>
-          </div>
-        </div>
-        <div class="kc-grid kc-grid--1">
-          <a class="kc-card" href="/commercial-property-investor-school">
-            <div class="kc-kicker">Five interactive lessons</div>
-            <h3>Commercial Property Investor School</h3>
-            <p>Yield and value, value-add, leasing and vacancy, refinancing and downside cash flow, each worked through with your own figures. Queensland focus.</p>
-            <span class="kc-open">Start the lessons <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Guides -->
-      <div class="kc-sec" id="guides" style="scroll-margin-top: 96px;">
-        <div class="kc-head">
-          <div>
-            <h2>Guides &amp; explainers</h2>
-            <p>Plain-language notes on the mechanics that move commercial returns.</p>
+            <h2>Calculators and decision tools</h2>
+            <p>Compare renewal against relocation, effective rents and occupancy costs, and test rent reviews, lease-versus-buy assumptions and the cash required for an SMSF premises purchase.</p>
           </div>
         </div>
         <div class="kc-grid">
-          <a class="kc-card" href="/guide-lease-vs-buy">
-            <div class="kc-kicker">Strategy</div>
-            <h3>Lease vs buy for the owner-occupier</h3>
-            <p>The real cost comparison beyond the mortgage: equity, outgoings, capital works and freed capital.</p>
-            <span class="kc-open">Read guide <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/how-to-avoid-buying-the-wrong-commercial-property">
-            <div class="kc-kicker">Acquisition</div>
-            <h3>How do I avoid buying the wrong commercial property?</h3>
-            <p>Tenant, lease, vacancy, outgoings and reletting risks to understand before committing capital.</p>
-            <span class="kc-open">Read guide <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/cost-to-lease-commercial-property-brisbane">
-            <div class="kc-kicker">Leasing</div>
-            <h3>How much does it cost to lease out a commercial property?</h3>
-            <p>Commission, advertising, incentives and the cost owners overlook: vacancy.</p>
-            <span class="kc-open">Read guide <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-<a class="kc-card" href="/changing-commercial-property-managers-brisbane"><div class="kc-kicker">Commercial Property Management</div><h3>How to change commercial property managers in Brisbane</h3><p>Changing commercial property managers in Brisbane: what to check in your appointment, what must transfer and how to plan the tenant and records handover.</p><span class="kc-open">Read guide →</span></a>
-<a class="kc-card" href="/why-commercial-property-not-leasing"><div class="kc-kicker">Commercial Property Leasing</div><h3>Why is my commercial property not leasing?</h3><p>Commercial property not leasing? Review demand, asking rent, competing stock, property presentation, enquiries and inspections before spending more or reducing rent.</p><span class="kc-open">Read guide →</span></a>
-          <div class="kc-card kc-card--soon">
-            <span class="kc-tag">Coming soon</span>
-            <div class="kc-kicker">Outgoings</div>
-            <h3>Recovering outgoings the right way</h3>
-            <p>What's recoverable under a net lease, where owners leave money on the table, and how to audit a schedule.</p>
-          </div>
-          <div class="kc-card kc-card--soon">
-            <span class="kc-tag">Coming soon</span>
-            <div class="kc-kicker">Rent reviews</div>
-            <h3>Rent review mechanisms explained</h3>
-            <p>Fixed, CPI, market and ratchet reviews: how each behaves over a term, and which to push for.</p>
-          </div>
-          <div class="kc-card kc-card--soon">
-            <span class="kc-tag">Coming soon</span>
-            <div class="kc-kicker">Lease metrics</div>
-            <h3>Reading a WALE</h3>
-            <p>Weighted average lease expiry, why buyers price it, and how to manage expiry risk before it bites.</p>
-          </div>
-          <div class="kc-card kc-card--soon">
-            <span class="kc-tag">Coming soon</span>
-            <div class="kc-kicker">Valuation</div>
-            <h3>How commercial property is valued</h3>
-            <p>Capitalising net income at a market yield: what actually drives the number on a valuation.</p>
-          </div>
-          <div class="kc-card kc-card--soon">
-            <span class="kc-tag">Coming soon</span>
-            <div class="kc-kicker">Management</div>
-            <h3>Agent vs principal-led management</h3>
-            <p>Where the incentives diverge, and what owner-side management changes about how an asset is run.</p>
-          </div>
+        <a class="kc-card" href="/renewal-vs-relocation">
+          <div class="kc-kicker">Calculator</div>
+          <h3>Lease renewal vs relocation</h3>
+          <p>The total cost of staying against moving, including fitout, make-good and overlap rent, with the break-even rent.</p>
+          <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/effective-rent">
+          <div class="kc-kicker">Calculator</div>
+          <h3>Lease incentives and effective rent</h3>
+          <p>Convert a face rent and incentive package into one comparable effective rent.</p>
+          <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/occupancy-cost">
+          <div class="kc-kicker">Calculator</div>
+          <h3>Occupancy cost comparison</h3>
+          <p>Compare up to three premises on one basis, net of incentives and fitout, per m&sup2; and per person.</p>
+          <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/rent-review">
+          <div class="kc-kicker">Calculator</div>
+          <h3>Rent review calculator</h3>
+          <p>Project a fixed, CPI or greater-of review year by year across the lease term.</p>
+          <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/lease-vs-buy">
+          <div class="kc-kicker">Calculator</div>
+          <h3>Lease vs buy calculator</h3>
+          <p>Weigh the cost of leasing premises against owning them over your holding period.</p>
+          <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/smsf-commercial-property-calculator">
+          <div class="kc-kicker">Calculator</div>
+          <h3>SMSF business premises calculator</h3>
+          <p>Estimate the cash an SMSF would need for a Queensland purchase and test cash flow under different assumptions.</p>
+          <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
         </div>
       </div>
 
-      <!-- Featured tools -->
+      <div class="kc-sec" id="services">
+        <div class="kc-head">
+          <div>
+            <h2>Advisory and representation</h2>
+            <p>Principal-led representation for businesses renewing, relocating or buying their premises.</p>
+          </div>
+        </div>
+        <div class="kc-grid">
+        <a class="kc-card" href="/tenant-representation">
+          <div class="kc-kicker">Service</div>
+          <h3>Tenant representation</h3>
+          <p>Brief, search, compare and negotiate from the tenant’s side, through to occupation.</p>
+          <span class="kc-open">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/buyers-agency-owner-occupiers">
+          <div class="kc-kicker">Service</div>
+          <h3>Buy business premises</h3>
+          <p>Full acquisition representation, 12-week advisory, or assessment and negotiation of a property already found.</p>
+          <span class="kc-open">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/commercial-buyer-advisory">
+          <div class="kc-kicker">Service</div>
+          <h3>Commercial buyer advisory</h3>
+          <p>Experienced advice while the business runs its own premises search.</p>
+          <span class="kc-open">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+
       <div class="kc-sec">
         <div class="kc-head">
           <div>
-            <h2>Featured tools</h2>
-            <p>Free calculators for commercial property, acquisition and leasing decisions.</p>
+            <h2>Assess industrial and warehouse premises</h2>
+            <p>Access, loading, power, hardstand and expansion capacity matter as much as price.</p>
           </div>
         </div>
-        <div class="kc-grid kc-grid--4">
-          <a class="kc-card" href="/acquisition-yield">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Acquisition Cost &amp; Yield Calculator</h3>
-            <p>The real cost after duty and finance, with yield on total cost and cash on cash.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/lease-vs-buy">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Lease vs Buy Calculator</h3>
-            <p>Weigh the cost of leasing premises against owning them over your holding period.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/management-estimator">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Management Value Estimator</h3>
-            <p>What active management could recover on your portfolio, against the fee to do it.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
-          <a class="kc-card" href="/occupancy-cost">
-            <div class="kc-kicker">Calculator</div>
-            <h3>Occupancy Cost Comparison Calculator</h3>
-            <p>Up to three premises on one basis, net of incentives and fitout, per m&sup2; and per person.</p>
-            <span class="kc-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-          </a>
+        <div class="kc-grid">
+        <a class="kc-card" href="/industrial-shed-buyers-agent">
+          <div class="kc-kicker">Service</div>
+          <h3>Buying an industrial shed or warehouse</h3>
+          <p>Buyer-side representation for businesses buying industrial premises in South East Queensland.</p>
+          <span class="kc-open">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="kc-card" href="/locations">
+          <div class="kc-kicker">Locations</div>
+          <h3>Brisbane industrial locations</h3>
+          <p>Precinct information for businesses considering leased or owned premises.</p>
+          <span class="kc-open">View locations <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
         </div>
-        <p class="kc-all"><a href="/tools" class="btn btn--lg btn--green">View all tools and calculators</a></p>
       </div>
 
       <!-- Precinct data -->
       <div class="kc-sec">
         <div class="kc-head">
           <div>
-            <h2>Precinct market data</h2>
-            <p>Median lease and sale rates tracked on the ground across four SEQ precincts.</p>
+            <h2>Brisbane industrial precincts</h2>
+            <p>Lease and sale evidence for businesses considering leased or owned premises in four South East Queensland precincts.</p>
           </div>
           <a href="/locations">All locations →</a>
         </div>
@@ -358,9 +343,28 @@
         </div>
       </div>
 
+
+      <div class="kc-sec">
+        <div class="kc-head">
+          <div>
+            <h2>Owner-side experience</h2>
+            <p>How landlords, vendors and agents assess a transaction, from Nick O’Toole’s owner-side experience.</p>
+          </div>
+        </div>
+        <div class="kc-grid kc-grid--1">
+        <a class="kc-card" href="/case-studies">
+          <div class="kc-kicker">Experience</div>
+          <h3>Commercial property experience</h3>
+          <p>Selected examples from Nick’s owner-side experience and the lessons relevant to occupiers.</p>
+          <span class="kc-open">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        </a>
+        </div>
+      </div>
+
     </div>
+
     <div class="kc-note">
-      <p>Guides marked "coming soon" are in development. Figures referenced reflect Represent Commercial's own tracking and Nick O'Toole's direct experience, and are indicative of the projects described, not a forecast of future results. Real Estate Agent Licence 4949809.</p>
+      <p>Calculator results are indicative only. Funding, tax, SMSF and legal questions should be confirmed with your qualified advisers. Real Estate Agent Licence 4949809.</p>
     </div>
   </section>
 
@@ -368,10 +372,10 @@
   <section class="section section--deep section--narrow">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
       <div>
-        <h2 class="h-3" style="font-size: 48px; color: #fff;">A QUESTION NOT ANSWERED HERE?</h2>
+        <h2 class="h-3" style="font-size: 48px; color: #fff;">A PREMISES QUESTION NOT ANSWERED HERE?</h2>
         <div class="italic" style="font-family: var(--f-editorial); font-size: 18px; color: rgba(255,255,255,0.4); margin-top: 8px; letter-spacing: normal;">Ask Nick directly. No account managers in between.</div>
       </div>
-      <a href="/contact" class="btn btn--lg btn--gold" style="flex-shrink: 0;">Talk to Nick</a>
+      <a href="/contact" class="btn btn--lg btn--gold" style="flex-shrink: 0;">Discuss Your Premises</a>
     </div>
   </section>
 
@@ -384,22 +388,22 @@
         <div class="logo__primary">REPRESENT</div>
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -407,7 +411,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -448,7 +452,7 @@
 </footer>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

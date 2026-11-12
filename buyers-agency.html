@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -44,7 +53,7 @@
 <title>Commercial Buyer’s Agent Brisbane &amp; Queensland | Represent Commercial</title>
 <meta name="description" content="Independent commercial buyer’s agent across Brisbane, South East Queensland and regional Queensland, for investors and owner-occupiers. We never act for the vendor." />
 <meta name="keywords" content="commercial buyer’s agent Brisbane, commercial buyers agency Brisbane, commercial buyers agent Queensland, commercial buyers agent South East Queensland, commercial buyers agent regional Queensland, owner occupier commercial property Brisbane, commercial property acquisition Brisbane, off-market commercial property Brisbane" />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://represent.au/buyers-agency" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/buyers-agency" />
@@ -105,7 +114,15 @@
       "name": "How much does a commercial buyer’s agent cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial strategy session is complimentary and does not appoint Represent Commercial."
+        "text": "Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial discussion is complimentary and does not appoint Represent Commercial."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I search myself with advice from Nick?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Commercial Buyer Advisory is a 12-week engagement for investors and business owners running their own search. You find and inspect properties, deal with selling agents and submit offers. Nick helps set your buying criteria, reviews the properties you nominate and advises on your next move. Scope and fees are agreed before appointment. See Commercial Buyer Advisory."
       }
     },
     {
@@ -113,7 +130,7 @@
       "name": "Can you help if I have already found a property?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Tell Nick which property you are considering and where the transaction stands. We can discuss a scope covering assessment, comparable evidence, due diligence coordination and negotiation, with the services and fees agreed before work begins."
+        "text": "Yes. Property Assessment & Negotiation covers a property you have already identified. Nick assesses the opportunity and represents you in the negotiation under an agreed appointment, with the services and fees agreed before work begins. An ongoing property search is a separate service."
       }
     },
     {
@@ -627,6 +644,48 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 @media (max-width:760px){.ba-paths{grid-template-columns:minmax(0,1fr)}.ba-path{padding:24px}}
 </style>
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
+<style>/* r30 buyer service levels (2026-11-10, refined) */
+.bsl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;row-gap:20px}
+.bsl__card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #E6E1D6;border-radius:12px;padding:30px}
+.bsl__card--adv{background:#F1F6F2;border-color:rgba(0,66,37,.28)}
+.bsl__top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:14px;min-height:24px}
+.bsl__n{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#806318}
+.bsl__tag{display:inline-flex;align-items:center;min-height:24px;padding:2px 10px;border-radius:4px;background:rgba(0,66,37,.1);font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.bsl__card h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:27px;line-height:1.05;color:var(--green);margin:0 0 12px;text-wrap:balance}
+.bsl__card>p{font-family:var(--f-body);font-size:15.5px;line-height:1.65;color:#3E4A44;margin:0 0 20px;text-wrap:pretty}
+.bsl__dl{margin:0 0 24px;padding:16px 0 0;border-top:1px solid rgba(0,66,37,.16);display:grid;gap:10px;align-content:start}
+.bsl__dl div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px}
+.bsl__dl dt{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);padding-top:2px}
+.bsl__dl dd{margin:0;font-family:var(--f-body);font-size:14.5px;line-height:1.55;color:#3E4A44}
+.bsl__card .btn{margin-top:auto;width:100%;display:flex;align-items:center;justify-content:center;text-align:center;white-space:normal;min-height:48px;padding:13px 20px;line-height:1.3}
+.bsl__card--adv .btn{background:#fff}
+@media (min-width:961px){
+  .bsl{grid-template-rows:auto auto auto auto auto;row-gap:0}
+  .bsl__card{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0}
+  .bsl__card .btn{margin-top:0;align-self:end}
+}
+.bsl-note{font-family:var(--f-body);font-size:14.5px;line-height:1.65;color:#3E4A44;max-width:820px;margin:28px 0 0;text-wrap:pretty}
+.bsl-sel{font-family:var(--f-body);font-size:15px;font-weight:600;line-height:1.5;color:var(--green);margin:0 0 20px}
+#service-options,#buyer-pathways,#enquiry{scroll-margin-top:84px}
+@media (max-width:960px){.bsl{grid-template-columns:minmax(0,1fr);row-gap:16px}.bsl__card{padding:24px 22px}}
+@media (max-width:420px){.bsl__dl div{grid-template-columns:minmax(0,1fr);gap:2px}}
+</style>
+<style>/* r30 final pass 2026-11-10: Full Acquisition Service card and aligned comparison rows (scoped to .bsl) */
+.bsl__dl div{grid-template-columns:112px minmax(0,1fr)}
+@media (min-width:961px){.bsl{grid-template-rows:repeat(7,auto)}.bsl__card{grid-row:span 7}.bsl__dl{grid-row:span 3;grid-template-rows:subgrid;gap:0;padding-top:0}.bsl__dl div{padding:12px 0;border-bottom:1px solid rgba(0,66,37,.1)}.bsl__dl div:last-child{border-bottom:0}}
+.bsl__card .btn:focus-visible{outline:3px solid #806318;outline-offset:3px}
+.bsl__card--full{background:#004225;border-color:#004225}
+.bsl__card--full .bsl__n{color:#C9A84C}
+.bsl__card--full h3{color:#fff}
+.bsl__card--full>p{color:rgba(255,255,255,.86)}
+.bsl__card--full .bsl__dl{border-top-color:rgba(255,255,255,.2)}
+.bsl__card--full .bsl__dl div{border-bottom-color:rgba(255,255,255,.14)}
+.bsl__card--full .bsl__dl dt{color:#C9A84C}
+.bsl__card--full .bsl__dl dd{color:rgba(255,255,255,.9)}
+.bsl__card--full .btn{background:#C9A84C;border-color:#C9A84C;color:#002D18}
+.bsl__card--full .btn:hover{opacity:.85;background:#C9A84C;border-color:#C9A84C;color:#002D18}
+.bsl__card--full .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+</style>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -639,12 +698,12 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link is-active">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link is-active">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -663,14 +722,14 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
     <div class="container">
       <div class="so-hero__copy">
         <h1 class="svc-h1">Commercial Buyer’s Agent</h1>
-        <div class="brandline h-1">BUY IT RIGHT. <span class="italic" style="color: var(--gold);">Hold it properly.</span></div>
+        <div class="brandline h-1">Commercial property acquisition. <span class="italic" style="color: var(--gold);">The right level of support.</span></div>
         <hr class="gold-rule" style="margin-bottom: 28px;" />
-        <p class="pr-offer">Principal-led commercial property acquisition across Brisbane, South East Queensland and regional Queensland. Nick O’Toole helps investors and owner-occupiers assess opportunities, negotiate the purchase and develop a practical plan for ownership, drawing on more than 20 years of experience across acquisitions, leasing and asset management.</p>
+        <p class="pr-offer">Appoint Nick to manage your acquisition, search yourself with 12 weeks of experienced advice, or get help assessing and negotiating a property you have already found.<br /><br />Principal-led commercial property advice for investors and businesses buying their own premises across Brisbane, South East Queensland and regional Queensland.</p>
         <div class="pr-acts">
-          <a href="/buyers-agency-investors#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-hero-investor">Discuss My Investment Requirements</a>
-          <a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--outline" data-cta="buyers-agency-hero-occupier">Discuss My Property Requirements</a>
+          <a href="#service-options" class="btn btn--lg btn--gold" data-cta="buyers-agency-hero-options">Explore Your Options</a>
+          <a href="#buyer-pathways" class="btn btn--lg btn--outline" data-cta="buyers-agency-hero-discuss">Discuss My Purchase</a>
         </div>
-        <p class="so-micro">Start with a complimentary strategy session. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed. We act for the buyer, never the vendor.</p>
+        <p class="so-micro">Start with a complimentary initial discussion. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed. We act for the buyer, never the vendor.</p>
       </div>
     </div>
   </section>
@@ -684,21 +743,56 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
     </ul>
   </section>
 
-  <section class="section section--light" data-screen-label="03 Buyer pathways">
+  <section class="section" id="service-options" aria-labelledby="bsl-h" data-screen-label="02b Service options">
+    <div class="container">
+      <div class="svc-lead reveal" style="margin-bottom: 36px; max-width: 820px;">
+        <p class="so-k">Three ways to work with Represent</p>
+        <h2 class="so-h2" id="bsl-h">The right level of support</h2>
+        <p class="pr-p">Choose the support that fits how you want to buy. Each service has its own agreed scope and fees.</p>
+      </div>
+      <div class="bsl reveal">
+        <article class="bsl__card bsl__card--full">
+          <div class="bsl__top"><span class="bsl__n">Option 01</span></div>
+          <h3>Full Acquisition Service</h3>
+          <p>Nick leads the search, inspections, assessment and negotiation, coordinating the acquisition alongside your solicitor and relevant advisers.</p>
+          <dl class="bsl__dl"><div><dt>Search and inspections</dt><dd>Nick leads the search and inspections</dd></div><div><dt>Assessment</dt><dd>Nick assesses each opportunity</dd></div><div><dt>Agents and offers</dt><dd>Nick deals with selling agents and negotiates for you</dd></div></dl>
+          <a href="#buyer-pathways" class="btn btn--lg btn--gold" data-support="full">Discuss Full Representation</a>
+        </article>
+        <article class="bsl__card">
+          <div class="bsl__top"><span class="bsl__n">Option 02</span><span class="bsl__tag">12 weeks</span></div>
+          <h3>12-Week Buyer Advisory</h3>
+          <p>You search and inspect. Nick helps establish your buying criteria, reviews nominated properties and advises on your next move throughout the 12-week engagement.</p>
+          <dl class="bsl__dl"><div><dt>Search and inspections</dt><dd>You search and inspect</dd></div><div><dt>Assessment</dt><dd>Nick helps set your buying criteria and reviews the properties you nominate</dd></div><div><dt>Agents and offers</dt><dd>You deal with selling agents and submit offers, with Nick’s advice on approach</dd></div></dl>
+          <a href="/commercial-buyer-advisory?support=advisory" class="btn btn--lg btn--outline-dark">Explore the 12-Week Service</a>
+        </article>
+        <article class="bsl__card">
+          <div class="bsl__top"><span class="bsl__n">Option 03</span></div>
+          <h3>Property Assessment &amp; Negotiation</h3>
+          <p>You have found a property. Nick assesses the opportunity and represents you in the negotiation under an agreed appointment. An ongoing property search is separate.</p>
+          <dl class="bsl__dl"><div><dt>Search and inspections</dt><dd>You have already found the property. An ongoing search is separate.</dd></div><div><dt>Assessment</dt><dd>Nick assesses the opportunity</dd></div><div><dt>Agents and offers</dt><dd>Nick represents you in negotiations under an agreed appointment</dd></div></dl>
+          <a href="#buyer-pathways" class="btn btn--lg btn--outline-dark" data-support="assessment">Discuss a Property</a>
+        </article>
+      </div>
+      <p class="bsl-note">The initial discussion establishes your requirements and the appropriate service. Detailed property assessments, a written advisory plan and ongoing advice begin under a separately agreed appointment. Sourcing, inspections, due diligence coordination and direct negotiation are included only where the appointed service provides for them.</p>
+    </div>
+  </section>
+
+  <section class="section section--light" id="buyer-pathways" data-screen-label="03 Buyer pathways">
     <div class="container">
       <div class="svc-lead reveal" style="margin-bottom: 32px; max-width: 820px;">
         <p class="so-k">Two kinds of buyer</p>
         <h2 class="so-h2">Buying for income, or buying for the business</h2>
         <p class="pr-p">An investment is judged on its income and what can be done to improve it. Premises are judged first on how they work for the business. The acquisition process is the same. The questions are different.</p>
       </div>
+      <p class="bsl-sel" id="bsl-sel" aria-live="polite" hidden></p>
       <div class="ba-paths reveal">
-        <a class="ba-path" href="/buyers-agency-investors">
+        <a class="ba-path" href="/buyers-agency-investors" data-base="/buyers-agency-investors">
           <span class="ba-path__k">Investors</span>
           <h3>Buy the income. Then improve it.</h3>
           <p>Private investors, families, syndicates and SMSFs buying for income. Income, lease quality, price and value-add potential tested before you commit.</p>
           <span class="ba-path__go">Buyer’s agency for investors →</span>
         </a>
-        <a class="ba-path" href="/buyers-agency-owner-occupiers">
+        <a class="ba-path" href="/buyers-agency-owner-occupiers" data-base="/buyers-agency-owner-occupiers">
           <span class="ba-path__k">Owner-occupiers</span>
           <h3>Buy premises that work for the business.</h3>
           <p>Businesses buying their own premises, including through an SMSF. Business fit, value, lease vs buy and future flexibility tested before you commit.</p>
@@ -729,8 +823,8 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
   <section class="section section--deep so-dk" data-screen-label="05 Process">
     <div class="circle" style="width: 900px; height: 900px; right: -300px;"></div>
     <div class="container" style="position: relative; z-index: 1;">
-      <p class="so-k">The acquisition process</p>
-      <h2 class="so-h2">Brief · Search · Analyse · Acquire</h2>
+      <p class="so-k">Brief · Search · Analyse · Acquire</p>
+      <h2 class="so-h2">How the Full Acquisition Service Works</h2>
       <ol class="so-scope so-scope--4 reveal">
         <li><p class="so-scope__n">01 · BRIEF</p><h3>Brief</h3><p>What the property has to do for the business or the portfolio. Criteria, precincts, budget, structure and walk-away parameters agreed in writing.</p></li>
         <li><p class="so-scope__n">02 · SEARCH</p><h3>Search + shortlist</h3><p>On-market, pre-market and off-market coverage, including approaches to owners not currently selling. You see a shortlist, with the reasons the rest were excluded.</p></li>
@@ -747,9 +841,9 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
   <section class="section section--light" data-screen-label="06 Scope">
     <div class="container">
       <div class="svc-lead reveal" style="margin-bottom: 36px; max-width: 820px;">
-        <p class="so-k">What the mandate covers</p>
+        <p class="so-k">Full Acquisition Scope</p>
         <h2 class="so-h2">The work behind an acquisition</h2>
-        <p class="pr-p">Scope is set to the mandate. Most acquisitions draw on all of the following.</p>
+        <p class="pr-p">A Full Acquisition Service draws on all of the following. Sourcing, inspections, due diligence coordination and direct negotiation depend on the appointed service.</p>
       </div>
       <div class="ba-scope reveal">
         <div><strong>Acquisition strategy</strong>Criteria, target precincts, asset type and structure agreed before any property is considered.</div>
@@ -792,8 +886,9 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <details class="so-acc" id="what-a-buyers-agent-does"><summary><h3>What does a commercial property buyer’s agent do?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>A commercial property buyer’s agent acts only for the buyer, never the vendor. For established investors and owner-occupiers, the work covers defining the acquisition brief, sourcing on-market and off-market opportunities, assessing the property, its leases and the tenant covenant, and financial analysis of income, outgoings, market rent, yield and value. It continues with coordinating due diligence with your lawyer, accountant, valuer and building consultants, negotiating price and contract terms, and coordinating the transaction through to settlement. Where appointed, Represent Commercial can also manage or lease the property after settlement. Our guide on <a href="/how-to-avoid-buying-the-wrong-commercial-property">how to avoid buying the wrong commercial property</a> sets out the tenant, lease, vacancy and outgoings risks to test before committing.</p></details>
         <details class="so-acc"><summary><h3>How do I know if I am paying too much?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>By testing the asking price against comparable sale evidence, the passing rent against market rent, and the outgoings recovery against what the lease actually permits. A price can look acceptable on yield and still be too high if the rent sits above market or the recovery position is weaker than assumed. The <a href="/yield-value">Net Yield &amp; Property Value Calculator</a> shows the yield at an asking price, or the value the net income supports at a market yield.</p></details>
         <details class="so-acc"><summary><h3>Do you act for owner-occupiers as well as investors?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Investments are assessed on income, lease quality and value-add potential. Owner-occupier acquisitions are assessed against the business requirement as well as the investment fundamentals, including the option of continuing to lease instead of buying. See buyer’s agency for <a href="/buyers-agency-investors">investors</a> and for <a href="/buyers-agency-owner-occupiers">owner-occupiers</a>.</p></details>
-        <details class="so-acc"><summary><h3>How much does a commercial buyer’s agent cost?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial strategy session is complimentary and does not appoint Represent Commercial.</p></details>
-        <details class="so-acc"><summary><h3>Can you help if I have already found a property?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Tell Nick which property you are considering and where the transaction stands. We can discuss a scope covering assessment, comparable evidence, due diligence coordination and negotiation, with the services and fees agreed before work begins.</p></details>
+        <details class="so-acc"><summary><h3>How much does a commercial buyer’s agent cost?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial discussion is complimentary and does not appoint Represent Commercial.</p></details>
+        <details class="so-acc" id="search-myself-with-advice"><summary><h3>Can I search myself with advice from Nick?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Commercial Buyer Advisory is a 12-week engagement for investors and business owners running their own search. You find and inspect properties, deal with selling agents and submit offers. Nick helps set your buying criteria, reviews the properties you nominate and advises on your next move. Scope and fees are agreed before appointment. See <a href="/commercial-buyer-advisory">Commercial Buyer Advisory</a>.</p></details>
+        <details class="so-acc"><summary><h3>Can you help if I have already found a property?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Property Assessment &amp; Negotiation covers a property you have already identified. Nick assesses the opportunity and represents you in the negotiation under an agreed appointment, with the services and fees agreed before work begins. An ongoing property search is a separate service.</p></details>
         <details class="so-acc"><summary><h3>Do you act for sellers?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>No. Represent Commercial does not act for vendors and does not run vendor sales campaigns. That is what makes the advice on the buy side worth having.</p></details>
       </div>
       <p class="pr-fine">Precinct evidence: <a href="/Acacia%20Ridge">Acacia Ridge</a>, <a href="/Brendale">Brendale</a>, <a href="/Hemmant">Hemmant</a>, <a href="/Yatala">Yatala</a>. See <a href="/locations">all locations</a>. Once acquired, see <a href="/commercial-property-management">commercial property management</a>. More questions on managing, leasing and buying commercial property are answered in our <a href="/commercial-property-faqs#buying-commercial-property">commercial property FAQs for buyers</a>.</p>
@@ -809,10 +904,10 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <div class="reveal">
         <p class="lede" style="margin: 0 0 28px; color: rgba(255,255,255,0.82);">Start with what you are trying to buy, and why. Nick responds personally.</p>
         <div class="pr-acts">
-          <a href="/buyers-agency-investors#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-final-investor">Discuss My Investment Requirements</a>
-          <a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--outline" data-cta="buyers-agency-final-occupier">Discuss My Property Requirements</a>
+          <a href="/buyers-agency-investors#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-final-investor">Discuss My Investment Purchase</a>
+          <a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--outline" data-cta="buyers-agency-final-occupier">Discuss My Premises Purchase</a>
         </div>
-        <p class="pr-close__by">Complimentary initial session. We act for the buyer, never the vendor.</p>
+        <p class="pr-close__by">Complimentary initial discussion. We act for the buyer, never the vendor.</p>
       </div>
     </div>
   </section>
@@ -830,19 +925,19 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="#" style="color: var(--gold);">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -850,7 +945,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -921,7 +1016,23 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script>
+// r30: a service choice carries into the investor or owner-occupier enquiry form. Navigation only: no analytics, no lead events.
+(function () {
+  var L = { full: 'Full acquisition representation', assessment: 'Assessment and negotiation of an identified property' };
+  var msg = document.getElementById('bsl-sel');
+  var paths = document.querySelectorAll('#buyer-pathways a.ba-path[data-base]');
+  Array.prototype.forEach.call(document.querySelectorAll('a[data-support]'), function (a) {
+    a.addEventListener('click', function () {
+      var k = a.getAttribute('data-support');
+      if (!L[k]) return;
+      Array.prototype.forEach.call(paths, function (p) { p.href = p.getAttribute('data-base') + '?support=' + k + '#enquiry'; });
+      if (msg) { msg.textContent = 'Selected: ' + L[k] + '. Now choose investment or business premises to reach the enquiry form.'; msg.hidden = false; }
+    });
+  });
+})();
+</script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -111,7 +120,7 @@
   .grp { border-top: 1px solid #EEEAE0; }
   .grp:first-of-type { border-top: 0; }
   .grp > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 22px 0 18px; font-family: var(--f-cond); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--calc-gold); }
-  .grp:first-of-type > summary { padding-top: 0; }
+  .grp:first-of-type > summary { padding-top: 0; min-height: 44px; }
   .grp > summary::-webkit-details-marker { display: none; }
   .grp > summary .chev { width: 15px; height: 15px; stroke: var(--calc-gold); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.22s; flex: none; }
   .grp[open] > summary .chev { transform: rotate(180deg); }
@@ -278,6 +287,7 @@
 </style>
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
+<style>/* r31a tap targets: calculator toggles and reset at least 44px on touch widths */@media (max-width:768px){.seg button{min-height:44px}.reset-btn{min-height:44px;display:inline-flex;align-items:center}}</style>
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -291,12 +301,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
-      <a href="/insights" class="site-nav__link is-active">Insights</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link is-active">Lease vs Buy</a>
+      <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -705,8 +715,9 @@
   <div class="calc-wrap">
     <div class="lead-card">
       <div id="lead-intro">
-        <div class="lead-h">The numbers are only half of it.</div>
-        <p class="lead-p">A financially attractive purchase can still be the wrong property. Represent assesses the location, building, market evidence, future requirements and exit position before recommending an acquisition.</p>
+        <div class="lead-h">Discuss the Result with Nick</div>
+        <p class="lead-p">The financial result is only one part of the decision. Nick can help assess the premises requirement, timing, available stock and operational implications before you commit to leasing or buying.</p>
+        <p class="lead-p" style="font-size: 13px; margin-top: -4px;">Optional. The calculator and its results do not require your details.</p>
         <form id="lead-form">
           <div class="lead-grid">
             <div class="lead-field"><label for="lease-vs-buy-first">First name</label><input id="lease-vs-buy-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
@@ -715,8 +726,8 @@
             <div class="lead-field"><label for="lease-vs-buy-phone">Phone</label><input id="lease-vs-buy-phone" name="phone" autocomplete="tel" /></div>
           </div>
           <div class="lead-actions">
-            <button type="submit" class="lead-btn" id="lead-btn">Discuss My Lease Options</button>
-            <a class="lead-link" href="/buyers-agency">Explore Buyers Agency →</a>
+            <button type="submit" class="lead-btn" id="lead-btn">Discuss the Result with Nick</button>
+            <a class="lead-link" href="/business-premises">Renew, relocate or buy →</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
         </form>
@@ -747,22 +758,22 @@
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy" style="color: var(--gold);">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -770,7 +781,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -1228,7 +1239,7 @@
     var FAIL = 'We could not send your request. Your details are still here. Please try again, or call Nick on +61 401 825 999 or email nick@represent.au.';
     var UNCERTAIN = 'We couldn’t confirm your submission. It may have been received. Your details are still here. Please contact Nick on +61 401 825 999 if you need confirmation.';
     function fail(message) {
-      btn.disabled = false; btn.textContent = 'Discuss My Lease Options';
+      btn.disabled = false; btn.textContent = 'Discuss the Result with Nick';
       errEl.textContent = message;
       errEl.style.display = 'block';
     }
@@ -1258,8 +1269,8 @@
 </script>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script src="nav.v23.js" defer></script>
 <script>
 /* Live thousand separators for decimal inputs (integer part only; decimals kept) */
 (function(){function rcCaret(el,f,keepCls){var p=el.selectionStart==null?el.value.length:el.selectionStart,b=el.value.slice(0,p).replace(keepCls,'').length,v=f(el.value);if(v===el.value)return;el.value=v;var i=0,c=0;while(i<v.length&&c<b){if(!keepCls.test(v[i]))c++;i++}try{el.setSelectionRange(i,i)}catch(e){}}

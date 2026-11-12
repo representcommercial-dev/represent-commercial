@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -40,11 +49,11 @@
 </script>
 <!-- End Meta Pixel Code -->
 <!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
-     debug is on for every host except represent.au / www.represent.au.
+     Measurement is disabled outside represent.au and in measurement test mode.
      lead_created fires only after Web3Forms confirms an owner-occupier acquisition enquiry (see page foot). -->
 <script>
   (function (w, d, s, u) {
-    if (w.oaiq) return;
+    if (w.oaiq || !w.rcMeasurement || !w.rcMeasurement.allowed()) return;
     var q = function () {
       q.q.push(arguments);
     };
@@ -57,7 +66,7 @@
     f.parentNode.insertBefore(js, f);
   })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
 
-  oaiq("init", {
+  if (typeof window.oaiq === "function") oaiq("init", {
     pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
     debug: !/^(www\.)?represent\.au$/.test(location.hostname)
   });
@@ -156,10 +165,18 @@
     },
     {
       "@type": "Question",
+      "name": "Can I search myself with advice from Nick?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Commercial Buyer Advisory is a 12-week engagement for business owners running their own search for premises. You find and inspect properties, deal with selling agents and submit offers. Nick helps set your buying criteria, reviews the properties you nominate and advises on your next move. Scope and fees are agreed before appointment. See Commercial Buyer Advisory."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Can you help if I have already found a property?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Tell Nick which property you are considering and where the transaction stands. We can discuss a scope covering assessment, comparable evidence, due diligence coordination and negotiation, with the services and fees agreed before work begins."
+        "text": "Yes. Property Assessment & Negotiation covers a property you have already identified. Nick assesses the opportunity and represents you in the negotiation under an agreed appointment, with the services and fees agreed before work begins. An ongoing property search is a separate service."
       }
     },
     {
@@ -167,7 +184,7 @@
       "name": "How much does a commercial buyer’s agent cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial strategy session is complimentary and does not appoint Represent Commercial."
+        "text": "Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial discussion is complimentary and does not appoint Represent Commercial."
       }
     }
   ]
@@ -181,13 +198,13 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Buyers",
-      "item": "https://represent.au/buyers-agency"
+      "name": "Home",
+      "item": "https://represent.au/"
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Owner-occupiers",
+      "name": "Buy Business Premises",
       "item": "https://represent.au/buyers-agency-owner-occupiers"
     }
   ]
@@ -649,6 +666,48 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 @media (max-width:600px){.oo-light-aside{padding:24px}}
 </style>
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
+<style>/* r30 buyer service levels (2026-11-10, refined) */
+.bsl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;row-gap:20px}
+.bsl__card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #E6E1D6;border-radius:12px;padding:30px}
+.bsl__card--adv{background:#F1F6F2;border-color:rgba(0,66,37,.28)}
+.bsl__top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:14px;min-height:24px}
+.bsl__n{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#806318}
+.bsl__tag{display:inline-flex;align-items:center;min-height:24px;padding:2px 10px;border-radius:4px;background:rgba(0,66,37,.1);font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.bsl__card h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:27px;line-height:1.05;color:var(--green);margin:0 0 12px;text-wrap:balance}
+.bsl__card>p{font-family:var(--f-body);font-size:15.5px;line-height:1.65;color:#3E4A44;margin:0 0 20px;text-wrap:pretty}
+.bsl__dl{margin:0 0 24px;padding:16px 0 0;border-top:1px solid rgba(0,66,37,.16);display:grid;gap:10px;align-content:start}
+.bsl__dl div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px}
+.bsl__dl dt{font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);padding-top:2px}
+.bsl__dl dd{margin:0;font-family:var(--f-body);font-size:14.5px;line-height:1.55;color:#3E4A44}
+.bsl__card .btn{margin-top:auto;width:100%;display:flex;align-items:center;justify-content:center;text-align:center;white-space:normal;min-height:48px;padding:13px 20px;line-height:1.3}
+.bsl__card--adv .btn{background:#fff}
+@media (min-width:961px){
+  .bsl{grid-template-rows:auto auto auto auto auto;row-gap:0}
+  .bsl__card{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0}
+  .bsl__card .btn{margin-top:0;align-self:end}
+}
+.bsl-note{font-family:var(--f-body);font-size:14.5px;line-height:1.65;color:#3E4A44;max-width:820px;margin:28px 0 0;text-wrap:pretty}
+.bsl-sel{font-family:var(--f-body);font-size:15px;font-weight:600;line-height:1.5;color:var(--green);margin:0 0 20px}
+#service-options,#buyer-pathways,#enquiry{scroll-margin-top:84px}
+@media (max-width:960px){.bsl{grid-template-columns:minmax(0,1fr);row-gap:16px}.bsl__card{padding:24px 22px}}
+@media (max-width:420px){.bsl__dl div{grid-template-columns:minmax(0,1fr);gap:2px}}
+</style>
+<style>/* r30 final pass 2026-11-10: Full Acquisition Service card and aligned comparison rows (scoped to .bsl) */
+.bsl__dl div{grid-template-columns:112px minmax(0,1fr)}
+@media (min-width:961px){.bsl{grid-template-rows:repeat(7,auto)}.bsl__card{grid-row:span 7}.bsl__dl{grid-row:span 3;grid-template-rows:subgrid;gap:0;padding-top:0}.bsl__dl div{padding:12px 0;border-bottom:1px solid rgba(0,66,37,.1)}.bsl__dl div:last-child{border-bottom:0}}
+.bsl__card .btn:focus-visible{outline:3px solid #806318;outline-offset:3px}
+.bsl__card--full{background:#004225;border-color:#004225}
+.bsl__card--full .bsl__n{color:#C9A84C}
+.bsl__card--full h3{color:#fff}
+.bsl__card--full>p{color:rgba(255,255,255,.86)}
+.bsl__card--full .bsl__dl{border-top-color:rgba(255,255,255,.2)}
+.bsl__card--full .bsl__dl div{border-bottom-color:rgba(255,255,255,.14)}
+.bsl__card--full .bsl__dl dt{color:#C9A84C}
+.bsl__card--full .bsl__dl dd{color:rgba(255,255,255,.9)}
+.bsl__card--full .btn{background:#C9A84C;border-color:#C9A84C;color:#002D18}
+.bsl__card--full .btn:hover{opacity:.85;background:#C9A84C;border-color:#C9A84C;color:#002D18}
+.bsl__card--full .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+</style>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -661,12 +720,12 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link is-active">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link is-active">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -684,16 +743,16 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
     <div class="so-hero__fade" aria-hidden="true"></div>
     <div class="container">
       <div class="so-hero__copy">
-        <p class="ba-crumb"><a href="/buyers-agency">Buyer’s Agency</a> / Owner-occupiers</p>
-        <h1 class="svc-h1">Commercial Buyer’s Agent for Owner-Occupiers</h1>
-        <div class="brandline h-1">Ready to own the premises <span class="italic" style="color: var(--gold);">your business depends on?</span></div>
+        <p class="ba-crumb"><a href="/">Home</a> / Buy Business Premises</p>
+        <p class="svc-h1">Buy Business Premises</p>
+        <h1 class="brandline h-1">Buy premises that work <span class="italic" style="color: var(--gold);">for the business.</span></h1>
         <hr class="gold-rule" style="margin-bottom: 28px;" />
-        <p class="pr-offer">Find premises that fit your operations, growth plans and budget, with an experienced buyer’s agent handling the search, assessment and negotiation. Nick O’Toole brings more than 20 years of owner-side commercial property experience to acquisitions throughout Queensland.</p>
+        <p class="pr-offer">Define what the business needs, compare buying with continued leasing, then receive buyer-side representation through the search, assessment and negotiation.</p>
         <div class="pr-acts">
-          <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-owner-occupiers-hero">Discuss My Property Requirements</a>
-          <a href="tel:+61401825999" class="btn btn--lg btn--outline" data-location="buyers-agency-owner-occupiers-hero">Speak with Nick</a>
+          <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-owner-occupiers-hero">Discuss My Premises Purchase</a>
+          <a href="/lease-vs-buy" class="btn btn--lg btn--outline" data-cta="owner-occupier-lease-vs-buy">Compare Leasing and Buying</a>
         </div>
-        <p class="so-micro">Start with a complimentary Premises Purchase Strategy Session. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed. We act for the buyer, never the vendor.</p>
+        <p class="so-micro">The initial discussion is complimentary. Detailed assessments, written plans and ongoing advice begin under a separately agreed appointment. We act for the buyer, never the vendor.</p>
       </div>
     </div>
   </section>
@@ -705,6 +764,56 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <li><p class="so-proof__k">Works alongside your accountant, broker and SMSF adviser</p></li>
       <li><p class="so-proof__k">Nick responds within one business day</p></li>
     </ul>
+  </section>
+
+  <section class="section oo-lvb" data-screen-label="02a Lease vs buy" style="border-top: 1px solid rgba(0,66,37,0.10);">
+    <div class="container so-roles">
+      <div class="reveal">
+        <p class="so-k">Before capital is committed</p>
+        <h2 class="so-h2">Make an informed lease-versus-buy decision.</h2>
+        <p class="pr-p">Buying can provide greater control over your premises and the ability to adapt them over time. Leasing can preserve capital and flexibility. Compare the property costs, business requirements and intended holding period, with your accountant and finance advisers assessing the implications for the business.</p>
+        <div class="pr-acts"><a href="/lease-vs-buy" class="btn btn--lg btn--green" data-cta="owner-occupier-lease-vs-buy-section">Use the Lease vs Buy Calculator</a><a href="/guide-lease-vs-buy" class="btn btn--lg btn--outline-dark">Read the Lease vs Buy guide</a></div>
+      </div>
+      <aside class="oo-light-aside reveal">
+        <h3>What if buying is not the right answer?</h3>
+        <p>The acquisition decision should be tested against continued leasing, the business’s capital priorities and the premises currently available. If renewing or relocating is the better course, Represent Commercial can provide tenant-side representation under a separately agreed appointment.</p>
+        <div class="pr-acts" style="margin-top: 18px;"><a href="/tenant-representation" class="btn btn--md btn--outline-dark" style="text-decoration: none;" data-cta="owner-occupier-tenant-rep">Explore Tenant Representation</a></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="service-options" aria-labelledby="bsl-h" data-screen-label="02b Service options">
+    <div class="container">
+      <div class="svc-lead reveal" style="margin-bottom: 36px; max-width: 820px;">
+        <p class="so-k">Three ways to work with Represent</p>
+        <h2 class="so-h2" id="bsl-h">The right level of support</h2>
+        <p class="pr-p">Choose the support that fits how you want to buy. Each service has its own agreed scope and fees.</p>
+      </div>
+      <div class="bsl reveal">
+        <article class="bsl__card bsl__card--full">
+          <div class="bsl__top"><span class="bsl__n">Option 01</span></div>
+          <h3>Full Acquisition Service</h3>
+          <p>Nick leads the search, inspections, assessment and negotiation, coordinating the acquisition alongside your solicitor and relevant advisers.</p>
+          <dl class="bsl__dl"><div><dt>Search and inspections</dt><dd>Nick leads the search and inspections</dd></div><div><dt>Assessment</dt><dd>Nick assesses each opportunity</dd></div><div><dt>Agents and offers</dt><dd>Nick deals with selling agents and negotiates for you</dd></div></dl>
+          <a href="#enquiry" class="btn btn--lg btn--gold" data-support="full" data-cta="buyers-agency-owner-occupiers-svc-full">Discuss Full Representation</a>
+        </article>
+        <article class="bsl__card">
+          <div class="bsl__top"><span class="bsl__n">Option 02</span><span class="bsl__tag">12 weeks</span></div>
+          <h3>12-Week Buyer Advisory</h3>
+          <p>Inspect and shortlist premises yourself, with advice on operational fit, purchase costs, market evidence and the questions to resolve before committing.</p>
+          <dl class="bsl__dl"><div><dt>Search and inspections</dt><dd>You search and inspect</dd></div><div><dt>Assessment</dt><dd>Nick helps set your buying criteria and reviews the properties you nominate</dd></div><div><dt>Agents and offers</dt><dd>You deal with selling agents and submit offers, with Nick’s advice on approach</dd></div></dl>
+          <a href="/commercial-buyer-advisory?purpose=owner-occupier&amp;support=advisory" class="btn btn--lg btn--outline-dark">Explore the 12-Week Service</a>
+        </article>
+        <article class="bsl__card">
+          <div class="bsl__top"><span class="bsl__n">Option 03</span></div>
+          <h3>Property Assessment &amp; Negotiation</h3>
+          <p>You have found a property. Nick assesses the opportunity and represents you in the negotiation under an agreed appointment. An ongoing property search is separate.</p>
+          <dl class="bsl__dl"><div><dt>Search and inspections</dt><dd>You have already found the property. An ongoing search is separate.</dd></div><div><dt>Assessment</dt><dd>Nick assesses the opportunity</dd></div><div><dt>Agents and offers</dt><dd>Nick represents you in negotiations under an agreed appointment</dd></div></dl>
+          <a href="#enquiry" class="btn btn--lg btn--outline-dark" data-support="assessment" data-cta="buyers-agency-owner-occupiers-svc-assessment">Discuss a Property</a>
+        </article>
+      </div>
+      <p class="bsl-note">The initial discussion establishes your requirements and the appropriate service. Detailed property assessments, a written advisory plan and ongoing advice begin under a separately agreed appointment. Sourcing, inspections, due diligence coordination and direct negotiation are included only where the appointed service provides for them.</p>
+    </div>
   </section>
 
   <section class="section section--light" data-screen-label="03 Business outcomes">
@@ -735,8 +844,8 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
   <section class="section" data-screen-label="04 Method">
     <div class="container">
       <div class="svc-lead reveal" style="margin-bottom: 44px; max-width: 820px;">
-        <p class="so-k">The acquisition process</p>
-        <h2 class="so-h2">From business requirements to the right purchase.</h2>
+        <p class="so-k">From business requirements to the right purchase</p>
+        <h2 class="so-h2">How the Full Premises Acquisition Service Works</h2>
       </div>
       <ol class="so-scope so-scope--4 reveal" style="margin-top:0;">
         <li><p class="so-scope__n">01 · DEFINE</p><h3>Set the premises brief</h3><p>Agree a written premises brief based on your operational requirements, preferred locations, budget and timing, including existing lease commitments and any planned relocation.</p></li>
@@ -748,10 +857,10 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
     </div>
   </section>
 
-  <section class="section ba-form-s" id="enquiry" aria-labelledby="isf-heading" style="scroll-margin-top:72px;" data-screen-label="05 Strategy session">
+  <section class="section ba-form-s" id="enquiry" aria-labelledby="isf-heading" style="scroll-margin-top:88px;" data-screen-label="05 Strategy session">
     <div class="container pr-main">
       <div class="svc-lead reveal">
-        <p class="so-k">Premises Purchase Strategy Session</p>
+        <p class="so-k">Initial purchase discussion</p>
         <h2 class="so-h2">Get clear on your premises purchase.</h2>
         <p class="pr-p">Discuss your business requirements, budget and timing directly with Nick. Leave with a clearer view of the premises worth pursuing, the questions to resolve before buying and your next steps.</p>
         <ol class="pr-steps">
@@ -759,7 +868,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
           <li><span>02</span><div><strong style="display:block; color: var(--green);">Purchase readiness</strong>Identify the funding, adviser input and timing dependencies to resolve before committing.</div></li>
           <li><span>03</span><div><strong style="display:block; color: var(--green);">Practical next steps</strong>Discuss whether to begin a search, assess a property you have found or first compare buying with continuing to lease.</div></li>
         </ol>
-        <p class="pr-fine" style="margin-top: 24px;">The initial session establishes direction and fit. Detailed analysis, sourcing, due diligence coordination and negotiation are separately scoped and agreed.</p>
+        <p class="pr-fine" style="margin-top: 24px;">The initial discussion is complimentary. Detailed assessments, written plans and ongoing advice begin under a separately agreed appointment.</p>
       </div>
       <div class="ba-form-col">
     <div class="isf-card" id="isf-card">
@@ -787,7 +896,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <input type="hidden" name="website_submission_id" value="" />
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
         <p class="isf-eyebrow">Premises purchase enquiry</p>
-        <h2 class="isf-h" id="isf-heading">Request a Premises Purchase Strategy Session</h2>
+        <h2 class="isf-h" id="isf-heading">Discuss Your Premises Purchase</h2>
         <p class="isf-sub">Tell Nick what you’re looking to buy and discuss how Represent Commercial can help.</p>
         <p class="isf-req">Name and email are required. Everything else is optional.</p>
         <div class="form-grid">
@@ -796,6 +905,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         </div>
         <div class="field"><label for="isf-email">Email</label><input id="isf-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
         <div class="field"><label for="isf-phone">Mobile <span class="isf-opt">(optional)</span></label><input id="isf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" /></div>
+        <div class="field" style="grid-column: 1 / -1;"><label for="isf-support">What support are you considering? <span class="isf-opt">(optional)</span></label><select id="isf-support" name="support_considered"><option value="" selected>Select one</option><option>Full acquisition representation</option><option>12-week buyer advisory</option><option>Assessment and negotiation of an identified property</option><option>Unsure, please advise</option></select></div>
         <details class="so-acc" style="margin: 4px 0 20px; border-bottom: 1px solid rgba(0,66,37,0.14);">
           <summary style="padding: 14px 0;"><span style="font-family: var(--f-sans); font-size: 15px; font-weight: 700; color: #004225;">Add details about your requirements</span><span class="so-pm" aria-hidden="true"></span></summary>
           <div class="isf-grid" style="padding: 4px 0 4px;">
@@ -809,9 +919,9 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
           <div class="field"><label for="isf-smsf">Buying through an SMSF? <span class="isf-opt">(optional)</span></label><select id="isf-smsf" name="smsf_purchase"><option value="" selected>Select one</option><option>Yes</option><option>No</option><option>Not sure yet</option></select></div>
           </div>
         </details>
-        <button type="submit" class="btn btn--lg btn--gold isf-submit" data-cta="buyers-agency-owner-occupiers-form-submit">Discuss My Property Requirements</button>
+        <button type="submit" class="btn btn--lg btn--gold isf-submit" data-cta="buyers-agency-owner-occupiers-form-submit">Discuss My Premises Purchase</button>
         <div class="isf-err" id="isf-err" role="alert"></div>
-        <div class="isf-next"><h3>What happens next?</h3><p>Nick will review your enquiry and respond personally within one business day to arrange an initial discussion and confirm whether the service fits your requirements.</p><p>Complimentary initial session for prospective acquisition clients. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed. We act for the buyer, never the vendor.</p><p>SMSF structure, tax position and borrowing should be confirmed with your accountant, licensed financial adviser and lender.</p></div>
+        <div class="isf-next"><h3>What happens next?</h3><p>Nick will review your enquiry and respond personally within one business day to arrange an initial discussion and confirm whether the service fits your requirements.</p><p>The initial discussion is complimentary. We act for the buyer, never the vendor.</p><p>SMSF structure, tax position and borrowing should be confirmed with your accountant, licensed financial adviser and lender.</p></div>
         <p class="isf-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
       </form>
       <div class="isf-done" id="isf-done" tabindex="-1">
@@ -823,21 +933,6 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       </div>
     </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section oo-lvb" data-screen-label="06 Lease vs buy" style="border-top: 1px solid rgba(0,66,37,0.10);">
-    <div class="container so-roles">
-      <div class="reveal">
-        <p class="so-k">Before capital is committed</p>
-        <h2 class="so-h2">Make an informed lease-versus-buy decision.</h2>
-        <p class="pr-p">Buying can provide greater control over your premises and the ability to adapt them over time. Leasing can preserve capital and flexibility. Compare the property costs, business requirements and intended holding period, with your accountant and finance advisers assessing the implications for the business.</p>
-        <div class="pr-acts"><a href="/lease-vs-buy" class="btn btn--lg btn--green">Use the Lease vs Buy Calculator</a><a href="/guide-lease-vs-buy" class="btn btn--lg btn--outline-dark">Read the Lease vs Buy guide</a></div>
-      </div>
-      <aside class="oo-light-aside reveal">
-        <h3>Choose the pathway that fits.</h3>
-        <p>The initial discussion can help identify whether a purchase search, further analysis or continued leasing is the appropriate next step. Where <a href="/tenant-representation">tenant representation</a> is suitable, it is available throughout Queensland as a separately agreed service.</p>
-      </aside>
     </div>
   </section>
 
@@ -865,7 +960,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <p class="so-k">Buying through an SMSF</p>
         <h2 class="so-h2">The property expertise, on your side</h2>
         <p class="so-p">Some business owners buy their premises through a self-managed super fund. Represent Commercial focuses on the premises and the acquisition, while your qualified advisers assess the SMSF strategy and structure.</p>
-        <div class="pr-acts"><a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-owner-occupiers-smsf">Discuss My Property Requirements</a><a href="/guide-lease-vs-buy" class="btn btn--lg btn--outline">Compare leasing and buying</a></div>
+        <div class="pr-acts"><a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-owner-occupiers-smsf">Discuss My Premises Purchase</a><a href="/guide-lease-vs-buy" class="btn btn--lg btn--outline">Compare leasing and buying</a></div>
       </div>
       <aside class="so-adv" aria-labelledby="oo-adv-h">
         <h3 id="oo-adv-h">Your advisers confirm the SMSF pathway</h3>
@@ -902,7 +997,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       </div>
       <div class="rtools reveal">
           <article class="rtool"><div class="rtool__kicker">Calculator</div><h3 class="rtool__title">Lease vs Buy Calculator</h3><p class="rtool__body">Weigh the cost of leasing premises against owning them, over your intended holding period.</p><a class="rtool__link" href="/lease-vs-buy">Open the Lease vs Buy Calculator →</a></article>
-          <article class="rtool"><div class="rtool__kicker">Guide</div><h3 class="rtool__title">Lease vs Buy: what should an owner-occupier do?</h3><p class="rtool__body">Leasing against buying for owner-occupiers, with a worked example of how the comparison should be framed.</p><a class="rtool__link" href="/guide-lease-vs-buy">Read the Lease vs Buy guide →</a></article>
+          <article class="rtool"><div class="rtool__kicker">Guide</div><h3 class="rtool__title">Lease vs Buy: what should an owner-occupier do?</h3><p class="rtool__body">Leasing against buying for businesses buying their own premises, with a worked example of how the comparison should be framed.</p><a class="rtool__link" href="/guide-lease-vs-buy">Read the Lease vs Buy guide →</a></article>
       </div>
       <p class="rtools__more">The full calculator library is in <a href="/tools">Tools &amp; Calculators</a>.</p>
     </div>
@@ -917,8 +1012,9 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <details class="so-acc"><summary><h3>Can my business lease premises owned by my SMSF?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Potentially, where the property qualifies as business real property and the arrangement meets the applicable SMSF rules. Related-party leases must be on arm’s length terms and reflect market rent. Your SMSF adviser and solicitor should confirm the proposed arrangement before you proceed.</p></details>
         <details class="so-acc"><summary><h3>Do I need an SMSF already set up?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>You can speak with us before a fund is established. Your qualified advisers need to determine whether an SMSF is appropriate and confirm the required structure before you enter a purchase contract. To estimate the cash an SMSF would need for a Queensland purchase and test cash flow under different borrowing, cost and vacancy assumptions, use the <a href="/smsf-commercial-property-calculator">SMSF commercial property acquisition calculator</a>.</p></details>
         <details class="so-acc"><summary><h3>Will you work with my accountant and broker?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. We work alongside your existing advisers so the property search and transaction reflect the requirements they establish. Represent provides property acquisition services, rather than financial, tax, legal or credit advice.</p></details>
-        <details class="so-acc"><summary><h3>Can you help if I have already found a property?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Tell Nick which property you are considering and where the transaction stands. We can discuss a scope covering assessment, comparable evidence, due diligence coordination and negotiation, with the services and fees agreed before work begins.</p></details>
-        <details class="so-acc"><summary><h3>How much does a commercial buyer’s agent cost?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial strategy session is complimentary and does not appoint Represent Commercial.</p></details>
+        <details class="so-acc" id="search-myself-with-advice"><summary><h3>Can I search myself with advice from Nick?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Commercial Buyer Advisory is a 12-week engagement for business owners running their own search for premises. You find and inspect properties, deal with selling agents and submit offers. Nick helps set your buying criteria, reviews the properties you nominate and advises on your next move. Scope and fees are agreed before appointment. See <a href="/commercial-buyer-advisory">Commercial Buyer Advisory</a>.</p></details>
+        <details class="so-acc"><summary><h3>Can you help if I have already found a property?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Yes. Property Assessment &amp; Negotiation covers a property you have already identified. Nick assesses the opportunity and represents you in the negotiation under an agreed appointment, with the services and fees agreed before work begins. An ongoing property search is a separate service.</p></details>
+        <details class="so-acc"><summary><h3>How much does a commercial buyer’s agent cost?</h3><span class="so-pm" aria-hidden="true"></span></summary><p>Fees depend on the acquisition brief and the scope of work. Before appointment, we agree the services, fee basis, payment stages and any minimum fee in writing. The initial discussion is complimentary and does not appoint Represent Commercial.</p></details>
       </div>
     </div>
   </section>
@@ -931,8 +1027,8 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       </div>
       <div class="reveal">
         <p class="lede" style="margin: 0 0 28px; color: rgba(255,255,255,0.78);">Discuss what your business needs, what to consider before buying and the next steps towards a suitable purchase.</p>
-        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-owner-occupiers-final">Discuss My Property Requirements</a>
-        <p class="pr-close__by">Complimentary initial session. We act for the buyer, never the vendor.</p>
+        <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-owner-occupiers-final">Discuss My Premises Purchase</a>
+        <p class="pr-close__by">Complimentary initial discussion. We act for the buyer, never the vendor.</p>
       </div>
     </div>
   </section>
@@ -947,22 +1043,22 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="#" style="color: var(--gold);">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers" style="color: var(--gold);">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -970,7 +1066,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -1041,10 +1137,11 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
 <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
+<script src="rc-events.v3.js"></script>
 <script>
 (function FORMJS() {
   window.rcTrack = window.rcTrack || function (name, params) {
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     params = params || {};
     window.dataLayer = window.dataLayer || [];
     var o = { event: name }; for (var k in params) o[k] = params[k];
@@ -1138,7 +1235,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       // deduplicated by website_submission_id. Tracking failures never block the CRM handoff.
       try {
         var sid = payload.website_submission_id;
-        if (payload.enquiry_type === 'acquisition' && sid && !measured[sid] && typeof window.oaiq === 'function') {
+        if (payload.enquiry_type === 'acquisition' && sid && !measured[sid] && typeof window.oaiq === 'function' && window.rcMeasurement && window.rcMeasurement.allowed()) {
           measured[sid] = true;
           window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: sid });
         }
@@ -1149,7 +1246,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         if (['access_key', 'subject', 'from_name', 'replyto', 'botcheck', 'scenario_summary'].indexOf(k) === -1) crmPayload[k] = payload[k];
       });
       crmPayload.requirement = [
-        ['Buyer purpose', payload.buyer_type], ['Indicative budget', payload.budget], ['Timing', payload.timing],
+        ['Buyer purpose', payload.buyer_type], ['Support considered', payload.support_considered], ['Indicative budget', payload.budget], ['Timing', payload.timing],
         ['Preferred location', payload.preferred_location], ['Property type', payload.property_type], ['Buying through an SMSF', payload.smsf_purchase], ['Property or listing link', payload.listing_url],
         ['Lesson summary (opted in)', payload.scenario_summary]
       ].filter(function (r) { return r[1]; }).map(function (r) { return r[0] + ': ' + r[1]; }).join('\n');
@@ -1179,6 +1276,19 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
   });
 })();
 </script>
-<script src="nav.v20.js" defer></script>
+<script>
+// r30: service CTAs preselect "What support are you considering?". Navigation only: no analytics, no lead events.
+(function () {
+  var sel = document.getElementById('isf-support');
+  if (!sel) return;
+  var map = { full: 'Full acquisition representation', advisory: '12-week buyer advisory', assessment: 'Assessment and negotiation of an identified property', unsure: 'Unsure, please advise' };
+  function set(k) { if (map[k]) sel.value = map[k]; }
+  try { set(new URLSearchParams(location.search).get('support')); } catch (e) {}
+  Array.prototype.forEach.call(document.querySelectorAll('a[data-support]'), function (a) {
+    a.addEventListener('click', function () { set(a.getAttribute('data-support')); });
+  });
+})();
+</script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

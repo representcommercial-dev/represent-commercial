@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -41,24 +50,24 @@
 <!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Represent Commercial | Commercial Property Advice Brisbane</title>
-<meta name="description" content="Buyer's agency and tenant representation across Queensland, and commercial property management and leasing in Brisbane. Principal-led by Nick O'Toole." />
-<meta name="keywords" content="commercial property management Brisbane, commercial property leasing Brisbane, commercial buyers agent Brisbane, commercial tenant representation Brisbane, commercial property management Queensland, industrial property management South East Queensland, licensed commercial property manager Queensland, Acacia Ridge property management, Yatala industrial property, Hemmant commercial property, Brendale commercial property" />
+<title>Business Premises Buyer &amp; Tenant Representative Brisbane | Represent Commercial</title>
+<meta name="description" content="Represent Commercial helps established Brisbane businesses renew, relocate or buy their premises, with principal-led tenant and buyer representation from Nick O'Toole." />
+<meta name="keywords" content="business premises Brisbane, commercial tenant representation Brisbane, lease renewal Brisbane, commercial lease negotiation Brisbane, relocate business premises Brisbane, buy business premises Brisbane, owner-occupier buyers agent Brisbane, lease vs buy commercial property, industrial and warehouse premises Brisbane, South East Queensland" />
 <link rel="canonical" href="https://represent.au/" />
 <meta name="author" content="Nick O'Toole, Represent Commercial" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/" />
-<meta property="og:title" content="Buyer’s Agency, Commercial Property Management, Leasing &amp; Tenant Representation Brisbane | Represent Commercial" />
-<meta property="og:description" content="Principal-led buyer’s agency and tenant representation across Queensland, and commercial property management and leasing in Brisbane, across office, retail and industrial assets from $1 million to $10 million." />
+<meta property="og:title" content="Business Premises Buyer &amp; Tenant Representative Brisbane | Represent Commercial" />
+<meta property="og:description" content="Represent Commercial helps established Brisbane businesses renew, relocate or buy their premises, with principal-led tenant and buyer representation from Nick O'Toole." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Buyer’s Agency, Commercial Property Management, Leasing &amp; Tenant Representation Brisbane | Represent Commercial" />
-<meta name="twitter:description" content="Principal-led buyer’s agency and tenant representation across Queensland, and commercial property management and leasing in Brisbane, across office, retail and industrial assets from $1 million to $10 million." />
+<meta name="twitter:title" content="Business Premises Buyer &amp; Tenant Representative Brisbane | Represent Commercial" />
+<meta name="twitter:description" content="Represent Commercial helps established Brisbane businesses renew, relocate or buy their premises, with principal-led tenant and buyer representation from Nick O'Toole." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 
 <script type="application/ld+json">
@@ -69,7 +78,8 @@
       "@type": "RealEstateAgent",
       "@id": "https://represent.au/#organisation",
       "name": "Represent Commercial",
-      "description": "Principal-led buyer’s agency across Brisbane, South East Queensland and regional Queensland, tenant representation throughout Queensland, and commercial property management and leasing in Brisbane, across office, retail and industrial, typically from $1 million to $10 million.",
+      "description": "Principal-led commercial property representation for established businesses renewing, relocating or buying the premises they operate from, across Brisbane and South East Queensland. Tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison.",
+      "knowsAbout": ["Commercial tenant representation", "Commercial lease renewal", "Business premises relocation", "Buying business premises", "Lease versus buy decisions", "Industrial and warehouse premises"],
       "url": "https://represent.au/",
       "telephone": "+61 401 825 999",
       "email": "nick@represent.au",
@@ -202,6 +212,19 @@
 @media (max-width:600px){.home-hero__inner{padding:80px 20px 40px}.hero-paths{flex-direction:column;align-items:stretch}.hero-paths .hero-path{width:100%;text-align:center;justify-content:center}}
 
 .path__svc{margin-top:0}
+.home-hero__acts{display:flex;flex-wrap:wrap;gap:12px}
+#main-content .h-3,#main-content .h-4,#main-content h1{text-wrap:balance}
+.home-hero__acts .btn--outline{background:rgba(0,45,24,.55);border-color:rgba(255,255,255,.6);color:#fff}
+.home-hero__line{font-family:var(--f-editorial);font-style:italic;font-size:22px;line-height:1.4;color:var(--gold);margin:22px 0 0}
+.lvb-band{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:center}
+.lvb-band__acts{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;max-width:340px;justify-self:end}
+.lvb-band__acts .btn{text-align:center;justify-content:center}
+#main-content .path-grid,#main-content .cap-grid,#main-content .bp-svc{margin-top:36px!important}
+.plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+.plan-pt{border-top:2px solid var(--gold);padding-top:18px;font-family:var(--f-body);font-size:16px;font-weight:600;line-height:1.5;color:var(--green);margin:0}
+.home-close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px}
+@media (max-width:900px){.lvb-band{grid-template-columns:1fr;gap:28px}.lvb-band__acts{justify-self:start}.plan-grid{grid-template-columns:1fr;gap:16px;margin-top:28px}}
+@media (max-width:600px){.home-hero__acts{flex-direction:column;align-items:stretch}.home-hero__acts .btn{width:100%;justify-content:center}.home-hero__line{font-size:19px;margin-top:18px}.lvb-band__acts{flex-direction:column;align-items:stretch}.lvb-band__acts .btn{width:100%}}
 </style>
 <link rel="preload" as="image" href="south-brisbane-mobile.webp" type="image/webp" media="(max-width:768px)" fetchpriority="high" />
 <link rel="preload" as="image" href="south-brisbane.webp" type="image/webp" media="(min-width:769px)" fetchpriority="high" />
@@ -219,12 +242,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -238,7 +261,7 @@
         <source media="(max-width:768px)" srcset="south-brisbane-mobile.webp" type="image/webp" />
         <source media="(max-width:768px)" srcset="south-brisbane-mobile.jpg" />
         <source srcset="south-brisbane.webp" type="image/webp" />
-        <img src="south-brisbane-1600.jpg" alt="Brisbane skyline at dusk, backdrop for Represent Commercial, buyer’s agency, tenant representation, commercial property management and leasing" width="1600" height="871" fetchpriority="high" decoding="async"
+        <img src="south-brisbane-1600.jpg" alt="Brisbane skyline at dusk" width="1600" height="871" fetchpriority="high" decoding="async"
           style="position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 142%; object-fit: cover; object-position: center bottom; filter: brightness(0.78) contrast(1.05) saturate(0.88);" />
       </picture>
       <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,61,32,0.5), rgba(0,40,20,0.35) 50%, rgba(0,25,12,0.4)); mix-blend-mode: multiply;"></div>
@@ -246,129 +269,98 @@
       <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,15,8,0.5) 0%, rgba(0,15,8,0.15) 35%, transparent 65%);"></div>
     </div>
     <div class="container home-hero__inner" style="position: relative; z-index: 1;">
-      <p class="home-hero__desc">Commercial property advice for buyers, owners and tenants.</p>
-      <h1 class="h-hero">EXCLUSIVELY ON YOUR <span class="italic" style="color: var(--gold);">side of the table.</span></h1>
+      <p class="home-hero__desc">COMMERCIAL PROPERTY REPRESENTATION FOR BUSINESS OCCUPIERS</p>
+      <h1 class="h-hero">RENEW. RELOCATE. <span class="italic" style="color: var(--gold);">or buy?</span></h1>
       <div class="gold-rule" style="margin: 28px 0;"></div>
-      <p class="lede" style="font-size: 18px; color: rgba(255,255,255,0.88); margin: 0 0 32px; max-width: 620px;">Buy with confidence. Lease and manage with a plan. Secure premises that suit your business.</p>
-      <div class="hero-paths">
-        <a href="/buyers-agency" class="btn btn--lg btn--outline hero-path">Buy Commercial Property</a>
-        <a href="/commercial-property-management" class="btn btn--lg btn--outline hero-path">Lease or Manage My Property</a>
-        <a href="/tenant-representation" class="btn btn--lg btn--outline hero-path">Find or Renew Business Premises</a>
+      <p class="lede" style="font-size: 18px; color: rgba(255,255,255,0.88); margin: 0 0 32px; max-width: 620px;">Represent Commercial helps established Brisbane businesses decide what comes next for their premises, then represents them through the lease or purchase.</p>
+      <div class="home-hero__acts">
+        <a href="/contact" class="btn btn--lg btn--gold" data-cta="homepage-premises-discussion">Discuss Your Premises</a>
+        <a href="/lease-vs-buy" class="btn btn--lg btn--outline" data-cta="homepage-lease-vs-buy">Compare Leasing and Buying</a>
       </div>
+      <p class="home-hero__line">Exclusively on your side of the table.</p>
     </div>
   </section>
 
-  <!-- ─── SERVICES ─── -->
-  <section class="section section--light home-tight" data-screen-label="Services">
+  <!-- ─── PATHWAYS ─── -->
+  <section class="section section--light home-tight" data-screen-label="Pathways">
     <div class="container">
       <div class="reveal">
-        <div class="eyebrow eyebrow--dim-light">WHAT WE DO</div>
+        <div class="eyebrow eyebrow--dim-light">YOUR PREMISES DECISION</div>
         <h2 class="h-3" style="color: var(--green); margin-bottom: 36px; max-width: 900px;">
-          THREE WAYS WE ACT ON YOUR <span class="italic" style="color: var(--gold);">side.</span>
+          THREE OPTIONS. ONE REPRESENTATIVE ON YOUR <span class="italic" style="color: var(--gold);">side.</span>
         </h2>
       </div>
       <div class="path-grid reveal">
         <article class="path">
-          <h3>Buy commercial property</h3>
-          <p>Acquisition advice for investors and businesses buying their own premises.</p>
+          <h3>Renew</h3>
+          <p>Stay, but negotiate from evidence. Test the landlord’s proposal against current market terms, incentives, occupancy costs and credible alternatives before committing to another lease.</p>
           <div class="path__svc">
-            <a href="/buyers-agency">Explore Buyer’s Agency</a>
-            <a href="/buyers-agency-investors">Buyer’s Agency for Investors</a>
-            <a href="/buyers-agency-owner-occupiers">Buyer’s Agency for Owner-Occupiers</a>
+            <a href="/tenant-representation" data-cta="homepage-renew">Review My Renewal</a>
           </div>
         </article>
         <article class="path">
-          <h3>Lease or manage your property</h3>
-          <p>Leasing and ongoing management focused on income, occupancy and long-term performance.</p>
+          <h3>Relocate</h3>
+          <p>Find premises that work for the business. Define the requirement, search and compare suitable options, then negotiate rent, incentives, flexibility and make-good from the tenant’s side.</p>
           <div class="path__svc">
-            <a href="/commercial-property-leasing">Commercial Property Leasing</a>
-            <a href="/commercial-property-management">Commercial Property Management</a>
-            <a href="/commercial-asset-management">Commercial Asset Management</a>
+            <a href="/tenant-representation" data-cta="homepage-relocate">Plan My Relocation</a>
           </div>
         </article>
         <article class="path">
-          <h3>Find or renew business premises</h3>
-          <p>Tenant representation for businesses assessing premises, negotiating leases or planning a renewal.</p>
+          <h3>Buy</h3>
+          <p>Acquire premises that work operationally and commercially. Compare ownership with continued leasing, establish the premises brief and receive buyer-side representation through search, assessment and negotiation.</p>
           <div class="path__svc">
-            <a href="/tenant-representation">Explore Tenant Representation</a>
+            <a href="/buyers-agency-owner-occupiers" data-cta="homepage-buy">Explore Buying Premises</a>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ─── VALUE-ADD SPECIALITY ─── -->
-  <section class="section section--deep home-tight" data-screen-label="Value-add">
+  <!-- ─── LEASE VS BUY ─── -->
+  <section class="section section--deep home-tight" data-screen-label="Lease vs buy">
     <div class="circle" style="top: -160px; right: -160px; transform: none; width: 560px; height: 560px;"></div>
-    <div class="container" style="position: relative; z-index: 1;">
+    <div class="container lvb-band" style="position: relative; z-index: 1;">
       <div class="reveal">
-        <div class="eyebrow eyebrow--gold">Our speciality</div>
-        <h2 class="h-3" style="color: #fff; margin: 0 0 16px; max-width: 900px;">VALUE-ADD COMMERCIAL PROPERTY. WE FIND IT. WE <span class="italic" style="color: var(--gold);">deliver it.</span></h2>
-        <p class="lede" style="color: rgba(255,255,255,0.85); max-width: 680px; margin: 0 0 40px;">Under-rented space, vacancy, dated presentation or short lease terms can price a property below what it could become. We help you buy it, then help you unlock it.</p>
+        <div class="eyebrow eyebrow--gold">BEFORE YOU COMMIT</div>
+        <h2 class="h-3" style="color: #fff; margin: 0 0 16px; max-width: 900px;">SHOULD THE BUSINESS LEASE <span class="italic" style="color: var(--gold);">or buy?</span></h2>
+        <p class="lede" style="color: rgba(255,255,255,0.85); max-width: 680px; margin: 0;">Buying can provide control, security of occupation and long-term property exposure. Leasing can preserve capital and flexibility. The right answer depends on the business requirement, available properties, funding position, occupancy costs and intended holding period.</p>
       </div>
-      <div class="va-grid">
-        <article class="va-step reveal">
-          <div class="va-step__n">01 · Buy the opportunity</div>
-          <h3>Find it and test it before you commit.</h3>
-          <p>We assess rent against market evidence, lease events, capital works, approvals, holding costs and downside cash flow, then negotiate price and terms on that evidence.</p>
-        </article>
-        <article class="va-step reveal">
-          <div class="va-step__n">02 · Unlock the value</div>
-          <h3>Carry the plan through after settlement.</h3>
-          <p>Refurbishment, leasing, rent reviews and asset management, coordinated owner-side so the uplift is delivered on the property, not only in the model.</p>
-        </article>
-      </div>
-      <div class="va-foot reveal">
-        <p>Not every property suits a value-add strategy. Where one does, scope and fees are agreed before work begins.</p>
-        <a href="/buyers-agency-investors" class="btn btn--md btn--gold">Explore Value-Add Acquisition</a>
+      <div class="lvb-band__acts reveal">
+        <a href="/lease-vs-buy" class="btn btn--lg btn--gold" data-cta="homepage-lease-vs-buy-section">Compare Leasing and Buying</a>
+        <a href="/guide-lease-vs-buy" class="btn btn--lg btn--outline" data-cta="homepage-lease-vs-buy-guide">Read the Lease vs Buy Guide</a>
       </div>
     </div>
   </section>
 
-  <!-- ─── PROOF ─── -->
-  <section class="section section--light home-tight" style="background: #F1EFE9;" data-screen-label="Evidence">
+  <!-- ─── PLANNING ─── -->
+  <section class="section section--light home-tight" style="background: #F1EFE9;" data-screen-label="Planning">
     <div class="container">
       <div class="reveal">
-        <div class="eyebrow eyebrow--dim-light">Selected Project Highlights</div>
-        <h2 class="h-3" style="color: var(--green); margin-bottom: 20px; max-width: 900px;">
-          VALUE CREATED, NOT JUST <span class="italic" style="color: var(--gold);">preserved.</span>
-        </h2>
-        <p class="body" style="max-width: 700px; margin-bottom: 36px; font-size: 14px; color: #4A504A;">Led by Nick O’Toole. Figures are indicative of the projects described and are not a forecast of future results.</p>
+        <div class="eyebrow eyebrow--dim-light">START EARLY</div>
+        <h2 class="h-3" style="color: var(--green); margin-bottom: 20px; max-width: 900px;">DO NOT LET THE LEASE EXPIRY MAKE THE DECISION FOR <span class="italic" style="color: var(--gold);">you.</span></h2>
+        <p class="body" style="max-width: 720px; margin: 0; font-size: 16px; line-height: 1.7; color: #3E4A44;">Option dates, notice requirements, finance, property searches, fit-out and relocation can require more time than expected. Starting early allows the business to compare renewing, relocating and buying before urgency removes the strongest alternatives.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px;">
-        <article class="proj-card proj-card--img reveal">
-          <img class="proj-card__img" src="assets/stafford-property-web-940.webp" srcset="assets/stafford-property-web-500.webp 500w, assets/stafford-property-web-940.webp 940w" sizes="(max-width: 700px) calc(100vw - 40px), 640px" alt="The Stafford strata industrial unit, showing the office entry and two roller-door bays" width="940" height="627" loading="lazy" decoding="async" />
-          <div class="proj-card__body">
-            <div class="proj-card__head">
-              <div>
-                <div class="proj-card__loc">Stafford</div>
-                <div class="proj-card__tag">COST BASIS PLAY</div>
-              </div>
-              <div style="width: 32px; height: 2px; background: var(--gold); margin-top: 8px;"></div>
-            </div>
-            <div class="proj-card__headline">$1.12M → $2.15M</div>
-            <div class="proj-card__divider"></div>
-            <p class="body" style="margin: 0 0 14px;">Purchased for $1.12M in 2022 with less than two years of lease remaining and rent well under market. Held to lease expiry, then sold to strong owner-occupier demand in 2024 for $2.15M. Purchase and sale prices, before costs.</p>
-            <a class="proj-card__more" href="/case-studies#stafford">Read the Stafford case study</a>
-          </div>
-        </article>
-        <article class="proj-card proj-card--img reveal">
-          <img class="proj-card__img" src="assets/berserker-property-web-940.webp" srcset="assets/berserker-property-web-500.webp 500w, assets/berserker-property-web-940.webp 940w" sizes="(max-width: 700px) calc(100vw - 40px), 640px" alt="The Berserker retail and office building with on-site parking, viewed from High Street" width="940" height="627" loading="lazy" decoding="async" />
-          <div class="proj-card__body">
-            <div class="proj-card__head">
-              <div>
-                <div class="proj-card__loc">Berserker, Rockhampton</div>
-                <div class="proj-card__tag">Refurbishment &amp; reversion</div>
-              </div>
-              <div style="width: 32px; height: 2px; background: var(--gold); margin-top: 8px;"></div>
-            </div>
-            <div class="proj-card__headline">Refurbished. Then repriced.</div>
-            <div class="proj-card__divider"></div>
-            <p class="body" style="margin: 0 0 14px;">A retail and office building beside Stockland Rockhampton. A full refurbishment is complete, and rents are being reset to market lease by lease as tenancies renew. Currently under way.</p>
-            <a class="proj-card__more" href="/case-studies#berserker">Read the Berserker case study</a>
-          </div>
-        </article>
+      <div class="plan-grid reveal">
+        <p class="plan-pt">Understand the current lease and critical dates</p>
+        <p class="plan-pt">Compare occupancy and ownership costs</p>
+        <p class="plan-pt">Preserve credible renewal, relocation and purchase options</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW REPRESENT WORKS ─── -->
+  <section class="section section--light home-tight" data-screen-label="Process">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow eyebrow--dim-light">HOW REPRESENT WORKS</div>
+        <h2 class="h-3" style="color: var(--green); margin-bottom: 40px; max-width: 900px;">FROM THE REQUIREMENT TO THE <span class="italic" style="color: var(--gold);">signed deal.</span></h2>
+      </div>
+      <ol class="cap-grid reveal" style="list-style: none; padding: 0; margin: 0;">
+        <li class="cap"><div class="cap__n">01</div><h3 class="cap__t">Review</h3><p class="cap__b">Understand the business requirement, current lease, timing, budget and operational priorities.</p></li>
+        <li class="cap"><div class="cap__n">02</div><h3 class="cap__t">Compare</h3><p class="cap__b">Compare renewing, relocating and buying before selecting the transaction pathway.</p></li>
+        <li class="cap"><div class="cap__n">03</div><h3 class="cap__t">Search and assess</h3><p class="cap__b">Test current premises, available alternatives or acquisition opportunities against the agreed brief.</p></li>
+        <li class="cap"><div class="cap__n">04</div><h3 class="cap__t">Negotiate and execute</h3><p class="cap__b">Represent the business through commercial negotiations and coordinate with its solicitor, accountant, broker and other advisers.</p></li>
+      </ol>
     </div>
   </section>
 
@@ -383,41 +375,24 @@
       </div>
       <div class="reveal">
         <div class="eyebrow eyebrow--gold">How we work</div>
-        <h2 class="h-3" style="color: #fff; margin: 0 0 10px;">Work directly with Nick O’Toole.</h2>
-        <p class="home-nick__title">Founder &amp; Director, Represent Commercial</p>
+        <h2 class="h-3" style="color: #fff; margin: 0 0 10px;">OWNER-SIDE EXPERIENCE. APPLIED ON THE OCCUPIER’S <span class="italic" style="color: var(--gold);">side.</span></h2>
+        <p class="home-nick__title">Nick O’Toole, Founder &amp; Director, Represent Commercial</p>
         <hr class="gold-rule" style="margin: 24px 0;" />
-        <p class="lede" style="color: rgba(255,255,255,0.85); margin: 0 0 24px; max-width: 600px;">More than 20 years of owner-side commercial property experience, applied to your next acquisition, leasing decision or property strategy.</p>
-        <ul class="home-nick__pts">
-          <li>Direct access to the principal leading your appointment.</li>
-          <li>Advice grounded in property evidence and commercial priorities.</li>
-          <li>Clear scope, practical recommendations and accountability.</li>
-        </ul>
+        <p class="lede" style="color: rgba(255,255,255,0.85); margin: 0 0 16px; max-width: 600px;">Nick O’Toole brings more than 20 years of commercial property experience across ownership, leasing, acquisitions, asset management and development. That background provides a practical understanding of how landlords, vendors and agents assess transactions.</p>
+        <p class="lede" style="color: rgba(255,255,255,0.85); margin: 0; max-width: 600px;">Your premises decision is handled directly by Nick, without account-manager hand-offs.</p>
         <a href="/about" class="btn btn--md btn--outline" style="margin-top: 28px;">Meet Nick</a>
       </div>
     </div>
   </section>
 
-  <!-- ─── CTA STRIP ─── -->
-  <section class="section section--green" style="padding-top: 72px; padding-bottom: 72px;" data-screen-label="Enquiry paths">
-    <div class="container cta-3">
-      <div class="cta-col">
-        <div class="eyebrow eyebrow--gold">For Buyers</div>
-        <h2 class="h-4" style="color: #fff;">BUYING COMMERCIAL PROPERTY?</h2>
-        <p class="body" style="color: rgba(255,255,255,0.75);">Independent acquisition representation for investors and owner-occupiers across Brisbane, South East Queensland and regional Queensland.</p>
-        <a href="/contact?service=acquisition#form-card" class="btn btn--lg btn--gold">Discuss My Acquisition</a>
+  <!-- ─── CLOSE ─── -->
+  <section class="section section--deep" style="padding-top: 72px; padding-bottom: 72px;" data-screen-label="Enquiry">
+    <div class="container home-close">
+      <div>
+        <h2 class="h-4" style="color: #fff; margin: 0 0 12px;">DISCUSS YOUR <span class="italic" style="color: var(--gold);">premises.</span></h2>
+        <p class="body" style="color: rgba(255,255,255,0.8); margin: 0; max-width: 560px;">You do not need to have chosen the pathway before getting in touch.</p>
       </div>
-      <div class="cta-col">
-        <div class="eyebrow eyebrow--gold">For Owners</div>
-        <h2 class="h-4" style="color: #fff;">OWN COMMERCIAL PROPERTY?</h2>
-        <p class="body" style="color: rgba(255,255,255,0.75);">Discuss leasing, management or a current or upcoming vacancy.</p>
-        <a href="/contact?service=management#form-card" class="btn btn--lg btn--gold">Discuss My Property</a>
-      </div>
-      <div class="cta-col">
-        <div class="eyebrow eyebrow--gold">For Tenants</div>
-        <h2 class="h-4" style="color: #fff;">NEED BUSINESS PREMISES?</h2>
-        <p class="body" style="color: rgba(255,255,255,0.75);">Discuss your premises search, lease negotiation or renewal.</p>
-        <a href="/contact?service=tenant#form-card" class="btn btn--lg btn--gold">Discuss My Premises</a>
-      </div>
+      <a href="/contact" class="btn btn--lg btn--gold" data-cta="homepage-premises-discussion-close">Discuss Your Premises</a>
     </div>
   </section>
 
@@ -432,22 +407,22 @@
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -455,7 +430,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -535,7 +510,7 @@
 </noscript>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

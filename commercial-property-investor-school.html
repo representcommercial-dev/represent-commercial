@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -40,11 +49,11 @@
 </script>
 <!-- End Meta Pixel Code -->
 <!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
-     debug is on for every host except represent.au / www.represent.au.
+     Measurement is disabled outside represent.au and in measurement test mode.
      lead_created fires only after Web3Forms confirms an enquiry (see page foot). -->
 <script>
   (function (w, d, s, u) {
-    if (w.oaiq) return;
+    if (w.oaiq || !w.rcMeasurement || !w.rcMeasurement.allowed()) return;
     var q = function () { q.q.push(arguments); };
     q.q = [];
     w.oaiq = q;
@@ -55,7 +64,7 @@
     first.parentNode.insertBefore(js, first);
   })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
 
-  oaiq("init", {
+  if (typeof window.oaiq === "function") oaiq("init", {
     pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
     debug: !/^(www\.)?represent\.au$/.test(location.hostname)
   });
@@ -64,7 +73,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Commercial Property Investor School | Represent Commercial</title>
 <meta name="description" content="Free interactive lessons for commercial property investors: yield and value, value-add, leasing and vacancy, refinancing and downside cash flow. Queensland focus." />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://represent.au/commercial-property-investor-school" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/commercial-property-investor-school" />
@@ -247,12 +256,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -699,19 +708,19 @@
         <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -719,7 +728,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -760,7 +769,7 @@
 </footer>
 
 <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
+<script src="rc-events.v3.js"></script>
 <script>
 (function PAGE() {
   var $ = function (id) { return document.getElementById(id); };
@@ -1088,6 +1097,7 @@
 <script>
 (function FORMJS() {
   window.rcTrack = window.rcTrack || function (name, params) {
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     params = params || {};
     window.dataLayer = window.dataLayer || [];
     var o = { event: name }; for (var k in params) o[k] = params[k];
@@ -1172,7 +1182,7 @@
       // No contact details or free-text fields are sent. Measurement failures never block the CRM handoff.
       try {
         var oaiSid = payload.website_submission_id;
-        if (oaiSid && !oaiMeasured[oaiSid] && typeof window.oaiq === 'function') {
+        if (oaiSid && !oaiMeasured[oaiSid] && typeof window.oaiq === 'function' && window.rcMeasurement && window.rcMeasurement.allowed()) {
           oaiMeasured[oaiSid] = true;
           window.oaiq('measure', 'lead_created', { type: 'customer_action' }, { event_id: oaiSid });
         }
@@ -1222,6 +1232,6 @@
   });
 })();
 </script>
-<script src="nav.v20.js" defer></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

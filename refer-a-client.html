@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -42,7 +51,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Introduce a Client | Represent Commercial Brisbane</title>
-<meta name="description" content="Introduce a commercial property buyer, owner or tenant to Represent Commercial in Brisbane. General introductions across all four services. No referral agreement required." />
+<meta name="description" content="Introduce a business considering a commercial lease renewal, relocation or premises purchase to Nick O'Toole at Represent Commercial. No referral agreement required." />
 <meta name="keywords" content="Brisbane commercial property appraisal, Queensland commercial buyers agent contact, commercial property manager contact, Nick O'Toole contact, Represent Commercial" />
 <link rel="canonical" href="https://represent.au/refer-a-client" />
 <meta name="author" content="Nick O'Toole, Represent Commercial" />
@@ -51,13 +60,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/refer-a-client" />
 <meta property="og:title" content="Introduce a Client | Represent Commercial" />
-<meta property="og:description" content="Introduce a commercial property buyer, owner or tenant to Represent Commercial. No property address or referral agreement required." />
+<meta property="og:description" content="Introduce a business considering a commercial lease renewal, relocation or premises purchase to Nick O'Toole at Represent Commercial." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Introduce a Client | Represent Commercial" />
-<meta name="twitter:description" content="Introduce a commercial property buyer, owner or tenant to Represent Commercial. No property address or referral agreement required." />
+<meta name="twitter:description" content="Introduce a business considering a commercial lease renewal, relocation or premises purchase to Nick O'Toole at Represent Commercial." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 
 <script type="application/ld+json">
@@ -107,6 +116,7 @@
 .form-status:empty{display:none}
 .consent{display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font-weight:400;font-size:13.5px;line-height:1.6;color:#3E4A44;cursor:pointer}
 .consent input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:#004225}
+.enq-toggle--list{grid-template-columns:1fr!important}.enq-toggle--list .enq-opt{justify-content:flex-start;text-align:left;min-height:48px}
 </style>
 </head>
 <body>
@@ -120,12 +130,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link is-active">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -140,10 +150,10 @@
         <h1 class="h-2" style="font-size: clamp(40px,5vw,72px); color: var(--green); margin-bottom: 28px;">INTRODUCE<br />A CLIENT.</h1>
         <hr class="gold-rule" style="margin-bottom: 28px;" />
         <p class="body" style="margin-bottom: 24px; max-width: 440px;">
-          For a general introduction across any of the four services : buyer’s agency, property management, leasing or tenant representation.<br /><br />Tell us who they are and what they need. Nick will make contact and keep you informed.
+          Introduce a business facing a premises decision: a lease renewal, a relocation, buying its own premises or comparing leasing with buying.<br /><br />Tell us who they are and what they need. Nick will make contact and keep you informed.
         </p>
         <p class="body" style="margin-bottom: 40px; max-width: 440px;">
-          No property address is required, and no referral agreement is created by this form. If you are a sales or leasing agent referring a management instruction under the reciprocal referral agreement, use the <a href="/referrals-agents">agent referral form</a> instead.
+          No property address is required, and no referral agreement is created by this form.
         </p>
 
         <div class="contact-list">
@@ -166,12 +176,13 @@
 
             <div class="field">
               <fieldset class="enq-fieldset">
-                <legend>What does your client need?</legend>
-                <div class="enq-toggle">
-                  <label class="enq-opt"><input type="radio" name="service" value="management" checked /><span>Property management</span></label>
-                  <label class="enq-opt"><input type="radio" name="service" value="leasing" /><span>Leasing vacant space</span></label>
-                  <label class="enq-opt"><input type="radio" name="service" value="acquisition" /><span>Buying property</span></label>
-                  <label class="enq-opt"><input type="radio" name="service" value="tenant" /><span>Finding premises</span></label>
+                <legend>What is your client considering?</legend>
+                <div class="enq-toggle enq-toggle--list">
+                  <label class="enq-opt"><input type="radio" name="service" value="renew" required /><span>Lease renewal</span></label>
+                  <label class="enq-opt"><input type="radio" name="service" value="relocate" /><span>Relocation</span></label>
+                  <label class="enq-opt"><input type="radio" name="service" value="buy" /><span>Buying business premises</span></label>
+                  <label class="enq-opt"><input type="radio" name="service" value="compare" /><span>Comparing leasing and buying</span></label>
+                  <label class="enq-opt"><input type="radio" name="service" value="unsure" /><span>Not sure yet</span></label>
                 </div>
               </fieldset>
             </div>
@@ -214,7 +225,7 @@
 
             <div class="field">
               <label for="requirement">What They Need</label>
-              <textarea id="requirement" name="requirement" rows="3" placeholder="Brief description: the situation, the property or requirement, and any timing." required></textarea>
+              <textarea id="requirement" name="requirement" rows="3" placeholder="Brief description: the business, its current premises or requirement, and any lease expiry or timing." required></textarea>
             </div>
 
             <div class="field">
@@ -251,22 +262,22 @@
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -274,7 +285,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -397,7 +408,7 @@
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -41,20 +50,20 @@
 <!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Commercial Property Tools | Represent Commercial</title>
-<meta name="description" content="Free commercial property tools from Represent Commercial: calculators and decision tools for Queensland buyers, owners and tenants." />
+<title>Business Premises Calculators &amp; Tools | Represent Commercial</title>
+<meta name="description" content="Free tools for businesses comparing commercial premises, lease renewals, relocations and property ownership in Brisbane and Queensland." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/tools" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/tools" />
-<meta property="og:title" content="Commercial Property Tools | Represent Commercial" />
-<meta property="og:description" content="Free commercial property tools from Represent Commercial: calculators and decision tools for Queensland buyers, owners and tenants." />
+<meta property="og:title" content="Business Premises Calculators &amp; Tools | Represent Commercial" />
+<meta property="og:description" content="Free tools for businesses comparing commercial premises, lease renewals, relocations and property ownership in Brisbane and Queensland." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Commercial Property Tools | Represent Commercial" />
-<meta name="twitter:description" content="Free commercial property tools from Represent Commercial: calculators and decision tools for Queensland buyers, owners and tenants." />
+<meta name="twitter:title" content="Business Premises Calculators &amp; Tools | Represent Commercial" />
+<meta name="twitter:description" content="Free tools for businesses comparing commercial premises, lease renewals, relocations and property ownership in Brisbane and Queensland." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -125,12 +134,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -144,11 +153,11 @@
   <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
   <div class="container" style="position: relative; z-index: 1;">
     <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
-      COMMERCIAL PROPERTY <span class="italic" style="color: var(--gold);">tools.</span>
+      BUSINESS PREMISES <span class="italic" style="color: var(--gold);">tools.</span>
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 640px;">
-      Practical tools for commercial property decisions. Calculators and decision tools for buyers, owners and tenants assessing commercial property, acquisition and leasing decisions. Free to use.
+      Free tools for businesses comparing premises, testing a lease renewal or relocation, and weighing leasing against ownership.
     </p>
   </div>
 </section>
@@ -158,52 +167,10 @@
   <div class="tools-wrap">
     <div class="tools-grid">
 
-      <a class="tool-card" href="/commercial-property-investor-school">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
-        <h3>Commercial Property Investor School</h3>
-        <p>Five short interactive lessons for investors: yield and value, value-add, leasing and vacancy, refinancing and downside cash flow.</p>
-        <span class="tool-open">Start learning <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="tool-card" href="/management-estimator">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l6-4 6 4v14"/><path d="M9 21v-5h4v5"/><path d="M9 10h.01"/><path d="M13 10h.01"/></svg></div>
-        <h3>Management Value Estimator</h3>
-        <p>See what active management could recover on your portfolio (outgoings, arrears and reviews) against the fee to do it.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="tool-card" href="/calculator">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5"/><path d="M21 7h-5"/></svg></div>
-        <h3>Rent Offset Saving Calculator</h3>
-        <p>See what parking rent in your offset account saves in loan interest before it's spent or distributed.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
       <a class="tool-card" href="/lease-vs-buy">
         <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M6 7h12"/><path d="M6 7l-3 6h6z"/><path d="M18 7l-3 6h6z"/><path d="M8 21h8"/></svg></div>
         <h3>Lease vs Buy Calculator</h3>
         <p>Weigh the cost of leasing premises against owning them, over your intended holding period.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="tool-card" href="/cgt-calculator">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M9 3l6 18"/><path d="M4 18h16"/></svg></div>
-        <h3>CGT Treatment Calculator</h3>
-        <p>Compare the former 50% discount against the legislated CPI-indexation rules over your hold period.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="tool-card" href="/rent-review">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/></svg></div>
-        <h3>Rent Review Calculator</h3>
-        <p>Apply a fixed, CPI or greater-of review and project the rent year by year across the lease term.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="tool-card" href="/yield-value">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg></div>
-        <h3>Net Yield &amp; Property Value</h3>
-        <p>Read the same calculation from either end: the yield an income returns at a price, or the value a market yield supports.</p>
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
 
@@ -221,13 +188,6 @@
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="tool-card" href="/vacancy-vs-rent-reduction">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="6" height="14"/><rect x="14" y="11" width="6" height="8"/><path d="M3 21h18"/></svg></div>
-        <h3>Vacancy vs Rent Reduction</h3>
-        <p>Whether holding out for a target rent through months of downtime beats accepting the rent on the table today.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
       <a class="tool-card" href="/effective-rent">
         <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 16h8"/><path d="M14 8h6"/><path d="M12 16l2-8"/></svg></div>
         <h3>Lease Incentive &amp; Effective Rent</h3>
@@ -235,29 +195,23 @@
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="tool-card" href="/rental-reversion">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 18l5-4 4 2 7-8"/><circle cx="20" cy="8" r="2"/></svg></div>
-        <h3>Rental Reversion &amp; Value Uplift</h3>
-        <p>How far a passing rent sits below market, and what capturing the reversion is worth in income and value.</p>
+      <a class="tool-card" href="/rent-review">
+        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/></svg></div>
+        <h3>Rent Review Calculator</h3>
+        <p>Apply a fixed, CPI or greater-of review and project the rent year by year across the lease term.</p>
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a class="tool-card" href="/acquisition-yield">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><rect x="5" y="13" width="4" height="7"/><rect x="11" y="9" width="4" height="11"/><rect x="17" y="5" width="4" height="15"/></svg></div>
-        <h3>Acquisition Cost &amp; Yield Sensitivity</h3>
-        <p>The real cost of a purchase after duty, due diligence and finance, with yield on total cost and cash on cash return.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="tool-card" href="/wale-calculator">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3>WALE Calculator</h3>
-        <p>Weighted average lease expiry by income, straight from your tenancy schedule, with the expiry profile behind it.</p>
+      <a class="tool-card" href="/smsf-commercial-property-calculator">
+        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M6 7h12"/><path d="M6 7l-3 6h6z"/><path d="M18 7l-3 6h6z"/><path d="M8 21h8"/></svg></div>
+        <h3>SMSF Business Premises Calculator</h3>
+        <p>Estimate the cash an SMSF would need to buy Queensland business premises and test cash flow under different borrowing, cost and vacancy assumptions.</p>
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
 
     </div>
-    <p class="tools-note">Tell us what else would help. <a href="/contact">Let Nick know</a>.</p>
+    <p class="tools-note">Results are indicative only. Funding, tax and SMSF questions should be confirmed with your qualified advisers.</p>
+    <div style="margin-top: 28px;"><a href="/contact" class="btn btn--lg btn--green">Discuss Your Premises</a></div>
   </div>
 </section>
 
@@ -272,22 +226,22 @@
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -295,7 +249,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -336,7 +290,7 @@
 </footer>
 
   <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

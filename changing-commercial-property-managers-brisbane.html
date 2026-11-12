@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -43,7 +52,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Changing Commercial Property Managers Brisbane | Represent Commercial</title>
 <meta name="description" content="Changing commercial property managers in Brisbane: what to check in your appointment, what must transfer and how to plan the tenant and records handover." />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://represent.au/changing-commercial-property-managers-brisbane" />
 <meta name="author" content="Nick O'Toole, Represent Commercial" />
 <meta property="og:type" content="article" />
@@ -259,12 +268,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link is-active">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -278,7 +287,7 @@
 <section class="ar-sec" id="handover-checklist"><h2>What Nick coordinates during the handover</h2><p>Once you have signed the notice, Represent Commercial sends it to your outgoing manager and coordinates the transfer. For each item, Nick confirms what is held, when it will arrive and how it will be checked:</p><ul class="ar-ul"><li><b>Lease records:</b> signed leases, variations, disclosure documents where relevant, side agreements and correspondence.</li><li><b>Financial position:</b> tenant ledgers, arrears, invoices, owner statements, approved expenditure, outgoings budgets and reconciliation records.</li><li><b>Funds and security:</b> trust balances, deposits, bonds and original bank guarantees, including their custody and expiry details. Nick confirms the correct transfer process for each item.</li><li><b>Critical dates:</b> reviews, options, expiries, insurance renewals and outstanding tenant commitments.</li><li><b>Property operations:</b> keys, access controls, contractor contacts, maintenance history, compliance records and open work orders.</li></ul><p>Nick reconciles the opening position against the outgoing manager’s closing records. A file transfer is only useful when the information is complete and the balances agree.</p><aside class="ar-invite" aria-labelledby="ar-invite-h"><h3 id="ar-invite-h">Changing managers does not have to become another job.</h3><p>Tell Nick what needs to improve. Once appointed, he prepares the notice for you to sign and coordinates the handover with your outgoing manager.</p><a href="#enquiry" class="btn btn--md btn--green" data-cta="changing-commercial-property-managers-brisbane:checklist">Discuss My Property’s Management</a></aside></section>
 <section class="ar-sec" id="tenants"><h2>Keep tenants informed</h2><p>Represent Commercial coordinates tenant communications around the agreed effective date. Tenants receive a notice explaining the new contact, maintenance and payment arrangements, and we coordinate the outgoing manager’s final invoice with our first invoice to avoid duplicate demands.</p><p>The payment instructions ask tenants to verify changed bank details through a trusted contact before paying. Changing managers does not itself renegotiate the rent, lease term or other agreed tenant obligations.</p></section>
 <section class="ar-sec" id="first-review"><h2>What should happen after the handover?</h2><p>After the handover, Nick completes an opening review confirming rent and arrears, the next lease events, security held, outstanding maintenance and any unreconciled outgoings. You then receive a short list of priorities with dates and responsibility, rather than treating the handover as complete when the keys arrive.</p><p>If the issue is strategic oversight while your existing manager continues the administration, <a href="/commercial-asset-management">commercial asset management</a> may be the more suitable scope. If you want an independent starting point, request a <a href="/commercial-property-performance-review">free written Property Performance Review</a>.</p></section>
-<section class="ar-sec" id="questions"><h2>Questions owners ask</h2><div class="ar-faq"><details><summary><h3>Can I change managers during a tenant’s lease?</h3><span class="ar-pm" aria-hidden="true"></span></summary><p>A tenant’s lease is separate from the management appointment. A change can be possible during the lease, subject to properly ending the current appointment and arranging the handover. Nick checks your agreement before a date is committed.</p></details><details><summary><h3>Do I need to contact the outgoing manager myself?</h3><span class="ar-pm" aria-hidden="true"></span></summary><p>Once you have appointed Represent Commercial, Nick prepares the notice for you to sign, sends it to your outgoing manager and coordinates the handover. You provide the current appointment and available property documents; Nick handles the changeover process. Any disputed termination issue should be referred to your solicitor.</p></details><details><summary><h3>How long does a change take?</h3><span class="ar-pm" aria-hidden="true"></span></summary><p>The timetable follows the notice requirements in your current appointment, record availability and open issues. Nick confirms the dates after those matters are checked rather than relying on a standard turnaround.</p></details></div><p>A short summary of the change process sits in our <a href="/commercial-property-faqs#how-to-change-property-managers">commercial property FAQs</a>.</p></section>
+<section class="ar-sec" id="questions"><h2>Questions owners ask</h2><div class="ar-faq"><details><summary><h3>Can I change managers during a tenant’s lease?</h3><span class="ar-pm" aria-hidden="true"></span></summary><p>A tenant’s lease is separate from the management appointment. A change can be possible during the lease, subject to properly ending the current appointment and arranging the handover. Nick checks your agreement before a date is committed.</p></details><details><summary><h3>Do I need to contact the outgoing manager myself?</h3><span class="ar-pm" aria-hidden="true"></span></summary><p>Once you have appointed Represent Commercial, Nick prepares the notice for you to sign, sends it to your outgoing manager and coordinates the handover. You provide the current appointment and available property documents; Nick handles the changeover process. Any disputed termination issue should be referred to your solicitor.</p></details><details><summary><h3>How long does a change take?</h3><span class="ar-pm" aria-hidden="true"></span></summary><p>The timetable follows the notice requirements in your current appointment, record availability and open issues. Nick confirms the dates after those matters are checked rather than relying on a standard turnaround.</p></details></div></section>
 <p class="ar-note">General information only. The right course depends on the property, lease and agency appointment. Obtain legal advice on contractual or disputed matters. Real Estate Agent Licence 4949809.</p></article><nav class="ar-toc" aria-label="In this article"><p class="ar-toc__h">In this article</p><ol><li><a href="#who-does-what">You sign the notice. Nick coordinates the handover.</a></li><li><a href="#before-notice">Before giving notice</a></li><li><a href="#scope-and-fees">Agree the new scope and fees</a></li><li><a href="#handover-checklist">What Nick coordinates during the handover</a></li><li><a href="#tenants">Keep tenants informed</a></li><li><a href="#first-review">What should happen after the handover?</a></li><li><a href="#questions">Questions owners ask</a></li></ol></nav></div></section>
 <section class="section section--green" data-screen-label="Article enquiry"><div class="container ar-enq ar-close" id="enquiry">
 <div class="ar-enq__intro"><div class="eyebrow eyebrow--gold">Commercial property management</div><h2>Considering changing property managers?</h2><p>Tell Nick about your property, your current arrangements and what you would like improved.</p><div class="ar-enq__call"><span>Prefer to call?</span><a href="tel:+61401825999" data-location="article-enquiry">0401 825 999</a></div><p class="tagline">Exclusively on your side of the table.</p></div>
@@ -333,22 +342,22 @@
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -356,7 +365,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -410,7 +419,7 @@
       var id = a.getAttribute('data-cta');
       try { sessionStorage.setItem('rc_cta', id); } catch (e) {}
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'article_cta_click', cta_location: id, cta_destination: a.getAttribute('href') });
+      if (window.rcMeasurement && window.rcMeasurement.allowed()) window.dataLayer.push({ event: 'article_cta_click', cta_location: id, cta_destination: a.getAttribute('href') });
     });
   });
 })();
@@ -441,7 +450,7 @@
 </script>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
+<script src="rc-events.v3.js"></script>
 <script>
 // Management-switch article enquiry (2026-11-09). Web3Forms (enquiries@represent.au) first; /api/website-lead
 // (Property Management & Leasing route) only after Web3Forms success === true. Sends only on exactly represent.au.
@@ -455,6 +464,7 @@
   var STREAM = 'changing-commercial-property-managers-brisbane';
   function track(name, params) {
     try {
+      if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
       window.dataLayer = window.dataLayer || [];
       var o = { event: name }; for (var k in params) o[k] = params[k];
       window.dataLayer.push(o);
@@ -552,6 +562,6 @@
   });
 })();
 </script>
-<script src="nav.v20.js" defer></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>

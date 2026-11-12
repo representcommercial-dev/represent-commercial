@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/rc-measurement.v1.js"></script>
 <!-- Google Ads tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){
+    var m = window.rcMeasurement;
+    if (!m || !m.allowed()) return;
+    if (arguments[0] === 'event') {
+      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
+      if (!m.event(arguments[1], arguments[2])) return;
+    }
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'AW-18457265873');
   gtag('config', 'G-D0RB6DF7H3');
@@ -13,18 +22,18 @@
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
-    if (l.location.hostname !== "represent.au") return;
+    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "yyk80juahe");
 </script>
 <!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au, www.represent.au and the staging-qa host used for Test Events.
-     Lead is sent by rc-events.v2.js only after a confirmed website enquiry. -->
+     Runs only on represent.au outside measurement test mode.
+     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
 <script>
   (function () {
-    if (!/^(www\.)?represent\.au$|^staging-qa\.represent-commercial\.pages\.dev$/.test(location.hostname)) return;
+    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -41,21 +50,21 @@
 <!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Avoid Buying the Wrong Commercial Property | Represent Commercial</title>
-<meta name="description" content="Tenant, lease, vacancy, outgoings and reletting risks to understand before committing capital. Buyer-side commercial property advice across Queensland." />
+<title>How to Avoid Buying the Wrong Business Premises | Represent Commercial</title>
+<meta name="description" content="Operational fit, total occupancy cost, timing, planning and future flexibility to test before buying premises for your business. Buyer-side advice across South East Queensland." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/how-to-avoid-buying-the-wrong-commercial-property" />
 <meta name="author" content="Nick O'Toole, Represent Commercial" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://represent.au/how-to-avoid-buying-the-wrong-commercial-property" />
-<meta property="og:title" content="Avoid Buying the Wrong Commercial Property | Represent Commercial" />
-<meta property="og:description" content="Tenant, lease, vacancy, outgoings and reletting risks to understand before committing capital. Buyer-side commercial property advice across Queensland." />
+<meta property="og:title" content="How to Avoid Buying the Wrong Business Premises | Represent Commercial" />
+<meta property="og:description" content="Operational fit, total occupancy cost, timing, planning and future flexibility to test before buying premises for your business. Buyer-side advice across South East Queensland." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Avoid Buying the Wrong Commercial Property | Represent Commercial" />
-<meta name="twitter:description" content="Tenant, lease, vacancy, outgoings and reletting risks to understand before committing capital. Buyer-side commercial property advice across Queensland." />
+<meta name="twitter:title" content="How to Avoid Buying the Wrong Business Premises | Represent Commercial" />
+<meta name="twitter:description" content="Operational fit, total occupancy cost, timing, planning and future flexibility to test before buying premises for your business. Buyer-side advice across South East Queensland." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <script type="application/ld+json">
 {
@@ -64,8 +73,8 @@
     {
       "@type": "Article",
       "@id": "https://represent.au/how-to-avoid-buying-the-wrong-commercial-property#article",
-      "headline": "How do I avoid buying the wrong commercial property?",
-      "description": "Buying commercial property? Understand tenant, lease, vacancy, outgoings and reletting risks before committing capital. Buyer-side commercial property advice across Queensland.",
+      "headline": "How do I avoid buying the wrong premises for my business?",
+      "description": "Operational fit, total occupancy cost, timing, planning and future flexibility to test before buying premises for your business. Buyer-side advice across South East Queensland.",
       "url": "https://represent.au/how-to-avoid-buying-the-wrong-commercial-property",
       "inLanguage": "en-AU",
       "author": {
@@ -185,12 +194,12 @@
       <div class="logo__sub">COMMERCIAL</div>
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="/buyers-agency" class="site-nav__link is-active">Buyers</a>
-      <a href="/commercial-property-management" class="site-nav__link">Property Owners</a>
-      <a href="/tenant-representation" class="site-nav__link">Tenants</a>
+      <a href="/buyers-agency-owner-occupiers" class="site-nav__link is-active">Buy Premises</a>
+      <a href="/tenant-representation" class="site-nav__link">Lease or Renew</a>
+      <a href="/lease-vs-buy" class="site-nav__link">Lease vs Buy</a>
       <a href="/insights" class="site-nav__link">Insights</a>
       <a href="/about" class="site-nav__link">About</a>
-      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Talk to Nick</a>
+      <a href="/contact" class="btn btn--sm btn--gold site-nav__cta">Discuss Your Premises</a>
     </nav>
   </div>
 </header>
@@ -202,10 +211,10 @@
     <div class="circle" style="top: -76px; right: -76px; transform: none; width: 380px; height: 380px;"></div>
     <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
     <div class="container" style="position: relative; z-index: 1;">
-      <div class="svc-h1">Buyer's Agency and Acquisition Advisory</div>
-      <h1 class="brandline h-1" style="max-width: 1040px;">How do I avoid buying the wrong commercial <span class="italic" style="color: var(--gold);">property?</span></h1>
+      <div class="svc-h1">Buying Business Premises</div>
+      <h1 class="brandline h-1" style="max-width: 1040px;">How do I avoid buying the wrong premises for my <span class="italic" style="color: var(--gold);">business?</span></h1>
       <hr class="gold-rule" style="margin-bottom: 28px;" />
-      <p class="ar-stand">A commercial property can look attractive on the day you buy it. The harder question is what happens afterwards: if the tenant fails, if the property sits vacant or if you need to sell. This guide sets out what I would test before committing capital.</p>
+      <p class="ar-stand">A building can look right on inspection and still be the wrong purchase for the business. The harder questions are what it will cost to operate from, whether the timing works with your current lease and what happens if the business outgrows it. This guide sets out what I would test before you commit.</p>
       <div class="ar-by"><picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="" width="44" height="44" /></picture><span><b>Nick O'Toole</b>Founder &amp; Director, Represent Commercial</span></div>
     </div>
   </section>
@@ -215,14 +224,14 @@
       <div class="dq-answer reveal">
         <div>
           <span class="dq-tag">Direct answer</span>
-          <h2>How do I avoid buying the wrong commercial property?</h2>
+          <h2>How do I avoid buying the wrong premises for my business?</h2>
         </div>
         <div>
-          <p>Understand what you are acquiring before you commit capital. For a tenanted investment, that means the property, the tenant, the lease, the income, the outgoings and what happens if the income stops. For an owner-occupier, it also means whether the building works for the business and who would want it later.</p>
-          <p>A headline yield or current rent does not explain those risks. Each needs evidence, and anything that cannot yet be verified should be treated as an unknown rather than an assumption.</p>
+          <p>Start with the business, not the listing. Define how the business operates, what it needs from a building now and over the next several years, and what it can afford to spend in total. Then test each property against that brief: operational fit, the full cost of occupation, timing against your current lease, planning and permitted use, and how easily the property could be adapted, leased or sold later.</p>
+          <p>A good price does not make the wrong building suitable. Each requirement needs evidence, and anything that cannot yet be verified should be treated as an unknown rather than an assumption.</p>
           <div class="dq-key">
-            <p>The question is not only: “What does this property yield today?”</p>
-            <p>It is: <strong>“What happens to me financially if the assumptions change?”</strong></p>
+            <p>The question is not only: “Is this a good price?”</p>
+            <p>It is: <strong>“Will this building work for the business, and what will it really cost us?”</strong></p>
           </div>
         </div>
       </div>
@@ -232,74 +241,71 @@
   <section class="section" data-screen-label="Article">
     <div class="container ar-wrap">
       <article class="ar">
-          <section class="ar-sec" id="more-than-the-building">
-            <h2>You're buying more than the building</h2>
-            <p>A tenanted commercial investment is not only land and improvements. It is an income stream whose quality depends on the tenant, the lease, the property, the market and the obligations the owner takes on. An owner-occupier purchase carries a different version of the same problem: the building must suit the business now and appeal to someone else later.</p>
-            <p>The risks fall under five headings: the property, the income, the tenant and lease, the downside and the exit. Each should be answered with evidence, or recorded as an assumption or an unknown to be verified.</p>
+          <section class="ar-sec" id="business-first">
+            <h2>Start with the business, not the building</h2>
+            <p>Buying premises is a business decision before it is a property decision. The building will shape how the business operates, what it costs to run and how much capital is tied up in it for years.</p>
+            <p>Before inspecting anything, write down what the business needs: floor area, site area, layout, access, power, parking, location for staff and customers, budget and timing. Separate the requirements that cannot move from the preferences that can. That brief becomes the test every property is measured against.</p>
+            <p>The risks then fall under six headings: operations, total cost, timing, planning and compliance, the building itself and future flexibility.</p>
           </section>
-          <section class="ar-sec" id="property">
+          <section class="ar-sec" id="operations">
             <p class="ar-n">01</p>
-            <h2>The property</h2>
-            <p>Start with physical suitability. Does the building work for its current use, and would it work for the likely alternative users in that location? Clearance, access, loading, parking, power, configuration and site coverage decide how wide that pool of users is.</p>
-            <p>Flexibility matters because tenants and businesses change. A building that can be subdivided, reconfigured or adapted keeps more options open than one designed around a single operation. A highly specialised building can suit one occupier very well and very few others.</p>
-            <p>Then look ahead. Roofs, structure, services, plant, compliance and presentation all carry future capital expenditure. The purchase price is rarely the last cheque an owner writes.</p>
+            <h2>Operational fit</h2>
+            <p>Test the building against how the business actually works, not how it looks on the day.</p>
+            <ul class="ar-ul">
+              <li><b>Access and loading.</b> Truck access, turning circles, hardstand, roller door heights and dock arrangements for the vehicles the business uses.</li>
+              <li><b>Clearance and layout.</b> Internal height, column spacing, office-to-warehouse ratio and whether the floor plan suits the workflow.</li>
+              <li><b>Power and services.</b> Available electrical capacity, three-phase supply, data and any services specific to the operation.</li>
+              <li><b>Parking and location.</b> Staff and customer parking, public transport and travel time for the people the business relies on.</li>
+              <li><b>Growth capacity.</b> Whether the site allows for expansion, or whether the business is likely to outgrow it within the period it expects to own it.</li>
+            </ul>
           </section>
-          <section class="ar-sec" id="income">
+          <section class="ar-sec" id="total-cost">
             <p class="ar-n">02</p>
-            <h2>The income</h2>
-            <p>An advertised yield is a calculation, not a fact. It depends on what rent is included, which outgoings are deducted and what assumptions sit behind both.</p>
+            <h2>The total cost of occupation</h2>
+            <p>The purchase price is only part of what the business will spend. Before agreeing a price, estimate the full cost of getting into the building and operating from it.</p>
             <ul class="ar-ul">
-              <li><b>Current rent against market rent.</b> A rent above market may not survive the next review or renewal. A rent below market may be an opportunity, or a sign of weakness.</li>
-              <li><b>Incentives.</b> A face rent supported by a large incentive overstates the effective income.</li>
-              <li><b>Outgoings and recoverability.</b> “Net lease” does not mean every expense is recoverable. The lease wording, the legislation and actual expenditure decide what the owner pays.</li>
-              <li><b>Advertised yield assumptions.</b> Check whether the figure uses gross or net income, whether vacancy is allowed for and whether costs the owner will carry have been left out.</li>
+              <li><b>Acquisition costs.</b> Transfer duty, legal fees, due diligence and finance costs.</li>
+              <li><b>Adaptation and fit-out.</b> Works needed before the business can operate, including power upgrades, office fit-out, racking and compliance works.</li>
+              <li><b>Outgoings.</b> Rates, insurance, maintenance and other costs the business carries as owner.</li>
+              <li><b>Capital expenditure.</b> Roof, structure, services, plant and compliance items the building is likely to need over the ownership period.</li>
+              <li><b>Opportunity cost.</b> Capital tied up in the property is capital not available to the business.</li>
             </ul>
-            <p>Estimate acquisition costs and the resulting yield with the <a href="/acquisition-yield">acquisition cost and yield calculator</a>.</p>
+            <p>Compare owning with leasing using the <a href="/lease-vs-buy">lease vs buy calculator</a>, and compare premises with the <a href="/occupancy-cost">occupancy cost comparison</a>.</p>
           </section>
-          <section class="ar-sec" id="tenant-and-lease">
+          <section class="ar-sec" id="timing">
             <p class="ar-n">03</p>
-            <h2>The tenant and the lease</h2>
-            <p>A lease is only as useful as the tenant's ability and willingness to perform it. Covenant quality is the strength and reliability of the tenant and the lease supporting the income. It is a judgement drawn from several factors, including the tenant entity, trading history where available, guarantees and security. It cannot be reduced to a single score.</p>
-            <p>Then read what the lease actually says. A summary in an Information Memorandum is not a substitute. Key items include:</p>
-            <ul class="ar-ul">
-              <li>Remaining term, options and expiry dates</li>
-              <li>The rent review mechanism</li>
-              <li>Recoverable outgoings and the tenant's other financial obligations</li>
-              <li>Incentives still to be paid</li>
-              <li>Guarantees and security</li>
-              <li>Repair, maintenance and make-good obligations</li>
-              <li>Assignment provisions and permitted use</li>
-            </ul>
-            <p>For buyers moving from residential property, this is where the largest gaps usually sit, because commercial leases work very differently from residential tenancies. The lease and contract should be reviewed by your solicitor. Our role is to identify the commercial issues and what should be investigated with the right advisers.</p>
+            <h2>Timing and your current lease</h2>
+            <p>Most businesses buying premises are leaving somewhere else. The purchase has to work with that exit.</p>
+            <p>Check when the property is available with vacant possession, whether any existing occupier has rights to stay, and how settlement and fit-out timing align with your current lease expiry, options and make-good obligations. A gap or an overlap can cost the business rent, double occupancy or disruption to trading.</p>
+            <p>If the timing is uncertain, it may be worth reviewing your current lease first. Your options there may be stronger than they look.</p>
           </section>
-          <section class="ar-sec" id="downside">
+          <section class="ar-sec" id="planning">
             <p class="ar-n">04</p>
-            <h2>The downside</h2>
-            <p>The central question is not only what the property yields today. It is what happens to you financially if the income stops.</p>
-            <h3>Tenant failure</h3>
-            <p>If a tenant fails, rent may stop while the owner continues to fund outgoings and finance. What can be recovered depends on the lease, any guarantees or security held and the tenant's circumstances.</p>
-            <h3>Vacancy and reletting</h3>
-            <p>When a tenant leaves, income restarts only after make-good, any works, marketing, a period of vacancy, the new lease negotiation and any incentive. Each step costs time, money or both. There is no standard vacancy period. It depends on the property, the location, the asking rent and the market at the time. Nine months is not a normal expectation, but it is a useful test of whether the investment still works.</p>
-            <h3>Liquidity buffer</h3>
-            <p>Putting every available dollar into the purchase leaves an owner exposed when vacancy, repairs, unrecovered outgoings or leasing costs arrive. There is no universal cash-reserve figure. It depends on the property, the lease, the finance and your wider position, and should be set with a qualified financial adviser.</p>
-            <p class="ar-pull">I would want the downside understood before the price is agreed, not discovered after settlement.</p>
+            <h2>Planning, permitted use and compliance</h2>
+            <p>A building that suits the business physically may not be approved for the use. Zoning, existing approvals, permitted use, flood and overlay constraints, and building compliance all need to be confirmed before you are committed.</p>
+            <p>These matters should be investigated by your solicitor, town planner and building consultant. Our role is to identify the questions early and make sure they are answered before the contract becomes unconditional.</p>
           </section>
-          <section class="ar-sec" id="exit">
+          <section class="ar-sec" id="building">
             <p class="ar-n">05</p>
-            <h2>The exit</h2>
-            <p>Every purchase is also a future sale. Before buying, consider who is likely to want the property when you sell, and whether that pool is wide or narrow.</p>
-            <p>Relettability drives much of the answer. A property that suits many tenants holds its appeal when a lease ends. A specialised building, a secondary location or an unusual configuration narrows the buyer pool and can take longer to sell.</p>
-            <p>Ask what happens if the original investment thesis changes. If the tenant leaves, rents soften or your own plans change, could the property be relet, adapted to another use or sold without a large discount? If the answer depends on a single tenant or a single type of buyer, that is a risk worth pricing.</p>
+            <h2>The building itself</h2>
+            <p>Condition matters more to an owner-occupier than many buyers expect, because the business carries every repair. Ask for building condition information, maintenance records and compliance certificates, and commission a building inspection appropriate to the property.</p>
+            <p class="ar-pull">I would want the real cost of the building understood before the price is agreed, not discovered after the business has moved in.</p>
+          </section>
+          <section class="ar-sec" id="flexibility">
+            <p class="ar-n">06</p>
+            <h2>Future flexibility</h2>
+            <p>Businesses change. Before buying, consider what happens if the business grows, shrinks, relocates or is sold.</p>
+            <p>A building that suits a wide range of occupiers can be leased or sold more easily if your plans change. A highly specialised building, a secondary location or an unusual configuration narrows that pool. That is not always a reason to walk away, but it is a risk to weigh in the price.</p>
           </section>
           <section class="ar-sec" id="information">
             <h2>The hardest questions are often the ones you don't know to ask</h2>
-            <p>Buyers are often given a great deal of information. An Information Memorandum may set out the rent, lease expiry, outgoings, building area and advertised yield. Having information is not the same as understanding the acquisition. The problem is often not knowing which information matters.</p>
-            <p>The selling agent represents the vendor, which is exactly their role. It does mean the vendor has a professional working towards the vendor's objective. A buyer committing significant capital should decide whether they also want someone representing their side. Represent Commercial acts for buyers, not vendors, through <a href="/buyers-agency">Buyer's Agency and Acquisition Advisory</a>, and every engagement is personally led by Nick O'Toole.</p>
+            <p>Buyers are often given a great deal of information about a property. Having information is not the same as knowing whether the building suits the business. The problem is often not knowing which information matters.</p>
+            <p>The selling agent represents the vendor, which is exactly their role. A business committing significant capital to its premises should decide whether it also wants someone on its side. Represent Commercial acts for buyers, never vendors, through <a href="/buyers-agency-owner-occupiers">buyer's agency for business premises</a>, and every engagement is personally led by Nick O'Toole.</p>
             <aside class="ar-cta" aria-label="Considering a purchase?">
             <div class="eyebrow eyebrow--gold">Considering a purchase?</div>
-            <h3>Request a strategy session.</h3>
-            <p>Whether you are still defining what to buy or already looking at a property, a complimentary initial session covers your objective, requirements and constraints, and the risks and unknowns that deserve attention before you go further. Nick O'Toole reviews every request personally.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="/buyers-agency-investors#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:mid">Discuss My Investment Requirements</a><a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:mid">Discuss My Property Requirements</a></div>
+            <h3>Discuss your premises purchase.</h3>
+            <p>Whether you are still defining what the business needs or already looking at a property, an initial discussion covers your requirements, timing and constraints, and the risks and unknowns that deserve attention before you go further. Nick O'Toole reviews every request personally.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:mid">Discuss Your Premises Purchase</a></div>
           </aside>
           </section>
           <section class="ar-sec ar-judge" id="what-i-would-look-at">
@@ -307,37 +313,39 @@
             <h2>What I would look at before buying</h2>
             <p>Before recommending a purchase, I want each of these answered with evidence, or recorded as an assumption or an unknown to be verified.</p>
             <ol>
-              <li><span><b>Property.</b> Is the asset suitable, functional and relettable to more than one type of user?</span></li>
-              <li><span><b>Income.</b> Is the rent sustainable against the market, after incentives and unrecovered outgoings?</span></li>
-              <li><span><b>Tenant and lease.</b> Who pays the rent, and what rights, obligations and future events does the lease contain?</span></li>
-              <li><span><b>Downside.</b> What happens if the tenant leaves or fails, and can the buyer absorb the vacancy?</span></li>
-              <li><span><b>Capital.</b> What expenditure is likely over the holding period?</span></li>
-              <li><span><b>Exit.</b> Who is likely to want the property when it is sold?</span></li>
+              <li><span><b>Brief.</b> Does the property meet every requirement the business cannot compromise on?</span></li>
+              <li><span><b>Operations.</b> Will the access, layout, power and parking work for how the business operates?</span></li>
+              <li><span><b>Total cost.</b> What will the business spend to buy, adapt and occupy the building?</span></li>
+              <li><span><b>Timing.</b> Does settlement and fit-out align with your current lease?</span></li>
+              <li><span><b>Planning.</b> Is the intended use approved, or approvable, at this site?</span></li>
+              <li><span><b>Building.</b> What expenditure is likely over the ownership period?</span></li>
+              <li><span><b>Flexibility.</b> Could the property be leased or sold if the business's plans change?</span></li>
               <li><span><b>Unknowns.</b> What has not yet been verified?</span></li>
             </ol>
           </section>
           <section class="ar-sec" id="faq">
             <h2>Common questions</h2>
             <div class="faq">
-              <div class="faq__item"><h3 class="faq__q">What should I check before buying a commercial property?</h3><p class="faq__a">Check the property, the tenant, the lease, the income, the outgoings, the likely capital expenditure, the market the property competes in and how easily it could be relet or sold. Also identify what information has not yet been verified. Legal, building, tax and finance matters should be reviewed by the relevant specialist advisers.</p></div>
-              <div class="faq__item"><h3 class="faq__q">What happens if a commercial tenant goes broke?</h3><p class="faq__a">Rent may stop, and the owner may need to fund outgoings and finance commitments while the property is relet. What can be recovered depends on the lease, any guarantees or security held and the tenant's circumstances. Legal advice is needed on the owner's rights in a specific case.</p></div>
-              <div class="faq__item"><h3 class="faq__q">What happens if a commercial property becomes vacant?</h3><p class="faq__a">Rental income stops and the owner generally carries the outgoings that a tenant would otherwise have paid. Reletting can also involve advertising, leasing commission, incentives and works to prepare the space for a new tenant.</p></div>
-              <div class="faq__item"><h3 class="faq__q">Who pays outgoings on a commercial property?</h3><p class="faq__a">It depends on the lease. Many commercial leases allow some or all outgoings to be recovered from the tenant, but some costs may remain with the owner, and during vacancy the owner generally pays them. The lease wording and the applicable legislation determine what is recoverable.</p></div>
-              <div class="faq__item"><h3 class="faq__q">What should I look for in a commercial lease before buying?</h3><p class="faq__a">Key items include the remaining term, options, the rent review mechanism, recoverable outgoings, incentives, guarantees and security, repair and maintenance obligations, make-good provisions, assignment provisions, permitted use and what happens at expiry. The lease should be reviewed by your solicitor.</p></div>
-              <div class="faq__item"><h3 class="faq__q">Do I need a commercial buyer's agent?</h3><p class="faq__a">Not every buyer does. A buyer's agent can be useful if you are new to commercial property, short on time, or want someone exclusively representing your interests while the selling agent represents the vendor. The work can include defining the brief, screening properties, assessing tenants and leases, coordinating due diligence and negotiating the purchase.</p></div>
+              <div class="faq__item"><h3 class="faq__q">What should I check before buying premises for my business?</h3><p class="faq__a">Check whether the building suits how the business operates, the full cost of buying and occupying it, how the timing aligns with your current lease, whether the intended use is permitted, the condition of the building and how easily it could be leased or sold later. Legal, planning, building, tax and finance matters should be reviewed by the relevant specialist advisers.</p></div>
+              <div class="faq__item"><h3 class="faq__q">Is it better to lease or buy business premises?</h3><p class="faq__a">It depends on the business, its capital, how long it expects to stay and how certain its space needs are. Buying gives control and can build equity, but ties up capital and leaves the business carrying the building's costs and risks. Leasing keeps capital in the business and offers more flexibility. The <a href="/lease-vs-buy">lease vs buy calculator</a> compares the two.</p></div>
+              <div class="faq__item"><h3 class="faq__q">What costs are involved in buying business premises?</h3><p class="faq__a">Beyond the price, costs can include transfer duty, legal and due diligence fees, finance costs, adaptation and fit-out, rates, insurance, maintenance and future capital expenditure on the building. Your accountant and solicitor should confirm the costs that apply to your purchase.</p></div>
+              <div class="faq__item"><h3 class="faq__q">How do I time a purchase with my current lease?</h3><p class="faq__a">Check your lease expiry, any options and your make-good obligations, then compare them with the property's vacant possession date, settlement and the time needed for fit-out. A gap or overlap can be costly, so the timing should be planned before the contract is signed.</p></div>
+              <div class="faq__item"><h3 class="faq__q">Can my SMSF buy premises for my business?</h3><p class="faq__a">In some circumstances a self-managed super fund can buy business real property and lease it to a related business, subject to strict rules. This needs advice from your accountant and a licensed financial adviser before you proceed. The <a href="/smsf-commercial-property-calculator">SMSF business premises calculator</a> provides general estimates only.</p></div>
+              <div class="faq__item"><h3 class="faq__q">Do I need a buyer's agent to buy business premises?</h3><p class="faq__a">Not every buyer does. A buyer's agent can be useful if you are short on time, new to buying commercial property, or want someone exclusively representing the business while the selling agent represents the vendor. The work can include defining the brief, screening properties, assessing suitability and cost, coordinating due diligence and negotiating the purchase.</p></div>
             </div>
-            <p class="ar-note">This page is general information only. It is not legal, financial or taxation advice and does not take account of your objectives, financial situation or needs. Obtain advice from appropriately qualified legal, financial, tax, building and other advisers before acting. Investment returns, tenant retention and vacancy periods cannot be guaranteed. Real Estate Agent Licence 4949809.</p>
+            <p class="ar-note">This page is general information only. It is not legal, financial or taxation advice and does not take account of your objectives, financial situation or needs. Obtain advice from appropriately qualified legal, financial, tax, planning, building and other advisers before acting. Real Estate Agent Licence 4949809.</p>
           </section>
       </article>
       <nav class="ar-toc" aria-label="In this article">
         <p class="ar-toc__h">In this guide</p>
         <ol>
-          <li><a href="#more-than-the-building">You're buying more than the building</a></li>
-          <li><a href="#property">The property</a></li>
-          <li><a href="#income">The income</a></li>
-          <li><a href="#tenant-and-lease">The tenant and the lease</a></li>
-          <li><a href="#downside">The downside</a></li>
-          <li><a href="#exit">The exit</a></li>
+          <li><a href="#business-first">Start with the business</a></li>
+          <li><a href="#operations">Operational fit</a></li>
+          <li><a href="#total-cost">The total cost of occupation</a></li>
+          <li><a href="#timing">Timing and your current lease</a></li>
+          <li><a href="#planning">Planning and compliance</a></li>
+          <li><a href="#building">The building itself</a></li>
+          <li><a href="#flexibility">Future flexibility</a></li>
           <li><a href="#information">Information asymmetry</a></li>
           <li><a href="#what-i-would-look-at">What I would look at before buying</a></li>
           <li><a href="#faq">Common questions</a></li>
@@ -350,11 +358,11 @@
     <div class="circle" style="width: 900px; height: 900px; right: -300px;"></div>
     <div class="container svc-close ar-close" style="position: relative; z-index: 1;">
       <div class="reveal">
-        <h2 class="h-4" style="color: #fff; margin: 0;">Before you commit the capital, get clear on what you're <span class="italic" style="color: var(--gold);">buying.</span></h2>
+        <h2 class="h-4" style="color: #fff; margin: 0;">Before you commit, get clear on what the business is <span class="italic" style="color: var(--gold);">buying.</span></h2>
       </div>
       <div class="reveal">
-        <p class="lede" style="margin: 0 0 28px;">Request a complimentary strategy session. Nick O'Toole will discuss your requirement and the constraints and unknowns that matter before you go further.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="/buyers-agency-investors#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:end">Discuss My Investment Requirements</a><a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--outline" data-cta="how-to-avoid:end">Discuss My Property Requirements</a></div>
+        <p class="lede" style="margin: 0 0 28px;">Nick O'Toole will discuss your requirements, timing and the constraints and unknowns that matter before you go further.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:end">Discuss Your Premises Purchase</a><a href="/lease-vs-buy" class="btn btn--lg btn--outline" data-cta="how-to-avoid:end-lvb">Compare Leasing and Buying</a></div>
         <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);">
           <div class="tagline">Exclusively on your side of the table.</div>
         </div>
@@ -372,22 +380,22 @@
         <div class="logo__sub">COMMERCIAL</div>
         <hr class="gold-rule" />
         <div class="tagline">Exclusively on your side of the table.</div>
-        <p>Commercial property advice and representation for investors, owner-occupiers, property owners and tenants.</p>
+        <p>Independent commercial property representation for businesses renewing, relocating or buying their premises.</p>
       </div>
       <div class="footer-col">
-        <h3>Services</h3>
+        <h3>Business Premises</h3>
         <ul>
-          <li><a href="/buyers-agency">Buyer’s Agency</a></li>
-          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
-          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
-          <li><a href="/commercial-property-leasing">Commercial Property Leasing</a></li>
+          <li><a href="/business-premises">Renew, Relocate or Buy</a></li>
+          <li><a href="/buyers-agency-owner-occupiers">Buy Business Premises</a></li>
           <li><a href="/tenant-representation">Tenant Representation</a></li>
+          <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
+          <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
+          <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/for-lease">For lease</a></li>
           <li><a href="/referrals">Referrals</a></li>
         </ul>
       </div>
@@ -395,7 +403,7 @@
         <h3>Insights</h3>
         <ul>
           <li><a href="/insights">Knowledge</a></li>
-          <li><a href="/insights#guides">Guides &amp; Explainers</a></li>
+          <li><a href="/insights#guides">Guides</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
           <li><a href="/tools">Resources &amp; Tools</a></li>
           <li><a href="/commercial-property-faqs">FAQs</a></li>
@@ -449,7 +457,7 @@
       var id = a.getAttribute('data-cta');
       try { sessionStorage.setItem('rc_cta', id); } catch (e) {}
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'article_cta_click', cta_location: id, cta_destination: a.getAttribute('href') });
+      if (window.rcMeasurement && window.rcMeasurement.allowed()) window.dataLayer.push({ event: 'article_cta_click', cta_location: id, cta_destination: a.getAttribute('href') });
     });
   });
 })();
@@ -479,7 +487,7 @@
 </script>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 <script src="rc-attribution.v1.js"></script>
-<script src="rc-events.v2.js"></script>
-<script src="nav.v20.js" defer></script>
+<script src="rc-events.v3.js"></script>
+<script src="nav.v23.js" defer></script>
 </body>
 </html>
