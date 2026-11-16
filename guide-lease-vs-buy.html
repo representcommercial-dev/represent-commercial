@@ -83,7 +83,8 @@
       "publisher": {
         "@id": "https://represent.au/#organisation"
       },
-      "mainEntityOfPage": "https://represent.au/guide-lease-vs-buy"
+      "mainEntityOfPage": "https://represent.au/guide-lease-vs-buy",
+      "dateModified": "2026-11-12"
     }
   ]
 }
@@ -159,6 +160,28 @@
 .ar-judge ol + p{margin-top:24px}
 .ar .faq__q{font-size:21px;line-height:1.15;margin:0 0 8px}
 .ar .faq__a{margin:0}
+
+.ar-tbl{width:100%;border-collapse:collapse;margin:20px 0 8px;font-family:var(--f-body);font-size:15.5px;line-height:1.55}
+.ar-tbl th,.ar-tbl td{text-align:left;vertical-align:top;padding:12px 14px 12px 0;border-top:1px solid rgba(0,66,37,.16)}
+.ar-tbl th{font-family:var(--f-body);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#004225}
+.ar-check{list-style:none;padding:0;margin:16px 0 0;columns:2;column-gap:32px}
+.ar-check li{break-inside:avoid;display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:8px 0;font-family:var(--f-body);font-size:15.5px;line-height:1.55}
+.ar-check li::before{content:"";width:14px;height:14px;border:1.5px solid #004225;border-radius:3px;margin-top:4px}
+.ar-src{margin:14px 0 0;padding-left:18px;font-family:var(--f-body);font-size:15px;line-height:1.7}
+.ar-ex{background:#F3F5F2;border:1px solid rgba(0,66,37,.14);border-radius:12px;padding:24px;margin-top:16px}
+@media (max-width:700px){.ar-check{columns:1}.ar-tbl,.ar-tbl tbody,.ar-tbl tr,.ar-tbl td,.ar-tbl th{display:block;width:100%}.ar-tbl thead{display:none}.ar-tbl td{border-top:0;padding:4px 0}.ar-tbl tr{border-top:1px solid rgba(0,66,37,.16);padding:10px 0}}
+@media print{.site-header,.site-footer,.ar-cta,.ar-print,nav,[data-screen-label="Next step"]{display:none !important}}
+.faq details.faq__item{border-top:1px solid rgba(0,66,37,.14)}
+.faq details.faq__item:last-child{border-bottom:1px solid rgba(0,66,37,.14)}
+.faq details.faq__item>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:16px 0;cursor:pointer}
+.faq details.faq__item>summary::-webkit-details-marker{display:none}
+.faq details.faq__item>summary:focus-visible{outline:2px solid #C9A84C;outline-offset:2px}
+.faq details.faq__item .faq__q{margin:0}
+.faq__pm{position:relative;flex:0 0 14px;width:14px;height:14px}
+.faq__pm::before,.faq__pm::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:#004225}
+.faq__pm::after{transform:rotate(90deg);transition:transform .2s ease}
+.faq details.faq__item[open] .faq__pm::after{transform:rotate(0)}
+.faq details.faq__item .faq__a{padding:0 0 18px}
 .ar-note{font-size:13px !important;line-height:1.7 !important;color:#5f665f !important;margin:40px 0 0 !important}
 .ar-close .tagline{color:var(--gold)}
 .svc-close > *{min-width:0}
@@ -182,6 +205,110 @@
 
 </style>
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://represent.au/#organisation",
+      "name": "Represent Commercial",
+      "description": "Principal-led commercial property representation for established businesses in Brisbane and South East Queensland renewing, relocating or buying the premises they operate from: tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison. Represent Commercial also acts for selected investors and property owners through investment buyer’s agency, property management, leasing and asset management appointments, acting exclusively for the appointed client in each matter.",
+      "knowsAbout": [
+        "Commercial tenant representation",
+        "Commercial lease renewal",
+        "Business premises relocation",
+        "Buying business premises",
+        "Lease versus buy decisions",
+        "Industrial and warehouse premises"
+      ],
+      "url": "https://represent.au/",
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 36, Level 3, 240 Queen St",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "postalCode": "4000",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Brisbane, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "South East Queensland"
+        },
+        {
+          "@type": "Place",
+          "name": "Acacia Ridge, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Brendale, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Hemmant, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Yatala, QLD"
+        }
+      ],
+      "founder": {
+        "@id": "https://represent.au/#nick"
+      },
+      "slogan": "Exclusively on your side of the table.",
+      "hasCredential": "Queensland Real Estate Agent Licence 4949809",
+      "taxID": "59 696 915 170",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61 401 825 999",
+          "email": "nick@represent.au",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://represent.au/#nick",
+      "name": "Nick O'Toole",
+      "jobTitle": "Founder & Director",
+      "worksFor": {
+        "@id": "https://represent.au/#organisation"
+      },
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "sameAs": [
+        "https://www.linkedin.com/in/nickotoole/",
+        "https://www.youtube.com/@NickOToole",
+        "https://www.instagram.com/nick.otoole/"
+      ],
+      "description": "20+ years in commercial property and asset management across office, retail and industrial. Founder & Director of Represent Commercial. Former Asset and Development Manager at Nicolas Malouf Investments. Real Estate Agent Licence 4949809.",
+      "url": "https://represent.au/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://represent.au/#website",
+      "url": "https://represent.au/",
+      "name": "Represent Commercial",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://represent.au/#organisation"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -215,7 +342,7 @@
       <h1 class="brandline h-1" style="max-width: 1040px;">Should your business lease or buy its commercial <span class="italic" style="color: var(--gold);">premises?</span></h1>
       <hr class="gold-rule" style="margin-bottom: 28px;" />
       <p class="ar-stand">For an owner-occupier, this is not a comparison between rent and mortgage repayments. It is a decision about capital, occupancy cost, flexibility and what happens when the business eventually needs to move. This guide sets out how I would think it through.</p>
-      <div class="ar-by"><picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="" width="44" height="44" /></picture><span><b>Nick O'Toole</b>Founder &amp; Director, Represent Commercial</span></div>
+      <div class="ar-by"><picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="" width="44" height="44" /></picture><span><b><a href="/about" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Nick O'Toole</a></b>Founder &amp; Director, Represent Commercial. Updated 12 November 2026</span></div>
     </div>
   </section>
 
@@ -260,7 +387,7 @@
           <section class="ar-sec" id="worked-example">
             <h2>How the comparison plays out on a 500m² unit</h2>
             <span class="dq-tag">Illustrative example only</span>
-            <p>The example uses a 500m² industrial unit at Acacia Ridge. Rent of $203/m² is the median lease rate we recorded across Acacia Ridge industrial transactions in the twelve months to August 2026, and $1.8M sits close to the precinct's median sale rate of $4,036/m² applied to 500m² with land.</p>
+            <p>The example uses a hypothetical 500m² industrial unit in Acacia Ridge. The rent of $203/m² and the $1.8M purchase price are illustrative inputs chosen for this example. They are not recorded precinct medians. For Represent Commercial’s recorded Acacia Ridge evidence, see the <a href="/Acacia%20Ridge">Acacia Ridge market data</a>.</p>
             <dl class="ar-kv">
               <div><dt>Net rent</dt><dd>$203/m² p.a.</dd></div>
               <div><dt>Purchase price</dt><dd>$1.8M</dd></div>
@@ -273,7 +400,7 @@
               <div><dt>Owner structural items</dt><dd>~$6,000 p.a.</dd></div>
               <div><dt>Selling costs at exit</dt><dd>2%</dd></div>
             </dl>
-            <p class="dq-cap">Rent and price reflect Acacia Ridge medians recorded by Represent Commercial. The other inputs are assumptions chosen for this example, not forecasts.</p>
+            <p class="dq-cap">Rent, price and the other inputs are illustrative assumptions chosen for this example. They are not recorded medians or forecasts. Enter the same inputs in the Lease vs Buy Calculator to reproduce the result, then change the growth rate, interest rate and holding period to see how sensitive the answer is.</p>
             <table class="dq-table">
           <thead>
             <tr><th scope="col">&nbsp;</th><th scope="col"><i style="background: #8A918A;"></i>Keep leasing</th><th scope="col"><i style="background: var(--green);"></i>Buy the unit</th></tr>
@@ -336,8 +463,8 @@
             <p>Purchase price, market rent, ownership costs and transaction costs also move the result. A model helps structure the decision. It cannot make it without understanding the business.</p>
             <aside class="ar-cta" aria-label="Considering buying?">
             <div class="eyebrow eyebrow--gold">Considering buying?</div>
-            <h3>Request a Premises Purchase Strategy Session.</h3>
-            <p>If ownership looks like the stronger path, the next step is not to start chasing listings. Define what the property needs to do for the business, the constraints that apply and what would make a purchase unsuitable. Nick O'Toole will discuss it with you in a complimentary initial session.</p>
+            <h3>Discuss your premises purchase with Nick.</h3>
+            <p>If ownership looks like the stronger path, the next step is not to start chasing listings. Define what the property needs to do for the business, the constraints that apply and what would make a purchase unsuitable. Nick O'Toole will discuss it with you in a complimentary initial discussion. Advice and representation begin under a separately agreed appointment, with scope and fees confirmed in writing.</p>
             <a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="guide-lease-vs-buy:mid">Discuss My Property Requirements</a>
           </aside>
           </section>
@@ -380,15 +507,23 @@
             <p>Represent Commercial acts for buyers, not vendors, through <a href="/buyers-agency-owner-occupiers">buyer's agency for businesses buying their own premises</a>.</p>
             <p class="ar-pull">Buying the wrong building is a worse outcome than renting the right one.</p>
           </section>
+          <section class="ar-sec" id="sources">
+            <h3>Sources and official tools</h3>
+            <ul class="ar-src">
+              <li><a href="https://qro.qld.gov.au/duties/transfer-duty/calculate/rates/" rel="noopener" target="_blank">Queensland Revenue Office, transfer duty rates</a>: the duty that applies to a commercial purchase</li>
+              <li><a href="/Acacia%20Ridge">Acacia Ridge market data</a>: lease and sale evidence recorded by Represent Commercial</li>
+              <li><a href="/lease-vs-buy">Lease vs Buy Calculator</a>: run the comparison with your own inputs</li>
+            </ul>
+          </section>
           <section class="ar-sec" id="faq">
             <h2>Common questions</h2>
             <div class="faq">
-              <div class="faq__item"><h3 class="faq__q">Is it better to lease or buy commercial premises?</h3><p class="faq__a">There is no universal answer. Buying can provide control over the premises, exposure to long-term value and equity. Leasing preserves capital and flexibility. The right decision depends on the business, the property, the finance structure, the expected holding period and what the capital could otherwise do.</p></div>
-              <div class="faq__item"><h3 class="faq__q">When should a business buy its premises?</h3><p class="faq__a">Buying usually makes most sense when the business is established, its space requirement is stable, it expects to stay for many years and it can fund the deposit and acquisition costs without straining working capital.</p></div>
-              <div class="faq__item"><h3 class="faq__q">How long do you need to own for buying to beat leasing?</h3><p class="faq__a">It depends on the assumptions. In the illustrative Acacia Ridge example, buying overtakes leasing in year four at 3% annual growth, and after year seven if values are flat. Because duty and acquisition costs are paid up front, short holding periods rarely favour buying.</p></div>
-              <div class="faq__item"><h3 class="faq__q">Can a self-managed super fund buy business premises?</h3><p class="faq__a">An SMSF may acquire business real property from, and lease it to, a related party, subject to strict rules including arm's-length lease terms and exclusive business use. Specialist legal, tax and financial advice is required before proceeding.</p></div>
+              <details class="faq__item"><summary><h3 class="faq__q">Is it better to lease or buy commercial premises?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">There is no universal answer. Buying can provide control over the premises, exposure to long-term value and equity. Leasing preserves capital and flexibility. The right decision depends on the business, the property, the finance structure, the expected holding period and what the capital could otherwise do.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">When should a business buy its premises?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">Buying usually makes most sense when the business is established, its space requirement is stable, it expects to stay for many years and it can fund the deposit and acquisition costs without straining working capital.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">How long do you need to own for buying to beat leasing?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">It depends on the assumptions. In the illustrative Acacia Ridge example, buying overtakes leasing in year four at 3% annual growth, and after year seven if values are flat. Because duty and acquisition costs are paid up front, short holding periods rarely favour buying.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">Can a self-managed super fund buy business premises?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">An SMSF may acquire business real property from, and lease it to, a related party, subject to strict rules including arm's-length lease terms and exclusive business use. Specialist legal, tax and financial advice is required before proceeding.</p></details>
             </div>
-            <p class="ar-note">This guide provides general information only and does not constitute financial, taxation, legal, investment or credit advice. The worked example uses illustrative assumptions and may not reflect the circumstances of a particular business, property or transaction. Precinct medians are drawn from transactions recorded by Represent Commercial in the twelve months to August 2026 and are not a forecast. Represent Commercial, Real Estate Agent Licence 4949809.</p>
+            <p class="ar-note">This guide provides general information only and does not constitute financial, taxation, legal, investment or credit advice. The worked example uses illustrative assumptions and may not reflect the circumstances of a particular business, property or transaction. The rent and price in the worked example are illustrative inputs, not recorded precinct medians. Represent Commercial, Real Estate Agent Licence 4949809.</p>
           </section>
       </article>
       <nav class="ar-toc" aria-label="In this article">
@@ -415,7 +550,7 @@
         <h2 class="h-4" style="color: #fff; margin: 0;">Considering buying your <span class="italic" style="color: var(--gold);">premises?</span></h2>
       </div>
       <div class="reveal">
-        <p class="lede" style="margin: 0 0 28px;">Request a Premises Purchase Strategy Session. Nick O'Toole will discuss what the business needs from the property and the constraints and unknowns that matter before any search begins.</p>
+        <p class="lede" style="margin: 0 0 28px;">Discuss your premises purchase with Nick. Nick O'Toole will discuss what the business needs from the property and the constraints and unknowns that matter before any search begins.</p>
         <a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="guide-lease-vs-buy:end">Discuss My Property Requirements</a>
         <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);">
           <div class="tagline">Exclusively on your side of the table.</div>
@@ -445,6 +580,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

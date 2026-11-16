@@ -74,6 +74,126 @@
 <link rel="stylesheet" href="styles.v3.css" />
 <link rel="stylesheet" href="calc.css" />
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
+<style>/* v2-r4 calculator guidance (page-level) */
+.cg{padding:56px 0 24px}
+.cg-b{border-top:1px solid rgba(0,66,37,.14);padding-top:32px;margin-top:32px}
+.cg-b:first-child{border-top:0;padding-top:0;margin-top:0}
+.cg h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(26px,3.2vw,36px);line-height:1.1;color:#004225;margin:0 0 14px}
+.cg p,.cg li{font-family:var(--f-body);font-size:16px;line-height:1.65;color:#26302B;max-width:780px;text-wrap:pretty}
+.cg ul{padding-left:20px;margin:10px 0 0}
+.cg li{margin:6px 0}
+.cg-t{width:100%;max-width:780px;border-collapse:collapse;margin:16px 0 8px;font-family:var(--f-body);font-size:15.5px}
+.cg-t th,.cg-t td{text-align:left;padding:10px 12px 10px 0;border-top:1px solid rgba(0,66,37,.14);vertical-align:top}
+.cg-t th{font-weight:700;color:#004225}
+.cg-t td.n,.cg-t th.n{text-align:right}
+.cg-note{font-size:14px !important;color:#4A504A !important}
+.cg a{color:#004225;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){.cg-t{font-size:14.5px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://represent.au/#organisation",
+      "name": "Represent Commercial",
+      "description": "Principal-led commercial property representation for established businesses in Brisbane and South East Queensland renewing, relocating or buying the premises they operate from: tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison. Represent Commercial also acts for selected investors and property owners through investment buyer’s agency, property management, leasing and asset management appointments, acting exclusively for the appointed client in each matter.",
+      "knowsAbout": [
+        "Commercial tenant representation",
+        "Commercial lease renewal",
+        "Business premises relocation",
+        "Buying business premises",
+        "Lease versus buy decisions",
+        "Industrial and warehouse premises"
+      ],
+      "url": "https://represent.au/",
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 36, Level 3, 240 Queen St",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "postalCode": "4000",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Brisbane, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "South East Queensland"
+        },
+        {
+          "@type": "Place",
+          "name": "Acacia Ridge, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Brendale, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Hemmant, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Yatala, QLD"
+        }
+      ],
+      "founder": {
+        "@id": "https://represent.au/#nick"
+      },
+      "slogan": "Exclusively on your side of the table.",
+      "hasCredential": "Queensland Real Estate Agent Licence 4949809",
+      "taxID": "59 696 915 170",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61 401 825 999",
+          "email": "nick@represent.au",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://represent.au/#nick",
+      "name": "Nick O'Toole",
+      "jobTitle": "Founder & Director",
+      "worksFor": {
+        "@id": "https://represent.au/#organisation"
+      },
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "sameAs": [
+        "https://www.linkedin.com/in/nickotoole/",
+        "https://www.youtube.com/@NickOToole",
+        "https://www.instagram.com/nick.otoole/"
+      ],
+      "description": "20+ years in commercial property and asset management across office, retail and industrial. Founder & Director of Represent Commercial. Former Asset and Development Manager at Nicolas Malouf Investments. Real Estate Agent Licence 4949809.",
+      "url": "https://represent.au/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://represent.au/#website",
+      "url": "https://represent.au/",
+      "name": "Represent Commercial",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://represent.au/#organisation"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -103,11 +223,11 @@
   <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
   <div class="container" style="position: relative; z-index: 1;">
     <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
-      SHOULD YOU STAY OR <span class="italic" style="color: var(--gold);">move?</span>
+      LEASE RENEWAL VS RELOCATION: SHOULD YOU STAY OR <span class="italic" style="color: var(--gold);">move?</span>
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 660px;">
-      A new lease usually comes with a better rent and a bigger incentive. It also comes with fitout, removals and a make-good bill on the premises you are leaving. This puts both options on one line.
+      A new lease can come with a better rent or a larger incentive, depending on the market and the premises. It also comes with fitout, removals and a make-good bill on the premises you are leaving. This puts both options on one line.
     </p>
   </div>
 </section>
@@ -157,7 +277,7 @@
             </div>
             <div class="field-row">
             <div class="field"><label for="n-og">Outgoings</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="n-og" type="text" inputmode="decimal" autocomplete="off" value="44" /><span class="affix affix--suf">/m&sup2;</span></div></div>
-            <div class="field"><label for="n-inc">Rent free offered</label><div class="input-shell"><input id="n-inc" type="text" inputmode="decimal" autocomplete="off" value="8" /><span class="affix affix--suf">mths</span></div><p class="hint">Incentives on a new lease are usually materially larger.</p></div>
+            <div class="field"><label for="n-inc">Rent free offered</label><div class="input-shell"><input id="n-inc" type="text" inputmode="decimal" autocomplete="off" value="8" /><span class="affix affix--suf">mths</span></div><p class="hint">Incentives on a new lease can be larger than on a renewal. Enter what the market is actually offering.</p></div>
             </div>
             <div class="field-row">
             <div class="field"><label for="n-fit">Fitout cost to you</label><div class="input-shell"><span class="affix affix--pre">$</span><input id="n-fit" type="text" inputmode="numeric" autocomplete="off" value="380,000" /></div><p class="hint">Net of any landlord contribution.</p></div>
@@ -247,6 +367,28 @@
   </div>
 </section>
 
+<section class="cg" aria-label="Guidance">
+  <div class="calc-wrap">
+    <div class="cg-b">
+      <h2>Beyond the numbers</h2>
+      <p>The calculator compares the cost of staying with the cost of moving. Several factors it cannot price can decide the outcome:</p>
+      <ul>
+        <li>Disruption to operations, customers and deliveries during a move</li>
+        <li>Travel time and retention for staff</li>
+        <li>Whether the current premises still suit the business, or are holding it back</li>
+        <li>Time to find, negotiate and fit out new premises before the current lease ends</li>
+        <li>Make-good obligations and any notice periods or option dates in the current lease</li>
+        <li>Whether a credible alternative strengthens the negotiating position on renewal</li>
+      </ul>
+    </div>
+    <div class="cg-b">
+      <h2>A practical decision framework</h2>
+      <p>Start with the business requirement, then test the options in this order. First, confirm the key dates in your current lease. Second, establish what the market would offer for comparable premises, including incentives. Third, compare the total cost of each option with this calculator and the <a href="/occupancy-cost">occupancy cost comparison</a>. Finally, weigh the factors above. Whether relocating brings a lower rent or a larger incentive depends on the market, the premises and the landlord, so treat the rent and incentive inputs as assumptions to test.</p>
+      <p><a href="/tenant-representation">Tenant representation</a> covers both paths: negotiating a renewal and finding and negotiating new premises.</p>
+    </div>
+  </div>
+</section>
+
 <section class="calc-cta">
   <div class="calc-wrap">
     <div class="lead-card">
@@ -302,6 +444,13 @@
           <li><a href="/renewal-vs-relocation" style="color: var(--gold);">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
