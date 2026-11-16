@@ -288,6 +288,8 @@
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
 <style>/* r31a tap targets: calculator toggles and reset at least 44px on touch widths */@media (max-width:768px){.seg button{min-height:44px}.reset-btn{min-height:44px;display:inline-flex;align-items:center}}</style>
+<style>/* v2-r4 usability candidate (2026-11-16): calculator controls at least 44px at every width, matching calc.v2.css; reset label contrast; visible focus */.seg button{min-height:44px}.reset-btn{min-height:44px;margin:-14px 0;display:inline-flex;align-items:center;color:#8C6E1A}.reset-btn:focus-visible,.seg button:focus-visible,.grp>summary:focus-visible{outline:3px solid #8C6E1A;outline-offset:2px;border-radius:4px}</style>
+<style>/* v2-r4 usability r2: reset hover keeps its default colour; hover shown by a heavier underline */.reset-btn:hover{color:#8C6E1A;text-decoration-thickness:2px}</style>
 <style>/* v2-r4 calculator guidance (page-level) */
 .cg{padding:56px 0 24px}
 .cg-b{border-top:1px solid rgba(0,66,37,.14);padding-top:32px;margin-top:32px}

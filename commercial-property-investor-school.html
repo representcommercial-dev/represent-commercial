@@ -93,7 +93,7 @@
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
-<link rel="stylesheet" href="calc.css" />
+<link rel="stylesheet" href="calc.v3.css" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Commercial Property Investor School","url":"https://represent.au/commercial-property-investor-school","inLanguage":"en-AU","description":"Free interactive lessons for commercial property investors on yield and value, value-add, leasing and vacancy, refinancing and downside cash flow.","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Represent Commercial","url":"https://represent.au/"},"hasPart":[
 {"@type":"LearningResource","name":"Yield, income and value","url":"https://represent.au/commercial-property-investor-school#lesson-1","isAccessibleForFree":true},
@@ -106,6 +106,7 @@
 [hidden]{display:none!important}
 .hint{color:#5F5B52;font-family:var(--f-sans);font-size:12.5px;line-height:1.5;margin:8px 0 0}
 .reset-btn{color:#5F5B52}
+.reset-btn:hover{color:#5F5B52} /* v2-r4 usability r2: hover keeps the default colour */
 .err-msg{font-family:var(--f-sans);font-size:13px;line-height:1.45;color:#A0341F;margin:8px 0 0}
 .field.is-err .input-shell{border-color:#A0341F;box-shadow:0 0 0 1px #A0341F}
 .input-shell input{min-height:46px;font-size:16px}
@@ -213,7 +214,7 @@
 .isf-attach{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;background:#FBF9F5;border:1px solid #E6E1D6;border-radius:9px;padding:14px 16px;margin:4px 0 16px;font-family:var(--f-sans);font-size:14px;line-height:1.55;color:#3E4A44}
 .isf-attach input{width:20px;height:20px;margin:1px 0 0;accent-color:#004225}
 .isf-attach details{margin-top:8px}
-.isf-attach summary{cursor:pointer;color:#004225;font-weight:600;min-height:32px;display:flex;align-items:center}
+.isf-attach summary{cursor:pointer;color:#004225;font-weight:600;min-height:44px;display:flex;align-items:center} /* v2-r4 usability r2: was 32px */
 .isf-attach pre{white-space:pre-wrap;font-family:var(--f-sans);font-size:12.5px;line-height:1.55;background:#fff;border:1px solid #E6E1D6;border-radius:8px;padding:10px 12px;margin:6px 0 0;color:#3E4A44}
 .isf-submit{width:100%;min-height:52px;font-size:16px;cursor:pointer}
 .isf-submit[disabled]{opacity:.7;cursor:progress}
@@ -227,6 +228,8 @@
 .isf-done:focus{outline:none}
 .isf-done h2{font-family:var(--f-cond);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:30px;line-height:1.05;color:#004225;margin:0 0 14px}
 .isf-done p{font-family:var(--f-sans);font-size:15px;line-height:1.7;color:#3E4A44;margin:0 0 12px}
+/* v2-r4 usability r2: calculator columns shrink to the viewport; wide tables scroll inside .sens-wrap */
+.calc-grid>.calc-col{min-width:0;grid-template-columns:minmax(0,1fr)}
 @media (max-width:1040px){.isch-index{grid-template-columns:repeat(3,minmax(0,1fr))}.ls-learn{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:860px){.isch-intro__grid{grid-template-columns:minmax(0,1fr)}.cl-list{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:600px){.calc-wrap{padding:0 16px}.card{padding:26px 18px}.isch-index{grid-template-columns:minmax(0,1fr)}.two,.isf-grid{grid-template-columns:minmax(0,1fr)}.isf-card,.cl-card{padding:28px 20px}.bar-row{grid-template-columns:64px minmax(0,1fr) 88px;gap:8px}.bar-row__v{font-size:16px}.rc-seg label{flex-basis:100%}}

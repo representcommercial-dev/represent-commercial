@@ -142,6 +142,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
 .footer-contact a{display:inline-flex;align-items:center;min-height:44px}
 .lst-sticky{display:none}
 @media (max-width:700px){.lst-sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--green-deep);border-top:1px solid rgba(255,255,255,.12)}.lst-sticky .btn{justify-content:center;text-align:center;padding-left:8px;padding-right:8px}body{padding-bottom:72px}html[data-listing-status="leased"] .lst-sticky{display:none}html[data-listing-status="leased"] body{padding-bottom:0}}
+@media (max-width:700px){.lst-sticky .btn{display:flex;align-items:center;min-height:44px}} /* v2-r4 usability candidate (2026-11-16): sticky buttons at least 44px */
 .lst-key__l{font-family:var(--f-body);font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.78);margin-top:8px}
 @media (max-width:760px){.lst-keys{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px;margin-top:32px;padding-top:24px}.lst-keys>:nth-child(2),.lst-keys>:nth-child(3){grid-column:span 2;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}.lst-keys>:nth-child(2){order:-2}.lst-keys>:nth-child(3){order:-1}.lst-keys .lst-basis{margin-top:0}.lst-hero-cta .btn{flex:1 1 100%;justify-content:center;text-align:center}}
 @media (max-width:600px){#main-content>.section--hero{padding-top:100px;padding-bottom:56px}.lst-h1{margin-top:18px}}
