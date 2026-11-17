@@ -25,6 +25,7 @@ Additional services for investors and property owners:
 - [Home](https://represent.au/): Commercial property representation for business occupiers: renew, relocate or buy
 - [Business Premises](https://represent.au/business-premises): Hub for established businesses comparing renewing, relocating and buying their premises
 - [Commercial Tenant Representation Brisbane](https://represent.au/tenant-representation): Tenant-side representation for lease renewals and relocations
+- [Commercial Buyer's Agent](https://represent.au/buyers-agency): Hub separating two buyer paths: buying premises for your own business, or buying an investment property
 - [Buy Business Premises](https://represent.au/buyers-agency-owner-occupiers): Buyer-side representation for businesses buying their own premises, including lease vs buy and SMSF purchases with the owner's advisers
 - [How Nick assesses a purchase](https://represent.au/commercial-buyer-advisory): How Represent Commercial assesses a commercial property purchase within buyer representation; not a separate service
 - [Lease vs Buy](https://represent.au/lease-vs-buy): Compare leasing with owning business premises
@@ -46,6 +47,8 @@ Additional services for investors and property owners:
 
 ## Guides
 - [How do I avoid buying the wrong premises for my business?](https://represent.au/how-to-avoid-buying-the-wrong-commercial-property): Operational fit, total occupancy cost, timing, planning and future flexibility for business buyers
+- [Renew or relocate? A commercial premises guide for Brisbane businesses](https://represent.au/renew-or-relocate-commercial-premises-brisbane): Lease dates, comparable premises, effective occupancy cost, incentives, fit-out, downtime and make-good, with an illustrative example
+- [Commercial lease make-good negotiation](https://represent.au/commercial-lease-make-good-negotiation-brisbane): For business tenants: the make-good obligation, condition records, independent scopes and costs, timing and handover, and negotiating a commercial outcome alongside the tenant's solicitor
 - [Lease vs Buy: what should an owner-occupier do?](https://represent.au/guide-lease-vs-buy): Leasing against buying for business owners, with a worked example
 
 ## Precinct market data
@@ -62,6 +65,7 @@ Additional services for investors and property owners:
 - [Lease Incentive & Effective Rent Calculator](https://represent.au/effective-rent)
 - [Rent Review Calculator](https://represent.au/rent-review)
 - [SMSF Business Premises Calculator](https://represent.au/smsf-commercial-property-calculator)
+- [WALE Calculator](https://represent.au/wale-calculator): Weighted average lease expiry for investors and property owners
 
 ## Contact
 - Nick O'Toole, Founder & Director

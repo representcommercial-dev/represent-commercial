@@ -194,6 +194,7 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -227,7 +228,7 @@
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 660px;">
-      A new lease can come with a better rent or a larger incentive, depending on the market and the premises. It also comes with fitout, removals and a make-good bill on the premises you are leaving. This puts both options on one line.
+      A new lease can come with a better rent or a larger incentive, depending on the market and the premises. It also comes with fitout, removals and a make-good bill on the premises you are leaving. This puts both options on one line. Cash totals are indicative and undiscounted, and business disruption is not modelled.
     </p>
   </div>
 </section>
@@ -384,29 +385,38 @@
     <div class="cg-b">
       <h2>A practical decision framework</h2>
       <p>Start with the business requirement, then test the options in this order. First, confirm the key dates in your current lease. Second, establish what the market would offer for comparable premises, including incentives. Third, compare the total cost of each option with this calculator and the <a href="/occupancy-cost">occupancy cost comparison</a>. Finally, weigh the factors above. Whether relocating brings a lower rent or a larger incentive depends on the market, the premises and the landlord, so treat the rent and incentive inputs as assumptions to test.</p>
-      <p><a href="/tenant-representation">Tenant representation</a> covers both paths: negotiating a renewal and finding and negotiating new premises.</p>
+      <p>Tenant representation covers both paths: <a href="/tenant-representation#renew">negotiating a lease renewal</a> and <a href="/tenant-representation#relocate">finding and negotiating new premises</a>. The <a href="/renew-or-relocate-commercial-premises-brisbane">renew or relocate guide</a> walks through the decision step by step.</p>
     </div>
   </div>
 </section>
 
 <section class="calc-cta">
-  <div class="calc-wrap">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">That knowledge is worth money in a renewal negotiation, and it is why a credible alternative changes the terms on offer. Represent runs both processes in parallel for occupiers.</p>
+      <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">The incumbent landlord knows what moving costs you.</div>
-        <p class="lead-p">That knowledge is worth money in a renewal negotiation, and it is why a credible alternative changes the terms on offer. Represent runs both processes in parallel for occupiers.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="renewal-vs-relocation-first">First name</label><input id="renewal-vs-relocation-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="renewal-vs-relocation-last">Last name</label><input id="renewal-vs-relocation-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="renewal-vs-relocation-first">First name <span class="lead-opt">(optional)</span></label><input id="renewal-vs-relocation-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="renewal-vs-relocation-email">Email</label><input id="renewal-vs-relocation-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="renewal-vs-relocation-phone">Phone</label><input id="renewal-vs-relocation-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="renewal-vs-relocation-phone">Phone <span class="lead-opt">(optional)</span></label><input id="renewal-vs-relocation-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="renewal-vs-relocation-last">Last name <span class="lead-opt">(optional)</span></label><input id="renewal-vs-relocation-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Options</button>
-            <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">

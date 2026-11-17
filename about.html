@@ -239,6 +239,20 @@
   ]
 }
 </script>
+<style>/* design-content candidate: About article directory */
+.ab-h{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(30px,3.4vw,40px);line-height:1;color:var(--green);margin:10px 0 28px}
+.ab-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ab-grp h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:20px;line-height:1.15;color:var(--green);margin:0 0 10px;padding-top:14px;border-top:2px solid var(--gold)}
+.ab-grp ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.ab-art a{display:block;padding:12px 0;border-bottom:1px solid var(--border-light);text-decoration:none;min-height:44px}
+.ab-art a:hover{opacity:.85}
+.ab-art a:focus-visible{outline:3px solid #8C6E1A;outline-offset:2px;border-radius:4px}
+.ab-art__t{display:block;font-family:var(--f-body);font-size:16px;font-weight:700;line-height:1.4;color:var(--green);text-decoration:underline;text-decoration-color:rgba(0,66,37,.3);text-underline-offset:3px}
+.ab-art__d{display:block;font-family:var(--f-body);font-size:14.5px;line-height:1.55;color:#3E4A44;margin-top:4px}
+.ab-more{font-family:var(--f-body);font-size:15px;color:#3E4A44;margin:24px 0 0}
+.ab-more a{color:var(--green)}
+@media (max-width:900px){.ab-grid{grid-template-columns:minmax(0,1fr);gap:8px}}
+</style>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -366,13 +380,16 @@
     </div>
   </section>
 
-  <section class="section" id="articles" style="padding-top: 56px; padding-bottom: 56px;" data-screen-label="Articles by Nick">
+  <section class="section" id="articles" style="padding-top: 56px; padding-bottom: 56px; scroll-margin-top: 84px;" data-screen-label="Articles by Nick">
     <div class="container">
       <div class="eyebrow eyebrow--dim-light">Articles by Nick O’Toole</div>
-      <ul style="list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px;">
-        <li><a href="/guide-lease-vs-buy" style="font-family: var(--f-body); font-size: 17px; color: var(--green);">Should your business lease or buy its commercial premises?</a></li>
-        <li><a href="/how-to-avoid-buying-the-wrong-commercial-property" style="font-family: var(--f-body); font-size: 17px; color: var(--green);">How do I avoid buying the wrong premises for my business?</a></li>
-      </ul>
+      <h2 class="ab-h">Guides and articles</h2>
+      <div class="ab-grid">
+        <div class="ab-grp"><h3>Renewing and relocating</h3><ul><li class="ab-art"><a href="/renew-or-relocate-commercial-premises-brisbane"><span class="ab-art__t">Renew or relocate? A commercial premises guide for Brisbane businesses</span><span class="ab-art__d">Lease dates, comparable premises, effective occupancy cost, incentives, fit-out and make-good.</span></a></li><li class="ab-art"><a href="/commercial-lease-make-good-negotiation-brisbane"><span class="ab-art__t">Commercial lease make-good negotiation</span><span class="ab-art__d">Understanding the obligation, records, scopes and costs, and negotiating a commercial outcome.</span></a></li></ul></div>
+        <div class="ab-grp"><h3>Buying business premises</h3><ul><li class="ab-art"><a href="/guide-lease-vs-buy"><span class="ab-art__t">Should your business lease or buy its commercial premises?</span><span class="ab-art__d">Capital, occupancy cost, flexibility and exit, with an illustrative worked example.</span></a></li><li class="ab-art"><a href="/how-to-avoid-buying-the-wrong-commercial-property"><span class="ab-art__t">How do I avoid buying the wrong premises for my business?</span><span class="ab-art__d">Operational fit, total occupancy cost, timing, planning and future flexibility.</span></a></li><li class="ab-art"><a href="/commercial-buyer-advisory"><span class="ab-art__t">How Nick assesses a commercial property purchase</span><span class="ab-art__d">The checks Nick applies to a property within buyer representation.</span></a></li></ul></div>
+        <div class="ab-grp"><h3>Property ownership and management</h3><ul><li class="ab-art"><a href="/changing-commercial-property-managers-brisbane"><span class="ab-art__t">How to change commercial property managers in Brisbane</span><span class="ab-art__d">What to check in the appointment, what must transfer and how to plan the handover.</span></a></li><li class="ab-art"><a href="/why-commercial-property-not-leasing"><span class="ab-art__t">Why is my commercial property not leasing?</span><span class="ab-art__d">Demand, asking rent, competing stock, presentation, enquiries and inspections.</span></a></li><li class="ab-art"><a href="/cost-to-lease-commercial-property-brisbane"><span class="ab-art__t">How much does it cost to lease out a commercial property?</span><span class="ab-art__d">Vacancy, marketing, incentives and leasing commission, and what to review first.</span></a></li></ul></div>
+      </div>
+      <p class="ab-more">More tools and resources are in <a href="/insights">business premises guides and tools</a>.</p>
     </div>
   </section>
 

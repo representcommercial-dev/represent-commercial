@@ -628,7 +628,29 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 @media (max-width:1100px){.ba-form-s .pr-main{grid-template-columns:1fr;gap:40px}.ba-form-s .pr-main > .ba-form-col{grid-row:1}.ba-form-s .pr-main > .svc-lead{grid-row:2}}
 @media (max-width:700px){.so-tests--2{grid-template-columns:1fr}}
 @media (max-width:600px){.ba-form-s .isf-card{padding:24px 20px}.so-hero .brandline{font-size:30px}}
-.section.ba-form-s{padding-bottom:56px}
+.section.ba-form-s{padding-top:72px;padding-bottom:56px}
+.ba-form-s .isf-h{margin-bottom:8px}
+.ba-form-s .isf-sub{margin-bottom:20px}
+.ba-form-s .pr-steps{margin-top:0}
+.isf-form summary:focus-visible{outline:2px solid #004225;outline-offset:2px;border-radius:4px}
+@media (max-width:600px){.section.ba-form-s{padding-top:48px}}
+/* search-conversion candidate r2: compact buyer enquiry card (page-scoped) */
+.section.ba-form-s{padding-top:56px;padding-bottom:48px}
+.ba-form-s .isf-card{padding:24px}
+.ba-form-s .isf-h{font-size:28px;line-height:1.05;margin:0 0 6px}
+.ba-form-s .isf-sub{font-size:15px;line-height:1.5;margin:0 0 14px}
+.ba-form-s .isf-form .field{margin-bottom:12px}
+.ba-form-s .isf-form .field label{font-size:13px;margin:0 0 5px}
+.ba-form-s .ba-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px}
+.ba-form-s .ba-more{margin:2px 0 14px;border-bottom:1px solid rgba(0,66,37,.14)}
+.ba-form-s .ba-more summary{min-height:44px;padding:8px 0}
+.ba-form-s .ba-more summary>span:first-child{font-family:var(--f-sans);font-size:15px;font-weight:700;color:#004225}
+.ba-form-s .isf-grid{padding:4px 0}
+.ba-form-s .isf-submit{min-height:48px;padding-top:12px;padding-bottom:12px}
+.ba-form-s .isf-note{margin:10px 0 0}
+.ba-form-s .pr-steps li{padding:12px 0}
+.ba-form-s .ba-next{margin:20px 0 0}
+@media (max-width:600px){.section.ba-form-s{padding-top:40px}.ba-form-s .isf-card{padding:20px 16px}.ba-form-s .ba-row{grid-template-columns:minmax(0,1fr)}}
 .section.oo-lvb{padding-top:56px}
 @media (max-width:700px){.so-hero .brandline .italic{font-family:var(--f-display);font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:.03em}}
 
@@ -809,6 +831,13 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 .so-dk .so-h2{max-width:none}
 .so-dk .so-scope{border-color:rgba(255,255,255,.18)}
 </style>
+<style>/* design-content candidate: service icons (Lucide outline, 1.5 stroke) */
+.svc-ic{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;background:rgba(0,66,37,.08);color:#004225;margin:0 0 16px}
+.svc-ic svg{width:24px;height:24px;flex:none}
+.svc-ic--dk{background:#004225;color:#C9A84C;border:1px solid rgba(255,255,255,.14)}
+.svc-ic--sm{width:40px;height:40px;margin:0 0 12px}
+.svc-ic--sm svg{width:22px;height:22px}
+</style>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -847,7 +876,7 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <p class="svc-h1">Buyer Representation · Brisbane &amp; South East Queensland</p>
         <h1 class="brandline h-1">Commercial buyer’s agent for business premises <span class="italic" style="color: var(--gold);">in Brisbane.</span></h1>
         <hr class="gold-rule" style="margin-bottom: 28px;" />
-        <p class="pr-offer">Represent Commercial helps established businesses in Brisbane and South East Queensland find, assess and negotiate the purchase of their own premises. Nick O’Toole personally leads the search and acquisition, with scope and fees confirmed in writing.</p>
+        <p class="pr-offer">Find premises that fit your business, and test the purchase before you commit. Nick O’Toole personally leads the search, assesses each property against the business requirement and negotiates the purchase for established businesses in Brisbane and South East Queensland, with scope and fees confirmed in writing.</p>
         <div class="pr-acts">
           <a href="#enquiry" class="btn btn--lg btn--gold" data-cta="buyers-agency-owner-occupiers-hero">Discuss My Purchase</a>
           <a href="/lease-vs-buy" class="btn btn--lg btn--outline" data-cta="owner-occupier-lease-vs-buy">Compare leasing and buying</a>
@@ -899,10 +928,10 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
       <p class="so-k">The engagement</p>
       <h2 class="so-h2">Define · Search · Assess · Acquire</h2>
       <ol class="so-scope so-scope--4 reveal" style="margin-top:0;">
-        <li><p class="so-scope__n">01 · DEFINE</p><h3>Set the premises brief</h3><p>Agree a written premises brief based on your operational requirements, preferred locations, budget and timing, including existing lease commitments and any planned relocation.</p></li>
-        <li><p class="so-scope__n">02 · SEARCH</p><h3>Find and compare suitable options</h3><p>Search and shortlist properties against the agreed brief, including on-market opportunities and appropriate direct approaches.</p></li>
-        <li><p class="so-scope__n">03 · ASSESS</p><h3>Test the property and the purchase</h3><p>Assess operational fit, market evidence, ownership costs and future flexibility. Coordinate specialist investigations with your solicitor and relevant consultants.</p></li>
-        <li><p class="so-scope__n">04 · ACQUIRE</p><h3>Negotiate and coordinate the purchase</h3><p>Negotiate price and commercial terms, coordinate acquisition milestones and work alongside your advisers through to settlement.</p></li>
+        <li><span class="svc-ic svc-ic--dk" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span><p class="so-scope__n">01 · DEFINE</p><h3>Set the premises brief</h3><p>Agree a written premises brief based on your operational requirements, preferred locations, budget and timing, including existing lease commitments and any planned relocation.</p></li>
+        <li><span class="svc-ic svc-ic--dk" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span><p class="so-scope__n">02 · SEARCH</p><h3>Find and compare suitable options</h3><p>Search and shortlist properties against the agreed brief, including on-market opportunities and appropriate direct approaches.</p></li>
+        <li><span class="svc-ic svc-ic--dk" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><p class="so-scope__n">03 · ASSESS</p><h3>Test the property and the purchase</h3><p>Assess operational fit, market evidence, ownership costs and future flexibility. Coordinate specialist investigations with your solicitor and relevant consultants.</p></li>
+        <li><span class="svc-ic svc-ic--dk" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m18 5-2.414-2.414A2 2 0 0 0 14.172 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2"/><path d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><path d="M8 18h1"/></svg></span><p class="so-scope__n">04 · ACQUIRE</p><h3>Negotiate and coordinate the purchase</h3><p>Negotiate price and commercial terms, coordinate acquisition milestones and work alongside your advisers through to settlement.</p></li>
       </ol>
       <p class="pr-fine" style="color: rgba(255,255,255,0.75);">Business relocation, fit-out and construction are not part of a standard buyer’s agency appointment.</p>
     </div>
@@ -916,14 +945,14 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <p class="pr-p">A good price does not make the wrong building suitable. Six questions test whether a property is worth buying for the business.</p>
       </div>
       <div class="ba-scope reveal">
-        <div><strong>Operational fit</strong>Access, loading, power, parking and a usable layout for how the business operates, with room to grow.</div>
-        <div><strong>Permitted use and constraints</strong>Zoning, flood, strata and other property-specific constraints, for confirmation by your solicitor and town planner.</div>
-        <div><strong>Price and evidence</strong>Comparable sales and vendor price expectations, with allowance for the works the business needs before it can move in.</div>
-        <div><strong>Ownership costs</strong>Outgoings, building condition and likely capital expenditure over the period the business expects to own the property.</div>
-        <div><strong>Timing and possession</strong>Vacant possession and settlement against your current lease, notice periods and fit-out.</div>
-        <div><strong>Future flexibility</strong>Likely leasing demand and resale appeal if the business relocates, grows or changes direction.</div>
+        <div class="ba-ic-item"><span class="svc-ic svc-ic--sm" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/></svg></span><strong>Operational fit</strong>Access, loading, power, parking and a usable layout for how the business operates, with room to grow.</div>
+        <div class="ba-ic-item"><span class="svc-ic svc-ic--sm" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span><strong>Permitted use and constraints</strong>Zoning, flood, strata and other property-specific constraints, for confirmation by your solicitor and town planner.</div>
+        <div class="ba-ic-item"><span class="svc-ic svc-ic--sm" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span><strong>Price and evidence</strong>Comparable sales and vendor price expectations, with allowance for the works the business needs before it can move in.</div>
+        <div class="ba-ic-item"><span class="svc-ic svc-ic--sm" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg></span><strong>Ownership costs</strong>Outgoings, building condition and likely capital expenditure over the period the business expects to own the property.</div>
+        <div class="ba-ic-item"><span class="svc-ic svc-ic--sm" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span><strong>Timing and possession</strong>Vacant possession and settlement against your current lease, notice periods and fit-out.</div>
+        <div class="ba-ic-item"><span class="svc-ic svc-ic--sm" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><strong>Future flexibility</strong>Likely leasing demand and resale appeal if the business relocates, grows or changes direction.</div>
       </div>
-      <p class="pr-fine">Legal, planning, building, valuation, tax and finance conclusions come from your solicitor and the relevant consultants and advisers. Read <a class="so-link" href="/how-to-avoid-buying-the-wrong-commercial-property">how to avoid buying the wrong premises</a>, or compare the options with the <a class="so-link" href="/lease-vs-buy">Lease vs Buy Calculator</a> and <a class="so-link" href="/guide-lease-vs-buy">guide</a>.</p>
+      <p class="pr-fine">Legal, planning, building, valuation, tax and finance conclusions come from your solicitor and the relevant consultants and advisers. Read <a class="so-link" href="/how-to-avoid-buying-the-wrong-commercial-property">how to avoid buying the wrong premises</a>, or compare the options with the <a class="so-link" href="/lease-vs-buy">Lease vs Buy Calculator</a> and <a class="so-link" href="/guide-lease-vs-buy">Lease vs Buy guide</a>.</p>
     </div>
   </section>
 
@@ -965,15 +994,13 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
   <section class="section ba-form-s" id="enquiry" aria-labelledby="isf-heading" style="scroll-margin-top:88px;" data-screen-label="08 Initial discussion">
     <div class="container pr-main">
       <div class="svc-lead reveal">
-        <p class="so-k">Initial purchase discussion</p>
-        <h2 class="so-h2">Get clear on your premises purchase.</h2>
-        <p class="pr-p">Discuss your business requirements, budget and timing directly with Nick. Leave with a clearer view of the premises worth pursuing, the questions to resolve before buying and your next steps.</p>
+        <p class="so-k">What the discussion covers</p>
         <ol class="pr-steps">
           <li><span>01</span><div><strong style="display:block; color: var(--green);">Premises direction</strong>Clarify the location, space, access and practical requirements that matter most to your business.</div></li>
           <li><span>02</span><div><strong style="display:block; color: var(--green);">Purchase readiness</strong>Identify the funding, adviser input and timing dependencies to resolve before committing.</div></li>
-          <li><span>03</span><div><strong style="display:block; color: var(--green);">Practical next steps</strong>Discuss where the purchase is up to: starting a search, a property you have found, or first comparing buying with continuing to lease.</div></li>
+          <li><span>03</span><div><strong style="display:block; color: var(--green);">Practical next steps</strong>Starting a search, a property you have found, or first comparing buying with leasing.</div></li>
         </ol>
-        <p class="pr-fine" style="margin-top: 24px;">The initial discussion is complimentary. Advice and representation begin under a separately agreed appointment, with scope and fees confirmed in writing.</p>
+        <div class="isf-next ba-next"><h3>What happens next?</h3><p>Nick responds personally within one business day to arrange a complimentary initial discussion. We act for the buyer, never the vendor.</p><p>Advice and representation begin under a separately agreed appointment, with scope and fees confirmed in writing.</p><p>SMSF structure, tax position and borrowing should be confirmed with your accountant, licensed financial adviser and lender.</p></div>
       </div>
       <div class="ba-form-col">
     <div class="isf-card" id="isf-card">
@@ -1000,20 +1027,18 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
         <input type="hidden" name="utm_content" value="" />
         <input type="hidden" name="website_submission_id" value="" />
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
-        <p class="isf-eyebrow">Premises purchase enquiry</p>
-        <h2 class="isf-h" id="isf-heading">Discuss Your Premises Purchase</h2>
-        <p class="isf-sub">Tell Nick what you’re looking to buy and discuss how Represent Commercial can help.</p>
-        <p class="isf-req">Name and email are required. Everything else is optional.</p>
-        <div class="form-grid">
-          <div class="field" style="margin-bottom: 0;"><label for="isf-first">First name</label><input id="isf-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
-          <div class="field" style="margin-bottom: 0;"><label for="isf-last">Last name <span class="isf-opt">(optional)</span></label><input id="isf-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
-        </div>
+        <h2 class="isf-h" id="isf-heading">Discuss your premises purchase.</h2>
+        <p class="isf-sub">Tell Nick what you are looking to buy. Only your first name and email are required.</p>
+        <div class="ba-row">
+        <div class="field"><label for="isf-first">First name</label><input id="isf-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
         <div class="field"><label for="isf-email">Email</label><input id="isf-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
+        </div>
         <div class="field"><label for="isf-phone">Mobile <span class="isf-opt">(optional)</span></label><input id="isf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" /></div>
         <input type="hidden" id="isf-support" name="support_considered" value="Full acquisition representation" />
-        <details class="so-acc" style="margin: 4px 0 20px; border-bottom: 1px solid rgba(0,66,37,0.14);">
-          <summary style="padding: 14px 0;"><span style="font-family: var(--f-sans); font-size: 15px; font-weight: 700; color: #004225;">Add details about your requirements</span><span class="so-pm" aria-hidden="true"></span></summary>
+        <details class="so-acc ba-more">
+          <summary><span style="font-family: var(--f-sans); font-size: 15px; font-weight: 700; color: #004225;">Add purchase details <span class="isf-opt">(optional)</span></span><span class="so-pm" aria-hidden="true"></span></summary>
           <div class="isf-grid" style="padding: 4px 0 4px;">
+          <div class="field"><label for="isf-last">Last name <span class="isf-opt">(optional)</span></label><input id="isf-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
           <div class="field"><label for="isf-budget">Indicative purchase budget <span class="isf-opt">(optional)</span></label>
             <select id="isf-budget" name="budget"><option value="" selected>Select a range</option><option>Under $1M</option><option>$1M to $2M</option><option>$2M to $5M</option><option>$5M to $10M</option><option>$10M to $20M</option><option>Over $20M</option><option>Not determined yet</option></select></div>
           <div class="field"><label for="isf-timing">Acquisition timing <span class="isf-opt">(optional)</span></label>
@@ -1024,9 +1049,8 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
           <div class="field"><label for="isf-smsf">Buying through an SMSF? <span class="isf-opt">(optional)</span></label><select id="isf-smsf" name="smsf_purchase"><option value="" selected>Select one</option><option>Yes</option><option>No</option><option>Not sure yet</option></select></div>
           </div>
         </details>
-        <button type="submit" class="btn btn--lg btn--gold isf-submit" data-cta="buyers-agency-owner-occupiers-form-submit">Discuss My Premises Purchase</button>
+        <button type="submit" class="btn btn--lg btn--gold isf-submit" data-cta="buyers-agency-owner-occupiers-form-submit">Discuss My Purchase</button>
         <div class="isf-err" id="isf-err" role="alert"></div>
-        <div class="isf-next"><h3>What happens next?</h3><p>Nick will review your enquiry and respond personally within one business day to arrange an initial discussion and confirm whether the service fits your requirements.</p><p>The initial discussion is complimentary. We act for the buyer, never the vendor.</p><p>SMSF structure, tax position and borrowing should be confirmed with your accountant, licensed financial adviser and lender.</p></div>
         <p class="isf-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
       </form>
       <div class="isf-done" id="isf-done" tabindex="-1">

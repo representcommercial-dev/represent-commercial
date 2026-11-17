@@ -194,6 +194,7 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -367,23 +368,32 @@
 </section>
 
 <section class="calc-cta">
-  <div class="calc-wrap">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">A lower rent on more floor area with a shorter incentive is not a saving. Represent acts for occupiers in premises searches and lease negotiations, on the tenant&rsquo;s side of the table only.</p>
+      <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">Tenants rarely compare like with like.</div>
-        <p class="lead-p">A lower rent on more floor area with a shorter incentive is not a saving. Represent acts for occupiers in premises searches and lease negotiations, on the tenant&rsquo;s side of the table only.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="occupancy-cost-first">First name</label><input id="occupancy-cost-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="occupancy-cost-last">Last name</label><input id="occupancy-cost-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="occupancy-cost-first">First name <span class="lead-opt">(optional)</span></label><input id="occupancy-cost-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="occupancy-cost-email">Email</label><input id="occupancy-cost-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="occupancy-cost-phone">Phone</label><input id="occupancy-cost-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="occupancy-cost-phone">Phone <span class="lead-opt">(optional)</span></label><input id="occupancy-cost-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="occupancy-cost-last">Last name <span class="lead-opt">(optional)</span></label><input id="occupancy-cost-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Premises</button>
-            <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">

@@ -50,19 +50,19 @@
 <!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WALE Calculator | Represent Commercial</title>
+<title>WALE Calculator: Weighted Average Lease Expiry | Represent Commercial</title>
 <meta name="description" content="Calculate weighted average lease expiry by income from your tenancy schedule, with an income expiry profile. Represent Commercial, Brisbane and Queensland." />
-<meta name="robots" content="noindex, follow" />
+<meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/wale-calculator" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/wale-calculator" />
-<meta property="og:title" content="WALE Calculator | Represent Commercial" />
+<meta property="og:title" content="WALE Calculator: Weighted Average Lease Expiry | Represent Commercial" />
 <meta property="og:description" content="Calculate weighted average lease expiry by income from your tenancy schedule, with an income expiry profile. Represent Commercial, Brisbane and Queensland." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="WALE Calculator | Represent Commercial" />
+<meta name="twitter:title" content="WALE Calculator: Weighted Average Lease Expiry | Represent Commercial" />
 <meta name="twitter:description" content="Calculate weighted average lease expiry by income from your tenancy schedule, with an income expiry profile. Represent Commercial, Brisbane and Queensland." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -75,6 +75,7 @@
 <link rel="stylesheet" href="calc.v3.css" />
 <style>/* v2-r4 usability r2: tenancy delete and add buttons at least 44px */.row-del{width:44px;height:44px}.add-row{min-height:44px}@media (min-width:861px){.sched-head,.sched-row{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1.35fr) 44px}}@media (max-width:860px){.sched-row .row-del{width:100%}}</style>
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -108,7 +109,7 @@
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 660px;">
-      WALE (weighted average lease expiry) is the average time remaining on a property’s leases, weighted by the rent each tenant pays, so the tenant carrying the rent carries the number. Enter the schedule to see the WALE and where the income expires.
+      WALE (weighted average lease expiry) is the average time remaining on a property’s leases, weighted by the rent each tenant pays, so the tenant carrying the rent carries the number. Enter the schedule to see the WALE and where the income expires. Options, incentives and tenant covenant are not modelled, so reconcile the result against the executed leases.
     </p>
   </div>
 </section>
@@ -223,7 +224,7 @@
         <p style="font-family: var(--f-cond); font-size: 20px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.4; color: var(--calc-green); margin-top: 18px;">WALE = sum of (annual net rent × years remaining) ÷ total annual net rent</p>
         <h3 style="font-family: var(--f-cond); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: #806318; margin: 24px 0 6px;">Worked example (illustrative figures only)</h3>
         <p style="color: #3E4A44;">Tenant A pays $300,000 a year with 5.0 years remaining. Tenant B pays $100,000 a year with 1.0 year remaining. ($300,000 × 5.0 + $100,000 × 1.0) ÷ $400,000 = 4.0 years. Tenant A pays 75% of the income, so it carries 75% of the weight. These figures are not market data.</p>
-        <p style="color: #3E4A44;">Testing the WALE and expiry profile before you buy is part of our <a href="/buyers-agency">buyer’s agency</a> work. Owners managing an expiry profile can see <a href="/commercial-asset-management">commercial asset management</a>.</p>
+        <p style="color: #3E4A44;">Testing the WALE and expiry profile before you buy is part of our <a href="/buyers-agency-investors">investment buyer’s agency</a> work. Owners managing an expiry profile can see <a href="/commercial-asset-management">commercial asset management</a>.</p>
       </div>
     </div>
 
@@ -250,23 +251,32 @@
 </section>
 
 <section class="calc-cta">
-  <div class="calc-wrap">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">Expiry dates get staggered, terms get lengthened and covenants get tested through active leasing decisions made years before the numbers matter. Represent manages and leases commercial property with the expiry profile in view.</p>
+      <a class="lead-link" href="/commercial-property-management">Explore Property Management &rarr;</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">A WALE is built, not measured.</div>
-        <p class="lead-p">Expiry dates get staggered, terms get lengthened and covenants get tested through active leasing decisions made years before the numbers matter. Represent manages and leases commercial property with the expiry profile in view.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="wale-calculator-first">First name</label><input id="wale-calculator-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="wale-calculator-last">Last name</label><input id="wale-calculator-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="wale-calculator-first">First name <span class="lead-opt">(optional)</span></label><input id="wale-calculator-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="wale-calculator-email">Email</label><input id="wale-calculator-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="wale-calculator-phone">Phone</label><input id="wale-calculator-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="wale-calculator-phone">Phone <span class="lead-opt">(optional)</span></label><input id="wale-calculator-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="wale-calculator-last">Last name <span class="lead-opt">(optional)</span></label><input id="wale-calculator-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Portfolio</button>
-            <a class="lead-link" href="/commercial-property-management">Explore Property Management &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">

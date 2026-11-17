@@ -410,6 +410,25 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="lead.v1.css" />
+<style>/* design-content candidate: Lease and Growth assumptions permanently visible; layout spacing */
+.grp--static{border-top:1px solid #EEEAE0}
+.grp-h{font-family:var(--f-cond);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:#8C6E1A;margin:0;padding:22px 0 16px;line-height:1.3}
+.grp--static .grp-sum{display:none}
+.calc-grid>.card .grp-body{padding-bottom:22px}
+.calc-grid>.card .grp-body>.field:last-child,.calc-grid>.card .grp-body>.field-row:last-child{margin-bottom:0}
+</style>
+<style>/* design-content candidate: with all four assumption groups visible, desktop shows them two by two, with results full width directly below */
+.lvb-mini{margin-top:28px}
+@media (min-width:1041px){
+.calc-grid{grid-template-columns:minmax(0,1fr)}
+.calc-grid>.card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
+.calc-grid>.card>.card-head{grid-column:1/-1}
+.calc-grid>.card>details.grp:nth-of-type(2){border-top:0}
+.calc-grid>.card>details.grp:nth-of-type(2)>summary{padding-top:0;min-height:44px}
+.calc-grid>.card>.grp--static{border-top:1px solid #EEEAE0}
+}
+</style>
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -446,7 +465,7 @@
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 660px;">
-      Compare the indicative costs of leasing or buying your business premises. Leasing keeps capital free; owning builds equity and captures growth. Enter your numbers to see the modelled position each option leaves the business in over 5, 10, 15 and 20 years.
+      Compare the indicative costs of leasing or buying your business premises. Leasing keeps capital free; owning builds equity and captures growth. Enter your numbers to see the modelled position each option leaves the business in over 5, 10, 15 and 20 years. Results are indicative and sensitive to the growth, interest and return rates you enter.
     </p>
   </div>
 </section>
@@ -580,8 +599,8 @@
           </div>
         </details>
 
-        <details class="grp">
-          <summary><span>Lease assumptions</span><b class="grp-sum" id="sum-lease"></b><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <section class="grp grp--static" aria-labelledby="grp-h-lease">
+          <h3 class="grp-h" id="grp-h-lease">Lease assumptions</h3><b class="grp-sum" id="sum-lease" hidden></b>
           <div class="grp-body">
             <div class="field-row">
               <div class="field">
@@ -619,10 +638,10 @@
               <p class="hint">Lease documentation, fit-out contribution and bank guarantee costs at commencement.</p>
             </div>
           </div>
-        </details>
+        </section>
 
-        <details class="grp">
-          <summary><span>Growth &amp; investment assumptions</span><b class="grp-sum" id="sum-growth"></b><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <section class="grp grp--static" aria-labelledby="grp-h-growth">
+          <h3 class="grp-h" id="grp-h-growth">Growth &amp; investment assumptions</h3><b class="grp-sum" id="sum-growth" hidden></b>
           <div class="grp-body">
             <div class="field-row">
               <div class="field">
@@ -675,7 +694,7 @@
               <p class="hint">Agency, legal and marketing costs on sale.</p>
             </div>
           </div>
-        </details>
+        </section>
       </div>
 
       <!-- Result -->
@@ -730,7 +749,10 @@
         </div>
       </div>
 
-      <div class="mini-grid">
+      </div>
+    </div>
+
+    <div class="mini-grid lvb-mini">
       <div class="card">
         <p class="card-label">Cash required to buy</p>
         <div class="kv-row"><span>Deposit / equity</span><b id="c-dep">$0</b></div>
@@ -748,9 +770,6 @@
         <div class="kv-row kv-row--foot" id="p-proceeds-row"><span>Net sale proceeds if sold</span><b id="p-proceeds">$0</b></div>
         </div>
       </div>
-
-      </div>
-    </div>
 
     <div class="card chart-card">
       <div class="chart-head">
@@ -841,7 +860,7 @@
     </div>
     <div class="cg-b">
       <h2>Worked example</h2>
-      <p>The <a href="/guide-lease-vs-buy#worked-example">lease vs buy guide</a> runs a hypothetical 500m² industrial unit through the same comparison. In that illustrative example, buying overtakes leasing in year four at 3% annual growth, and after year seven if values are flat. Because duty and acquisition costs are paid up front, short holding periods rarely favour buying.</p>
+      <p>The <a href="/guide-lease-vs-buy#worked-example">Lease vs Buy guide</a> runs a hypothetical 500m² industrial unit through the same comparison. In that illustrative example, buying overtakes leasing in year four at 3% annual growth, and after year seven if values are flat. Because duty and acquisition costs are paid up front, short holding periods rarely favour buying.</p>
     </div>
     <div class="cg-b">
       <h2>Before relying on the result</h2>
@@ -851,24 +870,33 @@
 </section>
 
 <section class="calc-cta">
-  <div class="calc-wrap">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">The financial result is only one part of the decision. Nick can help assess the premises requirement, timing, available stock and operational implications before you commit to leasing or buying.</p>
+      <p class="lead-p lead-p--sm">Optional. The calculator and its results do not require your details.</p>
+      <a class="lead-link" href="/business-premises">Renew, relocate or buy →</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">Discuss the Result with Nick</div>
-        <p class="lead-p">The financial result is only one part of the decision. Nick can help assess the premises requirement, timing, available stock and operational implications before you commit to leasing or buying.</p>
-        <p class="lead-p" style="font-size: 13px; margin-top: -4px;">Optional. The calculator and its results do not require your details.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="lease-vs-buy-first">First name</label><input id="lease-vs-buy-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="lease-vs-buy-last">Last name</label><input id="lease-vs-buy-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="lease-vs-buy-first">First name <span class="lead-opt">(optional)</span></label><input id="lease-vs-buy-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="lease-vs-buy-email">Email</label><input id="lease-vs-buy-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="lease-vs-buy-phone">Phone</label><input id="lease-vs-buy-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="lease-vs-buy-phone">Phone <span class="lead-opt">(optional)</span></label><input id="lease-vs-buy-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="lease-vs-buy-last">Last name <span class="lead-opt">(optional)</span></label><input id="lease-vs-buy-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss the Result with Nick</button>
-            <a class="lead-link" href="/business-premises">Renew, relocate or buy →</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">

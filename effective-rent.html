@@ -194,6 +194,7 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -227,7 +228,7 @@
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 660px;">
-      Face rents move less than incentives do. Rent free, abatements and fitout contributions all reprice a deal without touching the headline. This converts the package into one comparable number.
+      Face rents move less than incentives do. Rent free, abatements and fitout contributions all reprice a deal without touching the headline. This converts the package into one comparable number. It compares rent only: use the <a href="/occupancy-cost" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">occupancy cost comparison</a> for outgoings, fit-out and area.
     </p>
   </div>
 </section>
@@ -382,29 +383,38 @@
     </div>
     <div class="cg-b">
       <h2>Effective rent is not the whole decision</h2>
-      <p>A lower effective rent on larger or less efficient premises can still cost the business more. Outgoings, fit-out, make-good and relocation costs also matter. Use the <a href="/occupancy-cost">occupancy cost comparison</a> to compare premises on total cost, and the <a href="/renewal-vs-relocation">renewal vs relocation calculator</a> if you are deciding whether to stay. <a href="/tenant-representation">Tenant representation</a> covers negotiating these terms on the tenant’s side.</p>
+      <p>A lower effective rent on larger or less efficient premises can still cost the business more. Outgoings, fit-out, make-good and relocation costs also matter. Use the <a href="/occupancy-cost">occupancy cost comparison</a> to compare premises on total cost, and the <a href="/renewal-vs-relocation">renewal vs relocation calculator</a> if you are deciding whether to stay. <a href="/tenant-representation#what-we-negotiate">Tenant representation</a> covers negotiating rent, incentive, term and make-good on the tenant’s side.</p>
     </div>
   </div>
 </section>
 
 <section class="calc-cta">
-  <div class="calc-wrap">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">Comparable evidence quoted on face rents without the incentive behind it will mislead an owner and a tenant equally. Represent negotiates and records both sides of that number.</p>
+      <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">Face rent is the number in the lease. Effective rent is the deal.</div>
-        <p class="lead-p">Comparable evidence quoted on face rents without the incentive behind it will mislead an owner and a tenant equally. Represent negotiates and records both sides of that number.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="effective-rent-first">First name</label><input id="effective-rent-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="effective-rent-last">Last name</label><input id="effective-rent-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="effective-rent-first">First name <span class="lead-opt">(optional)</span></label><input id="effective-rent-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="effective-rent-email">Email</label><input id="effective-rent-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="effective-rent-phone">Phone</label><input id="effective-rent-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="effective-rent-phone">Phone <span class="lead-opt">(optional)</span></label><input id="effective-rent-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="effective-rent-last">Last name <span class="lead-opt">(optional)</span></label><input id="effective-rent-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss the Deal</button>
-            <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">
