@@ -695,6 +695,9 @@ a{color:var(--gold-ink)}a:hover{color:var(--green)}
 .bsl__card--full .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 </style>
 <style>@media (min-width:961px){.bsl--2{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
+<style>/* A single representation card spans the former comparison grid. */
+#service-options .bsl__card:only-child{grid-column:1/-1}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
