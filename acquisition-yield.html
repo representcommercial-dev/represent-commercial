@@ -72,8 +72,9 @@
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
-<link rel="stylesheet" href="calc.css" />
+<link rel="stylesheet" href="calc.v3.css" />
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -254,23 +255,32 @@
 </section>
 
 <section class="calc-cta">
-  <div class="calc-wrap">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">Acquisition costs, income quality and what the lease will actually deliver are what separate a good buy from an expensive one. Represent acts for buyers only, never for the vendor.</p>
+      <a class="lead-link" href="/buyers-agency">Explore Buyer&rsquo;s Agency &rarr;</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">The quoted yield is never the yield you get.</div>
-        <p class="lead-p">Acquisition costs, income quality and what the lease will actually deliver are what separate a good buy from an expensive one. Represent acts for buyers only, never for the vendor.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="acquisition-yield-first">First name</label><input id="acquisition-yield-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="acquisition-yield-last">Last name</label><input id="acquisition-yield-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="acquisition-yield-first">First name <span class="lead-opt">(optional)</span></label><input id="acquisition-yield-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="acquisition-yield-email">Email</label><input id="acquisition-yield-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="acquisition-yield-phone">Phone</label><input id="acquisition-yield-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="acquisition-yield-phone">Phone <span class="lead-opt">(optional)</span></label><input id="acquisition-yield-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="acquisition-yield-last">Last name <span class="lead-opt">(optional)</span></label><input id="acquisition-yield-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss an Acquisition</button>
-            <a class="lead-link" href="/buyers-agency">Explore Buyer&rsquo;s Agency &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">
@@ -308,6 +318,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

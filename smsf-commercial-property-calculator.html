@@ -95,11 +95,12 @@
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
-<link rel="stylesheet" href="calc.css" />
+<link rel="stylesheet" href="calc.v3.css" />
 <style>
 [hidden]{display:none!important}
 .hint{color:#5F5B52}
 .reset-btn{color:#5F5B52}
+.reset-btn:hover{color:#5F5B52} /* v2-r4 usability r2: hover keeps the default colour */
 .calc-disclaimer p{color:#5A5A52}
 .sm-eyebrow{font-family:var(--f-cond);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin:0 0 18px}
 .sm-actions{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
@@ -208,6 +209,27 @@
   #print-sheet a{color:#004225;word-break:break-all}
 }
 </style>
+<style>/* design-content candidate: compact enquiry card (page-scoped) */
+.calc-cta .sme-card{padding:24px;border-radius:12px}
+.calc-cta .sme-h{font-size:28px;line-height:1.05;margin:0 0 6px}
+.calc-cta .sme-sub{font-size:15px;line-height:1.5;margin:0 0 14px}
+.calc-cta .sme-form .field{margin-bottom:12px}
+.calc-cta .sme-form .field label,.calc-cta .sme-seg legend{font-size:13px;margin:0 0 5px}
+.calc-cta .ba-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px}
+.calc-cta .sme-seg span{min-height:44px}
+.calc-cta .sme-more{margin:2px 0 14px;border-top:1px solid rgba(0,66,37,.14);border-bottom:1px solid rgba(0,66,37,.14)}
+.calc-cta .sme-more summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 0;cursor:pointer;font-family:var(--f-sans);font-size:15px;font-weight:700;color:#004225}
+.calc-cta .sme-more summary::-webkit-details-marker{display:none}
+.calc-cta .sme-more summary:focus-visible{outline:2px solid #004225;outline-offset:2px;border-radius:4px}
+.calc-cta .sme-pm{position:relative;width:14px;height:14px;flex:0 0 14px}
+.calc-cta .sme-pm::before,.calc-cta .sme-pm::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:#004225;transition:transform .2s ease}
+.calc-cta .sme-pm::after{transform:rotate(90deg)}
+.calc-cta .sme-more[open] .sme-pm::after{transform:rotate(0)}
+.calc-cta .sme-more__body{padding:4px 0}
+.calc-cta .sme-form .form-submit{min-height:48px}
+@media (max-width:600px){.calc-cta .sme-card{padding:20px 16px}.calc-cta .ba-row{grid-template-columns:minmax(0,1fr)}}
+</style>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -503,8 +525,12 @@
   </div>
 </section>
 
-<section class="calc-cta" id="smsf-enquiry" aria-labelledby="sme-heading">
-  <div class="calc-wrap">
+<section class="calc-cta" id="smsf-enquiry" aria-labelledby="sme-heading" style="scroll-margin-top:88px;">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <h3 class="lead-aside__h">What happens next?</h3>
+      <p class="lead-p">Nick will discuss your property requirements, timing and how Represent Commercial can help with the search, commercial assessment and negotiation. Before you decide to appoint, you will understand the proposed scope and fees.</p><p class="lead-p"><strong>Nick will respond within one business day.</strong></p><p class="lead-p">Your SMSF structure, tax position and borrowing arrangements should be confirmed with your accountant, licensed financial adviser and lender.</p>
+    </div>
     <div class="sme-card" id="sme-card">
       <form id="sme-form" class="sme-form" method="POST" action="https://api.web3forms.com/submit">
         <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
@@ -528,18 +554,13 @@
         <input type="hidden" name="utm_content" value="" />
         <input type="hidden" name="website_submission_id" value="" />
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
-        <div class="form-card__eyebrow">SMSF property enquiry</div>
         <h2 class="sme-h" id="sme-heading">Discuss your SMSF purchase.</h2>
-        <p class="sme-sub">Tell Nick about the commercial property you want to buy through your SMSF, or share a property you are considering.</p>
-        <p class="sme-req">Fields are required unless marked optional.</p>
-        <div class="form-grid">
+        <p class="sme-sub">Tell Nick about the commercial property you want to buy through your SMSF, or share a property you are considering. Fields are required unless marked optional.</p>
+        <div class="ba-row">
           <div class="field"><label for="sme-first">First name</label><input id="sme-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
-          <div class="field"><label for="sme-last">Last name <span class="sme-opt">(optional)</span></label><input id="sme-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
-        </div>
-        <div class="form-grid">
           <div class="field"><label for="sme-email">Email</label><input id="sme-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
-          <div class="field"><label for="sme-phone">Phone</label><input id="sme-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" required /></div>
         </div>
+        <div class="field"><label for="sme-phone">Phone</label><input id="sme-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" required /></div>
         <fieldset class="sme-seg">
           <legend>What will the property be used for?</legend>
           <div class="sme-seg__row">
@@ -548,7 +569,10 @@
             <label><input type="radio" name="buyer_type" value="Still deciding" /><span>Still deciding</span></label>
           </div>
         </fieldset>
-        <div class="form-grid">
+        <details class="sme-more">
+          <summary><span>Add property details <span class="sme-opt">(optional)</span></span><span class="sme-pm" aria-hidden="true"></span></summary>
+          <div class="sme-more__body">
+          <div class="field"><label for="sme-last">Last name <span class="sme-opt">(optional)</span></label><input id="sme-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
           <div class="field">
             <label for="sme-budget">Indicative SMSF property purchase budget <span class="sme-opt">(optional)</span></label>
             <select id="sme-budget" name="budget">
@@ -563,11 +587,12 @@
             </select>
           </div>
           <div class="field"><label for="sme-location">Preferred location <span class="sme-opt">(optional)</span></label><input id="sme-location" name="preferred_location" type="text" autocomplete="off" /></div>
-        </div>
-        <div class="field"><label for="sme-context">Tell Nick about your SMSF property plans <span class="sme-opt">(optional)</span></label><p class="sme-help" id="sme-context-help">Include a property address or listing link, preferred property type, timing and whether you are looking for an investment or premises for your business.</p><textarea id="sme-context" name="acquisition_context" rows="3" maxlength="2000" aria-describedby="sme-context-help"></textarea></div>
+          <div class="field"><label for="sme-context">Tell Nick about your SMSF property plans <span class="sme-opt">(optional)</span></label><p class="sme-help" id="sme-context-help">Include a property address or listing link, preferred property type, timing and whether you are looking for an investment or premises for your business.</p><textarea id="sme-context" name="acquisition_context" rows="3" maxlength="2000" aria-describedby="sme-context-help"></textarea></div>
+          </div>
+        </details>
         <button type="submit" class="form-submit">Discuss My SMSF Property Plans</button>
         <div class="sme-err" id="sme-err" role="alert"></div>
-        <div class="sme-next"><h3>What happens next?</h3><p>Nick will discuss your property requirements, timing and how Represent Commercial can help with the search, commercial assessment and negotiation. Before you decide to appoint, you will understand the proposed scope and fees.</p><p><strong>Nick will respond within one business day.</strong></p><p>Your SMSF structure, tax position and borrowing arrangements should be confirmed with your accountant, licensed financial adviser and lender.</p></div>
+        
         <p class="form-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>. Calculator figures are not included.</p>
       </form>
       <div class="form-success sme-done" id="sme-done" style="display:none;" tabindex="-1">
@@ -608,6 +633,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

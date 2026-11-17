@@ -77,8 +77,28 @@
   "image": "https://represent.au/assets/loam-11-13-01-1600.webp",
   "url": "https://represent.au/lease-11-13-loam-street-acacia-ridge",
   "description": "Modern tilt-panel warehouse / office unit in Pioneer Business Park, Acacia Ridge. Approx. 186 m² total: 131 m² high-bay warehouse and 55 m² mezzanine. 3 exclusive-use car parks.",
-  "offers": { "@type": "Offer", "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut", "price": "48360", "priceCurrency": "AUD", "description": "$48,360 p.a. net + outgoings + GST", "seller": { "@type": "RealEstateAgent", "name": "Represent Commercial", "url": "https://represent.au/", "telephone": "+61 401 825 999" } },
-  "about": { "@type": "Place", "name": "Pioneer Business Park", "address": { "@type": "PostalAddress", "streetAddress": "11/13 Loam Street", "addressLocality": "Acacia Ridge", "addressRegion": "QLD", "postalCode": "4110", "addressCountry": "AU" } }
+  "offers": {
+    "@type": "Offer",
+    "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+    "price": "48360",
+    "priceCurrency": "AUD",
+    "description": "$48,360 p.a. net + outgoings + GST",
+    "seller": {
+      "@id": "https://represent.au/#organisation"
+    }
+  },
+  "about": {
+    "@type": "Place",
+    "name": "Pioneer Business Park",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "11/13 Loam Street",
+      "addressLocality": "Acacia Ridge",
+      "addressRegion": "QLD",
+      "postalCode": "4110",
+      "addressCountry": "AU"
+    }
+  }
 }
 </script>
 
@@ -122,6 +142,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
 .footer-contact a{display:inline-flex;align-items:center;min-height:44px}
 .lst-sticky{display:none}
 @media (max-width:700px){.lst-sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--green-deep);border-top:1px solid rgba(255,255,255,.12)}.lst-sticky .btn{justify-content:center;text-align:center;padding-left:8px;padding-right:8px}body{padding-bottom:72px}html[data-listing-status="leased"] .lst-sticky{display:none}html[data-listing-status="leased"] body{padding-bottom:0}}
+@media (max-width:700px){.lst-sticky .btn{display:flex;align-items:center;min-height:44px}} /* v2-r4 usability candidate (2026-11-16): sticky buttons at least 44px */
 .lst-key__l{font-family:var(--f-body);font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.78);margin-top:8px}
 @media (max-width:760px){.lst-keys{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px;margin-top:32px;padding-top:24px}.lst-keys>:nth-child(2),.lst-keys>:nth-child(3){grid-column:span 2;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}.lst-keys>:nth-child(2){order:-2}.lst-keys>:nth-child(3){order:-1}.lst-keys .lst-basis{margin-top:0}.lst-hero-cta .btn{flex:1 1 100%;justify-content:center;text-align:center}}
 @media (max-width:600px){#main-content>.section--hero{padding-top:100px;padding-bottom:56px}.lst-h1{margin-top:18px}}
@@ -202,6 +223,130 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
 .lst-leased{padding:32px;border:1px solid rgba(255,255,255,.2);border-radius:12px}
 .lst-legal{font-family:var(--f-body);font-size:12.5px;line-height:1.7;color:#5F665F;max-width:860px;margin:0}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://represent.au/#organisation",
+      "name": "Represent Commercial",
+      "description": "Principal-led commercial property representation for established businesses in Brisbane and South East Queensland renewing, relocating or buying the premises they operate from: tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison. Represent Commercial also acts for selected investors and property owners through investment buyer’s agency, property management, leasing and asset management appointments, acting exclusively for the appointed client in each matter.",
+      "knowsAbout": [
+        "Commercial tenant representation",
+        "Commercial lease renewal",
+        "Business premises relocation",
+        "Buying business premises",
+        "Lease versus buy decisions",
+        "Industrial and warehouse premises"
+      ],
+      "url": "https://represent.au/",
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 36, Level 3, 240 Queen St",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "postalCode": "4000",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Brisbane, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "South East Queensland"
+        },
+        {
+          "@type": "Place",
+          "name": "Acacia Ridge, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Brendale, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Hemmant, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Yatala, QLD"
+        }
+      ],
+      "founder": {
+        "@id": "https://represent.au/#nick"
+      },
+      "slogan": "Exclusively on your side of the table.",
+      "hasCredential": "Queensland Real Estate Agent Licence 4949809",
+      "taxID": "59 696 915 170",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61 401 825 999",
+          "email": "nick@represent.au",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://represent.au/#nick",
+      "name": "Nick O'Toole",
+      "jobTitle": "Founder & Director",
+      "worksFor": {
+        "@id": "https://represent.au/#organisation"
+      },
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "sameAs": [
+        "https://www.linkedin.com/in/nickotoole/",
+        "https://www.youtube.com/@NickOToole",
+        "https://www.instagram.com/nick.otoole/"
+      ],
+      "description": "20+ years in commercial property and asset management across office, retail and industrial. Founder & Director of Represent Commercial. Former Asset and Development Manager at Nicolas Malouf Investments. Real Estate Agent Licence 4949809.",
+      "url": "https://represent.au/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://represent.au/#website",
+      "url": "https://represent.au/",
+      "name": "Represent Commercial",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://represent.au/#organisation"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "For lease",
+      "item": "https://represent.au/for-lease"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Acacia Ridge",
+      "item": "https://represent.au/lease-11-13-loam-street-acacia-ridge"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -246,7 +391,7 @@ html[data-listing-status="leased"] .lst-badge.when-leased{display:inline-flex!im
         <span class="lst-badge lst-badge--leased when-leased">Leased</span>
         <span class="lst-badge" style="border-color: transparent; padding-left: 0;" data-noindicator>Industrial / warehouse</span>
       </div>
-      <h1 class="lst-h1">11/13 Loam Street,<br />Acacia Ridge</h1>
+      <h1 class="lst-h1">11/13 Loam Street, <br />Acacia Ridge</h1>
       <p class="lst-place">Pioneer Business Park · QLD 4110</p>
       <div class="lst-keys">
         <div><div class="lst-key__v">186 m²</div><div class="lst-key__l">Total area (approx.)<br />131 m² warehouse · 55 m² mezzanine</div></div>

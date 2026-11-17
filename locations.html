@@ -112,16 +112,109 @@
 .loc-stat { min-width: 0; }
 @media (max-width: 400px) { .loc-stats { margin-left: 20px; margin-right: 20px; } .loc-stat + .loc-stat { padding-left: 12px; } .loc-stat__v { font-size: 22px; } }
 </style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  "@id": "https://represent.au/#organisation",
-  "name": "Represent Commercial",
-  "url": "https://represent.au/",
-  "telephone": "+61 401 825 999",
-  "email": "nick@represent.au",
-  "address": { "@type": "PostalAddress", "streetAddress": "Suite 36, Level 3, 240 Queen St", "addressLocality": "Brisbane", "addressRegion": "QLD", "postalCode": "4000", "addressCountry": "AU" }
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://represent.au/#organisation",
+      "name": "Represent Commercial",
+      "description": "Principal-led commercial property representation for established businesses in Brisbane and South East Queensland renewing, relocating or buying the premises they operate from: tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison. Represent Commercial also acts for selected investors and property owners through investment buyer’s agency, property management, leasing and asset management appointments, acting exclusively for the appointed client in each matter.",
+      "knowsAbout": [
+        "Commercial tenant representation",
+        "Commercial lease renewal",
+        "Business premises relocation",
+        "Buying business premises",
+        "Lease versus buy decisions",
+        "Industrial and warehouse premises"
+      ],
+      "url": "https://represent.au/",
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 36, Level 3, 240 Queen St",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "postalCode": "4000",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Brisbane, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "South East Queensland"
+        },
+        {
+          "@type": "Place",
+          "name": "Acacia Ridge, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Brendale, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Hemmant, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Yatala, QLD"
+        }
+      ],
+      "founder": {
+        "@id": "https://represent.au/#nick"
+      },
+      "slogan": "Exclusively on your side of the table.",
+      "hasCredential": "Queensland Real Estate Agent Licence 4949809",
+      "taxID": "59 696 915 170",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61 401 825 999",
+          "email": "nick@represent.au",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://represent.au/#nick",
+      "name": "Nick O'Toole",
+      "jobTitle": "Founder & Director",
+      "worksFor": {
+        "@id": "https://represent.au/#organisation"
+      },
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "sameAs": [
+        "https://www.linkedin.com/in/nickotoole/",
+        "https://www.youtube.com/@NickOToole",
+        "https://www.instagram.com/nick.otoole/"
+      ],
+      "description": "20+ years in commercial property and asset management across office, retail and industrial. Founder & Director of Represent Commercial. Former Asset and Development Manager at Nicolas Malouf Investments. Real Estate Agent Licence 4949809.",
+      "url": "https://represent.au/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://represent.au/#website",
+      "url": "https://represent.au/",
+      "name": "Represent Commercial",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://represent.au/#organisation"
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -237,7 +330,8 @@
         </a>
 
       </div>
-    </div>
+    <div style="margin-top: 72px;" data-screen-label="Precinct comparison"><div class="eyebrow">Comparing precincts</div><h2 style="margin: 8px 0 14px;">Which precinct suits the operation?</h2><p style="font-family: &quot;DM Sans&quot;, sans-serif; font-size: 16px; line-height: 1.7; color: #26302B; max-width: 820px;">The right precinct depends on how the business operates: the vehicles it uses, where its staff and customers are, and the type of building it needs. This comparison summarises each precinct page.</p><div style="overflow-x: auto;"><table style="width: 100%; min-width: 640px; border-collapse: collapse; margin-top: 12px;"><thead><tr><th scope="col" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; font-family: &quot;DM Sans&quot;, sans-serif; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: #004225;">Precinct</th><th scope="col" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; font-family: &quot;DM Sans&quot;, sans-serif; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: #004225;">Typical stock</th><th scope="col" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; font-family: &quot;DM Sans&quot;, sans-serif; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: #004225;">Main access</th><th scope="col" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; font-family: &quot;DM Sans&quot;, sans-serif; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: #004225;">Check before committing</th></tr></thead><tbody><tr><th scope="row" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;"><a href="/Acacia%20Ridge" style="color:#004225;font-weight:700;">Acacia Ridge</a></th><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Established industrial and logistics stock, with a mix of building ages</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">South-west road corridor and the Acacia Ridge Intermodal Terminal</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Heavy-vehicle routes, building specification and flood mapping for each site</td></tr><tr><th scope="row" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;"><a href="/Brendale" style="color:#004225;font-weight:700;">Brendale</a></th><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Light industrial units and strata complexes</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Bruce Highway and Strathpine Road</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Strata by-laws and levies, unit clearances, and the City of Moreton Bay planning scheme</td></tr><tr><th scope="row" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;"><a href="/Hemmant" style="color:#004225;font-weight:700;">Hemmant</a></th><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Larger freestanding buildings, often with hardstand</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Gateway Motorway and the port corridor</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Flood information, environmental searches, and a smaller transaction sample</td></tr><tr><th scope="row" style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;"><a href="/Yatala" style="color:#004225;font-weight:700;">Yatala</a></th><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Freestanding warehouses and manufacturing facilities on larger parcels</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Pacific Motorway corridor between Brisbane and the Gold Coast</td><td style="text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid rgba(0,66,37,0.14); font-family: &quot;DM Sans&quot;, sans-serif; font-size: 15px; line-height: 1.55; color: #26302B;">Workforce travel, power supply, expansion approvals and the City of Gold Coast planning scheme</td></tr></tbody></table></div><h2 style="margin: 56px 0 14px;">How to read the figures</h2><p style="font-family: &quot;DM Sans&quot;, sans-serif; font-size: 16px; line-height: 1.7; color: #26302B; max-width: 820px;">Each median is the middle value of the industrial lease or sale transactions Represent Commercial recorded in that precinct in the 12 months to August 2026. The number of transactions and their mix of size, age and condition differ between precincts and periods, and the medians are not adjusted for those differences. They show where a precinct sits, but they do not value an individual building. For a specific property, compare it with the transactions most like it.</p></div>
+</div>
     <div class="loc-note">
       <p>Coverage extends across South East Queensland for business occupiers; the precincts above are those we track most closely. Median lease rate, median sale rate and median lease term are drawn from transactions recorded in the 12 months to August 2026 and are market indicators only, not a forecast of future results or a valuation of any individual property. Real Estate Agent Licence 4949809.</p>
     </div>
@@ -253,7 +347,7 @@
       <div style="display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0;">
         <a href="/contact?service=buy#form-card" class="btn btn--lg btn--gold">Buy Premises →</a>
         <a href="/contact?service=relocate#form-card" class="btn btn--lg btn--outline">Lease or Renew →</a>
-        <a href="/lease-vs-buy" class="btn btn--lg btn--outline">Compare Leasing and Buying →</a>
+        <a href="/lease-vs-buy" class="btn btn--lg btn--outline">Compare leasing and buying →</a>
       </div>
     </div>
   </section>
@@ -279,6 +373,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

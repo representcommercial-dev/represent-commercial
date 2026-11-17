@@ -72,9 +72,10 @@
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
-<link rel="stylesheet" href="calc.css" />
+<link rel="stylesheet" href="calc.v3.css" />
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -241,23 +242,32 @@
 </section>
 
 <section class="calc-cta">
-  <div class="calc-wrap">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">The right answer depends on the depth of enquiry, the covenant on offer and what the lower rent does to the asset&rsquo;s value. Represent leases and manages commercial property with that whole picture in view.</p>
+      <a class="lead-link" href="/commercial-property-leasing">Explore Commercial Leasing &rarr;</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">Every month vacant is a month you cannot get back.</div>
-        <p class="lead-p">The right answer depends on the depth of enquiry, the covenant on offer and what the lower rent does to the asset&rsquo;s value. Represent leases and manages commercial property with that whole picture in view.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="vacancy-vs-rent-reduction-first">First name</label><input id="vacancy-vs-rent-reduction-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="vacancy-vs-rent-reduction-last">Last name</label><input id="vacancy-vs-rent-reduction-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="vacancy-vs-rent-reduction-first">First name <span class="lead-opt">(optional)</span></label><input id="vacancy-vs-rent-reduction-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="vacancy-vs-rent-reduction-email">Email</label><input id="vacancy-vs-rent-reduction-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="vacancy-vs-rent-reduction-phone">Phone</label><input id="vacancy-vs-rent-reduction-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="vacancy-vs-rent-reduction-phone">Phone <span class="lead-opt">(optional)</span></label><input id="vacancy-vs-rent-reduction-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="vacancy-vs-rent-reduction-last">Last name <span class="lead-opt">(optional)</span></label><input id="vacancy-vs-rent-reduction-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss Leasing My Property</button>
-            <a class="lead-link" href="/commercial-property-leasing">Explore Commercial Leasing &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">
@@ -295,6 +305,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

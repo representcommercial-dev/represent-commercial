@@ -83,7 +83,8 @@
       "publisher": {
         "@id": "https://represent.au/#organisation"
       },
-      "mainEntityOfPage": "https://represent.au/how-to-avoid-buying-the-wrong-commercial-property"
+      "mainEntityOfPage": "https://represent.au/how-to-avoid-buying-the-wrong-commercial-property",
+      "dateModified": "2026-11-12"
     }
   ]
 }
@@ -159,6 +160,28 @@
 .ar-judge ol + p{margin-top:24px}
 .ar .faq__q{font-size:21px;line-height:1.15;margin:0 0 8px}
 .ar .faq__a{margin:0}
+
+.ar-tbl{width:100%;border-collapse:collapse;margin:20px 0 8px;font-family:var(--f-body);font-size:15.5px;line-height:1.55}
+.ar-tbl th,.ar-tbl td{text-align:left;vertical-align:top;padding:12px 14px 12px 0;border-top:1px solid rgba(0,66,37,.16)}
+.ar-tbl th{font-family:var(--f-body);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#004225}
+.ar-check{list-style:none;padding:0;margin:16px 0 0;columns:2;column-gap:32px}
+.ar-check li{break-inside:avoid;display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:8px 0;font-family:var(--f-body);font-size:15.5px;line-height:1.55}
+.ar-check li::before{content:"";width:14px;height:14px;border:1.5px solid #004225;border-radius:3px;margin-top:4px}
+.ar-src{margin:14px 0 0;padding-left:18px;font-family:var(--f-body);font-size:15px;line-height:1.7}
+.ar-ex{background:#F3F5F2;border:1px solid rgba(0,66,37,.14);border-radius:12px;padding:24px;margin-top:16px}
+@media (max-width:700px){.ar-check{columns:1}.ar-tbl,.ar-tbl tbody,.ar-tbl tr,.ar-tbl td,.ar-tbl th{display:block;width:100%}.ar-tbl thead{display:none}.ar-tbl td{border-top:0;padding:4px 0}.ar-tbl tr{border-top:1px solid rgba(0,66,37,.16);padding:10px 0}}
+@media print{.site-header,.site-footer,.ar-cta,.ar-print,nav,[data-screen-label="Next step"]{display:none !important}}
+.faq details.faq__item{border-top:1px solid rgba(0,66,37,.14)}
+.faq details.faq__item:last-child{border-bottom:1px solid rgba(0,66,37,.14)}
+.faq details.faq__item>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:16px 0;cursor:pointer}
+.faq details.faq__item>summary::-webkit-details-marker{display:none}
+.faq details.faq__item>summary:focus-visible{outline:2px solid #C9A84C;outline-offset:2px}
+.faq details.faq__item .faq__q{margin:0}
+.faq__pm{position:relative;flex:0 0 14px;width:14px;height:14px}
+.faq__pm::before,.faq__pm::after{content:"";position:absolute;left:0;top:6px;width:14px;height:2px;background:#004225}
+.faq__pm::after{transform:rotate(90deg);transition:transform .2s ease}
+.faq details.faq__item[open] .faq__pm::after{transform:rotate(0)}
+.faq details.faq__item .faq__a{padding:0 0 18px}
 .ar-note{font-size:13px !important;line-height:1.7 !important;color:#5f665f !important;margin:40px 0 0 !important}
 .ar-close .tagline{color:var(--gold)}
 .svc-close > *{min-width:0}
@@ -182,6 +205,110 @@
 
 </style>
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://represent.au/#organisation",
+      "name": "Represent Commercial",
+      "description": "Principal-led commercial property representation for established businesses in Brisbane and South East Queensland renewing, relocating or buying the premises they operate from: tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison. Represent Commercial also acts for selected investors and property owners through investment buyer’s agency, property management, leasing and asset management appointments, acting exclusively for the appointed client in each matter.",
+      "knowsAbout": [
+        "Commercial tenant representation",
+        "Commercial lease renewal",
+        "Business premises relocation",
+        "Buying business premises",
+        "Lease versus buy decisions",
+        "Industrial and warehouse premises"
+      ],
+      "url": "https://represent.au/",
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 36, Level 3, 240 Queen St",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "postalCode": "4000",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Brisbane, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "South East Queensland"
+        },
+        {
+          "@type": "Place",
+          "name": "Acacia Ridge, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Brendale, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Hemmant, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Yatala, QLD"
+        }
+      ],
+      "founder": {
+        "@id": "https://represent.au/#nick"
+      },
+      "slogan": "Exclusively on your side of the table.",
+      "hasCredential": "Queensland Real Estate Agent Licence 4949809",
+      "taxID": "59 696 915 170",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61 401 825 999",
+          "email": "nick@represent.au",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://represent.au/#nick",
+      "name": "Nick O'Toole",
+      "jobTitle": "Founder & Director",
+      "worksFor": {
+        "@id": "https://represent.au/#organisation"
+      },
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "sameAs": [
+        "https://www.linkedin.com/in/nickotoole/",
+        "https://www.youtube.com/@NickOToole",
+        "https://www.instagram.com/nick.otoole/"
+      ],
+      "description": "20+ years in commercial property and asset management across office, retail and industrial. Founder & Director of Represent Commercial. Former Asset and Development Manager at Nicolas Malouf Investments. Real Estate Agent Licence 4949809.",
+      "url": "https://represent.au/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://represent.au/#website",
+      "url": "https://represent.au/",
+      "name": "Represent Commercial",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://represent.au/#organisation"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -215,7 +342,7 @@
       <h1 class="brandline h-1" style="max-width: 1040px;">How do I avoid buying the wrong premises for my <span class="italic" style="color: var(--gold);">business?</span></h1>
       <hr class="gold-rule" style="margin-bottom: 28px;" />
       <p class="ar-stand">A building can look right on inspection and still be the wrong purchase for the business. The harder questions are what it will cost to operate from, whether the timing works with your current lease and what happens if the business outgrows it. This guide sets out what I would test before you commit.</p>
-      <div class="ar-by"><picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="" width="44" height="44" /></picture><span><b>Nick O'Toole</b>Founder &amp; Director, Represent Commercial</span></div>
+      <div class="ar-by"><picture><source srcset="nick-otoole-headshot.webp" type="image/webp" /><img src="nick-otoole-headshot.jpg" alt="" width="44" height="44" /></picture><span><b><a href="/about" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Nick O'Toole</a></b>Founder &amp; Director, Represent Commercial. Updated 12 November 2026</span></div>
     </div>
   </section>
 
@@ -224,7 +351,7 @@
       <div class="dq-answer reveal">
         <div>
           <span class="dq-tag">Direct answer</span>
-          <h2>How do I avoid buying the wrong premises for my business?</h2>
+          <h2>Short answer</h2>
         </div>
         <div>
           <p>Start with the business, not the listing. Define how the business operates, what it needs from a building now and over the next several years, and what it can afford to spend in total. Then test each property against that brief: operational fit, the full cost of occupation, timing against your current lease, planning and permitted use, and how easily the property could be adapted, leased or sold later.</p>
@@ -270,7 +397,7 @@
               <li><b>Capital expenditure.</b> Roof, structure, services, plant and compliance items the building is likely to need over the ownership period.</li>
               <li><b>Opportunity cost.</b> Capital tied up in the property is capital not available to the business.</li>
             </ul>
-            <p>Compare owning with leasing using the <a href="/lease-vs-buy">lease vs buy calculator</a>, and compare premises with the <a href="/occupancy-cost">occupancy cost comparison</a>.</p>
+            <p>Compare owning with leasing using the <a href="/lease-vs-buy">Lease vs Buy Calculator</a>, and compare premises with the <a href="/occupancy-cost">occupancy cost comparison</a>.</p>
           </section>
           <section class="ar-sec" id="timing">
             <p class="ar-n">03</p>
@@ -308,30 +435,70 @@
             <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:mid">Discuss Your Premises Purchase</a></div>
           </aside>
           </section>
-          <section class="ar-sec ar-judge" id="what-i-would-look-at">
-            <p class="ar-n">Nick O'Toole</p>
-            <h2>What I would look at before buying</h2>
-            <p>Before recommending a purchase, I want each of these answered with evidence, or recorded as an assumption or an unknown to be verified.</p>
-            <ol>
-              <li><span><b>Brief.</b> Does the property meet every requirement the business cannot compromise on?</span></li>
-              <li><span><b>Operations.</b> Will the access, layout, power and parking work for how the business operates?</span></li>
-              <li><span><b>Total cost.</b> What will the business spend to buy, adapt and occupy the building?</span></li>
-              <li><span><b>Timing.</b> Does settlement and fit-out align with your current lease?</span></li>
-              <li><span><b>Planning.</b> Is the intended use approved, or approvable, at this site?</span></li>
-              <li><span><b>Building.</b> What expenditure is likely over the ownership period?</span></li>
-              <li><span><b>Flexibility.</b> Could the property be leased or sold if the business's plans change?</span></li>
-              <li><span><b>Unknowns.</b> What has not yet been verified?</span></li>
-            </ol>
+          <section class="ar-sec" id="who-checks-what">
+            <h2>What Nick assesses and what your advisers verify</h2>
+            <p>A buyer’s agent assesses whether a property suits the business and stands up commercially. Legal, planning, building, tax and finance matters are verified by the relevant specialists.</p>
+            <table class="ar-tbl">
+              <thead><tr><th scope="col">Question</th><th scope="col">Nick assesses</th><th scope="col">Verified by</th></tr></thead>
+              <tbody>
+                <tr><td>Operational fit</td><td>Access, loading, layout, power and parking against the premises brief</td><td>Building consultant and electrical contractor where capacity or condition matters</td></tr>
+                <tr><td>Price and terms</td><td>Asking price against sales evidence, adaptation costs and negotiating position</td><td>Valuer, if your lender or adviser requires a valuation</td></tr>
+                <tr><td>Permitted use</td><td>Whether the intended use appears consistent with the zoning, and what to confirm</td><td>Town planner and solicitor</td></tr>
+                <tr><td>Contract and title</td><td>Commercial terms, vacant possession and timing to negotiate</td><td>Solicitor</td></tr>
+                <tr><td>Building condition</td><td>Likely capital expenditure to plan for over the ownership period</td><td>Building and pest inspector, structural or other consultants</td></tr>
+                <tr><td>Flooding and contamination</td><td>Whether the property warrants searches before you commit</td><td>Solicitor, town planner and environmental consultant</td></tr>
+                <tr><td>Funding, tax and structure</td><td>The property costs to include in your comparison</td><td>Accountant, finance broker and, for an SMSF, a licensed financial adviser</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section class="ar-sec" id="example">
+            <h2>Illustrative example: a warehouse that inspects well</h2>
+            <div class="ar-ex">
+              <p><b>Hypothetical example.</b> Not a real client, property or transaction.</p>
+              <p>A distribution business finds a warehouse in the right suburb at a price within budget. On inspection the building is clean and the office is already fitted out. Testing it against the brief raises four questions before an offer: whether the roller doors suit the business’s largest delivery vehicles, whether the power supply can run its equipment, whether part of the site sits within a flood overlay, and whether vacant possession aligns with its lease expiry.</p>
+              <p>None of these makes the property unsuitable on its own. Each one either needs evidence before the contract is signed, a condition in the contract, or an allowance in the price. That is the difference between a property that inspects well and one that suits the business.</p>
+            </div>
+          </section>
+          <section class="ar-sec" id="checklist">
+            <span id="what-i-would-look-at"></span>
+            <h2>What I would check before making an offer</h2>
+            <p>Before recommending a purchase, I want each of these answered with evidence, or recorded as an assumption or an unknown to be verified. Print the list and record each item as answered, assumed or unknown.</p>
+            <ul class="ar-check">
+              <li>The premises brief is written down, including what the business cannot compromise on</li>
+              <li>Vehicle access, turning space and loading suit the business’s largest vehicles</li>
+              <li>Power supply and services suit current and planned equipment</li>
+              <li>Warehouse, office and yard areas suit how the business operates</li>
+              <li>Staff and visitor parking is adequate</li>
+              <li>The intended use has been checked against the zoning with a town planner</li>
+              <li>Flood and contamination searches have been considered with your solicitor</li>
+              <li>Vacant possession date and settlement align with your current lease and fit-out</li>
+              <li>Total cost includes duty, legal and due diligence fees, fit-out and likely capital works</li>
+              <li>Building condition has been inspected by a qualified consultant</li>
+              <li>Funding and structure have been confirmed by your accountant and finance broker</li>
+              <li>The property could be leased or sold if the business’s plans change</li>
+              <li>Anything not yet verified is recorded as an unknown</li>
+            </ul>
+            <p class="ar-print" style="margin-top: 18px;"><button type="button" class="btn btn--md btn--outline-dark" onclick="window.print()">Print this guide and checklist</button></p>
+          </section>
+          <section class="ar-sec" id="sources">
+            <h3>Sources and official tools</h3>
+            <ul class="ar-src">
+              <li><a href="https://www.brisbane.qld.gov.au/building-and-planning/supporting-documents-and-online-tools/city-plan-online" rel="noopener" target="_blank">Brisbane City Council, City Plan online</a>: zoning and overlays for properties in the Brisbane local government area</li>
+              <li><a href="https://www.brisbane.qld.gov.au/building-and-planning/supporting-documents-and-online-tools/floodwise-property-report" rel="noopener" target="_blank">Brisbane City Council, FloodWise Property Report</a>: flood planning information for a Brisbane property</li>
+              <li><a href="https://www.qld.gov.au/environment/management/environmental/contaminated-land/registers/search-registers" rel="noopener" target="_blank">Queensland Government, Environmental Management and Contaminated Land Registers</a>: how to search a lot on plan</li>
+              <li><a href="https://qro.qld.gov.au/duties/transfer-duty/calculate/rates/" rel="noopener" target="_blank">Queensland Revenue Office, transfer duty rates</a></li>
+            </ul>
+            <p>Properties outside Brisbane are covered by their own council planning scheme and flood mapping. Your solicitor and town planner should confirm which apply.</p>
           </section>
           <section class="ar-sec" id="faq">
             <h2>Common questions</h2>
             <div class="faq">
-              <div class="faq__item"><h3 class="faq__q">What should I check before buying premises for my business?</h3><p class="faq__a">Check whether the building suits how the business operates, the full cost of buying and occupying it, how the timing aligns with your current lease, whether the intended use is permitted, the condition of the building and how easily it could be leased or sold later. Legal, planning, building, tax and finance matters should be reviewed by the relevant specialist advisers.</p></div>
-              <div class="faq__item"><h3 class="faq__q">Is it better to lease or buy business premises?</h3><p class="faq__a">It depends on the business, its capital, how long it expects to stay and how certain its space needs are. Buying gives control and can build equity, but ties up capital and leaves the business carrying the building's costs and risks. Leasing keeps capital in the business and offers more flexibility. The <a href="/lease-vs-buy">lease vs buy calculator</a> compares the two.</p></div>
-              <div class="faq__item"><h3 class="faq__q">What costs are involved in buying business premises?</h3><p class="faq__a">Beyond the price, costs can include transfer duty, legal and due diligence fees, finance costs, adaptation and fit-out, rates, insurance, maintenance and future capital expenditure on the building. Your accountant and solicitor should confirm the costs that apply to your purchase.</p></div>
-              <div class="faq__item"><h3 class="faq__q">How do I time a purchase with my current lease?</h3><p class="faq__a">Check your lease expiry, any options and your make-good obligations, then compare them with the property's vacant possession date, settlement and the time needed for fit-out. A gap or overlap can be costly, so the timing should be planned before the contract is signed.</p></div>
-              <div class="faq__item"><h3 class="faq__q">Can my SMSF buy premises for my business?</h3><p class="faq__a">In some circumstances a self-managed super fund can buy business real property and lease it to a related business, subject to strict rules. This needs advice from your accountant and a licensed financial adviser before you proceed. The <a href="/smsf-commercial-property-calculator">SMSF business premises calculator</a> provides general estimates only.</p></div>
-              <div class="faq__item"><h3 class="faq__q">Do I need a buyer's agent to buy business premises?</h3><p class="faq__a">Not every buyer does. A buyer's agent can be useful if you are short on time, new to buying commercial property, or want someone exclusively representing the business while the selling agent represents the vendor. The work can include defining the brief, screening properties, assessing suitability and cost, coordinating due diligence and negotiating the purchase.</p></div>
+              <details class="faq__item"><summary><h3 class="faq__q">What should I check before buying premises for my business?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">Check whether the building suits how the business operates, the full cost of buying and occupying it, how the timing aligns with your current lease, whether the intended use is permitted, the condition of the building and how easily it could be leased or sold later. Legal, planning, building, tax and finance matters should be reviewed by the relevant specialist advisers.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">Is it better to lease or buy business premises?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">It depends on the business, its capital, how long it expects to stay and how certain its space needs are. Buying gives control and can build equity, but ties up capital and leaves the business carrying the building's costs and risks. Leasing keeps capital in the business and offers more flexibility. The <a href="/lease-vs-buy">Lease vs Buy Calculator</a> compares the two.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">What costs are involved in buying business premises?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">Beyond the price, costs can include transfer duty, legal and due diligence fees, finance costs, adaptation and fit-out, rates, insurance, maintenance and future capital expenditure on the building. Your accountant and solicitor should confirm the costs that apply to your purchase.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">How do I time a purchase with my current lease?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">Check your lease expiry, any options and your make-good obligations, then compare them with the property's vacant possession date, settlement and the time needed for fit-out. A gap or overlap can be costly, so the timing should be planned before the contract is signed.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">Can my SMSF buy premises for my business?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">In some circumstances a self-managed super fund can buy business real property and lease it to a related business, subject to strict rules. This needs advice from your accountant and a licensed financial adviser before you proceed. The <a href="/smsf-commercial-property-calculator">SMSF business premises calculator</a> provides general estimates only.</p></details>
+              <details class="faq__item"><summary><h3 class="faq__q">Do I need a buyer's agent to buy business premises?</h3><span class="faq__pm" aria-hidden="true"></span></summary><p class="faq__a">Not every buyer does. A buyer's agent can be useful if you are short on time, new to buying commercial property, or want someone exclusively representing the business while the selling agent represents the vendor. The work can include defining the brief, screening properties, assessing suitability and cost, coordinating due diligence and negotiating the purchase.</p></details>
             </div>
             <p class="ar-note">This page is general information only. It is not legal, financial or taxation advice and does not take account of your objectives, financial situation or needs. Obtain advice from appropriately qualified legal, financial, tax, planning, building and other advisers before acting. Real Estate Agent Licence 4949809.</p>
           </section>
@@ -362,7 +529,7 @@
       </div>
       <div class="reveal">
         <p class="lede" style="margin: 0 0 28px;">Nick O'Toole will discuss your requirements, timing and the constraints and unknowns that matter before you go further.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:end">Discuss Your Premises Purchase</a><a href="/lease-vs-buy" class="btn btn--lg btn--outline" data-cta="how-to-avoid:end-lvb">Compare Leasing and Buying</a></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;"><a href="/buyers-agency-owner-occupiers#enquiry" class="btn btn--lg btn--gold" data-cta="how-to-avoid:end">Discuss Your Premises Purchase</a><a href="/lease-vs-buy" class="btn btn--lg btn--outline" data-cta="how-to-avoid:end-lvb">Compare leasing and buying</a></div>
         <div style="margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);">
           <div class="tagline">Exclusively on your side of the table.</div>
         </div>
@@ -391,6 +558,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

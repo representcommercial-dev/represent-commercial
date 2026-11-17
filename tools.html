@@ -121,6 +121,110 @@
     .tools-grid { grid-template-columns: 1fr; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://represent.au/#organisation",
+      "name": "Represent Commercial",
+      "description": "Principal-led commercial property representation for established businesses in Brisbane and South East Queensland renewing, relocating or buying the premises they operate from: tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison. Represent Commercial also acts for selected investors and property owners through investment buyer’s agency, property management, leasing and asset management appointments, acting exclusively for the appointed client in each matter.",
+      "knowsAbout": [
+        "Commercial tenant representation",
+        "Commercial lease renewal",
+        "Business premises relocation",
+        "Buying business premises",
+        "Lease versus buy decisions",
+        "Industrial and warehouse premises"
+      ],
+      "url": "https://represent.au/",
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 36, Level 3, 240 Queen St",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "postalCode": "4000",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Brisbane, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "South East Queensland"
+        },
+        {
+          "@type": "Place",
+          "name": "Acacia Ridge, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Brendale, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Hemmant, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Yatala, QLD"
+        }
+      ],
+      "founder": {
+        "@id": "https://represent.au/#nick"
+      },
+      "slogan": "Exclusively on your side of the table.",
+      "hasCredential": "Queensland Real Estate Agent Licence 4949809",
+      "taxID": "59 696 915 170",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61 401 825 999",
+          "email": "nick@represent.au",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://represent.au/#nick",
+      "name": "Nick O'Toole",
+      "jobTitle": "Founder & Director",
+      "worksFor": {
+        "@id": "https://represent.au/#organisation"
+      },
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "sameAs": [
+        "https://www.linkedin.com/in/nickotoole/",
+        "https://www.youtube.com/@NickOToole",
+        "https://www.instagram.com/nick.otoole/"
+      ],
+      "description": "20+ years in commercial property and asset management across office, retail and industrial. Founder & Director of Represent Commercial. Former Asset and Development Manager at Nicolas Malouf Investments. Real Estate Agent Licence 4949809.",
+      "url": "https://represent.au/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://represent.au/#website",
+      "url": "https://represent.au/",
+      "name": "Represent Commercial",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://represent.au/#organisation"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="tools-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -153,7 +257,7 @@
   <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
   <div class="container" style="position: relative; z-index: 1;">
     <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
-      BUSINESS PREMISES <span class="italic" style="color: var(--gold);">tools.</span>
+      BUSINESS PREMISES CALCULATORS AND <span class="italic" style="color: var(--gold);">tools.</span>
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 640px;">
@@ -165,51 +269,52 @@
 <!-- ─── TOOL GRID ─── -->
 <section class="tools-body">
   <div class="tools-wrap">
+    <h2 style="font-family: var(--f-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; font-size: clamp(26px, 3vw, 34px); color: var(--green); margin: 0 0 8px;">Renewing or relocating</h2>
+    <p style="font-family: var(--f-body); font-size: 16px; line-height: 1.65; color: #3E4A44; max-width: 780px; margin: 0 0 20px;">For a business deciding whether to renew its lease or move. Start with the renewal vs relocation calculator, then test the rent, incentive and total cost of each option.</p>
     <div class="tools-grid">
-
-      <a class="tool-card" href="/lease-vs-buy">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M6 7h12"/><path d="M6 7l-3 6h6z"/><path d="M18 7l-3 6h6z"/><path d="M8 21h8"/></svg></div>
-        <h3>Lease vs Buy Calculator</h3>
-        <p>Weigh the cost of leasing premises against owning them, over your intended holding period.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
-      <a class="tool-card" href="/occupancy-cost">
-        <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="12" width="4" height="9"/><rect x="10" y="6" width="4" height="15"/><rect x="16" y="15" width="4" height="6"/></svg></div>
-        <h3>Occupancy Cost Comparison</h3>
-        <p>Compare up to three premises on effective annual cost, cost per square metre and cost per person, net of incentives and fitout.</p>
-        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
-      </a>
-
       <a class="tool-card" href="/renewal-vs-relocation">
         <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 12h11"/><path d="M11 8l4 4-4 4"/><rect x="18" y="6" width="3" height="12"/></svg></div>
         <h3>Lease Renewal vs Relocation</h3>
         <p>The total cost of staying against moving, including fitout, removals, make-good and overlap rent, with the break-even rent.</p>
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
-
+      <a class="tool-card" href="/occupancy-cost">
+        <div class="tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="12" width="4" height="9"/><rect x="10" y="6" width="4" height="15"/><rect x="16" y="15" width="4" height="6"/></svg></div>
+        <h3>Occupancy Cost Comparison</h3>
+        <p>Compare up to three premises on effective annual cost, cost per square metre and cost per person, net of incentives and fitout.</p>
+        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
       <a class="tool-card" href="/effective-rent">
         <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 16h8"/><path d="M14 8h6"/><path d="M12 16l2-8"/></svg></div>
         <h3>Lease Incentive &amp; Effective Rent</h3>
         <p>Convert a face rent and its incentive package into one comparable effective rent, with the cash flow year by year.</p>
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
-
       <a class="tool-card" href="/rent-review">
         <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/></svg></div>
         <h3>Rent Review Calculator</h3>
         <p>Apply a fixed, CPI or greater-of review and project the rent year by year across the lease term.</p>
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
-
+    </div>
+    <p style="font-family: var(--f-body); font-size: 15px; line-height: 1.65; color: #3E4A44; margin: 18px 0 0;">Related: <a href="/renew-or-relocate-commercial-premises-brisbane" style="color: var(--green); text-decoration: underline; text-underline-offset: 3px;">renew or relocate guide</a>, <a href="/tenant-representation#renew" style="color: var(--green); text-decoration: underline; text-underline-offset: 3px;">renewing a commercial lease</a> and <a href="/tenant-representation" style="color: var(--green); text-decoration: underline; text-underline-offset: 3px;">tenant representation</a>.</p>
+    <h2 style="font-family: var(--f-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; font-size: clamp(26px, 3vw, 34px); color: var(--green); margin: 56px 0 8px;">Buying or comparing ownership</h2>
+    <p style="font-family: var(--f-body); font-size: 16px; line-height: 1.65; color: #3E4A44; max-width: 780px; margin: 0 0 20px;">For a business weighing ownership against continued leasing, or estimating what an SMSF purchase would require.</p>
+    <div class="tools-grid">
+      <a class="tool-card" href="/lease-vs-buy">
+        <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M6 7h12"/><path d="M6 7l-3 6h6z"/><path d="M18 7l-3 6h6z"/><path d="M8 21h8"/></svg></div>
+        <h3>Lease vs Buy Calculator</h3>
+        <p>Compare the indicative costs of leasing or buying your business premises.</p>
+        <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
       <a class="tool-card" href="/smsf-commercial-property-calculator">
         <div class="tool-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M6 7h12"/><path d="M6 7l-3 6h6z"/><path d="M18 7l-3 6h6z"/><path d="M8 21h8"/></svg></div>
         <h3>SMSF Business Premises Calculator</h3>
         <p>Estimate the cash an SMSF would need to buy Queensland business premises and test cash flow under different borrowing, cost and vacancy assumptions.</p>
         <span class="tool-open">Open tool <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
       </a>
-
     </div>
+    <p style="font-family: var(--f-body); font-size: 15px; line-height: 1.65; color: #3E4A44; margin: 18px 0 0;">Related: <a href="/guide-lease-vs-buy" style="color: var(--green); text-decoration: underline; text-underline-offset: 3px;">lease vs buy guide</a>, <a href="/how-to-avoid-buying-the-wrong-commercial-property" style="color: var(--green); text-decoration: underline; text-underline-offset: 3px;">how to avoid buying the wrong premises</a> and <a href="/buyers-agency-owner-occupiers" style="color: var(--green); text-decoration: underline; text-underline-offset: 3px;">buy business premises</a>. The SMSF calculator gives general estimates only and is not SMSF, tax or financial advice.</p>
     <p class="tools-note">Results are indicative only. Funding, tax and SMSF questions should be confirmed with your qualified advisers.</p>
     <div style="margin-top: 28px;"><a href="/contact" class="btn btn--lg btn--green">Discuss Your Premises</a></div>
   </div>
@@ -237,6 +342,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

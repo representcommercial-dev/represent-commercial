@@ -50,19 +50,19 @@
 <!-- End Meta Pixel Code -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rent Review Calculator | Represent Commercial</title>
+<title>Commercial Rent Review Calculator | Represent Commercial</title>
 <meta name="description" content="Project commercial rent year by year across a lease term under fixed percentage, CPI or greater-of-CPI-or-fixed reviews. Represent Commercial, Brisbane and Queensland." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://represent.au/rent-review" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://represent.au/rent-review" />
-<meta property="og:title" content="Rent Review Calculator | Represent Commercial" />
+<meta property="og:title" content="Commercial Rent Review Calculator | Represent Commercial" />
 <meta property="og:description" content="Project commercial rent year by year across a lease term under fixed percentage, CPI or greater-of-CPI-or-fixed reviews. Represent Commercial, Brisbane and Queensland." />
 <meta property="og:image" content="https://represent.au/og-default.jpg" />
 <meta property="og:site_name" content="Represent Commercial" />
 <meta property="og:locale" content="en_AU" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Rent Review Calculator | Represent Commercial" />
+<meta name="twitter:title" content="Commercial Rent Review Calculator | Represent Commercial" />
 <meta name="twitter:description" content="Project commercial rent year by year across a lease term under fixed percentage, CPI or greater-of-CPI-or-fixed reviews. Represent Commercial, Brisbane and Queensland." />
 <meta name="twitter:image" content="https://represent.au/og-default.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -72,8 +72,129 @@
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
-<link rel="stylesheet" href="calc.css" />
+<link rel="stylesheet" href="calc.v3.css" />
 <style>/* First and last name (2026-10-24): four contact fields sit in two rows */@media (min-width:701px){.lead-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
+<style>/* v2-r4 calculator guidance (page-level) */
+.cg{padding:56px 0 24px}
+.cg-b{border-top:1px solid rgba(0,66,37,.14);padding-top:32px;margin-top:32px}
+.cg-b:first-child{border-top:0;padding-top:0;margin-top:0}
+.cg h2{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(26px,3.2vw,36px);line-height:1.1;color:#004225;margin:0 0 14px}
+.cg p,.cg li{font-family:var(--f-body);font-size:16px;line-height:1.65;color:#26302B;max-width:780px;text-wrap:pretty}
+.cg ul{padding-left:20px;margin:10px 0 0}
+.cg li{margin:6px 0}
+.cg-t{width:100%;max-width:780px;border-collapse:collapse;margin:16px 0 8px;font-family:var(--f-body);font-size:15.5px}
+.cg-t th,.cg-t td{text-align:left;padding:10px 12px 10px 0;border-top:1px solid rgba(0,66,37,.14);vertical-align:top}
+.cg-t th{font-weight:700;color:#004225}
+.cg-t td.n,.cg-t th.n{text-align:right}
+.cg-note{font-size:14px !important;color:#4A504A !important}
+.cg a{color:#004225;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){.cg-t{font-size:14.5px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://represent.au/#organisation",
+      "name": "Represent Commercial",
+      "description": "Principal-led commercial property representation for established businesses in Brisbane and South East Queensland renewing, relocating or buying the premises they operate from: tenant representation for lease renewals and relocations, buyer representation for businesses buying their own premises, and lease versus buy comparison. Represent Commercial also acts for selected investors and property owners through investment buyer’s agency, property management, leasing and asset management appointments, acting exclusively for the appointed client in each matter.",
+      "knowsAbout": [
+        "Commercial tenant representation",
+        "Commercial lease renewal",
+        "Business premises relocation",
+        "Buying business premises",
+        "Lease versus buy decisions",
+        "Industrial and warehouse premises"
+      ],
+      "url": "https://represent.au/",
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Suite 36, Level 3, 240 Queen St",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "postalCode": "4000",
+        "addressCountry": "AU"
+      },
+      "areaServed": [
+        {
+          "@type": "Place",
+          "name": "Brisbane, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "South East Queensland"
+        },
+        {
+          "@type": "Place",
+          "name": "Acacia Ridge, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Brendale, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Hemmant, QLD"
+        },
+        {
+          "@type": "Place",
+          "name": "Yatala, QLD"
+        }
+      ],
+      "founder": {
+        "@id": "https://represent.au/#nick"
+      },
+      "slogan": "Exclusively on your side of the table.",
+      "hasCredential": "Queensland Real Estate Agent Licence 4949809",
+      "taxID": "59 696 915 170",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+61 401 825 999",
+          "email": "nick@represent.au",
+          "contactType": "customer service",
+          "areaServed": "AU",
+          "availableLanguage": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://represent.au/#nick",
+      "name": "Nick O'Toole",
+      "jobTitle": "Founder & Director",
+      "worksFor": {
+        "@id": "https://represent.au/#organisation"
+      },
+      "telephone": "+61 401 825 999",
+      "email": "nick@represent.au",
+      "sameAs": [
+        "https://www.linkedin.com/in/nickotoole/",
+        "https://www.youtube.com/@NickOToole",
+        "https://www.instagram.com/nick.otoole/"
+      ],
+      "description": "20+ years in commercial property and asset management across office, retail and industrial. Founder & Director of Represent Commercial. Former Asset and Development Manager at Nicolas Malouf Investments. Real Estate Agent Licence 4949809.",
+      "url": "https://represent.au/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://represent.au/#website",
+      "url": "https://represent.au/",
+      "name": "Represent Commercial",
+      "inLanguage": "en-AU",
+      "publisher": {
+        "@id": "https://represent.au/#organisation"
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -103,11 +224,11 @@
   <div class="circle" style="top: -44px; right: -44px; transform: none; width: 220px; height: 220px;"></div>
   <div class="container" style="position: relative; z-index: 1;">
     <h1 class="h-1" style="color: #fff; margin-bottom: 32px; max-width: 980px;">
-      WHAT WILL THE RENT BE AT <span class="italic" style="color: var(--gold);">expiry?</span>
+      RENT REVIEW CALCULATOR: WHAT WILL THE RENT BE AT <span class="italic" style="color: var(--gold);">expiry?</span>
     </h1>
     <hr class="gold-rule" style="margin-bottom: 28px;" />
     <p class="lede" style="max-width: 660px;">
-      A review clause compounds quietly across a term. Enter the passing rent and the review structure to see the rent year by year, the total collected over the term, and what the clause is worth against the alternatives.
+      A review clause compounds quietly across a term. Enter the passing rent and the review structure to see the rent year by year, the total rent payable over the term, and what the clause is worth against the alternatives. Results are indicative: your lease’s review clause decides the actual outcome.
     </p>
   </div>
 </section>
@@ -320,24 +441,61 @@
   </div>
 </section>
 
-<section class="calc-cta">
+<section class="cg" aria-label="Guidance">
   <div class="calc-wrap">
+    <div class="cg-b">
+      <h2>How rent reviews change what you pay</h2>
+      <p>A rent review clause sets how the rent changes during the lease: by a fixed percentage, by the consumer price index (CPI), or by whichever of the two is higher. Small annual increases compound, so the rent payable at expiry, and the starting point for any renewal negotiation, can be well above the rent at commencement.</p>
+    </div>
+    <div class="cg-b">
+      <h2>Worked example</h2>
+      <p>A hypothetical lease starting at $100,000 a year with fixed 3% annual reviews over five years.</p>
+      <table class="cg-t">
+        <thead><tr><th scope="col">Lease year</th><th scope="col" class="n">Rent payable</th></tr></thead>
+        <tbody>
+          <tr><td>Year 1</td><td class="n">$100,000</td></tr>
+          <tr><td>Year 2</td><td class="n">$103,000</td></tr>
+          <tr><td>Year 3</td><td class="n">$106,090</td></tr>
+          <tr><td>Year 4</td><td class="n">$109,273</td></tr>
+          <tr><td>Year 5</td><td class="n">$112,551</td></tr>
+          <tr><th scope="row">Total rent payable</th><th scope="row" class="n">$530,914</th></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cg-b">
+      <h2>Assumed CPI and your lease wording</h2>
+      <p>The CPI rate in this calculator is your own assumption about future inflation. Published CPI figures from the Australian Bureau of Statistics only cover past periods. Your lease decides which CPI series and quarters apply, how often reviews occur, and whether there are caps, collars, ratchets or market reviews. Check the review clause, or ask your solicitor, before relying on a projection. <a href="/tenant-representation#renew">Help negotiating your commercial lease renewal</a> includes reviewing these terms first. The <a href="/renew-or-relocate-commercial-premises-brisbane">renew or relocate guide</a> sets out the dates to confirm.</p>
+    </div>
+  </div>
+</section>
+
+<section class="calc-cta">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <p class="lead-p">The basis, the frequency and the ratchet are all decided before the lease is signed, and they compound for the whole term. Represent negotiates review structures on behalf of owners and tenants with the market evidence to support the position.</p>
+      <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
+    </div>
     <div class="lead-card">
       <div id="lead-intro">
         <div class="lead-h">A review clause is negotiable.</div>
-        <p class="lead-p">The basis, the frequency and the ratchet are all decided before the lease is signed, and they compound for the whole term. Represent negotiates review structures on behalf of owners and tenants with the market evidence to support the position.</p>
+        <p class="lead-sub">Only your email is required.</p>
         <form id="lead-form">
-          <div class="lead-grid">
-            <div class="lead-field"><label for="rent-review-first">First name</label><input id="rent-review-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
-            <div class="lead-field"><label for="rent-review-last">Last name</label><input id="rent-review-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+          <div class="lead-row">
+            <div class="lead-field"><label for="rent-review-first">First name <span class="lead-opt">(optional)</span></label><input id="rent-review-first" name="first_name" autocomplete="given-name" autocapitalize="words" /></div>
             <div class="lead-field"><label for="rent-review-email">Email</label><input id="rent-review-email" name="email" type="email" autocomplete="email" required /></div>
-            <div class="lead-field"><label for="rent-review-phone">Phone</label><input id="rent-review-phone" name="phone" autocomplete="tel" /></div>
           </div>
+          <div class="lead-field"><label for="rent-review-phone">Phone <span class="lead-opt">(optional)</span></label><input id="rent-review-phone" name="phone" autocomplete="tel" /></div>
+          <details class="lead-more">
+            <summary><span>Add your last name <span class="lead-opt">(optional)</span></span><span class="lead-pm" aria-hidden="true"></span></summary>
+            <div class="lead-more__body">
+              <div class="lead-field"><label for="rent-review-last">Last name <span class="lead-opt">(optional)</span></label><input id="rent-review-last" name="last_name" autocomplete="family-name" autocapitalize="words" /></div>
+            </div>
+          </details>
           <div class="lead-actions">
             <button type="submit" class="lead-btn" id="lead-btn">Discuss Your Lease</button>
-            <a class="lead-link" href="/tenant-representation">Explore Tenant Representation &rarr;</a>
           </div>
           <div class="lead-msg err" id="lead-err" style="display:none;"></div>
+          <p class="lead-privacy">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
         </form>
       </div>
       <div id="lead-done" style="display:none;">
@@ -375,6 +533,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>

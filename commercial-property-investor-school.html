@@ -93,7 +93,7 @@
 <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="stylesheet" href="styles.v3.css" />
-<link rel="stylesheet" href="calc.css" />
+<link rel="stylesheet" href="calc.v3.css" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Commercial Property Investor School","url":"https://represent.au/commercial-property-investor-school","inLanguage":"en-AU","description":"Free interactive lessons for commercial property investors on yield and value, value-add, leasing and vacancy, refinancing and downside cash flow.","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"Represent Commercial","url":"https://represent.au/"},"hasPart":[
 {"@type":"LearningResource","name":"Yield, income and value","url":"https://represent.au/commercial-property-investor-school#lesson-1","isAccessibleForFree":true},
@@ -106,6 +106,7 @@
 [hidden]{display:none!important}
 .hint{color:#5F5B52;font-family:var(--f-sans);font-size:12.5px;line-height:1.5;margin:8px 0 0}
 .reset-btn{color:#5F5B52}
+.reset-btn:hover{color:#5F5B52} /* v2-r4 usability r2: hover keeps the default colour */
 .err-msg{font-family:var(--f-sans);font-size:13px;line-height:1.45;color:#A0341F;margin:8px 0 0}
 .field.is-err .input-shell{border-color:#A0341F;box-shadow:0 0 0 1px #A0341F}
 .input-shell input{min-height:46px;font-size:16px}
@@ -213,7 +214,7 @@
 .isf-attach{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;background:#FBF9F5;border:1px solid #E6E1D6;border-radius:9px;padding:14px 16px;margin:4px 0 16px;font-family:var(--f-sans);font-size:14px;line-height:1.55;color:#3E4A44}
 .isf-attach input{width:20px;height:20px;margin:1px 0 0;accent-color:#004225}
 .isf-attach details{margin-top:8px}
-.isf-attach summary{cursor:pointer;color:#004225;font-weight:600;min-height:32px;display:flex;align-items:center}
+.isf-attach summary{cursor:pointer;color:#004225;font-weight:600;min-height:44px;display:flex;align-items:center} /* v2-r4 usability r2: was 32px */
 .isf-attach pre{white-space:pre-wrap;font-family:var(--f-sans);font-size:12.5px;line-height:1.55;background:#fff;border:1px solid #E6E1D6;border-radius:8px;padding:10px 12px;margin:6px 0 0;color:#3E4A44}
 .isf-submit{width:100%;min-height:52px;font-size:16px;cursor:pointer}
 .isf-submit[disabled]{opacity:.7;cursor:progress}
@@ -227,6 +228,8 @@
 .isf-done:focus{outline:none}
 .isf-done h2{font-family:var(--f-cond);font-weight:700;text-transform:uppercase;letter-spacing:.02em;font-size:30px;line-height:1.05;color:#004225;margin:0 0 14px}
 .isf-done p{font-family:var(--f-sans);font-size:15px;line-height:1.7;color:#3E4A44;margin:0 0 12px}
+/* v2-r4 usability r2: calculator columns shrink to the viewport; wide tables scroll inside .sens-wrap */
+.calc-grid>.calc-col{min-width:0;grid-template-columns:minmax(0,1fr)}
 @media (max-width:1040px){.isch-index{grid-template-columns:repeat(3,minmax(0,1fr))}.ls-learn{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:860px){.isch-intro__grid{grid-template-columns:minmax(0,1fr)}.cl-list{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:600px){.calc-wrap{padding:0 16px}.card{padding:26px 18px}.isch-index{grid-template-columns:minmax(0,1fr)}.two,.isf-grid{grid-template-columns:minmax(0,1fr)}.isf-card,.cl-card{padding:28px 20px}.bar-row{grid-template-columns:64px minmax(0,1fr) 88px;gap:8px}.bar-row__v{font-size:16px}.rc-seg label{flex-basis:100%}}
@@ -244,6 +247,23 @@
 @media (min-width:601px){.isf-grid .field>label,.two .ctl>label{min-height:2.7em;display:flex;align-items:flex-end;flex-wrap:wrap;column-gap:.35em}}
 </style>
 <style>/* CTA label wrap (2026-10-24): longer labels wrap on phones instead of overflowing */@media (max-width:600px){.btn{white-space:normal;max-width:100%;text-align:center}}</style>
+<style>/* design-content candidate: compact enquiry card (page-scoped) */
+.calc-cta .isf-card{padding:24px;border-radius:12px}
+.calc-cta .isf-h{font-size:28px;line-height:1.05;margin:0 0 6px}
+.calc-cta .isf-sub{font-size:15px;line-height:1.5;margin:0 0 14px}
+.calc-cta .isf-form .field{margin-bottom:12px}
+.calc-cta .isf-form .field label{font-size:13px;margin:0 0 5px}
+.calc-cta .ba-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px}
+.calc-cta .ba-more{margin:2px 0 14px;border-top:1px solid rgba(0,66,37,.14);border-bottom:1px solid rgba(0,66,37,.14)}
+.calc-cta .ba-more summary{min-height:44px;padding:8px 0}
+.calc-cta .ba-more summary>span:first-child{font-family:var(--f-sans);font-size:15px;font-weight:700;color:#004225}
+.calc-cta .ba-more summary:focus-visible{outline:2px solid #004225;outline-offset:2px;border-radius:4px}
+.calc-cta .ba-more .isf-grid{padding:4px 0}
+.calc-cta .isf-submit{min-height:48px;padding-top:12px;padding-bottom:12px}
+.calc-cta .isf-note{margin:10px 0 0}
+@media (max-width:600px){.calc-cta .isf-card{padding:20px 16px}.calc-cta .ba-row{grid-template-columns:minmax(0,1fr)}}
+</style>
+<link rel="stylesheet" href="lead.v1.css" />
 </head>
 <body class="calc-page">
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1090298970505526&amp;ev=PageView&amp;noscript=1" alt="" /></noscript>
@@ -623,8 +643,12 @@
     </div>
   </div>
 </section>
-<section class="calc-cta" id="enquiry" aria-labelledby="isf-heading" style="scroll-margin-top:72px;">
-  <div class="calc-wrap">
+<section class="calc-cta" id="enquiry" aria-labelledby="isf-heading" style="scroll-margin-top:88px;">
+  <div class="calc-wrap lead-wrap">
+    <div class="lead-aside">
+      <h3 class="lead-aside__h">What happens next?</h3>
+      <p class="lead-p">Nick will review your enquiry and respond personally within one business day to discuss the property, your plans and how Represent Commercial can help with the search, assessment and negotiation.</p><p class="lead-p">Complimentary initial session for prospective acquisition clients. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed. We act for the buyer, never the vendor.</p>
+    </div>
     <div class="isf-card" id="isf-card">
       <form id="isf-form" class="isf-form" method="POST" action="https://api.web3forms.com/submit">
         <input type="hidden" name="access_key" value="35499d27-a409-4125-9171-b5df6f1dfa97" />
@@ -649,24 +673,25 @@
         <input type="hidden" name="utm_content" value="" />
         <input type="hidden" name="website_submission_id" value="" />
         <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
-        <p class="isf-eyebrow">Investor acquisition enquiry</p>
         <h2 class="isf-h" id="isf-heading">Discuss your next acquisition.</h2>
-        <p class="isf-sub">Tell Nick about the investment property or value-add opportunity you are considering, or the kind of asset you want to buy.</p>
-        <p class="isf-req">Name and email are required. Everything else is optional.</p>
-        <div class="isf-grid">
+        <p class="isf-sub">Tell Nick about the investment property or value-add opportunity you are considering, or the kind of asset you want to buy. Only your first name and email are required.</p>
+        <div class="ba-row">
           <div class="field"><label for="isf-first">First name</label><input id="isf-first" name="first_name" type="text" autocomplete="given-name" autocapitalize="words" required /></div>
-          <div class="field"><label for="isf-last">Last name <span class="isf-opt">(optional)</span></label><input id="isf-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
-        </div>
-        <div class="isf-grid">
           <div class="field"><label for="isf-email">Email</label><input id="isf-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" required /></div>
-          <div class="field"><label for="isf-phone">Mobile <span class="isf-opt">(optional)</span></label><input id="isf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" /></div>
+        </div>
+        <div class="field"><label for="isf-phone">Mobile <span class="isf-opt">(optional)</span></label><input id="isf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+\(\)\s.\-]{8,}" title="Enter a phone number, for example 0401 825 999" /></div>
+        <details class="so-acc ba-more">
+          <summary><span>Add investment details <span class="isf-opt">(optional)</span></span><span class="so-pm" aria-hidden="true"></span></summary>
+          <div class="isf-grid">
+          <div class="field"><label for="isf-last">Last name <span class="isf-opt">(optional)</span></label><input id="isf-last" name="last_name" type="text" autocomplete="family-name" autocapitalize="words" /></div>
           <div class="field"><label for="isf-budget">Indicative investment budget <span class="isf-opt">(optional)</span></label>
             <select id="isf-budget" name="budget"><option value="" selected>Select a range</option><option>Under $1M</option><option>$1M to $2M</option><option>$2M to $5M</option><option>$5M to $10M</option><option>$10M to $20M</option><option>Over $20M</option><option>Not determined yet</option></select></div>
           <div class="field"><label for="isf-timing">Acquisition timing <span class="isf-opt">(optional)</span></label>
             <select id="isf-timing" name="timing"><option value="" selected>Select one</option><option>Within 3 months</option><option>3 to 6 months</option><option>6 to 12 months</option><option>More than 12 months</option><option>Not determined yet</option></select></div>
           <div class="field"><label for="isf-location">Preferred location <span class="isf-opt">(optional)</span></label><input id="isf-location" name="preferred_location" type="text" autocomplete="off" /></div>
           <div class="field"><label for="isf-listing">Property or listing link <span class="isf-opt">(optional)</span></label><input id="isf-listing" name="listing_url" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="500" /></div>
-        </div>
+          </div>
+        </details>
         <div class="isf-attach">
           <input type="checkbox" id="isf-attach" />
           <div><label for="isf-attach">Attach a short summary of my lesson figures to this enquiry.</label> <span>Optional. Nothing is sent unless you tick this box.</span>
@@ -675,7 +700,7 @@
         </div>
         <button type="submit" class="btn btn--lg btn--gold isf-submit" data-cta="school-form-submit">Discuss My Investment Requirements</button>
         <div class="isf-err" id="isf-err" role="alert"></div>
-        <div class="isf-next"><h3>What happens next?</h3><p>Nick will review your enquiry and respond personally within one business day to discuss the property, your plans and how Represent Commercial can help with the search, assessment and negotiation.</p><p>Complimentary initial session for prospective acquisition clients. Any subsequent advice or buyer’s agency appointment is separately scoped and agreed. We act for the buyer, never the vendor.</p></div>
+        
         <p class="isf-note">By submitting, you agree to Represent Commercial contacting you about this enquiry. This does not subscribe you to a newsletter. Your details are handled in line with our <a href="/privacy">Privacy Policy</a>.</p>
       </form>
       <div class="isf-done" id="isf-done" tabindex="-1">
@@ -716,6 +741,13 @@
           <li><a href="/renewal-vs-relocation">Renew or Relocate</a></li>
           <li><a href="/lease-vs-buy">Lease vs Buy</a></li>
           <li><a href="/occupancy-cost">Occupancy Cost Comparison</a></li>
+        </ul>
+        <h3 style="margin-top: 16px;"><a href="/property-owners-investors" style="font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; text-decoration: none; display: inline;">Property Owners &amp; Investors</a></h3>
+        <ul>
+          <li><a href="/buyers-agency-investors">Investment Buyer’s Agency</a></li>
+          <li><a href="/commercial-property-management">Commercial Property Management</a></li>
+          <li><a href="/commercial-property-leasing">Commercial Leasing</a></li>
+          <li><a href="/commercial-asset-management">Commercial Asset Management</a></li>
         </ul>
         <h3 style="margin-top: 16px;">Company</h3>
         <ul>
