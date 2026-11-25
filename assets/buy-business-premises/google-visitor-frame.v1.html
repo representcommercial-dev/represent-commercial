@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>Site measurement</title></head><body>
+<!-- No forms or buttons: Google automatic form listeners remain outside the enquiry document. -->
+<script>
+(function (w, d) {
+  'use strict';
+  if (w.parent === w || w.location.origin !== 'https://represent.au') return;
+  var initialised = false, stopped = false, seen = Object.create(null), origin = 'https://represent.au';
+  var ga4 = 'G-D0RB6DF7H3', ads = 'AW-18457265873';
+  function allowed() {
+    if (stopped) return false;
+    try { return w.sessionStorage.getItem('rc_measurement_test') !== '1'; } catch (_) { return true; }
+  }
+  w.dataLayer = w.dataLayer || [];
+  w.gtag = function () { if (allowed()) w.dataLayer.push(arguments); };
+  w.addEventListener('message', function (event) {
+    if (event.source !== w.parent || event.origin !== origin || !event.data) return;
+    var message = event.data;
+    if (message.type === 'rc-bbp-qa-stop') { stopped = true; w['ga-disable-' + ga4] = true; return; }
+    if (!allowed()) return;
+    if (message.type === 'rc-bbp-init' && !initialised) {
+      try {
+        var info = message.details || {}, url = new URL(info.page_location);
+        if (url.origin !== origin || url.pathname !== '/buy-business-premises') return;
+        var config = { send_page_view: false, page_location: url.href,
+          page_referrer: String(info.page_referrer || '').slice(0, 1000),
+          page_title: String(info.page_title || '').slice(0, 300) };
+        initialised = true;
+        w.gtag('js', new Date()); w.gtag('config', ads, config); w.gtag('config', ga4, config);
+        w.gtag('event', 'page_view', { send_to: ga4, page_location: config.page_location,
+          page_referrer: config.page_referrer, page_title: config.page_title });
+        var script = d.createElement('script'); script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + ads; d.head.appendChild(script);
+      } catch (_) {}
+    } else if (message.type === 'rc-bbp-conversion' && initialised &&
+        /^bp-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(message.id) && !seen[message.id]) {
+      seen[message.id] = true;
+      w.gtag('event', 'buyer_agency_form_submit', { send_to: ga4,
+        website_submission_id: message.id, form_stream: 'buy-business-premises-brief',
+        buyer_type: 'Owner-occupier', cta_location: 'brief-review' });
+    }
+  });
+})(window, document);
+</script></body></html>
