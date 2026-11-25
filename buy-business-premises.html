@@ -2,76 +2,7 @@
 <html lang="en-AU" class="no-js">
 <head>
 <script src="/rc-measurement.v1.js"></script>
-<!-- Google Ads tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18457265873"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){
-    var m = window.rcMeasurement;
-    if (!m || !m.allowed()) return;
-    if (arguments[0] === 'event') {
-      if (!arguments[2] || typeof arguments[2] !== 'object') return gtag('event', arguments[1], {});
-      if (!m.event(arguments[1], arguments[2])) return;
-    }
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-  gtag('config', 'AW-18457265873');
-  gtag('config', 'G-D0RB6DF7H3');
-</script>
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-    if (!c.rcMeasurement || !c.rcMeasurement.allowed()) return;
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "yyk80juahe");
-</script>
-<!-- Meta Pixel Code (dataset 1090298970505526). Loads once per page and sends one PageView.
-     Runs only on represent.au outside measurement test mode.
-     Lead is sent by rc-events.v3.js only after a confirmed website enquiry. -->
-<script>
-  (function () {
-    if (!window.rcMeasurement || !window.rcMeasurement.allowed()) return;
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}
-    (window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1090298970505526');
-    fbq('track', 'PageView');
-  })();
-</script>
-<!-- End Meta Pixel Code -->
-<!-- ChatGPT Ads Measurement Pixel (official snippet). No user object is passed.
-     Measurement is disabled outside represent.au and in measurement test mode.
-     lead_created fires only after Web3Forms confirms an owner-occupier acquisition enquiry (see page foot). -->
-<script>
-  (function (w, d, s, u) {
-    if (w.oaiq || !w.rcMeasurement || !w.rcMeasurement.allowed()) return;
-    var q = function () {
-      q.q.push(arguments);
-    };
-    q.q = [];
-    w.oaiq = q;
-    var js = d.createElement(s);
-    js.async = true;
-    js.src = u;
-    var f = d.getElementsByTagName(s)[0];
-    f.parentNode.insertBefore(js, f);
-  })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
-
-  if (typeof window.oaiq === "function") oaiq("init", {
-    pixelId: "UxYskuYbQ6m4DFAF3Xj4Gt",
-    debug: !/^(www\.)?represent\.au$/.test(location.hostname)
-  });
-</script>
-
+<!-- Enquiry measurement is loaded only after non-QA acceptance. -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Commercial Buyer’s Agent for Business Premises | Represent Commercial</title>
@@ -413,7 +344,7 @@ a:hover { color: #002D18; }
         <div id="outcome-accepted" class="outcome ok" role="status" hidden>
           <h4 id="accepted-title" tabindex="-1">Thank you. Your enquiry has been accepted.</h4>
           <p>The submission service accepted the enquiry shown below. This does not confirm inbox delivery or book a call. To speak with Nick directly, call 0401 825 999.</p>
-          <dl id="accepted-rows"></dl>
+          <dl id="accepted-rows" data-clarity-mask="true"></dl>
           <p class="small">One enquiry per visit. Contact Nick directly if you need to update it.</p>
         </div>
         <div id="outcome-uncertain" class="outcome warn" role="alert" hidden>
@@ -576,7 +507,7 @@ a:hover { color: #002D18; }
 <script src="assets/buy-business-premises/enquiry-delivery.v2.js"></script>
 <script src="/rc-attribution.v1.js"></script>
 <script src="/rc-events.v3.js"></script>
-<script src="assets/buy-business-premises/measurement.live.v1.js"></script>
+<script src="assets/buy-business-premises/measurement.live.v2.js"></script>
 <!-- BBP-TRANSPORT-CONFIG:BEGIN -->
 <script>
 window.RCEnquiryTransport = window.RCEnquiryDeliveryFactory.create({
