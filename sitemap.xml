@@ -47,7 +47,7 @@
   </url>
   <url>
     <loc>https://represent.au/insights</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -154,7 +154,7 @@
   </url>
   <url>
     <loc>https://represent.au/property-owners-investors</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -203,6 +203,12 @@
   <url>
     <loc>https://represent.au/commercial-lease-make-good-negotiation-brisbane</loc>
     <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://represent.au/2027-cgt-changes-commercial-property</loc>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
